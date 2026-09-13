@@ -1,8 +1,8 @@
 ---
 name: Question Review
-about: Describe this issue template's purpose here.
+about: 回報題目答案、解析、難度或 PMP/ECO 問題
 title: "[Question]"
-labels: ''
+labels: question
 assignees: ''
 
 ---
