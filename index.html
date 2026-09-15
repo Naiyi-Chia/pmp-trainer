@@ -28,6 +28,12 @@ button{border:1px solid var(--line);border-radius:9px;padding:10px 12px;backgrou
 .barrow{display:grid;grid-template-columns:170px 1fr 70px;gap:10px;align-items:center;margin:8px 0;font-size:13px} .mini{height:9px;background:#eaecf0;border-radius:999px;overflow:hidden} .mini>i{display:block;height:100%;background:var(--accent2)}
 .mockBanner{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap} .timer{font-size:24px;font-weight:800} .questionGrid{display:grid;grid-template-columns:repeat(15,1fr);gap:5px;margin-top:12px} .qnum{padding:7px 0;border-radius:6px;font-size:11px} .qnum.answered{background:#eef2ff;border-color:#8098f9} .qnum.current{outline:2px solid var(--accent)} .qnum.flagged{box-shadow:inset 0 0 0 2px #f79009}
 .hidden{display:none!important} .resultHero{text-align:center;padding:14px} .resultHero b{font-size:42px} .resultHero small{display:block;color:var(--muted)}
+.practiceResult{max-width:800px;margin-left:auto;margin-right:auto}
+.practiceResult h2{margin-top:0}
+.practiceResult .stats{grid-template-columns:repeat(2,minmax(0,1fr));margin:16px 0}
+.practiceResult .stat span{font-size:14px}
+.practiceResult .nav button{min-width:0;overflow-wrap:anywhere}
+.practiceResult button:focus-visible,#practiceFinishPrompt button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .footer{font-size:11px;color:var(--muted);padding:10px 2px 30px;line-height:1.6}
 main.wrap{padding-left:16px;padding-right:16px}
 button,.opt,.qnum,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -110,7 +116,7 @@ button,select{min-height:44px}
 <div class="meta"><b id="practicePosition"></b><span id="practiceAnswered"></span></div>
 <div class="progress" role="progressbar" aria-label="已作答進度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="practiceProgress"><div class="bar" id="pbar"></div></div>
 <div class="meta"><span class="tag" id="pd"></span><span class="tag" id="pa"></span><span class="tag" id="pt"></span><span class="tag" id="ptype"></span><span class="tag" id="pdiff"></span><span class="note" id="pcounter"></span></div>
-<div class="q" id="pq"></div><div id="popts"></div>
+<div class="q" id="pq" tabindex="-1"></div><div id="popts"></div>
 <div id="pexp" class="explain hidden"></div>
 <div class="nav">
 <button id="practicePrev" onclick="practicePrev()">上一題</button>
@@ -120,6 +126,31 @@ button,select{min-height:44px}
 </div>
 <p class="note hidden" id="practiceEnd">已到本輪最後一題，可回看前題或調整設定開始新一輪。</p>
 <div class="questionFeedback"><button onclick="reportPracticeQuestion()">🚩 回報此題</button></div>
+</div>
+<div class="card hidden" id="practiceFinishPrompt" aria-labelledby="practiceFinishTitle">
+<h2 id="practiceFinishTitle" tabindex="-1">尚有未作答題目</h2>
+<p id="practiceUnansweredMessage"></p>
+<div class="nav">
+<button class="primary" onclick="returnToUnanswered()">回到第一題未作答題</button>
+<button onclick="finishPractice(true)">仍要結束本輪</button>
+</div>
+</div>
+<div class="card practiceResult hidden" id="practiceResult" aria-labelledby="practiceResultTitle">
+<h2 id="practiceResultTitle" tabindex="-1">本輪結果</h2>
+<p id="practiceResultSummary"></p>
+<div class="stats">
+<div class="stat"><b id="prCorrect"></b><span>答對</span></div>
+<div class="stat"><b id="prWrong"></b><span>答錯</span></div>
+<div class="stat"><b id="prUnanswered"></b><span>未作答</span></div>
+<div class="stat"><b id="prAnswered"></b><span>已答 / 本輪總題數</span></div>
+<div class="stat"><b id="prAccuracy"></b><span>作答正確率（答對 / 已答）</span></div>
+<div class="stat"><b id="prTime"></b><span>本輪時間</span></div>
+</div>
+<p class="note" id="practiceRetryNote"></p>
+<div class="nav">
+<button class="primary" id="practiceRetry" onclick="retryPracticeMistakes()"></button>
+<button id="practiceNewRound" onclick="newPracticeRound()">再開一輪</button>
+</div>
 </div>
 <details class="card hidden" id="practiceStats"><summary>詳細統計</summary>
 <div class="stats">
@@ -337,7 +368,7 @@ function safeSave(obj){
   catch(e) { return false; }
 }
 let H=safeLoad();
-let P=[],pi=0,pAns={},pStart=null,pTick=null,pReview=false,pSettings=null;
+let P=[],pi=0,pAns={},pStart=null,pTick=null,pReview=false,pSettings=null,pResult=null;
 let M=[],mi=0,mAns={},mFlag={},mRemain=240*60,mTick=null,mEndAt=null,mStartedAt=null;
 
 // Explicit DOM bindings for iOS/Safari compatibility. Do not rely on id -> global variable behavior.
@@ -364,6 +395,8 @@ function showPracticeSettings(){
  el('practiceSettingsMessage').classList.add('hidden');
 }
 function returnToPractice(){
+ el('practiceFinishPrompt').classList.add('hidden');
+ el('practiceResult').classList.add('hidden');
  if(pSettings)PRACTICE_FIELDS.forEach(id=>el(id).value=pSettings[id]);
  el('practiceSettings').classList.add('hidden');
  el('practiceHeader').classList.remove('hidden');
@@ -384,13 +417,14 @@ function startPractice(){
  }
  if(P.length&&!confirm('重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？'))return;
  pSettings=Object.fromEntries(PRACTICE_FIELDS.map(id=>[id,el(id).value]));
- P=arr;pi=0;pAns={};pReview=false;pStart=Date.now();clearInterval(pTick);pTick=setInterval(updatePStats,1000);
+ P=arr;pi=0;pAns={};pReview=false;pResult=null;pStart=Date.now();clearInterval(pTick);pTick=setInterval(updatePStats,1000);
  el('practiceSummary').textContent=el('pMode').selectedOptions[0].textContent+'・'+P.length+' 題';
  el('practiceContext').textContent=[d,a,t,diff].filter(v=>v!=='All').join('・')||'全部領域・方法・題型・難度';
  el('practiceStats').open=false;
  returnToPractice();renderPractice();
 }
 function renderPractice(){
+ if(pResult)return;
  if(!P.length){el('pq').textContent='目前沒有符合條件的題目。可以改用「隨機題」或放寬篩選條件。';el('popts').innerHTML='';el('pexp').classList.add('hidden');updatePStats();return;}
  let q=P[pi],ans=pAns[q.id];el('pd').textContent=q.domain;el('pa').textContent=q.approach;el('pt').textContent=q.topic;el('ptype').textContent=q.type;el('pdiff').textContent=q.difficulty;
  el('ptype').className='tag'+(q.type==='計算題'?' calc':'');el('pdiff').className='tag'+(q.difficulty==='難'?' hard':'');el('pcounter').textContent='';el('practicePosition').textContent=`第 ${pi+1} / ${P.length} 題`;el('pq').textContent=q.q;
@@ -399,19 +433,90 @@ function renderPractice(){
  if(ans!==undefined && (pReview||pSettings?.pExplain==='instant'))showPracticeExplanation(); else el('pexp').classList.add('hidden');
  el('expBtn').disabled=ans===undefined&&!pReview;
  el('practicePrev').disabled=pi===0;
- el('practiceNext').disabled=pi===P.length-1;
- el('practiceEnd').classList.toggle('hidden',pi!==P.length-1);
+ const last=pi===P.length-1;
+ el('practiceNext').disabled=pReview&&last;
+ el('practiceNext').textContent=last&&!pReview?'完成本輪':'下一題';
+ el('practiceEnd').classList.toggle('hidden',!pReview||!last);
  if(pReview&&ans===undefined)showPracticeExplanation();
  updatePStats();
 }
-function answerPractice(i){if(pReview||!P.length)return;let q=P[pi];if(pAns[q.id]!==undefined)return;pAns[q.id]=i;record(q,i);renderPractice();}
+function answerPractice(i){if(pReview||pResult||!P.length)return;let q=P[pi];if(pAns[q.id]!==undefined)return;pAns[q.id]=i;record(q,i);renderPractice();}
 function showPracticeExplanation(){if(!P.length)return;let q=P[pi],a=pAns[q.id];if(a===undefined&&!pReview)return;el('pexp').innerHTML=`<b>${a===undefined?'未作答':a===q.ans?'✅ 答對':'❌ 答錯'}｜正確答案 ${String.fromCharCode(65+q.ans)}</b><br>${q.exp}<div class="mindset"><b>PMI Mindset：</b>${q.mindset||''}</div>`;el('pexp').classList.remove('hidden');}
-function practiceNext(){if(pi<P.length-1){pi++;renderPractice();}}
+function practiceNext(){
+ if(pResult||!P.length)return;
+ if(pi<P.length-1){pi++;renderPractice();}
+ else if(!pReview)finishPractice();
+}
 function practicePrev(){if(pi>0){pi--;renderPractice();}}
 function toggleStar(){if(!P.length)return;let q=P[pi],h=getHist(q.id);h.star=!h.star;H[q.id]=h;save();renderPractice();}
 function updatePStats(){let done=Object.keys(pAns).length,cor=Object.entries(pAns).filter(([id,a])=>Q.find(q=>q.id==id)?.ans===a).length;el('psTotal').textContent=P.length;el('psDone').textContent=done;el('psCorrect').textContent=cor;el('psWrong').textContent=done-cor;el('psRate').textContent=done?Math.round(cor/done*100)+'%':'0%';el('practiceAnswered').textContent=`已答 ${done} / ${P.length}`;
 let progress=P.length?done/P.length*100:0;el('pbar').style.width=progress+'%';el('practiceProgress').setAttribute('aria-valuenow',String(Math.round(progress)));
-let s=pStart===null?0:Math.floor((Date.now()-pStart)/1000);el('psTime').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+let s=pResult?pResult.elapsed:pStart===null?0:Math.floor((Date.now()-pStart)/1000);el('psTime').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+
+// Results are memory-only. Creating a result or retry never records an answer.
+function finishPractice(force=false){
+ if(pReview||pResult||!P.length)return;
+ const answered=P.filter(q=>pAns[q.id]!==undefined);
+ const unanswered=P.length-answered.length;
+ if(unanswered&&!force){
+  el('practiceUnansweredMessage').textContent=`本輪尚有 ${unanswered} 題未作答。可以回去繼續作答，或保留未作答狀態結束本輪。`;
+  ['practiceHeader','practiceCard','practiceStats'].forEach(id=>el(id).classList.add('hidden'));
+  el('practiceFinishPrompt').classList.remove('hidden');
+  el('practiceFinishTitle').focus();
+  return;
+ }
+ const wrong=answered.filter(q=>pAns[q.id]!==q.ans);
+ pResult={
+  total:P.length,answered:answered.length,correct:answered.length-wrong.length,
+  unanswered,wrong,
+  elapsed:pStart===null?0:Math.max(0,Math.floor((Date.now()-pStart)/1000)),
+  settings:{...pSettings}
+ };
+ clearInterval(pTick);pTick=null;pStart=null;
+ updatePStats();renderPracticeResult();
+}
+function returnToUnanswered(){
+ if(pReview||pResult)return;
+ const first=P.findIndex(q=>pAns[q.id]===undefined);
+ if(first<0)return;
+ pi=first;returnToPractice();renderPractice();el('pq').focus();
+}
+function renderPracticeResult(){
+ if(pReview||!pResult)return;
+ const r=pResult;
+ ['practiceHeader','practiceCard','practiceStats','practiceSettings','practiceFinishPrompt'].forEach(id=>el(id).classList.add('hidden'));
+ el('practiceResult').classList.remove('hidden');
+ el('practiceResultSummary').textContent=`已結束本輪 ${r.total} 題練習。`;
+ el('prCorrect').textContent=r.correct;
+ el('prWrong').textContent=r.wrong.length;
+ el('prUnanswered').textContent=r.unanswered;
+ el('prAnswered').textContent=`${r.answered} / ${r.total}`;
+ el('prAccuracy').textContent=(r.answered?Math.round(r.correct/r.answered*100):0)+'%';
+ el('prTime').textContent=String(Math.floor(r.elapsed/60)).padStart(2,'0')+':'+String(r.elapsed%60).padStart(2,'0');
+ el('practiceRetry').classList.toggle('hidden',!r.wrong.length);
+ el('practiceRetry').textContent=`重練本輪錯題（${r.wrong.length}）`;
+ el('practiceNewRound').classList.toggle('primary',!r.wrong.length);
+ el('practiceRetryNote').textContent=r.wrong.length?'只重練本輪已作答且答錯的題目，不包含未作答題或歷史錯題。':'本輪沒有可重練的錯題。';
+ el('practiceResultTitle').focus();
+}
+function retryPracticeMistakes(){
+ if(pReview||!pResult||!pResult.wrong.length)return;
+ const result=pResult;
+ P=[...result.wrong];pi=0;pAns={};pSettings={...result.settings};pResult=null;
+ clearInterval(pTick);pStart=Date.now();pTick=setInterval(updatePStats,1000);
+ el('practiceSummary').textContent=`本輪錯題重練・${P.length} 題`;
+ el('practiceContext').textContent='僅包含上一輪已作答且答錯的題目。';
+ el('practiceStats').open=false;
+ returnToPractice();renderPractice();el('pq').focus();
+}
+function newPracticeRound(){
+ if(pReview||!pResult)return;
+ clearInterval(pTick);pTick=null;pStart=null;
+ P=[];pi=0;pAns={};pResult=null;
+ el('practiceResult').classList.add('hidden');
+ el('practiceFinishPrompt').classList.add('hidden');
+ showPracticeSettings();updatePStats();el('practiceStart').focus();
+}
 
 function renderDashboard(){
  let hs=Object.entries(H).filter(([id,h])=>h.attempts);let attempts=hs.reduce((s,[id,h])=>s+h.attempts,0),cor=hs.reduce((s,[id,h])=>s+h.correct,0);
@@ -545,7 +650,7 @@ function finishMock(auto=false){if(!auto){let unanswered=180-Object.keys(mAns).l
  <div class="card"><b>下一步</b><p>最弱 Domain：<b>${weakest[0][0]}</b>（${weakest[0][1]}%）。建議先到「弱點分析」看主題，再使用「錯題重練」。</p><button onclick="reviewMock()">逐題檢討</button> <button onclick="restartMockUI()">回到模考首頁</button></div>`;
 }
 function reviewMock(){
- clearInterval(pTick);pTick=null;pStart=null;pReview=true;
+ clearInterval(pTick);pTick=null;pStart=null;pReview=true;pResult=null;
  P=M;pi=0;pAns={...mAns};
  el('practiceSummary').textContent='模考檢討・'+P.length+' 題';
  el('practiceContext').textContent='檢視模考答案與解析，不計時、不新增作答紀錄。';
