@@ -311,8 +311,7 @@ function buildFeedbackUrl(type,q){
 }
 function openFeedback(type,q){
   const url=buildFeedbackUrl(type,q);
-  const w=window.open(url,'_blank','noopener,noreferrer');
-  if(!w) window.location.href=url;
+  window.open(url,'_blank','noopener,noreferrer');
 }
 function openOverallFeedback(){openFeedback('整體操作／易用性',null);}
 function reportPracticeQuestion(){if(P.length)openFeedback('某一道題目',P[pi]);}
