@@ -8,22 +8,23 @@
 :root{--bg:#f5f7fb;--card:#fff;--text:#182230;--muted:#667085;--line:#e4e7ec;--accent:#274690;--accent2:#4967c7;--good:#067647;--bad:#b42318;--warn:#b54708;--soft:#eef2ff}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",Arial,sans-serif;background:var(--bg);color:var(--text)}
-header{background:linear-gradient(135deg,#18213e,#274690 60%,#4967c7);color:white;padding:22px 16px}
-.wrap{max-width:1100px;margin:auto} h1{margin:0 0 6px;font-size:28px} .sub{opacity:.88;font-size:13px;line-height:1.55}
-.tabs{display:flex;gap:8px;overflow:auto;padding:14px 0} .tab{white-space:nowrap;border:1px solid var(--line);background:white;padding:9px 13px;border-radius:999px;font-weight:700;cursor:pointer} .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+header{background:var(--accent);color:white;padding:16px}
+.wrap{max-width:1100px;margin:auto} h1{margin:0 0 4px;font-size:26px;font-weight:600} h2{font-size:20px;line-height:1.4} .sub{font-size:14px;line-height:1.6;color:#eef2ff}
+.tabs{display:flex;gap:8px;overflow:auto;padding:14px 0} .tab{white-space:nowrap;border:1px solid var(--line);background:white;padding:9px 13px;border-radius:8px;font-weight:600;cursor:pointer} .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .panel{display:none} .panel.active{display:block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 10px rgba(16,24,40,.04);padding:18px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:14px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px} select,input,button{font:inherit}
-select,input[type=number]{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:white}
+label{display:block;font-size:14px;color:var(--muted);margin-bottom:5px} select,input,button{font:inherit}
+select,input[type=number]{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:9px;background:white}
 button{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff;cursor:pointer;font-weight:700} button.primary{background:var(--accent);color:#fff;border-color:var(--accent)} button.ghost{background:#f9fafb} button.danger{color:var(--bad)} button:disabled{opacity:.55;cursor:not-allowed}
 .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px} .stat{background:#f9fafb;border-radius:10px;padding:10px;text-align:center} .stat b{font-size:19px;display:block} .stat span{font-size:11px;color:var(--muted)}
-.meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center} .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:var(--soft);color:#3538cd} .tag.calc{background:#fff4e5;color:#b54708} .tag.hard{background:#fef3f2;color:#b42318}
-.q{font-size:20px;line-height:1.65;font-weight:760;margin:15px 0} .opt{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:1px solid var(--line);border-radius:10px;background:white;font-weight:500;line-height:1.5} .opt:hover{border-color:#98a2b3} .opt.selected{border-color:var(--accent);background:#eef2ff} .opt.correct{border-color:#6ce9a6;background:#ecfdf3;color:var(--good)} .opt.wrong{border-color:#fda29b;background:#fef3f2;color:var(--bad)}
-.explain{margin-top:15px;padding:14px;background:#f8fafc;border-left:4px solid var(--accent);border-radius:9px;line-height:1.65} .mindset{margin-top:9px;padding-top:9px;border-top:1px solid var(--line);color:#344054}
+.meta{display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)} .meta b{color:var(--text)} .tag{font-size:14px;color:var(--muted);line-height:1.6} .tag+.tag{border-left:1px solid var(--line);padding-left:12px}
+.q{font-size:20px;line-height:1.65;font-weight:600;margin:20px 0 16px} .opt{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:1px solid var(--line);border-radius:8px;background:white;color:var(--text);font-size:16px;font-weight:400;line-height:1.65} .opt:not(:disabled):hover{border-color:#98a2b3} .opt.selected{border-color:var(--accent);background:#eef2ff} .opt.correct{border-color:#6ce9a6;background:#ecfdf3;color:var(--good)} .opt.wrong{border-color:#fda29b;background:#fef3f2;color:var(--bad)}
+.opt:disabled{opacity:1;cursor:default;-webkit-text-fill-color:currentColor} .answerState{display:block;margin-top:6px;font-size:14px;font-weight:600}
+.explain{margin-top:20px;padding:16px 0 0;background:transparent;border-top:1px solid var(--line);font-size:16px;line-height:1.7} .mindset{margin-top:9px;padding-top:9px;border-top:1px solid var(--line);color:#344054}
 .nav{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap} .nav button{flex:1;min-width:110px}
 .progress{height:8px;background:#eaecf0;border-radius:99px;overflow:hidden;margin-top:12px} .bar{height:100%;background:var(--accent);width:0}
-.note{font-size:12px;color:var(--muted);line-height:1.6} .warn{background:#fffaeb;border:1px solid #fedf89;padding:11px;border-radius:9px;color:#93370d}
+.note{font-size:14px;color:var(--muted);line-height:1.6} .warn{background:#fffaeb;border:1px solid #fedf89;padding:11px;border-radius:9px;color:#93370d}
 .table{width:100%;border-collapse:collapse} .table th,.table td{padding:9px;border-bottom:1px solid var(--line);font-size:13px;text-align:left} .pill-good{color:var(--good);font-weight:700} .pill-bad{color:var(--bad);font-weight:700}
 .barrow{display:grid;grid-template-columns:170px 1fr 70px;gap:10px;align-items:center;margin:8px 0;font-size:13px} .mini{height:9px;background:#eaecf0;border-radius:999px;overflow:hidden} .mini>i{display:block;height:100%;background:var(--accent2)}
 .mockBanner{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap} .timer{font-size:24px;font-weight:800} .questionGrid{display:grid;grid-template-columns:repeat(15,1fr);gap:5px;margin-top:12px} .qnum{padding:7px 0;border-radius:6px;font-size:11px} .qnum.answered{background:#eef2ff;border-color:#8098f9} .qnum.current{outline:2px solid var(--accent)} .qnum.flagged{box-shadow:inset 0 0 0 2px #f79009}
@@ -33,7 +34,17 @@ button{border:1px solid var(--line);border-radius:9px;padding:10px 12px;backgrou
 .practiceResult .stats{grid-template-columns:repeat(2,minmax(0,1fr));margin:16px 0}
 .practiceResult .stat span{font-size:14px}
 .practiceResult .nav button{min-width:0;overflow-wrap:anywhere}
-.practiceResult button:focus-visible,#practiceFinishPrompt button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.tab.active:focus-visible{outline-color:var(--text)}
+#practiceHeader,#practiceSettings,#practiceCard,#practiceFinishPrompt,#practiceStats{max-width:800px;margin-left:auto;margin-right:auto}
+#practiceHeader,#practiceStats{background:transparent;border:0;border-radius:0;padding:12px 0}
+#practiceStats{border-top:1px solid var(--line)}
+#practiceStats summary{min-height:44px;cursor:pointer;padding:10px 0;color:var(--muted);font-size:14px}
+#practiceStats .stat,.practiceResult .stat{background:transparent;border-radius:0}
+.practiceResult .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0}
+#practiceCard .progress{height:6px;margin:12px 0 16px}
+button.lightweight,#practiceHeader button{background:transparent;border-color:transparent;color:var(--muted);font-weight:500}
+button.lightweight:hover,#practiceHeader button:hover{background:#eaecf0;color:var(--text)}
 .footer{font-size:11px;color:var(--muted);padding:10px 2px 30px;line-height:1.6}
 main.wrap{padding-left:16px;padding-right:16px}
 button,.opt,.qnum,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -42,11 +53,10 @@ button,select{min-height:44px}
 .table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .resumeBox{margin-top:12px;padding:12px;border:1px solid #b2ccff;background:#eff8ff;border-radius:10px}
  .resumeActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.resumeActions button{flex:1;min-width:150px}
-.betaFeedback{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px}
-.betaFeedback .copy{min-width:0}.betaFeedback .copy b{display:block;margin-bottom:3px}.betaFeedback .copy span{font-size:12px;color:var(--muted);line-height:1.5}
-.feedbackBtn{white-space:nowrap;border-color:#98a2b3;background:#fff}
-.questionFeedback{display:flex;justify-content:flex-end;margin-top:10px}.questionFeedback button{font-size:13px;color:#475467;background:#f9fafb}
-@media(max-width:600px){.betaFeedback{align-items:stretch;flex-direction:column}.betaFeedback button{width:100%}.questionFeedback button{width:100%}}
+.betaFeedback{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.betaFeedback .copy{font-size:12px;color:var(--muted)}
+.feedbackBtn{white-space:nowrap;font-size:14px}
+.questionFeedback{display:flex;justify-content:flex-end;margin-top:8px}.questionFeedback button{font-size:14px}
 @media(max-width:760px){
   .grid,.grid3{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:repeat(3,1fr)}
@@ -61,18 +71,18 @@ button,select{min-height:44px}
   .grid,.grid3{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
   .questionGrid{grid-template-columns:repeat(6,1fr);gap:7px}
-  .card{padding:15px;border-radius:12px}
+  .card{padding:16px;border-radius:10px}
   .opt{padding:14px 12px;margin:10px 0}
   .nav{gap:7px}.nav button{min-width:calc(50% - 4px)}
   h1{font-size:24px}
-  .sub{font-size:12px}
+  .sub{font-size:14px}
 }
 </style>
 </head>
 <body>
 <header><div class="wrap">
 <h1>PMP 2026 Exam Trainer</h1>
-<div class="sub"><span id="appVersionLabel">v0.1-beta</span>｜330 題原創仿真題庫｜PMI 2026 ECO 配比｜People / Process / Business Environment｜Predictive / Agile / Hybrid｜情境題＋計算題＋錯題弱點分析＋180 題完整模考</div>
+<div class="sub">PMP 備考練習・解析與弱點分析</div>
 </div></header>
 <main class="wrap">
 <div class="tabs">
@@ -82,9 +92,9 @@ button,select{min-height:44px}
 <button class="tab" data-tab="official">PMI 官方公開範例</button>
 <button class="tab" data-tab="guide">PMI Mindset</button>
 </div>
-<div class="card betaFeedback">
-  <div class="copy"><b>Beta 測試版 · <span id="betaVersionText">v0.1-beta</span></b><span>如果你有整體操作、題庫品質或功能建議，歡迎直接回饋。</span></div>
-  <button class="feedbackBtn" onclick="openOverallFeedback()">💬 提供整體回饋</button>
+<div class="betaFeedback">
+  <div class="copy"><span id="appVersionLabel">v0.1-beta</span> · 測試版</div>
+  <button class="feedbackBtn lightweight" onclick="openOverallFeedback()">提供整體回饋</button>
 </div>
 <div id="runtimeStatus" class="card" style="padding:10px 14px"><b>工具狀態：</b><span id="runtimeStatusText">正在啟動…</span></div>
 
@@ -97,15 +107,15 @@ button,select{min-height:44px}
 <h2 style="margin-top:0">練習設定</h2>
 <p class="note">選擇條件後按「開始練習」，才會組題並開始計時。</p>
 <div class="grid">
-<div><label>領域</label><select id="pDomain"><option value="All">全部</option><option>People</option><option>Process</option><option>Business Environment</option></select></div>
-<div><label>方法</label><select id="pApproach"><option value="All">全部</option><option>Predictive</option><option>Agile</option><option>Hybrid</option></select></div>
-<div><label>題型</label><select id="pType"><option value="All">全部</option><option>情境題</option><option>計算題</option></select></div>
-<div><label>模式</label><select id="pMode"><option value="random">隨機題</option><option value="new">未作答題</option><option value="wrong">錯題重練</option><option value="star">收藏題</option></select></div>
+<div><label for="pDomain">領域</label><select id="pDomain"><option value="All">全部</option><option>People</option><option>Process</option><option>Business Environment</option></select></div>
+<div><label for="pApproach">方法</label><select id="pApproach"><option value="All">全部</option><option>Predictive</option><option>Agile</option><option>Hybrid</option></select></div>
+<div><label for="pType">題型</label><select id="pType"><option value="All">全部</option><option>情境題</option><option>計算題</option></select></div>
+<div><label for="pMode">模式</label><select id="pMode"><option value="random">隨機題</option><option value="new">未作答題</option><option value="wrong">錯題重練</option><option value="star">收藏題</option></select></div>
 </div>
 <div class="grid" style="margin-top:10px">
-<div><label>題數</label><select id="pCount"><option>10</option><option selected>20</option><option>50</option><option>100</option><option value="all">全部</option></select></div>
-<div><label>難度</label><select id="pDifficulty"><option value="All">全部</option><option>易</option><option>中</option><option>難</option></select></div>
-<div><label>顯示解析</label><select id="pExplain"><option value="instant" selected>答題後立即顯示</option><option value="manual">按「看解析」才顯示</option></select></div>
+<div><label for="pCount">題數</label><select id="pCount"><option>10</option><option selected>20</option><option>50</option><option>100</option><option value="all">全部</option></select></div>
+<div><label for="pDifficulty">難度</label><select id="pDifficulty"><option value="All">全部</option><option>易</option><option>中</option><option>難</option></select></div>
+<div><label for="pExplain">顯示解析</label><select id="pExplain"><option value="instant" selected>答題後立即顯示</option><option value="manual">按「看解析」才顯示</option></select></div>
 <div style="display:flex;align-items:end"><button class="primary" id="practiceStart" onclick="startPractice()">開始練習</button></div>
 </div>
 <p class="note hidden" id="practiceSettingsMessage" role="status"></p>
@@ -120,12 +130,12 @@ button,select{min-height:44px}
 <div id="pexp" class="explain hidden"></div>
 <div class="nav">
 <button id="practicePrev" onclick="practicePrev()">上一題</button>
-<button onclick="toggleStar()" id="starBtn">☆ 收藏</button>
+<button class="lightweight" onclick="toggleStar()" id="starBtn">☆ 收藏</button>
 <button onclick="showPracticeExplanation()" id="expBtn">看解析</button>
 <button id="practiceNext" class="primary" onclick="practiceNext()">下一題</button>
 </div>
 <p class="note hidden" id="practiceEnd">已到本輪最後一題，可回看前題或調整設定開始新一輪。</p>
-<div class="questionFeedback"><button onclick="reportPracticeQuestion()">🚩 回報此題</button></div>
+<div class="questionFeedback"><button class="lightweight" onclick="reportPracticeQuestion()">回報此題</button></div>
 </div>
 <div class="card hidden" id="practiceFinishPrompt" aria-labelledby="practiceFinishTitle">
 <h2 id="practiceFinishTitle" tabindex="-1">尚有未作答題目</h2>
@@ -428,7 +438,11 @@ function renderPractice(){
  if(!P.length){el('pq').textContent='目前沒有符合條件的題目。可以改用「隨機題」或放寬篩選條件。';el('popts').innerHTML='';el('pexp').classList.add('hidden');updatePStats();return;}
  let q=P[pi],ans=pAns[q.id];el('pd').textContent=q.domain;el('pa').textContent=q.approach;el('pt').textContent=q.topic;el('ptype').textContent=q.type;el('pdiff').textContent=q.difficulty;
  el('ptype').className='tag'+(q.type==='計算題'?' calc':'');el('pdiff').className='tag'+(q.difficulty==='難'?' hard':'');el('pcounter').textContent='';el('practicePosition').textContent=`第 ${pi+1} / ${P.length} 題`;el('pq').textContent=q.q;
- el('popts').innerHTML=q.opts.map((o,i)=>`<button class="opt ${ans!==undefined?(i===q.ans?'correct':(i===ans&&i!==q.ans?'wrong':'')):''}" onclick="answerPractice(${i})" ${ans!==undefined||pReview?'disabled':''}>${String.fromCharCode(65+i)}. ${o}</button>`).join('');
+ el('popts').innerHTML=q.opts.map((o,i)=>{
+  const state=ans!==undefined?(i===q.ans?'correct':i===ans?'wrong':''):'';
+  const status=state==='correct'?(i===ans?'你的答案・正確':'正確答案'):state==='wrong'?'你的答案・錯誤':'';
+  return `<button class="opt ${state}" onclick="answerPractice(${i})" ${ans!==undefined||pReview?'disabled':''}>${String.fromCharCode(65+i)}. ${o}${status?`<span class="answerState">${status}</span>`:''}</button>`;
+ }).join('');
  let h=getHist(q.id);el('starBtn').textContent=h.star?'★ 已收藏':'☆ 收藏';
  if(ans!==undefined && (pReview||pSettings?.pExplain==='instant'))showPracticeExplanation(); else el('pexp').classList.add('hidden');
  el('expBtn').disabled=ans===undefined&&!pReview;
