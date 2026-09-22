@@ -206,7 +206,7 @@ button,select{min-height:44px}
 <div id="resumeMockBox" class="resumeBox hidden">
 <b>📌 偵測到未完成的模考</b>
 <div class="note" id="resumeMockText" style="margin-top:5px"></div>
-<div class="resumeActions"><button class="primary" onclick="resumeMock()">繼續上次模考</button><button onclick="discardSavedMock()">捨棄舊模考</button></div>
+<div class="resumeActions"><button id="resumeMockBtn" class="primary" aria-describedby="resumeMockText" onclick="resumeMock()">繼續上次模考</button><button onclick="discardSavedMock()">捨棄舊模考</button></div>
 </div>
 <div style="margin-top:12px"><button class="primary" onclick="startMock()">開始新的 180 題模考</button></div>
 </div>
@@ -553,7 +553,7 @@ function resetAll(){if(confirm('確定清除所有刷題、錯題與收藏紀錄
 
 function loadSavedMock(){
   try { return JSON.parse(window.localStorage.getItem(MOCK_STORE)||'null'); }
-  catch(e) { return null; }
+  catch(e) { return {version:0}; }
 }
 function clearSavedMock(){
   try { window.localStorage.removeItem(MOCK_STORE); } catch(e) {}
@@ -561,8 +561,9 @@ function clearSavedMock(){
 function saveMockProgress(){
   if(!M.length || !mEndAt) return false;
   const state={
-    version:5,
+    version:6,
     questionIds:M.map(q=>q.id),
+    questionSignature:mockQuestionSignature(M),
     currentIndex:mi,
     answers:mAns,
     flags:mFlag,
@@ -573,13 +574,42 @@ function saveMockProgress(){
   try { window.localStorage.setItem(MOCK_STORE,JSON.stringify(state)); refreshMockResumeUI(); return true; }
   catch(e) { return false; }
 }
+// Exact, ordered content signature: no hash collisions or manually bumped bank version.
+// Keep the legacy storage key so old version:5 saves can receive an explicit notice.
+function mockQuestionSignature(questions){
+  return JSON.stringify(questions.map(q=>[q.id,q.q,q.opts,q.ans,q.exp,q.mindset,q.domain,q.approach,q.topic,q.difficulty,q.type]));
+}
+function savedMockProblem(st){
+  if(!st)return '找不到可恢復的模考紀錄，請重新開始。';
+  if(st.version===5)return '舊版未完成模考未保存選項內容，無法確認先前答案是否仍對應相同文字，因此不能繼續。請捨棄舊模考或開始新的模考；既有學習紀錄不受影響。';
+  const invalid='未完成模考的儲存格式不相容或資料不完整，無法安全恢復。請捨棄舊模考或開始新的模考；既有學習紀錄不受影響。';
+  if(st.version!==6 || !Array.isArray(st.questionIds) || st.questionIds.length!==180 ||
+     new Set(st.questionIds).size!==180 || !st.questionIds.every(Number.isInteger) ||
+     !Number.isInteger(st.currentIndex) || st.currentIndex<0 || st.currentIndex>=180 ||
+     !Number.isFinite(st.startedAt) || !Number.isFinite(st.endAt) || !Number.isFinite(st.savedAt) ||
+     st.startedAt<=0 || st.endAt<=st.startedAt || st.savedAt<st.startedAt)return invalid;
+  const map=new Map(Q.map(q=>[q.id,q]));
+  const questions=st.questionIds.map(id=>map.get(id));
+  if(questions.some(q=>!q) || typeof st.questionSignature!=='string' ||
+     st.questionSignature!==mockQuestionSignature(questions))
+    return '題庫內容或選項順序已更新，這份未完成模考與目前版本不相容，為避免答案誤判，不能繼續。請捨棄舊模考或開始新的模考；既有學習紀錄不受影響。';
+  const isObject=value=>value && typeof value==='object' && !Array.isArray(value);
+  const ids=new Set(st.questionIds.map(String));
+  if(!isObject(st.answers) || !isObject(st.flags) ||
+     !Object.entries(st.answers).every(([id,a])=>ids.has(id) && Number.isInteger(a) && a>=0 && a<map.get(Number(id)).opts.length) ||
+     !Object.entries(st.flags).every(([id,flag])=>ids.has(id) && typeof flag==='boolean'))return invalid;
+  return '';
+}
 function validSavedMock(st){
-  return !!(st && Array.isArray(st.questionIds) && st.questionIds.length===180 && st.endAt && typeof st.currentIndex==='number');
+  return savedMockProblem(st)==='';
 }
 function refreshMockResumeUI(){
   const box=el('resumeMockBox'),txt=el('resumeMockText'); if(!box||!txt)return;
   const st=loadSavedMock();
-  if(!validSavedMock(st)){box.classList.add('hidden');return;}
+  if(!st){box.classList.add('hidden');return;}
+  const problem=savedMockProblem(st);
+  el('resumeMockBtn').disabled=!!problem;
+  if(problem){txt.textContent=problem;box.classList.remove('hidden');return;}
   const remain=Math.max(0,Math.ceil((st.endAt-Date.now())/1000));
   const answered=Object.keys(st.answers||{}).length;
   const mins=Math.floor(remain/60),secs=remain%60;
@@ -591,13 +621,13 @@ function restoreMockState(st){
   const map=new Map(Q.map(q=>[q.id,q]));
   const restored=st.questionIds.map(id=>map.get(id)).filter(Boolean);
   if(restored.length!==180) return false;
-  M=restored; mi=Math.max(0,Math.min(179,st.currentIndex||0)); mAns=st.answers||{}; mFlag=st.flags||{};
-  mStartedAt=st.startedAt||Date.now(); mEndAt=st.endAt;
+  M=restored; mi=st.currentIndex; mAns={...st.answers}; mFlag={...st.flags};
+  mStartedAt=st.startedAt; mEndAt=st.endAt;
   return true;
 }
 function resumeMock(){
   const st=loadSavedMock();
-  if(!restoreMockState(st)){alert('找不到可恢復的模考紀錄，請重新開始。');clearSavedMock();refreshMockResumeUI();return;}
+  if(!restoreMockState(st)){alert(savedMockProblem(st));refreshMockResumeUI();return;}
   el('mockSetup').classList.add('hidden');el('mockResult').classList.add('hidden');el('mockExam').classList.remove('hidden');
   startMockClock();renderMock();
   if(Date.now()>=mEndAt) finishMock(true);
@@ -656,7 +686,7 @@ function mockPrev(){if(mi>0){mi--;saveMockProgress();renderMock();}}
 function gotoMock(i){mi=i;saveMockProgress();renderMock();}
 function toggleMockFlag(){let id=M[mi].id;mFlag[id]=!mFlag[id];saveMockProgress();renderMock();}
 function renderMGrid(){el('mGrid').innerHTML=M.map((q,i)=>`<button class="qnum ${mAns[q.id]!==undefined?'answered':''} ${i===mi?'current':''} ${mFlag[q.id]?'flagged':''}" onclick="gotoMock(${i})">${i+1}</button>`).join('');}
-function finishMock(auto=false){if(!auto){let unanswered=180-Object.keys(mAns).length;if(!confirm(`尚有 ${unanswered} 題未作答。確定交卷？`))return;}clearInterval(mTick);clearSavedMock();refreshMockResumeUI();let cor=0;let by={};M.forEach(q=>{let a=mAns[q.id];if(a!==undefined)record(q,a);let ok=a===q.ans;if(ok)cor++;by[q.domain]??={c:0,n:0};by[q.domain].n++;if(ok)by[q.domain].c++;});
+function finishMock(auto=false){if(!mEndAt)return;if(!auto){let unanswered=180-Object.keys(mAns).length;if(!confirm(`尚有 ${unanswered} 題未作答。確定交卷？`))return;}clearInterval(mTick);mTick=null;mEndAt=null;clearSavedMock();refreshMockResumeUI();let cor=0;let by={};M.forEach(q=>{let a=mAns[q.id];if(a!==undefined)record(q,a);let ok=a===q.ans;if(ok)cor++;by[q.domain]??={c:0,n:0};by[q.domain].n++;if(ok)by[q.domain].c++;});
  let pct=Math.round(cor/180*100);el('mockExam').classList.add('hidden');el('mockResult').classList.remove('hidden');
  let weakest=Object.entries(by).map(([k,v])=>[k,Math.round(v.c/v.n*100)]).sort((a,b)=>a[1]-b[1]);
  el('mockResult').innerHTML=`<div class="card resultHero"><small>本次模考答對</small><b>${cor} / 180</b><small>練習正確率 ${pct}%（不是 PMI 官方通過分數）</small></div>
