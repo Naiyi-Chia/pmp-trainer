@@ -7,8 +7,9 @@ PMP Trainer is a single-page, static PMP practice tool published with GitHub Pag
 - No build system or framework is currently required.
 - UI copy is primarily Traditional Chinese (Taiwan usage).
 - `main` is the production / deploy branch.
-- `dev` is the integration branch.
-- Cross-project workflow follows the canonical AI Product Development Playbook v1.0 in `Naiyi-Chia/naiyi-product-playbook`.
+- `dev` is the integration + staging / Dev Preview branch.
+- Fixed Dev Preview: `https://naiyi-chia.github.io/pmp-trainer/dev/`
+- Cross-project workflow follows the canonical AI Product Development Playbook v1.1 in `Naiyi-Chia/naiyi-product-playbook`.
 
 ## Source of Truth
 The GitHub Issue is the Source of Truth for each development task.
@@ -29,12 +30,13 @@ Do not keep requirement changes only in chat, commit messages, PR comments, or h
 4. Confirm the working tree is clean.
 5. Read the relevant GitHub Issue.
 6. Read this `AGENTS.md`.
-7. Create a scoped branch from the latest `dev`, for example:
+7. Read `PROJECT_CONTEXT.md` for stable project context.
+8. Create a scoped branch from the latest `dev`, for example:
    - `feat/issue-N-short-name`
    - `fix/issue-N-short-name`
    - `ux/issue-N-short-name`
    - `maint/issue-N-short-name`
-8. Inspect the existing implementation before editing; do not duplicate existing behavior.
+9. Inspect the existing implementation before editing; do not duplicate existing behavior.
 
 ## Editing rules
 - Keep changes scoped to the Issue. Avoid unrelated refactors.
@@ -93,11 +95,31 @@ Unless explicitly authorized by the human, an Engineering Agent must not indepen
 - merge into `dev`;
 - merge into `main`;
 - close the Issue;
-- declare Human Verify complete;
+- declare Product Verify complete;
 - make a release decision;
 - claim the production site is verified.
 
-Human Verify and release approval are separate gates from agent testing.
+There are three separate Human Gates:
+
+1. **Integration Approval**
+   - Happens before a Feature PR is merged to `dev`.
+   - Means the reviewed change may enter the integration / staging environment.
+   - It is not Product Acceptance.
+
+2. **Product Verify**
+   - Happens after the change is integrated into `dev`.
+   - Verify the fixed Dev Preview for UX, functional behavior, mobile / target-browser behavior, Acceptance Criteria, and integration behavior.
+   - If Product Verify fails, keep the Issue open and repeat fix → review → integration → verify.
+
+3. **Release Approval**
+   - Happens on the Release PR from `dev` to `main`.
+   - Means the human approves releasing the verified `dev` state to production.
+
+Merge to `dev` does not mean Product Verify passed and does not mean Ready for Release.
+
+Ready for Release requires:
+- the change is integrated into `dev`; and
+- Human Product Verify passed.
 
 ## Branch and release model
 Default lifecycle:
@@ -107,13 +129,16 @@ Issue
 → scoped branch from latest dev
 → implementation + local/browser QA
 → commit + push
-→ ChatGPT diff / scope review
-→ Feature PR: feature → dev
-→ Human Verify
+→ ChatGPT Technical Review
+→ Feature PR: scoped branch → dev
+→ Human Integration Approval
 → merge to dev
+→ Dev Preview / staging
+→ Human Product Verify
 → Ready for Release (Issue remains open)
 → Release PR: dev → main
-→ Human release approval
+→ ChatGPT Release Review
+→ Human Release Approval
 → merge to main
 → Production Smoke
 → Done / Close Issue
