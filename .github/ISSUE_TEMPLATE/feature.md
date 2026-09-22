@@ -1,26 +1,41 @@
 ---
 name: Feature
-about: 提出新功能建議
+about: 定義可驗收的新功能或功能改善
 title: "[Feature] "
 labels: feature
 assignees: ''
 ---
 
-## Problem to solve
-想解決什麼問題？
+## Goal
+這個 Issue 要改善什麼使用者或產品成果？
 
-## Proposed feature
-希望增加什麼功能？
+## Background
+為什麼現在值得做？相關情境或回饋是什麼？
 
-## Expected behavior
-使用者操作後，預期應該發生什麼？
+## Problem
+目前使用者遇到什麼限制或缺口？
+
+## Expected Behavior
+完成後，使用者操作與系統行為應該是什麼？
+
+## Scope
+這次要做哪些內容？
+
+## Out of Scope
+這次明確不做哪些內容？
 
 ## Acceptance Criteria
-功能完成後，哪些條件必須成立？
+- [ ]
+- [ ]
 - [ ]
 
-## Why it is useful
-為什麼值得做？
+## Manual QA
+- [ ] Desktop
+- [ ] Mobile（約 375px，如適用）
+- [ ] Edge cases
 
-## Out of scope
-這次明確不處理哪些內容？
+## Related Feedback
+Feedback ID / 來源（如有）：
+
+## Constraints
+例如：不新增 dependency、不修改 localStorage schema、不修改 question bank。
