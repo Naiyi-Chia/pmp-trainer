@@ -104,7 +104,7 @@ For feedback-form work, also verify link destination, expected metadata / catego
 Keep this file focused on durable project facts.
 
 Do not add:
-- current Issue / PR status;
+- live Issue / PR status;
 - latest commit SHA;
 - temporary branch names;
 - one-off implementation notes;
