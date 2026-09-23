@@ -46,6 +46,7 @@ Feedback / Requirement
 → scoped branch from latest dev
 → implementation + local/browser QA
 → commit + push
+→ Engineering Ready for Review Issue comment (or handoff fallback)
 → ChatGPT Technical Review
 → Feature PR: scoped branch → dev
 → Human Integration Approval
