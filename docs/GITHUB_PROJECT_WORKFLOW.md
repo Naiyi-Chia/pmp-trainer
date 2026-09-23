@@ -1,6 +1,6 @@
 # GitHub Project Workflow — PMP Trainer
 
-This document defines the target GitHub Project configuration for PMP Trainer according to AI Product Development Playbook v1.1.
+This document defines the target GitHub Project configuration for PMP Trainer according to AI Product Development Playbook v1.2.
 
 > Note: GitHub Project (Projects v2) fields are account-level project metadata and are not currently exposed by the connected GitHub actions available in ChatGPT. The configuration below is therefore the verification target and manual setup checklist.
 
