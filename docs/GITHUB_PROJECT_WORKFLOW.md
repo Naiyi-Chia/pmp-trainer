@@ -1,6 +1,6 @@
 # GitHub Project Workflow — PMP Trainer
 
-This document defines the target GitHub Project configuration for PMP Trainer according to AI Product Development Playbook v1.2.
+This document defines the target GitHub Project configuration for PMP Trainer according to AI Product Development Playbook v1.6.
 
 > Note: GitHub Project (Projects v2) fields are account-level project metadata and are not currently exposed by the connected GitHub actions available in ChatGPT. The configuration below is therefore the verification target and manual setup checklist.
 
@@ -110,15 +110,26 @@ Feedback / idea
 → Done
 ```
 
-Important gates:
+Workflow mechanics:
 
-- **Integration Approval** happens before Feature PR merge to `dev`; it approves entry into the integration / staging environment, not Product Acceptance.
-- Merge to `dev` moves the work into integrated verification; it does **not** mean Product Verify passed.
-- **Product Verify** happens after merge to `dev`, using the fixed Dev Preview at `https://naiyi-chia.github.io/pmp-trainer/dev/`.
-- `Ready for Release` requires both integration to `dev` and Human Product Verify passed.
-- **Release Approval** happens on the Release PR from `dev` to `main`.
-- User-facing deployable work reaches `Done` only after `main` release and Production Smoke passes.
-- Docs / maintenance work with no production deployment may reach Done after its defined final verification gate.
+- **Review** includes Engineering Ready evidence + independent ChatGPT Technical Review.
+- Technical Review PASS may create / update the correct Feature PR automatically; PR creation is not a Human Gate.
+- **Integration Approval** is the Human decision before a reviewed change crosses into `dev`.
+- Merge to `dev` moves work into integrated verification; it does **not** mean Product Verify passed.
+- **Product Verify** happens on the fixed Dev Preview at `https://naiyi-chia.github.io/pmp-trainer/dev/`.
+- `Product Verify 通過` moves the Issue to **Ready for Release** but does not release automatically.
+- `Product Verify 通過，可以發布` may also supply Human Release Approval / release intent.
+- After release intent, Release PR creation + **Final Release Review** may proceed automatically.
+- A clean Final Release Review may merge `main`; any blocker / conflict / unexpected scope stops automation.
+- User-facing deployable work reaches **Done** only after Production Smoke passes.
+- Docs / maintenance work with no product deployment may reach Done after its defined final verification gate.
+
+Optional Epic Integration Branch:
+- Human must explicitly enable the pattern in the Parent Issue.
+- Each Sub-issue still requires Engineering QA + independent Technical Review.
+- Clean reviewed Sub-issue PRs may accumulate into the enabled epic branch without a per-Sub-issue Human Gate.
+- Final Epic Integration Branch → `dev` still requires Human Integration Approval.
+- Product Verify remains on integrated `dev`.
 
 ## Manual verification checklist
 
