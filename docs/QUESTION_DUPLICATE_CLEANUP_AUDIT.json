@@ -1,0 +1,3795 @@
+{
+  "issue": 26,
+  "baseline_commit": "2136a54479091d95484487905b61bea3ac289f95",
+  "source_sha256_lf": "a713b637d8bfed3d65e332c3d0e44e6f215b8abf3cd1475a95b2c20e9258c31a",
+  "scope_schema_metadata_canonical_application_checks": "PASS",
+  "changed_ids": [
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    82,
+    88,
+    89,
+    92,
+    94,
+    95,
+    98,
+    100,
+    102,
+    106,
+    108,
+    109,
+    112,
+    113,
+    116,
+    118,
+    119,
+    122,
+    123,
+    126,
+    128,
+    129,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    146,
+    148,
+    149,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    159,
+    161,
+    163,
+    165,
+    166,
+    167,
+    172,
+    173,
+    215,
+    216,
+    217,
+    219,
+    221,
+    222,
+    223,
+    228,
+    229,
+    230
+  ],
+  "resolutions": [
+    {
+      "canonical": 73,
+      "replacements": [
+        113,
+        153
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 74,
+      "replacements": [
+        154
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 75,
+      "replacements": [
+        155
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 76,
+      "replacements": [
+        116,
+        156
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 77,
+      "replacements": [
+        157
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 78,
+      "replacements": [
+        118
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 79,
+      "replacements": [
+        119
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 82,
+      "replacements": [
+        122
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 83,
+      "replacements": [
+        123
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 86,
+      "replacements": [
+        126
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 88,
+      "replacements": [
+        128
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 89,
+      "replacements": [
+        129
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 92,
+      "replacements": [
+        132
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 93,
+      "replacements": [
+        133
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 94,
+      "replacements": [
+        134
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 95,
+      "replacements": [
+        135
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 96,
+      "replacements": [
+        136
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 97,
+      "replacements": [
+        137
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 98,
+      "replacements": [
+        138
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 99,
+      "replacements": [
+        139
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 100,
+      "replacements": [
+        140
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 101,
+      "replacements": [
+        141
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 102,
+      "replacements": [
+        142
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 103,
+      "replacements": [
+        143
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 106,
+      "replacements": [
+        146
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 108,
+      "replacements": [
+        148
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 109,
+      "replacements": [
+        149
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 112,
+      "replacements": [
+        152
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 159,
+      "replacements": [
+        215
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 160,
+      "replacements": [
+        216
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 161,
+      "replacements": [
+        217
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 163,
+      "replacements": [
+        219
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 165,
+      "replacements": [
+        221
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 166,
+      "replacements": [
+        222
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 167,
+      "replacements": [
+        223
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 172,
+      "replacements": [
+        228
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 173,
+      "replacements": [
+        229
+      ],
+      "result": "distinct stems/options/keys"
+    },
+    {
+      "canonical": 174,
+      "replacements": [
+        230
+      ],
+      "result": "distinct stems/options/keys"
+    }
+  ],
+  "duplicates": {
+    "before_exact_groups": [
+      [
+        73,
+        113,
+        153
+      ],
+      [
+        74,
+        154
+      ],
+      [
+        75,
+        155
+      ],
+      [
+        76,
+        116,
+        156
+      ],
+      [
+        77,
+        157
+      ],
+      [
+        78,
+        118
+      ],
+      [
+        79,
+        119
+      ],
+      [
+        82,
+        122
+      ],
+      [
+        83,
+        123
+      ],
+      [
+        86,
+        126
+      ],
+      [
+        88,
+        128
+      ],
+      [
+        89,
+        129
+      ],
+      [
+        92,
+        132
+      ],
+      [
+        93,
+        133
+      ],
+      [
+        94,
+        134
+      ],
+      [
+        95,
+        135
+      ],
+      [
+        96,
+        136
+      ],
+      [
+        97,
+        137
+      ],
+      [
+        98,
+        138
+      ],
+      [
+        99,
+        139
+      ],
+      [
+        100,
+        140
+      ],
+      [
+        101,
+        141
+      ],
+      [
+        102,
+        142
+      ],
+      [
+        103,
+        143
+      ],
+      [
+        106,
+        146
+      ],
+      [
+        108,
+        148
+      ],
+      [
+        109,
+        149
+      ],
+      [
+        112,
+        152
+      ],
+      [
+        159,
+        215
+      ],
+      [
+        160,
+        216
+      ],
+      [
+        161,
+        217
+      ],
+      [
+        163,
+        219
+      ],
+      [
+        165,
+        221
+      ],
+      [
+        166,
+        222
+      ],
+      [
+        167,
+        223
+      ],
+      [
+        172,
+        228
+      ],
+      [
+        173,
+        229
+      ],
+      [
+        174,
+        230
+      ]
+    ],
+    "after_exact_groups": [],
+    "after_order_independent_groups": []
+  },
+  "before": {
+    "canonical": {
+      "count": 38,
+      "positions": {
+        "A": 1,
+        "B": 36,
+        "C": 1,
+        "D": 0
+      },
+      "sequence_by_id": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBABBBBCBB",
+      "longest_same_key_run": 30,
+      "periodic_sequence": false,
+      "unique_longest": 37,
+      "unique_shortest": 0,
+      "materially_longer": 36,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "分析": {
+          "correct": 1,
+          "distractors": 0
+        },
+        "檢視": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "協助": {
+          "correct": 2,
+          "distractors": 0
+        },
+        "共同": {
+          "correct": 15,
+          "distractors": 0
+        },
+        "立即": {
+          "correct": 0,
+          "distractors": 13
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 6
+        },
+        "要求": {
+          "correct": 0,
+          "distractors": 14
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 12
+        },
+        "所有": {
+          "correct": 0,
+          "distractors": 6
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 1
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 1
+        }
+      },
+      "questions": [
+        {
+          "id": 73,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 74,
+          "key": "B",
+          "lengths": [
+            8,
+            19,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 75,
+          "key": "B",
+          "lengths": [
+            4,
+            14,
+            9,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 76,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 77,
+          "key": "B",
+          "lengths": [
+            8,
+            21,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 78,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 79,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 82,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 83,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 86,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 88,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 89,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 92,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 93,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 94,
+          "key": "B",
+          "lengths": [
+            8,
+            19,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 95,
+          "key": "B",
+          "lengths": [
+            4,
+            14,
+            9,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 96,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 97,
+          "key": "B",
+          "lengths": [
+            8,
+            21,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 98,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 99,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 100,
+          "key": "B",
+          "lengths": [
+            6,
+            25,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 4.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 101,
+          "key": "B",
+          "lengths": [
+            8,
+            32,
+            8,
+            6
+          ],
+          "correct_to_distractor_median": 4.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 102,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 103,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 106,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 108,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 109,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 112,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 159,
+          "key": "B",
+          "lengths": [
+            8,
+            27,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 160,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 161,
+          "key": "A",
+          "lengths": [
+            16,
+            12,
+            8,
+            6
+          ],
+          "correct_to_distractor_median": 2.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 163,
+          "key": "B",
+          "lengths": [
+            8,
+            15,
+            7,
+            5
+          ],
+          "correct_to_distractor_median": 2.143,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 165,
+          "key": "B",
+          "lengths": [
+            7,
+            9,
+            7,
+            7
+          ],
+          "correct_to_distractor_median": 1.286,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 166,
+          "key": "B",
+          "lengths": [
+            8,
+            30,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 5.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 167,
+          "key": "B",
+          "lengths": [
+            4,
+            4,
+            2,
+            4
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 172,
+          "key": "C",
+          "lengths": [
+            6,
+            6,
+            17,
+            6
+          ],
+          "correct_to_distractor_median": 2.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 173,
+          "key": "B",
+          "lengths": [
+            8,
+            27,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 174,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        }
+      ]
+    },
+    "replacements": {
+      "count": 40,
+      "positions": {
+        "A": 1,
+        "B": 38,
+        "C": 1,
+        "D": 0
+      },
+      "sequence_by_id": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBABBBBCBB",
+      "longest_same_key_run": 32,
+      "periodic_sequence": false,
+      "unique_longest": 39,
+      "unique_shortest": 0,
+      "materially_longer": 38,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "分析": {
+          "correct": 1,
+          "distractors": 0
+        },
+        "檢視": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "協助": {
+          "correct": 2,
+          "distractors": 0
+        },
+        "共同": {
+          "correct": 17,
+          "distractors": 0
+        },
+        "立即": {
+          "correct": 0,
+          "distractors": 15
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 6
+        },
+        "要求": {
+          "correct": 0,
+          "distractors": 14
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 5
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 12
+        },
+        "所有": {
+          "correct": 0,
+          "distractors": 7
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 1
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 1
+        }
+      },
+      "questions": [
+        {
+          "id": 113,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 116,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 118,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 119,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 122,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 123,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 126,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 128,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 129,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 132,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 133,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 134,
+          "key": "B",
+          "lengths": [
+            8,
+            19,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 135,
+          "key": "B",
+          "lengths": [
+            4,
+            14,
+            9,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 136,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 137,
+          "key": "B",
+          "lengths": [
+            8,
+            21,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 138,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 139,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 140,
+          "key": "B",
+          "lengths": [
+            6,
+            25,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 4.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 141,
+          "key": "B",
+          "lengths": [
+            8,
+            32,
+            8,
+            6
+          ],
+          "correct_to_distractor_median": 4.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 142,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 143,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 146,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 148,
+          "key": "B",
+          "lengths": [
+            4,
+            18,
+            7,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 149,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 152,
+          "key": "B",
+          "lengths": [
+            4,
+            22,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 153,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 154,
+          "key": "B",
+          "lengths": [
+            8,
+            19,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 155,
+          "key": "B",
+          "lengths": [
+            4,
+            14,
+            9,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 156,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 157,
+          "key": "B",
+          "lengths": [
+            8,
+            21,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 215,
+          "key": "B",
+          "lengths": [
+            8,
+            27,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 216,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 217,
+          "key": "A",
+          "lengths": [
+            16,
+            12,
+            8,
+            6
+          ],
+          "correct_to_distractor_median": 2.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 219,
+          "key": "B",
+          "lengths": [
+            8,
+            15,
+            7,
+            5
+          ],
+          "correct_to_distractor_median": 2.143,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 221,
+          "key": "B",
+          "lengths": [
+            7,
+            9,
+            7,
+            7
+          ],
+          "correct_to_distractor_median": 1.286,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 222,
+          "key": "B",
+          "lengths": [
+            8,
+            30,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 5.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 223,
+          "key": "B",
+          "lengths": [
+            4,
+            4,
+            2,
+            4
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 228,
+          "key": "C",
+          "lengths": [
+            6,
+            6,
+            17,
+            6
+          ],
+          "correct_to_distractor_median": 2.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 229,
+          "key": "B",
+          "lengths": [
+            8,
+            27,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 230,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        }
+      ]
+    },
+    "handled": {
+      "count": 78,
+      "positions": {
+        "A": 2,
+        "B": 74,
+        "C": 2,
+        "D": 0
+      },
+      "sequence_by_id": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBABBBBCBBBBABBBBCBB",
+      "longest_same_key_run": 60,
+      "periodic_sequence": false,
+      "unique_longest": 76,
+      "unique_shortest": 0,
+      "materially_longer": 74,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "分析": {
+          "correct": 2,
+          "distractors": 0
+        },
+        "檢視": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "協助": {
+          "correct": 4,
+          "distractors": 0
+        },
+        "共同": {
+          "correct": 32,
+          "distractors": 0
+        },
+        "立即": {
+          "correct": 0,
+          "distractors": 28
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 12
+        },
+        "要求": {
+          "correct": 0,
+          "distractors": 28
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 9
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 24
+        },
+        "所有": {
+          "correct": 0,
+          "distractors": 13
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 2
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 2
+        }
+      }
+    },
+    "untouched": {
+      "count": 252,
+      "positions": {
+        "A": 63,
+        "B": 63,
+        "C": 63,
+        "D": 63
+      },
+      "sequence_by_id": "DDDCCCCDCACDABDCCACBDABBDAAABCDCADABCADCBCDACDBDADBBABDBCBDBACCBBBABABCADCBCCCBABCDADDDCDCBDBCCDCCADBDAADADBAACCCCBADBACBCCBACDAADBDABBACACCCBADACADBBADDCBBBDADCBCBADCABCDACAADBCBABCDABADDCDAABADDBBCDAADBACCBDCCBACBAADBBBDCBDDDBDBAACDBADDCABABADBACDCDA",
+      "longest_same_key_run": 4,
+      "periodic_sequence": false,
+      "unique_longest": 2,
+      "unique_shortest": 71,
+      "materially_longer": 0,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 3,
+          "distractors": 9
+        },
+        "分析": {
+          "correct": 17,
+          "distractors": 29
+        },
+        "檢視": {
+          "correct": 15,
+          "distractors": 14
+        },
+        "協助": {
+          "correct": 2,
+          "distractors": 9
+        },
+        "共同": {
+          "correct": 18,
+          "distractors": 24
+        },
+        "立即": {
+          "correct": 2,
+          "distractors": 5
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "要求": {
+          "correct": 11,
+          "distractors": 68
+        },
+        "升級": {
+          "correct": 2,
+          "distractors": 1
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "所有": {
+          "correct": 1,
+          "distractors": 48
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 3
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 5
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 2
+        }
+      }
+    },
+    "whole_bank": {
+      "count": 330,
+      "positions": {
+        "A": 65,
+        "B": 137,
+        "C": 65,
+        "D": 63
+      },
+      "sequence_by_id": "DDDCCCCDCACDABDCCACBDABBDAAABCDCADABCADCBCDACDBDADBBABDBCBDBACCBBBABABCABBBBBBBDCBBBCBCBBCBBBBBBBBBBBBBABBCBBDABBDDBDBBCDBBCBBDBBBCBBBBBBBBBBBBCDBCBBCABBBBBBDBBABBDBBBAADACBBDBAACCCCBADBACBCCBACDAADBDABBACACCCBADACBBAABDBBBBBADCBBDCBBBDADCBCBADCABCDACAADBCBABCDABADDCDAABADDBBCDAADBACCBDCCBACBAADBBBDCBDDDBDBAACDBADDCABABADBACDCDA",
+      "longest_same_key_run": 13,
+      "periodic_sequence": false,
+      "unique_longest": 78,
+      "unique_shortest": 71,
+      "materially_longer": 74,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 3,
+          "distractors": 9
+        },
+        "分析": {
+          "correct": 19,
+          "distractors": 29
+        },
+        "檢視": {
+          "correct": 15,
+          "distractors": 14
+        },
+        "協助": {
+          "correct": 6,
+          "distractors": 9
+        },
+        "共同": {
+          "correct": 50,
+          "distractors": 24
+        },
+        "立即": {
+          "correct": 2,
+          "distractors": 33
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 16
+        },
+        "要求": {
+          "correct": 11,
+          "distractors": 96
+        },
+        "升級": {
+          "correct": 2,
+          "distractors": 10
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 28
+        },
+        "所有": {
+          "correct": 1,
+          "distractors": 61
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 3
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 7
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 4
+        }
+      }
+    }
+  },
+  "after": {
+    "canonical": {
+      "count": 38,
+      "positions": {
+        "A": 10,
+        "B": 10,
+        "C": 9,
+        "D": 9
+      },
+      "sequence_by_id": "ACCCACAABBDDABAABBDBDBCBADDCCBCDACDDAB",
+      "longest_same_key_run": 3,
+      "periodic_sequence": false,
+      "unique_longest": 37,
+      "unique_shortest": 0,
+      "materially_longer": 36,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "分析": {
+          "correct": 1,
+          "distractors": 0
+        },
+        "檢視": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "協助": {
+          "correct": 2,
+          "distractors": 0
+        },
+        "共同": {
+          "correct": 15,
+          "distractors": 0
+        },
+        "立即": {
+          "correct": 0,
+          "distractors": 13
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 6
+        },
+        "要求": {
+          "correct": 0,
+          "distractors": 14
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 12
+        },
+        "所有": {
+          "correct": 0,
+          "distractors": 6
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 1
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 1
+        }
+      },
+      "questions": [
+        {
+          "id": 73,
+          "key": "A",
+          "lengths": [
+            22,
+            8,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 74,
+          "key": "C",
+          "lengths": [
+            8,
+            6,
+            19,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 75,
+          "key": "C",
+          "lengths": [
+            4,
+            9,
+            14,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 76,
+          "key": "C",
+          "lengths": [
+            4,
+            7,
+            35,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 77,
+          "key": "A",
+          "lengths": [
+            21,
+            8,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 78,
+          "key": "C",
+          "lengths": [
+            4,
+            7,
+            18,
+            9
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 79,
+          "key": "A",
+          "lengths": [
+            20,
+            4,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 82,
+          "key": "A",
+          "lengths": [
+            22,
+            4,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 83,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 86,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 88,
+          "key": "D",
+          "lengths": [
+            4,
+            7,
+            9,
+            18
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 89,
+          "key": "D",
+          "lengths": [
+            4,
+            6,
+            8,
+            20
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 92,
+          "key": "A",
+          "lengths": [
+            22,
+            4,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 93,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 94,
+          "key": "A",
+          "lengths": [
+            19,
+            8,
+            6,
+            6
+          ],
+          "correct_to_distractor_median": 3.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 95,
+          "key": "A",
+          "lengths": [
+            14,
+            4,
+            9,
+            6
+          ],
+          "correct_to_distractor_median": 2.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 96,
+          "key": "B",
+          "lengths": [
+            4,
+            35,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 97,
+          "key": "B",
+          "lengths": [
+            8,
+            21,
+            7,
+            8
+          ],
+          "correct_to_distractor_median": 2.625,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 98,
+          "key": "D",
+          "lengths": [
+            4,
+            7,
+            9,
+            18
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 99,
+          "key": "B",
+          "lengths": [
+            4,
+            20,
+            6,
+            8
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 100,
+          "key": "D",
+          "lengths": [
+            6,
+            6,
+            6,
+            25
+          ],
+          "correct_to_distractor_median": 4.167,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 101,
+          "key": "B",
+          "lengths": [
+            8,
+            32,
+            8,
+            6
+          ],
+          "correct_to_distractor_median": 4.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 102,
+          "key": "C",
+          "lengths": [
+            4,
+            4,
+            22,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 103,
+          "key": "B",
+          "lengths": [
+            8,
+            22,
+            8,
+            10
+          ],
+          "correct_to_distractor_median": 2.75,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 106,
+          "key": "A",
+          "lengths": [
+            35,
+            4,
+            7,
+            6
+          ],
+          "correct_to_distractor_median": 5.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 108,
+          "key": "D",
+          "lengths": [
+            4,
+            7,
+            9,
+            18
+          ],
+          "correct_to_distractor_median": 2.571,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 109,
+          "key": "D",
+          "lengths": [
+            4,
+            6,
+            8,
+            20
+          ],
+          "correct_to_distractor_median": 3.333,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 112,
+          "key": "C",
+          "lengths": [
+            4,
+            4,
+            22,
+            6
+          ],
+          "correct_to_distractor_median": 5.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 159,
+          "key": "C",
+          "lengths": [
+            8,
+            4,
+            27,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 160,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 161,
+          "key": "C",
+          "lengths": [
+            12,
+            8,
+            16,
+            6
+          ],
+          "correct_to_distractor_median": 2.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 163,
+          "key": "D",
+          "lengths": [
+            8,
+            7,
+            5,
+            15
+          ],
+          "correct_to_distractor_median": 2.143,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 165,
+          "key": "A",
+          "lengths": [
+            9,
+            7,
+            7,
+            7
+          ],
+          "correct_to_distractor_median": 1.286,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 166,
+          "key": "C",
+          "lengths": [
+            8,
+            5,
+            30,
+            6
+          ],
+          "correct_to_distractor_median": 5.0,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 167,
+          "key": "D",
+          "lengths": [
+            4,
+            2,
+            4,
+            4
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 172,
+          "key": "D",
+          "lengths": [
+            6,
+            6,
+            6,
+            17
+          ],
+          "correct_to_distractor_median": 2.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 173,
+          "key": "A",
+          "lengths": [
+            27,
+            8,
+            4,
+            6
+          ],
+          "correct_to_distractor_median": 4.5,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        },
+        {
+          "id": 174,
+          "key": "B",
+          "lengths": [
+            7,
+            29,
+            5,
+            6
+          ],
+          "correct_to_distractor_median": 4.833,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": true
+        }
+      ]
+    },
+    "replacements": {
+      "count": 40,
+      "positions": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10
+      },
+      "sequence_by_id": "BCCCBDBDAADDABCADDBCCAACBDBBAAADBDCBCCDA",
+      "longest_same_key_run": 3,
+      "periodic_sequence": false,
+      "unique_longest": 2,
+      "unique_shortest": 14,
+      "materially_longer": 0,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 2,
+          "distractors": 2
+        },
+        "分析": {
+          "correct": 0,
+          "distractors": 5
+        },
+        "檢視": {
+          "correct": 8,
+          "distractors": 22
+        },
+        "協助": {
+          "correct": 3,
+          "distractors": 8
+        },
+        "共同": {
+          "correct": 7,
+          "distractors": 27
+        },
+        "立即": {
+          "correct": 1,
+          "distractors": 2
+        },
+        "直接": {
+          "correct": 1,
+          "distractors": 4
+        },
+        "要求": {
+          "correct": 3,
+          "distractors": 7
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "所有": {
+          "correct": 1,
+          "distractors": 3
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 2
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 0
+        }
+      },
+      "questions": [
+        {
+          "id": 113,
+          "key": "B",
+          "lengths": [
+            28,
+            29,
+            28,
+            29
+          ],
+          "correct_to_distractor_median": 1.036,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 116,
+          "key": "C",
+          "lengths": [
+            29,
+            29,
+            29,
+            30
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 118,
+          "key": "C",
+          "lengths": [
+            32,
+            30,
+            29,
+            29
+          ],
+          "correct_to_distractor_median": 0.967,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 119,
+          "key": "C",
+          "lengths": [
+            32,
+            33,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 122,
+          "key": "B",
+          "lengths": [
+            33,
+            32,
+            32,
+            33
+          ],
+          "correct_to_distractor_median": 0.97,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 123,
+          "key": "D",
+          "lengths": [
+            32,
+            33,
+            32,
+            31
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 126,
+          "key": "B",
+          "lengths": [
+            33,
+            31,
+            31,
+            31
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 128,
+          "key": "D",
+          "lengths": [
+            31,
+            31,
+            33,
+            31
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 129,
+          "key": "A",
+          "lengths": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 132,
+          "key": "A",
+          "lengths": [
+            30,
+            32,
+            33,
+            32
+          ],
+          "correct_to_distractor_median": 0.938,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 133,
+          "key": "D",
+          "lengths": [
+            32,
+            31,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 134,
+          "key": "D",
+          "lengths": [
+            31,
+            33,
+            30,
+            28
+          ],
+          "correct_to_distractor_median": 0.903,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 135,
+          "key": "A",
+          "lengths": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 136,
+          "key": "B",
+          "lengths": [
+            31,
+            30,
+            32,
+            33
+          ],
+          "correct_to_distractor_median": 0.938,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 137,
+          "key": "C",
+          "lengths": [
+            32,
+            32,
+            33,
+            31
+          ],
+          "correct_to_distractor_median": 1.031,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 138,
+          "key": "A",
+          "lengths": [
+            33,
+            32,
+            32,
+            33
+          ],
+          "correct_to_distractor_median": 1.031,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 139,
+          "key": "D",
+          "lengths": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 140,
+          "key": "D",
+          "lengths": [
+            32,
+            31,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 141,
+          "key": "B",
+          "lengths": [
+            30,
+            30,
+            31,
+            31
+          ],
+          "correct_to_distractor_median": 0.968,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 142,
+          "key": "C",
+          "lengths": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 1.0,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 143,
+          "key": "C",
+          "lengths": [
+            32,
+            32,
+            33,
+            33
+          ],
+          "correct_to_distractor_median": 1.031,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 146,
+          "key": "A",
+          "lengths": [
+            31,
+            33,
+            34,
+            32
+          ],
+          "correct_to_distractor_median": 0.939,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 148,
+          "key": "A",
+          "lengths": [
+            31,
+            32,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 149,
+          "key": "C",
+          "lengths": [
+            31,
+            32,
+            31,
+            33
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 152,
+          "key": "B",
+          "lengths": [
+            33,
+            32,
+            35,
+            32
+          ],
+          "correct_to_distractor_median": 0.97,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 153,
+          "key": "D",
+          "lengths": [
+            34,
+            32,
+            31,
+            31
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 154,
+          "key": "B",
+          "lengths": [
+            32,
+            30,
+            35,
+            33
+          ],
+          "correct_to_distractor_median": 0.909,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 155,
+          "key": "B",
+          "lengths": [
+            31,
+            31,
+            37,
+            34
+          ],
+          "correct_to_distractor_median": 0.912,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 156,
+          "key": "A",
+          "lengths": [
+            29,
+            33,
+            31,
+            30
+          ],
+          "correct_to_distractor_median": 0.935,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 157,
+          "key": "A",
+          "lengths": [
+            31,
+            31,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 215,
+          "key": "A",
+          "lengths": [
+            30,
+            33,
+            33,
+            36
+          ],
+          "correct_to_distractor_median": 0.909,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 216,
+          "key": "D",
+          "lengths": [
+            31,
+            33,
+            34,
+            31
+          ],
+          "correct_to_distractor_median": 0.939,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 217,
+          "key": "B",
+          "lengths": [
+            35,
+            38,
+            33,
+            32
+          ],
+          "correct_to_distractor_median": 1.152,
+          "unique_longest": true,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 219,
+          "key": "D",
+          "lengths": [
+            33,
+            35,
+            32,
+            32
+          ],
+          "correct_to_distractor_median": 0.97,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 221,
+          "key": "C",
+          "lengths": [
+            34,
+            33,
+            31,
+            32
+          ],
+          "correct_to_distractor_median": 0.939,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 222,
+          "key": "B",
+          "lengths": [
+            33,
+            31,
+            33,
+            34
+          ],
+          "correct_to_distractor_median": 0.939,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 223,
+          "key": "C",
+          "lengths": [
+            30,
+            33,
+            31,
+            32
+          ],
+          "correct_to_distractor_median": 0.969,
+          "unique_longest": false,
+          "unique_shortest": false,
+          "materially_longer": false
+        },
+        {
+          "id": 228,
+          "key": "C",
+          "lengths": [
+            34,
+            33,
+            32,
+            33
+          ],
+          "correct_to_distractor_median": 0.97,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 229,
+          "key": "D",
+          "lengths": [
+            35,
+            32,
+            34,
+            30
+          ],
+          "correct_to_distractor_median": 0.882,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        },
+        {
+          "id": 230,
+          "key": "A",
+          "lengths": [
+            31,
+            33,
+            34,
+            32
+          ],
+          "correct_to_distractor_median": 0.939,
+          "unique_longest": false,
+          "unique_shortest": true,
+          "materially_longer": false
+        }
+      ]
+    },
+    "handled": {
+      "count": 78,
+      "positions": {
+        "A": 20,
+        "B": 20,
+        "C": 19,
+        "D": 19
+      },
+      "sequence_by_id": "ACCCACAABBDDABAABBDBDBCBADDCBCCCBDBDAADDABCADDBCCAACBDBBAACBCDACDDABADBDCBCCDA",
+      "longest_same_key_run": 3,
+      "periodic_sequence": false,
+      "unique_longest": 39,
+      "unique_shortest": 14,
+      "materially_longer": 36,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 2,
+          "distractors": 2
+        },
+        "分析": {
+          "correct": 1,
+          "distractors": 5
+        },
+        "檢視": {
+          "correct": 8,
+          "distractors": 22
+        },
+        "協助": {
+          "correct": 5,
+          "distractors": 8
+        },
+        "共同": {
+          "correct": 22,
+          "distractors": 27
+        },
+        "立即": {
+          "correct": 1,
+          "distractors": 15
+        },
+        "直接": {
+          "correct": 1,
+          "distractors": 10
+        },
+        "要求": {
+          "correct": 3,
+          "distractors": 21
+        },
+        "升級": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 12
+        },
+        "所有": {
+          "correct": 1,
+          "distractors": 9
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 3
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 1
+        }
+      }
+    },
+    "untouched": {
+      "count": 252,
+      "positions": {
+        "A": 63,
+        "B": 63,
+        "C": 63,
+        "D": 63
+      },
+      "sequence_by_id": "DDDCCCCDCACDABDCCACBDABBDAAABCDCADABCADCBCDACDBDADBBABDBCBDBACCBBBABABCADCBCCCBABCDADDDCDCBDBCCDCCADBDAADADBAACCCCBADBACBCCBACDAADBDABBACACCCBADACADBBADDCBBBDADCBCBADCABCDACAADBCBABCDABADDCDAABADDBBCDAADBACCBDCCBACBAADBBBDCBDDDBDBAACDBADDCABABADBACDCDA",
+      "longest_same_key_run": 4,
+      "periodic_sequence": false,
+      "unique_longest": 2,
+      "unique_shortest": 71,
+      "materially_longer": 0,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 3,
+          "distractors": 9
+        },
+        "分析": {
+          "correct": 17,
+          "distractors": 29
+        },
+        "檢視": {
+          "correct": 15,
+          "distractors": 14
+        },
+        "協助": {
+          "correct": 2,
+          "distractors": 9
+        },
+        "共同": {
+          "correct": 18,
+          "distractors": 24
+        },
+        "立即": {
+          "correct": 2,
+          "distractors": 5
+        },
+        "直接": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "要求": {
+          "correct": 11,
+          "distractors": 68
+        },
+        "升級": {
+          "correct": 2,
+          "distractors": 1
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 4
+        },
+        "所有": {
+          "correct": 1,
+          "distractors": 48
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 3
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 5
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 2
+        }
+      }
+    },
+    "whole_bank": {
+      "count": 330,
+      "positions": {
+        "A": 83,
+        "B": 83,
+        "C": 82,
+        "D": 82
+      },
+      "sequence_by_id": "DDDCCCCDCACDABDCCACBDABBDAAABCDCADABCADCBCDACDBDADBBABDBCBDBACCBBBABABCAACCCACADCABBCBCDDCBABAABBDBDBCBABACDDDACBDDCDCCCDBDCBBDDABCADDABCADDBCCCDACACCABDBBAADCBCBDDACDAADADABDBAACCCCBADBACBCCBACDAADBDABBACACCCBADACADBADDCBCBBADCDADCBBBDADCBCBADCABCDACAADBCBABCDABADDCDAABADDBBCDAADBACCBDCCBACBAADBBBDCBDDDBDBAACDBADDCABABADBACDCDA",
+      "longest_same_key_run": 4,
+      "periodic_sequence": false,
+      "unique_longest": 41,
+      "unique_shortest": 85,
+      "materially_longer": 36,
+      "wording_occurrences": {
+        "評估": {
+          "correct": 5,
+          "distractors": 11
+        },
+        "分析": {
+          "correct": 18,
+          "distractors": 34
+        },
+        "檢視": {
+          "correct": 23,
+          "distractors": 36
+        },
+        "協助": {
+          "correct": 7,
+          "distractors": 17
+        },
+        "共同": {
+          "correct": 40,
+          "distractors": 51
+        },
+        "立即": {
+          "correct": 3,
+          "distractors": 20
+        },
+        "直接": {
+          "correct": 1,
+          "distractors": 14
+        },
+        "要求": {
+          "correct": 14,
+          "distractors": 89
+        },
+        "升級": {
+          "correct": 2,
+          "distractors": 5
+        },
+        "只": {
+          "correct": 0,
+          "distractors": 16
+        },
+        "所有": {
+          "correct": 2,
+          "distractors": 57
+        },
+        "永遠": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "僅": {
+          "correct": 0,
+          "distractors": 3
+        },
+        "即可": {
+          "correct": 0,
+          "distractors": 0
+        },
+        "口頭": {
+          "correct": 0,
+          "distractors": 8
+        },
+        "刪除": {
+          "correct": 0,
+          "distractors": 3
+        }
+      }
+    }
+  },
+  "replacement_stem_similarity_screen": [
+    {
+      "id": 113,
+      "canonical": 73,
+      "baseline_canonical_stem_similarity": 0.243,
+      "closest_current_stem_id": 8,
+      "closest_similarity": 0.319
+    },
+    {
+      "id": 116,
+      "canonical": 76,
+      "baseline_canonical_stem_similarity": 0.205,
+      "closest_current_stem_id": 134,
+      "closest_similarity": 0.269
+    },
+    {
+      "id": 118,
+      "canonical": 78,
+      "baseline_canonical_stem_similarity": 0.111,
+      "closest_current_stem_id": 59,
+      "closest_similarity": 0.292
+    },
+    {
+      "id": 119,
+      "canonical": 79,
+      "baseline_canonical_stem_similarity": 0.066,
+      "closest_current_stem_id": 328,
+      "closest_similarity": 0.217
+    },
+    {
+      "id": 122,
+      "canonical": 82,
+      "baseline_canonical_stem_similarity": 0.14,
+      "closest_current_stem_id": 11,
+      "closest_similarity": 0.244
+    },
+    {
+      "id": 123,
+      "canonical": 83,
+      "baseline_canonical_stem_similarity": 0.182,
+      "closest_current_stem_id": 135,
+      "closest_similarity": 0.259
+    },
+    {
+      "id": 126,
+      "canonical": 86,
+      "baseline_canonical_stem_similarity": 0.081,
+      "closest_current_stem_id": 58,
+      "closest_similarity": 0.269
+    },
+    {
+      "id": 128,
+      "canonical": 88,
+      "baseline_canonical_stem_similarity": 0.182,
+      "closest_current_stem_id": 104,
+      "closest_similarity": 0.234
+    },
+    {
+      "id": 129,
+      "canonical": 89,
+      "baseline_canonical_stem_similarity": 0.115,
+      "closest_current_stem_id": 172,
+      "closest_similarity": 0.182
+    },
+    {
+      "id": 132,
+      "canonical": 92,
+      "baseline_canonical_stem_similarity": 0.168,
+      "closest_current_stem_id": 142,
+      "closest_similarity": 0.206
+    },
+    {
+      "id": 133,
+      "canonical": 93,
+      "baseline_canonical_stem_similarity": 0.196,
+      "closest_current_stem_id": 24,
+      "closest_similarity": 0.317
+    },
+    {
+      "id": 134,
+      "canonical": 94,
+      "baseline_canonical_stem_similarity": 0.161,
+      "closest_current_stem_id": 138,
+      "closest_similarity": 0.258
+    },
+    {
+      "id": 135,
+      "canonical": 95,
+      "baseline_canonical_stem_similarity": 0.19,
+      "closest_current_stem_id": 123,
+      "closest_similarity": 0.259
+    },
+    {
+      "id": 136,
+      "canonical": 96,
+      "baseline_canonical_stem_similarity": 0.085,
+      "closest_current_stem_id": 116,
+      "closest_similarity": 0.207
+    },
+    {
+      "id": 137,
+      "canonical": 97,
+      "baseline_canonical_stem_similarity": 0.136,
+      "closest_current_stem_id": 218,
+      "closest_similarity": 0.248
+    },
+    {
+      "id": 138,
+      "canonical": 98,
+      "baseline_canonical_stem_similarity": 0.192,
+      "closest_current_stem_id": 134,
+      "closest_similarity": 0.258
+    },
+    {
+      "id": 139,
+      "canonical": 99,
+      "baseline_canonical_stem_similarity": 0.108,
+      "closest_current_stem_id": 23,
+      "closest_similarity": 0.237
+    },
+    {
+      "id": 140,
+      "canonical": 100,
+      "baseline_canonical_stem_similarity": 0.098,
+      "closest_current_stem_id": 19,
+      "closest_similarity": 0.361
+    },
+    {
+      "id": 141,
+      "canonical": 101,
+      "baseline_canonical_stem_similarity": 0.157,
+      "closest_current_stem_id": 213,
+      "closest_similarity": 0.246
+    },
+    {
+      "id": 142,
+      "canonical": 102,
+      "baseline_canonical_stem_similarity": 0.198,
+      "closest_current_stem_id": 123,
+      "closest_similarity": 0.252
+    },
+    {
+      "id": 143,
+      "canonical": 103,
+      "baseline_canonical_stem_similarity": 0.25,
+      "closest_current_stem_id": 83,
+      "closest_similarity": 0.264
+    },
+    {
+      "id": 146,
+      "canonical": 106,
+      "baseline_canonical_stem_similarity": 0.172,
+      "closest_current_stem_id": 17,
+      "closest_similarity": 0.25
+    },
+    {
+      "id": 148,
+      "canonical": 108,
+      "baseline_canonical_stem_similarity": 0.177,
+      "closest_current_stem_id": 150,
+      "closest_similarity": 0.203
+    },
+    {
+      "id": 149,
+      "canonical": 109,
+      "baseline_canonical_stem_similarity": 0.13,
+      "closest_current_stem_id": 217,
+      "closest_similarity": 0.25
+    },
+    {
+      "id": 152,
+      "canonical": 112,
+      "baseline_canonical_stem_similarity": 0.239,
+      "closest_current_stem_id": 269,
+      "closest_similarity": 0.25
+    },
+    {
+      "id": 153,
+      "canonical": 73,
+      "baseline_canonical_stem_similarity": 0.079,
+      "closest_current_stem_id": 211,
+      "closest_similarity": 0.222
+    },
+    {
+      "id": 154,
+      "canonical": 74,
+      "baseline_canonical_stem_similarity": 0.19,
+      "closest_current_stem_id": 124,
+      "closest_similarity": 0.239
+    },
+    {
+      "id": 155,
+      "canonical": 75,
+      "baseline_canonical_stem_similarity": 0.098,
+      "closest_current_stem_id": 140,
+      "closest_similarity": 0.356
+    },
+    {
+      "id": 156,
+      "canonical": 76,
+      "baseline_canonical_stem_similarity": 0.097,
+      "closest_current_stem_id": 110,
+      "closest_similarity": 0.252
+    },
+    {
+      "id": 157,
+      "canonical": 77,
+      "baseline_canonical_stem_similarity": 0.132,
+      "closest_current_stem_id": 83,
+      "closest_similarity": 0.218
+    },
+    {
+      "id": 215,
+      "canonical": 159,
+      "baseline_canonical_stem_similarity": 0.059,
+      "closest_current_stem_id": 161,
+      "closest_similarity": 0.248
+    },
+    {
+      "id": 216,
+      "canonical": 160,
+      "baseline_canonical_stem_similarity": 0.1,
+      "closest_current_stem_id": 230,
+      "closest_similarity": 0.23
+    },
+    {
+      "id": 217,
+      "canonical": 161,
+      "baseline_canonical_stem_similarity": 0.219,
+      "closest_current_stem_id": 26,
+      "closest_similarity": 0.311
+    },
+    {
+      "id": 219,
+      "canonical": 163,
+      "baseline_canonical_stem_similarity": 0.097,
+      "closest_current_stem_id": 50,
+      "closest_similarity": 0.302
+    },
+    {
+      "id": 221,
+      "canonical": 165,
+      "baseline_canonical_stem_similarity": 0.077,
+      "closest_current_stem_id": 40,
+      "closest_similarity": 0.281
+    },
+    {
+      "id": 222,
+      "canonical": 166,
+      "baseline_canonical_stem_similarity": 0.133,
+      "closest_current_stem_id": 326,
+      "closest_similarity": 0.221
+    },
+    {
+      "id": 223,
+      "canonical": 167,
+      "baseline_canonical_stem_similarity": 0.149,
+      "closest_current_stem_id": 159,
+      "closest_similarity": 0.235
+    },
+    {
+      "id": 228,
+      "canonical": 172,
+      "baseline_canonical_stem_similarity": 0.136,
+      "closest_current_stem_id": 50,
+      "closest_similarity": 0.268
+    },
+    {
+      "id": 229,
+      "canonical": 173,
+      "baseline_canonical_stem_similarity": 0.138,
+      "closest_current_stem_id": 26,
+      "closest_similarity": 0.275
+    },
+    {
+      "id": 230,
+      "canonical": 174,
+      "baseline_canonical_stem_similarity": 0.149,
+      "closest_current_stem_id": 274,
+      "closest_similarity": 0.25
+    }
+  ],
+  "limitations": "Similarity and wording are screening only. Canonical content/length/wording is protected. See QUESTION_DUPLICATE_CLEANUP.md for distinct decisions and engineering content self-review. Independent review and Human content review remain pending."
+}

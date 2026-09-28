@@ -1,0 +1,304 @@
+{
+  "source_sha256": "a713b637d8bfed3d65e332c3d0e44e6f215b8abf3cd1475a95b2c20e9258c31a",
+  "syntax": "PASS",
+  "browser": [
+    {
+      "viewport": "1280x900",
+      "practice": "78 correct; instant explanations; 78/78 PASS",
+      "ids": [
+        139,
+        95,
+        116,
+        166,
+        94,
+        119,
+        154,
+        88,
+        157,
+        134,
+        78,
+        223,
+        109,
+        129,
+        143,
+        108,
+        149,
+        228,
+        97,
+        141,
+        148,
+        86,
+        230,
+        99,
+        128,
+        98,
+        153,
+        216,
+        174,
+        83,
+        167,
+        76,
+        161,
+        215,
+        136,
+        77,
+        74,
+        82,
+        123,
+        132,
+        137,
+        100,
+        165,
+        73,
+        222,
+        118,
+        156,
+        159,
+        135,
+        146,
+        140,
+        103,
+        229,
+        92,
+        79,
+        75,
+        113,
+        112,
+        173,
+        126,
+        160,
+        142,
+        96,
+        138,
+        163,
+        101,
+        152,
+        106,
+        89,
+        172,
+        219,
+        155,
+        133,
+        93,
+        102,
+        221,
+        217,
+        122
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+      "mockItems": [
+        {
+          "id": 113,
+          "index": 10,
+          "key": 1
+        },
+        {
+          "id": 142,
+          "index": 19,
+          "key": 2
+        }
+      ],
+      "nativeDialogs": [
+        "已匯入學習紀錄",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ]
+    },
+    {
+      "viewport": "375x812",
+      "practice": "78 incorrect; manual explanations; 0/78; retry/favorite PASS",
+      "ids": [
+        86,
+        146,
+        97,
+        142,
+        135,
+        155,
+        92,
+        219,
+        167,
+        118,
+        122,
+        140,
+        139,
+        230,
+        123,
+        96,
+        156,
+        77,
+        173,
+        83,
+        217,
+        73,
+        99,
+        94,
+        149,
+        79,
+        141,
+        112,
+        134,
+        166,
+        160,
+        75,
+        119,
+        133,
+        152,
+        128,
+        222,
+        74,
+        106,
+        101,
+        113,
+        98,
+        126,
+        138,
+        143,
+        215,
+        82,
+        78,
+        109,
+        129,
+        116,
+        95,
+        223,
+        174,
+        228,
+        153,
+        221,
+        102,
+        103,
+        132,
+        137,
+        159,
+        154,
+        93,
+        216,
+        165,
+        148,
+        76,
+        229,
+        100,
+        163,
+        157,
+        89,
+        88,
+        108,
+        172,
+        161,
+        136
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+      "mockItems": [
+        {
+          "id": 134,
+          "index": 2,
+          "key": 3
+        },
+        {
+          "id": 136,
+          "index": 6,
+          "key": 1
+        }
+      ],
+      "nativeDialogs": [
+        "已匯入學習紀錄",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ]
+    }
+  ],
+  "errors": [],
+  "browserVersion": "154.0.4258.37",
+  "recorded_at_utc": "2026-09-28T15:39:14.042622+00:00",
+  "negative_controls": [
+    {
+      "case": "out-of-scope stem",
+      "result": "rejected",
+      "reason": "Q-1: unauthorized question change"
+    },
+    {
+      "case": "canonical stem",
+      "result": "rejected",
+      "reason": "Q-73: canonical content changed"
+    },
+    {
+      "case": "canonical option text",
+      "result": "rejected",
+      "reason": "Q-73: canonical options changed"
+    },
+    {
+      "case": "canonical answer meaning",
+      "result": "rejected",
+      "reason": "Q-73: canonical correct meaning changed"
+    },
+    {
+      "case": "replacement metadata",
+      "result": "rejected",
+      "reason": "Q-113: metadata changed"
+    },
+    {
+      "case": "replacement explanation key",
+      "result": "rejected",
+      "reason": "Q-113: explanation key mismatch"
+    },
+    {
+      "case": "schema",
+      "result": "rejected",
+      "reason": "Q-113: schema changed"
+    },
+    {
+      "case": "record removed",
+      "result": "rejected",
+      "reason": "Question count changed"
+    },
+    {
+      "case": "application code",
+      "result": "rejected",
+      "reason": "Non-bank application changed"
+    },
+    {
+      "case": "replacement clone",
+      "result": "rejected",
+      "reason": "Exact duplicates remain"
+    },
+    {
+      "case": "reordered replacement clone",
+      "result": "rejected",
+      "reason": "Order-independent duplicates remain"
+    },
+    {
+      "case": "unchanged replacement",
+      "result": "rejected",
+      "reason": "Q-113: replacement content not rewritten"
+    },
+    {
+      "case": "unbalanced keys with matching explanation label",
+      "result": "rejected",
+      "reason": "Handled keys not balanced"
+    },
+    {
+      "case": "long correct option",
+      "result": "rejected",
+      "reason": "Replacement length cue"
+    }
+  ],
+  "persistence_regression": {
+    "command": "node scripts/test-mock-persistence.cjs",
+    "result": "PASS",
+    "coverage": "save/reload/resume; legacy/corrupt/reordered-bank rejection; flags/position/deadline; overwrite/discard; submit/review; expired resume; no duplicate history/resurrection"
+  },
+  "visual_inspection": {
+    "result": "PASS",
+    "samples": [
+      "mobile-q217.png",
+      "desktop-q143.png"
+    ],
+    "notes": "Readable wrapping, correct/wrong state, full explanation and mindset, navigation controls. Horizontal tab strip remains its existing scrollable layout."
+  }
+}
