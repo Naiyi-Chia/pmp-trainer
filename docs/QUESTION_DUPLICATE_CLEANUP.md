@@ -1,5 +1,42 @@
 # Duplicate Cleanup — Issue #26
 
+## Rework evidence — 2026-09-29
+
+This evidence supersedes the Engineering QA for `2bc2273579c8984fcb00bb76815efe2a7c1e41b0`. The [rework handoff](https://github.com/Naiyi-Chia/pmp-trainer/issues/26#issuecomment-5882187344) and [exact Q-129 wording approval](https://github.com/Naiyi-Chia/pmp-trainer/issues/26#issuecomment-5890597462) are applied on the same scoped branch. PR #60 remains unmerged.
+
+- Only Q-129 differs from the reviewed head: the stem explicitly represents the supplier; the stored stem and all four options match the Human-approved strings exactly; key A and all metadata remain unchanged. The explanation now explicitly relates the supplier's concession to the customer's consolidated-list condition. Mindset is unchanged.
+- The other 329 records and all non-bank application content remain unchanged from that head. In particular, Q-215 stays as accepted, and Q-137/Q-217 remain unchanged after source and rendered-height review.
+- The earlier abbreviated blind review is not acceptance evidence. Human Content Review remains reset/pending; independent review must use the new head, and a subsequent blind review must show the verbatim stored stem/options without exposing keys.
+
+### Raw source: pre-rework vs current 40 replacements
+
+| Correct-option metric | Reviewed head | Current |
+|---|---:|---:|
+| Unique-longest | 2 (Q-137, Q-217) | 3 (Q-129, Q-137, Q-217) |
+| Tied-longest | 9 | 8 |
+| At maximum, including ties | 11 | 11 |
+| Unique-shortest | 14 | 14 |
+| Materially longer | 0 | 0 |
+
+The approved Q-129 options have non-whitespace lengths **36 / 32 / 32 / 31**. Its added clarity moves A from tied-longest to unique-longest; it does not meet the materially-longer threshold. Raw character counts alone are not used to dismiss a visual observation.
+
+### Actual trainer rendered-height / line audit
+
+[Machine evidence](QUESTION_DUPLICATE_CLEANUP_RENDERING.json) retains the verbatim stem/options for every replacement and per-option heights, widths and line counts before/after. The collector loads actual HTML, imports favorites through the existing UI, waits for fonts, and measures **unanswered** buttons before clicking an answer. It asserts each DOM string is precisely its generated letter label plus the stored option. Feedback labels, shortened text, and reconstructed mockups are excluded. Height ties use a 0.01px tolerance; text line counts use DOM Range rectangles. The four-option all-equal case is explicitly separated from an informative two/three-way maximum tie.
+
+| Source / viewport | Correct uniquely tallest | Correct tied tallest | Of those, informative partial ties | All 4 equal | Tallest-rule expected hits / 40 |
+|---|---:|---:|---:|---:|---:|
+| Reviewed / 1280×900 | 0 | 40 | 0 | 40 | 10.00 |
+| Current / 1280×900 | 0 | 40 | 0 | 40 | 10.00 |
+| Reviewed / 375×812 | 0 | 38 | 0 | 38 | 9.50 |
+| Current / 375×812 | 1 (Q-129) | 37 | 0 | 37 | 10.25 |
+
+Line-count classifications agree with button-height classifications. At desktop all options occupy one line (54.390625px button height). At mobile, Q-137 and Q-217 both have **2 / 2 / 2 / 2 lines**, each button 82.78125px. Their raw unique-longest status does not produce a height distinction at either required viewport, so their content is retained without padding distractors.
+
+**Localized Q-129 observation:** at 375px the exact approved A is **3 lines / 109.171875px**, versus **2 lines / 82.78125px** for B/C/D. This is a real per-item visual difference, retained and flagged for independent/Human review because the approved exact wording is authoritative. It is not described as eliminated. The other two nonuniform mobile items are Q-154 and Q-155, where the uniquely taller option is a distractor (C and D respectively).
+
+For this measured set, choosing uniformly among tallest options yields a descriptive expected score of 10.25/40 versus 10/40 for uniform four-choice guessing; the shortest rule yields 9.917/40. Together with 37 all-equal items and the two taller distractors, this does not show a systematic correct-tallest/shortest shortcut at the tested viewports. This is an engineering observation on these measurements, not a statistical guarantee, Human acceptance, or a claim about other fonts/devices. No additional source rewrite or UI change was justified by these measurements.
+
 ## Baseline and protected scope
 
 - Baseline: `2136a54479091d95484487905b61bea3ac289f95`; latest `dev` and scoped branch HEAD at start.
@@ -65,7 +102,7 @@ Length is the number of non-whitespace characters, matching previous batches. �
 |---|---:|---:|
 | Bank records | 330 | 330 |
 | Exact duplicate groups / IDs | 38 / 78 | 0 / 0 |
-| 40 replacements: unique-longest correct | 39 | 2 |
+| 40 replacements: unique-longest correct | 39 | 3 |
 | 40 replacements: materially-longer correct | 38 | 0 |
 | 40 replacements: unique-shortest correct | 0 | 14 |
 | 40 replacements: longest same-key run | 32 | 3 |
@@ -75,12 +112,12 @@ Length is the number of non-whitespace characters, matching previous batches. �
 | 38 canonicals: unique-shortest correct | 0 | 0 |
 | 38 canonicals: longest same-key run | 30 | 3 |
 | 38 canonicals: A / B / C / D | 1 / 36 / 1 / 0 | 10 / 10 / 9 / 9 |
-| 78 handled: unique-longest correct | 76 | 39 |
+| 78 handled: unique-longest correct | 76 | 40 |
 | 78 handled: materially-longer correct | 74 | 36 |
 | 78 handled: unique-shortest correct | 0 | 14 |
 | 78 handled: longest same-key run | 60 | 3 |
 | 78 handled: A / B / C / D | 2 / 74 / 2 / 0 | 20 / 20 / 19 / 19 |
-| Whole bank: unique-longest correct | 78 | 41 |
+| Whole bank: unique-longest correct | 78 | 42 |
 | Whole bank: materially-longer correct | 74 | 36 |
 | Whole bank: unique-shortest correct | 71 | 85 |
 | Whole bank: longest same-key run | 13 | 4 |
@@ -90,7 +127,7 @@ The untouched 252 records remain 63 / 63 / 63 / 63. The 78 handled IDs have no r
 
 Handled key sequence by ascending ID: `ACCCACAABBDDABAABBDBDBCBADDCBCCCBDBDAADDABCADDBCCAACBDBBAACBCDACDDABADBDCBCCDA`.
 
-Replacement correct/median-distractor length ratios range from 0.882 to 1.152. Two correct options are uniquely longest: Q-137 (33 vs median 32) and Q-217 (38 vs median 33, including English Product Backlog). Fourteen are uniquely shortest, so shortest is not a universal cue either. Options were reviewed for comparable detail and plausible actions; lengths are not forced to identical padding.
+Replacement correct/median-distractor length ratios range from 0.882 to 1.152. Three correct options are uniquely longest: Q-129 (36 vs median 32), Q-137 (33 vs median 32) and Q-217 (38 vs median 33, including English Product Backlog). The rework section reports their actual UI heights separately. Fourteen are uniquely shortest, so shortest is not a universal cue either. Options were reviewed for comparable detail and plausible actions; lengths are not forced to identical padding.
 
 **Protected canonical limitation:** 37 of 38 canonical answers remain uniquely longest and 36 remain materially longer. Existing wording associations also remain, e.g. canonical `共同` occurs 15 / 0 in correct / distractor options. This is inherited content protected by the approved decision. The cleanup does not claim that every bank-wide length/wording risk is eliminated.
 
@@ -133,7 +170,7 @@ The lexical screen compares normalized stems using SequenceMatcher (not an embed
 | Q-123 | Q-083 | 情緒升高時有期限的降溫安排 | D | 有期限的降溫保留當日解決機會，也恢復有效對話的條件。 |
 | Q-126 | Q-086 | 將課堂技能轉移到真實工作 | B | 缺口在工作情境中的應用，觀察、練習與回饋能直接檢驗技能轉移。 |
 | Q-128 | Q-088 | 先確認情緒線索而非推斷意圖 | D | 情緒線索不等於意圖證據，直接且尊重地確認能減少誤讀。 |
-| Q-129 | Q-089 | 有條件的整體讓步 | A | 明確的條件連結可避免一項被視為無條件承諾，另一項仍未成立。 |
+| Q-129 | Q-089 | 有條件的整體讓步 | A | 供應商的額外培訓以客戶一次提供完整名單為條件，兩者應連結為同一交換。 |
 | Q-132 | Q-092 | 及時強化有效的合作行為 | A | 及時連結具體行為與成果，能讓成員理解值得重複的是哪種合作。 |
 | Q-133 | Q-093 | 依明定程序處理不當言論申訴 | D | 題幹已有明定的轉交義務，應遵循程序並適當保護資訊。 |
 | Q-134 | Q-094 | 對善意近失事件回報的回應 | D | 善意回報與改善責任可並存，檢查系統缺口能把近失轉為學習。 |
@@ -177,25 +214,26 @@ These are concept checks for original scenarios, not copied examination question
 
 ## Regression and browser QA
 
-Tested LF-source SHA-256: `a713b637d8bfed3d65e332c3d0e44e6f215b8abf3cd1475a95b2c20e9258c31a`. Machine evidence: [audit](QUESTION_DUPLICATE_CLEANUP_AUDIT.json) and [QA](QUESTION_DUPLICATE_CLEANUP_QA.json).
+Tested LF-source SHA-256: `fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1`. Machine evidence: [audit](QUESTION_DUPLICATE_CLEANUP_AUDIT.json) and [QA](QUESTION_DUPLICATE_CLEANUP_QA.json).
 
-- `python -X utf8 scripts/audit-duplicate-cleanup.py`: PASS. Checks original groups, 330 unique IDs/order, schema, all metadata, 252 untouched records, canonical option/correct-text preservation, rewritten fields, keys/explanation labels, zero exact/permutation-independent duplicates, new-stem uniqueness, length and key balance/patterns. Per-item lengths and similarity results are in the audit JSON.
-- `python -X utf8 scripts/audit-duplicate-cleanup.py --negative-controls`: 14 / 14 intentional mutations rejected. Covers unauthorized question, canonical stem/option/correct-meaning changes, replacement metadata/key mismatch, missing schema/record, non-bank code, duplicate and reordered duplicate, unrewritten replacement, unbalanced keys with matching label, and an overlong correct option. Mutations are in memory only.
+- `python -X utf8 scripts/audit-duplicate-cleanup.py`: PASS. Checks original groups, 330 unique IDs/order, schema, all metadata, 252 untouched records, canonical option/correct-text preservation, rewritten fields, keys/explanation labels, zero exact/permutation-independent duplicates, new-stem uniqueness, length and key balance/patterns. Per-item lengths, tied-longest counts and similarity results are in the audit JSON. The rework guard also proves Q-129 is the sole changed record since the reviewed head and matches its approved verbatim wording/key.
+- `python -X utf8 scripts/audit-duplicate-cleanup.py --negative-controls`: 17 / 17 intentional mutations rejected. Covers unauthorized question, canonical stem/option/correct-meaning changes, replacement metadata/key mismatch, missing schema/record, non-bank code, duplicate and reordered duplicate, unrewritten replacement, unbalanced keys with matching label, and an overlong correct option. Additional rework controls reject a paraphrased approved stem/option and an unrelated extra question edit. Mutations are in memory only.
 - `node scripts/test-mock-persistence.cjs`: PASS. Existing regression executes real inline application code, including save/reload/resume, legacy/corrupt/reordered-bank rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume and no duplicate history/resurrection.
 - JS syntax: inline script compiled with Node `vm.Script`; browser executed it without page or console errors.
 - `node scripts/qa-duplicate-cleanup.cjs`: PASS with Edge 154.0.4258.37, headless Chromium engine, fresh isolated contexts at **1280×900** and **375×812**.
 - All **78 handled IDs** on each viewport: rendered stem + all 4 options, correct-answer marker, explanation/mindset, answer lock, navigation and scoring verified. Desktop answered all correctly with instant explanation (78/78); mobile answered all incorrectly with manual reveal (0/78). Mobile retry resets answers and retains settings; favorite toggle works.
 - Normal random practice, previous/next, all 5 tabs and page overflow checks passed. Native import UI loaded the scoped favorite fixture; no application variables or functions were replaced to force test results.
-- Each viewport started a native random 180-question mock, answered two replacement questions, flagged one, reloaded/resumed, verified IDs/answers/flag/position/deadline, submitted through the native confirmation dialog (1/180), and checked correct/incorrect locked review states. Desktop samples Q-113/Q-142; mobile Q-134/Q-136.
-- Generated full-page screenshots for Q-073/Q-113/Q-143/Q-217/Q-221 and mock review on both viewports. Visual inspection of desktop Q-143 and mobile Q-217 confirmed readable wrapping, feedback, full explanation/mindset and controls. The existing horizontally scrollable tab strip is unchanged; the page itself does not overflow.
+- Each viewport started a native random 180-question mock, answered two replacement questions, flagged one, reloaded/resumed, verified IDs/answers/flag/position/deadline, submitted through the native confirmation dialog (1/180), and checked correct/incorrect locked review states. Desktop samples Q-219 / Q-221; mobile samples Q-221 / Q-217.
+- Generated full-page QA screenshots for Q-073/Q-113/Q-129/Q-137/Q-143/Q-217/Q-221 and mock review on both viewports. The rendered audit separately captured unanswered Q-129/Q-137/Q-217. Visual inspection of desktop Q-129, mobile Q-129/Q-137/Q-217, and mobile Q-129 after answering confirmed verbatim text, the documented height difference, readable feedback/updated explanation and controls. The existing horizontally scrollable tab strip is unchanged; the page itself does not overflow.
+- `node scripts/audit-option-rendering.cjs --output <directory>`: completed before and after, all 40 replacements on both viewports, zero page/console errors. Its 4 classification controls cover all-equal, unique-tallest, partial-tie and nonmatching-key cases. Raw collector output retains each measured DOM string; the durable rendering JSON stores those source strings once per revision and retains all per-option geometry.
 - `git diff --check`: PASS before commit.
 
 ### Reproduce
 
-Audit defaults to the pinned baseline via `git show`; `--baseline <utf8.html>` and `--current <utf8.html>` are available for independent comparison. Python uses only its standard library. Persistence regression and JS compilation use Node. Browser QA requires an externally available `playwright` module and installed Edge (`NODE_PATH` can point at the provided runtime); there is no package installation or application dependency change. Optional browser output directory is the second command argument. Screenshots and raw browser JSON are written there; the checked-in QA JSON records this run and the negative controls.
+Audit defaults to the pinned original baseline and uses `git show 2bc2273:index.html` for the rework guard; `--baseline <utf8.html>` and `--current <utf8.html>` are available for independent comparison. Python uses only its standard library. Persistence regression and JS compilation use Node. Browser QA requires an externally available `playwright` module and installed Edge (`NODE_PATH` can point at the provided runtime); there is no package installation or application dependency change. Optional browser output directory is the second command argument. Screenshots and raw browser JSON are written there; the checked-in QA JSON records the current run and negative controls. Rendered audit supports `--html <file>` for the pre-rework source and `--output <directory>` for its JSON/screenshots. The durable rendering artifact projects raw results into verbatim questions plus per-viewport geometry without abbreviating any option text.
 
 ## Handoff limits
 
-Engineering implementation and local QA are complete. Independent ChatGPT Technical/Content Review and Human content review of the new questions remain pending. This report does not record integration, Product Verify, release or issue closure.
+Engineering rework and local QA are complete. Prior review evidence applies to the old head and is superseded for this revised content. Independent ChatGPT Technical/Content Review and a fresh verbatim-source Human content review remain pending. This report does not record integration, Product Verify, release or issue closure.
 
 Browser evidence covers desktop Chromium and a 375px Chromium viewport, not a physical iOS/Android device. Canonical content risks described above remain intentionally protected. Exact/lexical duplicate checks cannot prove all semantic distinctions automatically; the per-question decisions and explanations are supplied for content review.

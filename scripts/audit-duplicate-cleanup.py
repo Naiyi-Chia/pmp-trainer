@@ -19,6 +19,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "2136a54479091d95484487905b61bea3ac289f95"
+REWORK_BASE = "2bc2273579c8984fcb00bb76815efe2a7c1e41b0"
+# Exact Human-approved wording, Issue #26 comment 5890597462.
+APPROVED_Q129 = {
+    "q": "你代表供應商與客戶進行談判。客戶要求增加兩次培訓；供應商可以接受，但前提是客戶一次提供完整學員名單，以避免重複行政作業。你已獲授權交換這兩項條件。此時應如何向客戶表達這次讓步最清楚？",
+    "opts": [
+        "將額外培訓與一次提供完整學員名單列為同一交換方案，確認接受時兩項一併成立",
+        "先同意增加兩次培訓以建立信任，再於交付會議討論集中提供名單的方式",
+        "分別記錄培訓需求及名單處理方式，讓雙方各自選擇優先確認的協商項目",
+        "先請客戶提供完整學員名單以測試合作意願，再決定是否增加培訓次數",
+    ],
+    "ans": 0,
+}
 GROUPS = [
     [73, 113, 153], [74, 154], [75, 155], [76, 116, 156], [77, 157],
     [78, 118], [79, 119], [82, 122], [83, 123], [86, 126], [88, 128],
@@ -71,6 +83,9 @@ def metrics(bank, ids):
         rows.append({"id": q["id"], "key": "ABCD"[q["ans"]], "lengths": lengths,
                      "correct_to_distractor_median": round(correct / median, 3),
                      "unique_longest": correct > max(others),
+                     "tied_longest": correct == max(others),
+                     "at_maximum": correct >= max(others),
+                     "all_options_equal": len(set(lengths)) == 1,
                      "unique_shortest": correct < min(others),
                      "materially_longer": correct >= 1.25 * median and correct - median >= 8})
         for p, option in enumerate(q["opts"]):
@@ -83,7 +98,8 @@ def metrics(bank, ids):
             "periodic_sequence": any(all(seq[i] == seq[i % p] for i in range(len(seq)))
                                      for p in range(1, len(seq) // 2 + 1)),
             **{k: sum(r[k] for r in rows) for k in
-               ("unique_longest", "unique_shortest", "materially_longer")},
+               ("unique_longest", "tied_longest", "at_maximum", "all_options_equal",
+                "unique_shortest", "materially_longer")},
             "wording_occurrences": wording, "questions": rows}
 
 
@@ -190,6 +206,15 @@ def negative_controls(before, after, old_app, new_app):
     return cases
 
 
+def validate_rework(reviewed, after):
+    check(len(reviewed) == len(after) == 330, "Rework question count changed")
+    changed = [q["id"] for old, q in zip(reviewed, after) if old != q]
+    check(changed == [129], f"Rework question scope differs: {changed}")
+    q = next(q for q in after if q["id"] == 129)
+    check(all(q[k] == value for k, value in APPROVED_Q129.items()), "Q-129 approved wording/key differs")
+    return changed
+
+
 def similarity(before, after):
     old = {q["id"]: q for q in before}
     canonical = {i: g[0] for g in GROUPS for i in g[1:]}
@@ -217,8 +242,26 @@ def main():
     before, old_app = parse(baseline)
     after, new_app = parse(current)
     validate(before, after, old_app, new_app)
+    reviewed, _ = parse(subprocess.check_output(
+        ["git", "show", f"{REWORK_BASE}:index.html"], cwd=ROOT).decode("utf-8").replace("\r\n", "\n"))
+    rework_changed = validate_rework(reviewed, after)
     if args.negative_controls:
-        print(json.dumps({"negative_controls": negative_controls(before, after, old_app, new_app)},
+        controls = negative_controls(before, after, old_app, new_app)
+        for name, mutate, expected in [
+            ("paraphrased Human-approved stem", lambda r: r[128].__setitem__("q", r[128]["q"] + "補充"), "approved wording"),
+            ("paraphrased Human-approved option", lambda r: r[128]["opts"].__setitem__(0, "縮短的選項"), "approved wording"),
+            ("unjustified additional rework", lambda r: r[136].__setitem__("q", "another edit"), "Rework question scope"),
+        ]:
+            rows = copy.deepcopy(after)
+            mutate(rows)
+            try:
+                validate_rework(reviewed, rows)
+            except ValueError as exc:
+                check(expected in str(exc), f"{name}: wrong failure: {exc}")
+                controls.append({"case": name, "result": "rejected", "reason": str(exc)})
+            else:
+                raise ValueError(f"Negative control unexpectedly passed: {name}")
+        print(json.dumps({"negative_controls": controls},
                          ensure_ascii=False, indent=2))
         return
     scopes = {"canonical": CANONICAL, "replacements": REPLACEMENTS, "handled": HANDLED,
@@ -238,6 +281,9 @@ def main():
         "source_sha256_lf": hashlib.sha256(current.encode("utf-8")).hexdigest(),
         "scope_schema_metadata_canonical_application_checks": "PASS",
         "changed_ids": [q["id"] for old, q in zip(before, after) if old != q],
+        "rework": {"reviewed_head": REWORK_BASE, "changed_ids": rework_changed,
+                   "approved_q129_verbatim": "PASS", "other_329_records_unchanged": "PASS",
+                   "before_replacements": metrics(reviewed, REPLACEMENTS)},
         "resolutions": [{"canonical": g[0], "replacements": g[1:], "result": "distinct stems/options/keys"}
                         for g in GROUPS],
         "duplicates": {"before_exact_groups": duplicates(before), "after_exact_groups": duplicates(after),
