@@ -1,7 +1,8 @@
-"""Issue #27 read-only audit of the current main bank; no question edits.
+"""Issue #27 read-only audit of main or the authorized remediation working source.
 
 python -X utf8 scripts/audit-question-bank-final.py [--ref origin/main] [--qa-json file]
 python -X utf8 scripts/audit-question-bank-final.py --negative-controls
+Remediation: --working --render-before file --render-after file --qa-json file --output file
 Reuses the released length/wording definitions, not the #26 mutation contract.
 """
 import argparse
@@ -41,7 +42,7 @@ def require(condition, message):
 
 
 def validate_source(authoritative, candidate):
-    require(candidate == authoritative, 'source differs from main')
+    require(candidate == authoritative, 'source differs from authoritative ref')
 
 
 def validate(bank):
@@ -71,7 +72,7 @@ def validate(bank):
     require(not any(len(ids)>1 for ids in signatures.values()), 'normalized stem/options duplicate')
     return {'schema_ids_metadata_options': 'PASS', 'nonempty_explanations_mindsets': 'PASS',
             'explicit_explanation_key_ids': explicit, 'unlabelled_explanation_ids': unlabelled,
-            'semantic_limit': 'Letter matching/nonempty text is not semantic proof. Canonicals require targeted disposition; prior content reviews and calculations are supporting evidence only.'}
+            'semantic_limit': 'Letter matching/nonempty text is not semantic proof. Changed canonicals require independent Content Review/Human acceptance; calculations are supporting evidence only.'}
 
 
 def wording(bank, terms):
@@ -136,18 +137,67 @@ def negative_controls(bank, source):
     return result
 
 
+def evidence_json(value, level=0, compact_items=False):
+    """Keep one measured screen per JSON line without dropping its option evidence."""
+    indent='  '*level
+    child='  '*(level+1)
+    if isinstance(value,dict):
+        if not value:return '{}'
+        return '{\n'+',\n'.join(child+json.dumps(k,ensure_ascii=False)+': '+evidence_json(v,level+1,k=='rows') for k,v in value.items())+'\n'+indent+'}'
+    if isinstance(value,list):
+        if not value:return '[]'
+        items=[json.dumps(v,ensure_ascii=False,separators=(',',':'),default=str) if compact_items else evidence_json(v,level+1) for v in value]
+        return '[\n'+',\n'.join(child+v for v in items)+'\n'+indent+']'
+    return json.dumps(value,ensure_ascii=False,default=str)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ref',default='origin/main')
     parser.add_argument('--qa-json',type=Path)
+    parser.add_argument('--working',action='store_true',help='Audit scoped working source against baseline-ref')
+    parser.add_argument('--baseline-ref',default='4e192e9207a46f5cfff1be4bdeecb6296b1de21d')
+    parser.add_argument('--render-before',type=Path)
+    parser.add_argument('--render-after',type=Path)
+    parser.add_argument('--output',type=Path)
     parser.add_argument('--negative-controls',action='store_true')
     args=parser.parse_args()
     sha=git('rev-parse',args.ref)
     raw=subprocess.check_output(['git','show',f'{sha}:index.html'],cwd=ROOT)
     text=raw.decode('utf-8').replace('\r\n','\n')
     local=(ROOT/'index.html').read_text(encoding='utf-8')
-    validate_source(text, local)
-    bank,_=PRIOR['parse'](text)
+    if args.working:
+        text=local
+    else:
+        validate_source(text, local)
+    bank,app=PRIOR['parse'](text)
+    remediation=None
+    if args.working:
+        baseline_sha=git('rev-parse',args.baseline_ref)
+        baseline_text=subprocess.check_output(['git','show',f'{baseline_sha}:index.html'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
+        before,old_app=PRIOR['parse'](baseline_text)
+        validate(before)
+        require(app==old_app,'non-bank application changed')
+        changed=[]
+        for old,new in zip(before,bank):
+            require(list(old)==list(new),'field order/schema changed')
+            require(all(old[k]==new[k] for k in old if k not in {'q','opts','exp'}),f'Q-{old["id"]}: protected field changed')
+            if old!=new:
+                require(old['id'] in CANONICAL,f'Q-{old["id"]}: outside authorized canonical scope')
+                changed.append({'id':old['id'],'learning_objective':old['topic'],'preserved_mindset':old['mindset'],
+                    'changed_fields':[k for k in old if old[k]!=new[k]],'before':old,'after':new,
+                    'rationale':new['exp'],'review_status':'Engineering semantic check complete; independent Content Review/Human acceptance pending'})
+        require([r['id'] for r in changed]==CANONICAL,'not all 38 canonicals remediated')
+        require(all(bank[128][k]==v for k,v in PRIOR['APPROVED_Q129'].items()),'Human-approved Q-129 changed')
+        remediation={'baseline_ref':args.baseline_ref,'baseline_commit':baseline_sha,
+            'baseline_sha256_lf':hashlib.sha256(baseline_text.encode()).hexdigest(),
+            'scope_control':'PASS: exactly 38 canonical IDs; only q/opts/exp; application, metadata, field order, answer indexes and mindsets unchanged; other 292 byte-equivalent as records',
+            'changed_ids':CANONICAL,'questions':changed,
+            'before_metrics':{name:PRIOR['metrics'](before,ids) for name,ids in [('whole_bank',list(range(1,331))),('canonical',CANONICAL),('outside_canonical',[i for i in range(1,331) if i not in CANONICAL])]},
+            'before_length_strategies':{name:length_strategies([q for q in before if q['id'] in ids]) for name,ids in [('whole_bank',list(range(1,331))),('canonical',CANONICAL),('outside_canonical',[i for i in range(1,331) if i not in CANONICAL])]},
+            'before_wording_screen':wording(before,list(dict.fromkeys([*BASELINE['wording_correct_distractors'],*ADDITIONAL]))),
+            'other_292_disposition':'Retain: full pre-answer rendered rules near 25% at both viewports. Raw shortest differences alone do not authorize edits. Q-129 explicit Human wording retained.'}
+        for metrics in remediation['before_metrics'].values():metrics.pop('questions')
     checks=validate(bank)
     controls=negative_controls(bank,text)
     if args.negative_controls:
@@ -164,20 +214,57 @@ def main():
     byid={q['id']:q for q in bank}
     canonical['questions']=[r|{'topic':byid[r['id']]['topic'], 'correct_text':byid[r['id']]['opts'][byid[r['id']]['ans']],
         'explanation':byid[r['id']]['exp'],'mindset':byid[r['id']]['mindset'],
-        'disposition':'Pending Product/Human targeted review; no content edits authorized in this phase'} for r in canonical['questions']]
+        'disposition':'Remediated; independent Content Review and Human acceptance pending' if args.working else 'Audit-phase residual awaiting disposition'} for r in canonical['questions']]
     # Numeric consistency independently recomputed from actual current stems.
     calc=runpy.run_path(str(ROOT/'scripts/audit-remediation-batch5.py'))['calculations'](bank)
     qa=json.loads(args.qa_json.read_text(encoding='utf-8')) if args.qa_json else None
     fingerprint=hashlib.sha256(text.encode()).hexdigest()
-    if qa:require(qa.get('source_sha256_lf',qa['source_sha256'])==fingerprint,'QA fingerprint mismatch')
+    if qa:
+        require(qa.get('source_sha256_lf',qa.get('source_sha256'))==fingerprint,'QA fingerprint mismatch')
+        require(qa['errors']==[] and qa['syntax']=='PASS','QA syntax/browser errors')
+        require([v['viewport'] for v in qa['browser']]==['1280x900','375x812'],'QA viewport coverage')
+        if args.working:require(set(CANONICAL)<=set(qa['sample_ids']),'QA must cover all changed questions')
+    rendered={}
+    for name,file,expected in [('before',args.render_before,remediation['baseline_sha256_lf'] if remediation else fingerprint),('after',args.render_after,fingerprint)]:
+        if file:
+            data=json.loads(file.read_text(encoding='utf-8'))
+            require(data['source_sha256_lf']==expected,f'{name} rendered fingerprint mismatch')
+            require(data['errors']==[],f'{name} rendered browser errors')
+            require([v['viewport'] for v in data['views']]==[{'width':1280,'height':900},{'width':375,'height':812}],f'{name} viewports')
+            for v in data['views']:
+                require([r['id'] for r in v['rows']]==list(range(1,331)),f'{name} rendered IDs')
+                require(v['verbatim_options']==1320 and v['unanswered_questions']==330 and v['horizontal_overflow']==0,f'{name} rendered coverage')
+                expected_bank=before if name=='before' and remediation else bank
+                for row,q in zip(v['rows'],expected_bank):
+                    require(row['stem']==q['q'] and row['key']=='ABCD'[q['ans']],f'{name} stem/key mismatch')
+                    require([o['text'] for o in row['options']]==['ABCD'[i]+'. '+o for i,o in enumerate(q['opts'])],f'{name} options mismatch')
+            # Retain all observed text/line/height/width data; summarize repeated CSS once per view.
+            # Classification can be reproduced from raw geometry and the stored key.
+            for view in data['views']:
+                first=view['rows'][0]['options'][0]
+                view['option_css']={k:first[k] for k in ['font','line_height','padding']}
+                for row in view['rows']:
+                    for option in row['options']:
+                        require(all(option[k]==v for k,v in view['option_css'].items()),'option CSS varies')
+                        for k in view['option_css']:option.pop(k)
+                    row.pop('height');row.pop('lines')
+            data['row_classification']='Recompute from options[].height or options[].lines; full per-scope classifications/IDs are in groups.'
+            rendered[name]=data
+    if args.working and not args.negative_controls:
+        require(set(rendered)=={'before','after'} and qa is not None,'working evidence requires both full rendered reports and fresh QA')
+    persistence=None
+    if args.working:
+        run=subprocess.run(['node',str(ROOT/'scripts/test-mock-persistence.cjs')],cwd=ROOT,capture_output=True,text=True,encoding='utf-8')
+        require(run.returncode==0 and run.stdout.startswith('PASS:'),'mock persistence regression failed')
+        persistence={'command':'node scripts/test-mock-persistence.cjs','result':'PASS','output':run.stdout.strip()}
     result={
-        'issue':27,'phase':'audit only; residual disposition pending; not final quality PASS',
-        'source':{'audited_ref':args.ref,'audited_commit':sha,'main_commit':git('rev-parse','origin/main'),
-                  'dev_commit':git('rev-parse','origin/dev'),'index_blob':git('rev-parse',f'{sha}:index.html'),
-                  'sha256_lf':fingerprint,'working_source_matches_audited_main':'PASS',
+        'issue':27,'phase':'targeted remediation; Engineering Ready; independent review/Human acceptance pending' if args.working else 'audit only; residual disposition pending; not final quality PASS',
+        'source':{'audited_ref':'working tree' if args.working else args.ref,'audited_commit':None if args.working else sha,'working_parent_commit':git('rev-parse','HEAD'),'main_commit':git('rev-parse','origin/main'),
+                  'dev_commit':git('rev-parse','origin/dev'),'index_blob':git('hash-object','index.html') if args.working else git('rev-parse',f'{sha}:index.html'),
+                  'sha256_lf':fingerprint,'working_source_matches_audited_main':'intentionally differs under targeted remediation' if args.working else 'PASS',
                   'released_issue26_index_blob':'4f4249d15a1d84fa7cea95e6a5f302d4c75e41c8',
                   'post_release_changed_paths':git('diff','--name-only','41c70e8',sha).splitlines()},
-        'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
+        'remediation':remediation,'rendered_audit':rendered,'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
         'current':current,'key_pattern_screen':{'ordering':'ascending stable ID',
             'global':'all periods 1..165', 'local':'12 consecutive IDs; periods 1..4',
             'local_repeated_windows':local_patterns},'protected_canonical_residual':canonical,
@@ -190,15 +277,20 @@ def main():
             'whole_bank':length_strategies(bank),
             'canonical':length_strategies([q for q in bank if q['id'] in CANONICAL]),
             'outside_canonical':length_strategies([q for q in bank if q['id'] not in CANONICAL])},
-        'recomputed_numeric_items':calc,'fresh_browser_qa':qa,
+        'recomputed_numeric_items':calc,'mock_persistence_regression':persistence,'fresh_browser_qa':qa,
         'limitations':['Counts/periodicity screen are heuristics, not proof of semantic correctness or absence of exploitable patterns.',
                       'Wording uses occurrences plus option-presence rates; correct/distractor denominators are 330/990.',
-                      '38 protected canonicals remain pending disposition; no automatic remediation or Product acceptance.']}
-    require(result['source']['index_blob']==result['source']['released_issue26_index_blob'],'released source mismatch')
-    require(result['source']['post_release_changed_paths']==['AGENTS.md'],'unexpected post-release change')
+                      'Revised 38-item wording requires independent Content Review and Human acceptance; Engineering checks do not declare Product Verify.']}
+    if not args.working:
+        require(result['source']['index_blob']==result['source']['released_issue26_index_blob'],'released source mismatch')
+        require(result['source']['post_release_changed_paths']==['AGENTS.md'],'unexpected post-release change')
     # Keep per-item rows once bank-wide plus the explicit 38-item review table.
     result['outside_canonicals'].pop('questions')
-    print(json.dumps(result,ensure_ascii=False,indent=2,default=str))
+    output=evidence_json(result)+'\n'
+    if args.output:
+        args.output.write_text(output,encoding='utf-8')
+        print('PASS: source/schema/keys/duplicates/calculations/controls/rendered fingerprints; '+str(args.output))
+    else:print(output)
 
 
 if __name__=='__main__':main()

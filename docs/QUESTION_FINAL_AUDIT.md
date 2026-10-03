@@ -1,175 +1,162 @@
-# Final Question Bank Audit — Issue #27
+# Final Question Bank Audit — Issue #27 targeted remediation
 
-## Audit phase outcome
+## Engineering outcome
 
-Audit-phase tooling and fresh QA are complete. **Final question-quality acceptance is not PASS.** No question or application content was edited. The 38 protected canonicals require Product/Human disposition, and an additional raw shortest-option signal warrants review. No content remediation, integration, Product Verify, release or closure is claimed.
+All 38 authorized canonicals have been remediated. Full pre-answer UI measurement was completed **before content edits** and repeated on the final 330-question source at **1280×900** and **375×812**. Engineering validation passes; independent Technical / Content Review and Human content acceptance remain pending. This supersedes the audit-only Engineering Ready evidence.
 
-Contract: [#27 audit-only handoff](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5966308099). Comparison baseline: [#8 published audit](https://github.com/Naiyi-Chia/pmp-trainer/issues/8). Machine evidence: [QUESTION_FINAL_AUDIT.json](QUESTION_FINAL_AUDIT.json). Prior batches and [#26 report](QUESTION_DUPLICATE_CLEANUP.md) are historical supporting evidence, not substitutes for this fresh run.
+Contract: [Human disposition](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968746145) and [latest Engineering handoff](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968753182). Machine evidence: [QUESTION_FINAL_AUDIT.json](QUESTION_FINAL_AUDIT.json). Historical comparison: [parent #8](https://github.com/Naiyi-Chia/pmp-trainer/issues/8). No PR, merge, Product Verify, release or closure is claimed.
 
-## Source and start gate
+## Source and scope
 
-- #22–#26 were freshly checked through GitHub: all closed with state reason `completed`.
-- Resumed the single remote branch `question/issue-27-final-audit` at handoff base `3b37e89`. It had no implementation commits and was safely fast-forwarded over two subsequent governance commits to current main/dev. No branch was duplicated or history rewritten.
-- Audited current `origin/main == origin/dev == 570bad452a7e1d3015476db3984443459a53f92d`. Local `index.html` matches that exact source (LF-normalized).
-- Git blob: `4f4249d15a1d84fa7cea95e6a5f302d4c75e41c8`; identical to the released #26 application. Changes after release `41c70e8` touch only `AGENTS.md`.
-- Source SHA-256 (LF): `fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1`. Fresh browser QA fingerprint matches.
-- Scope: one new read-only audit script, this report, machine evidence, and a small optional `--ids` extension to the existing browser QA runner. Its default #26 sample stays intact. No dependencies or application files changed.
+- Resumed `question/issue-27-final-audit` at `4e192e9207a46f5cfff1be4bdeecb6296b1de21d`, clean and synchronized with its single remote branch; existing dev ancestry is intact.
+- Baseline application equals released main/dev `570bad452a7e1d3015476db3984443459a53f92d`; #22–#26 start gate was already completed. The new handoff explicitly authorizes remediation on this scoped branch.
+- Before source SHA-256 (LF): `fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1`.
+- Final source SHA-256 (LF): `68105a4c985e8145e9dbd103782e4501ecc7866380aeac4f6fe28db47f96178c`; Git application blob: `eecb6a52c05aeee2cef366756a53c3322506472a`. Rendered and fresh browser QA fingerprints match.
+- Exactly 38 records changed: options and explanations in all 38; context clarified in 12 stems. IDs/order/schema, original learning objectives, domain/approach/topic/difficulty/type, answer positions and mindsets are preserved. No CSS, application logic, localStorage, scoring, embedded official samples, dependencies or other 292 question records changed.
+- Changed IDs: `73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,159,160,161,163,165,166,167,172,173,174`.
 
-## Published #8 baseline versus current main
+## Content remediation and semantic checks
 
-| Metric | #8 baseline | Current |
+Each row in `remediation.questions` contains the complete before/after record, changed fields, original topic/mindset, revised explanation and Engineering rationale. All 38 explanations now state the correct answer letter and explain why the alternatives are less suitable. Engineering checked the correct action against the retained learning objective and each new distractor; this is not independent content acceptance.
+
+| IDs | Preserved learning objective / remediation |
+|---|---|
+| 73,83,93,103 | Conflict resolution: compare facts, assumptions, constraints and verification criteria. Replace rank/instant escalation/removal cues with plausible authority, vote, compromise and delayed-integration alternatives; clarify why facilitation comes first. |
+| 74,94 | Psychological safety: clarify fear of negative judgment/blame; compare leadership response with reporting, anonymity and turn-taking mechanisms. |
+| 75,95 | Servant leadership: remove recurring cross-department approval impediments; contrast a sustainable process with temporary delegation, capacity and scope responses. |
+| 76,86,96,106 | Coaching/mentoring: retain motivated novice capability development; compare specific practice/feedback with substitution, self-study, generic training and inspection. |
+| 77,97 | Virtual teams: combine asynchronous confirmation, language clarity and workable overlap; contrast headquarters-centric schedules, relay and single-channel approaches. |
+| 78,88,98,108 | Emotional intelligence: clarify that there is no emergency/disruption requiring immediate intervention; distinguish listening/self-management from defense, deferral and authority. |
+| 79,89,99,109 | Resource negotiation: use impact and alternatives before commitment enforcement, escalation or unilateral replanning. |
+| 82,92,102,112 | Performance feedback: diagnose privately with concrete examples and follow-up before public comparison, reassignment or deadline adjustment. |
+| 100 | Self-management: pull work by goal/capacity and authority boundaries versus replacing the dispatcher or imposing quotas. |
+| 101 | Team charter: participatory agreement on response/meeting/decision norms versus imported, departmental or PM-announced rules. |
+| 159,173 | Requirements: active iteration goal remains valid; PO orders the product backlog and discusses delivery rather than unilateral replacement, delayed intake or cancellation. Scope can be renegotiated without endangering the goal. |
+| 160,174 | Root cause: identify formation mechanism, improve process and verify prevention versus detection, repair or monitoring alone. |
+| 161 | Definition of Done: testing is a completion threshold; compare estimates, extra testing time and approval as alternative mechanisms. |
+| 163 | Integration: manage interfaces, dependencies and integration checkpoints versus local schedule/utilization improvements. |
+| 165 | Kanban WIP: limit work and relieve the bottleneck; replace the implausible deleted-Done-column distractor with a batch-size intervention that still pushes work. |
+| 166 | Rolling wave: near-term detail and evolving high-level distant plan versus premature detail, waiting for certainty or ignoring the horizon. |
+| 167 | Contract risk: compare four priced contract structures; replace oral agreement with cost-plus-incentive, and explain fixed-price scope-change limits. |
+| 172 | Change control: document/analyze/authorize before implementing or updating baselines; use plausible timing/governance alternatives. |
+
+For the Scrum-related checks (75,95,100,159,161,173), Engineering consulted the [official Scrum Guide](https://scrumguides.org/scrum-guide.html): self-management, impediment removal, backlog ordering, a still-valid Sprint Goal, scope negotiation and the Definition of Done. These support the retained concepts; the bank remains PMP practice and is not asserted to be official exam content. No automated padding or length-equalizing mutation was used.
+
+## Raw character metrics — separate from geometry
+
+Length = non-whitespace source characters. Materially longer = ≥1.25× median distractor length and ≥8 additional characters. Tied-longest includes all-equal items.
+
+| Bank-wide metric | #8 published baseline | Before remediation | Final |
+|---|---:|---:|---:|
+| Questions | 330 | 330 | 330 |
+| Unique-longest correct | 286 | 42 | 8 |
+| Materially-longer correct | 271 | 36 | 0 |
+| Tied-longest correct | — | 90 | 108 |
+| Correct at maximum | — | 132 | 116 |
+| All equal raw lengths | — | 47 | 47 |
+| Unique-shortest correct | — | 85 | 89 |
+| Longest same-key run | — | 4 | 4 |
+| A / B / C / D | 29 / 281 / 16 / 4 | 83 / 83 / 82 / 82 | 83 / 83 / 82 / 82 |
+| Exact duplicate groups | 38 | 0 | 0 |
+
+Canonical unique-longest correct: **37/38 → 3/38**; materially longer: **36/38 → 0/38**. All three duplicate definitions return zero groups: exact ordered stem/options/key, normalized stem/options without key, and option-order-independent normalized stem/options/correct text. No global period 1–165 or 12-ID window of period 1–4 is found.
+
+| Raw guessing rule (uniform within ties) | Before longest / shortest | Final longest / shortest |
 |---|---:|---:|
-| Questions | 330 | 330 |
-| Unique-longest correct | 286 (86.7%) | 42 (12.7%) |
-| Materially-longer correct | 271 (82.1%) | 36 (10.9%) |
-| A / B / C / D | 29 / 281 / 16 / 4 | 83 / 83 / 82 / 82 |
-| Exact duplicate groups / IDs | 38 / 78 | 0 / 0 |
-| Tied-longest correct | Not published | 90 |
-| Correct at maximum, including ties | Not published | 132 |
-| All four options equal length | Not published | 47 |
-| Unique-shortest correct | Not published | 85 (25.8%) |
-| Longest same-key run by ID | Not published | 4 |
+| 330 bank-wide | 21.6% / 40.8% | 13.7% / 43.0% |
+| 38 canonicals | 98.2% / 0.0% | 28.9% / 18.4% |
+| Other 292 | 11.7% / 46.1% | 11.7% / 46.1% |
 
-Length = non-whitespace source characters. Materially longer requires ≥1.25× median distractor length **and** ≥8 additional characters. Tied-longest includes all-equal items; at-maximum = unique-longest + tied-longest. Source counts include English text and do not measure rendered width/height.
+The raw shortest rule remains elevated (**42.95% bank-wide; 46.15% outside canonicals**). It is explicitly retained as a source-length signal. The full rendered evidence below does not demonstrate a bank-wide height/line shortcut, so this is not authorization to rewrite the other 292. Character counting, text-width estimation, or a different browser/font might require separate review; this handoff does not claim every conceivable strategy is neutral.
 
-Exact checks cover ordered stem/options/key, normalized stem/options without key (the parent definition), and whitespace/case-normalized stem + sorted option texts + correct answer text. All return zero groups. This does not establish conceptual uniqueness: some retained canonical scenarios and answer templates remain very similar.
+## Pre-answer rendered baseline and final audit
 
-The answer sequence has no exact global period from 1–165 and no 12-ID window repeating a period of 1–4. These are limited pattern screens, not a guarantee against every possible shortcut.
+Actual native Practice UI, isolated Edge contexts, fonts ready, favorite fixture imported through the existing UI. Each question is measured **before selecting an answer**. DOM stem is exactly the stored stem; option DOM text is exactly letter label + stored option. DOM Range line rectangles and button border-box heights are recorded for all four options. Navigation and answer selection occur only after that measurement. Neither answer feedback labels nor an artificial option layout are measured.
 
-### Additional shortest/longest strategy screen
+- Both phases: 330 questions × 4 options × 2 viewports = **2,640 verbatim option checks** each; 5,280 total.
+- `rendered_audit.before/after.views[].rows` stores every question ID/key/stem and all four text/line/height/width measurements. Uniform CSS is retained once per view; summary IDs/classifications remain in `groups`.
+- Height tolerance: 0.01px. Equal-height, unique-tallest, partial-tie and nonmatching-key controls pass. Guessing ties use 1/k credit; all-four-equal earns 0.25, not an informative cue.
+- No page/console errors or document horizontal overflow in any of the 1,320 measured question screens.
+- Height and line-count rule summaries coincide at both viewports in both phases.
 
-To avoid hiding an opposite-length bias, the audit also assigns 1/k credit when the stored answer is among k tied shortest/longest options. This is the expected score from uniformly choosing within that set, using actual source character counts.
-
-| Scope | Longest rule | Shortest rule | Uniform 4-choice baseline |
+| Viewport / scope | Before tallest / shortest expected hits | Final tallest / shortest expected hits | Final rates |
 |---|---:|---:|---:|
-| 330 questions | 71.417/330 (21.6%) | 134.750/330 (40.8%) | 25% |
-| 38 canonicals | 37.333/38 (98.2%) | 0.000/38 (0.0%) | 25% |
-| Other 292 questions | 34.083/292 (11.7%) | 134.750/292 (46.1%) | 25% |
+| 1280×900 / 330 bank-wide | 82.250 / 82.583 | 82.250 / 82.583 | 24.92% / 25.03% |
+| 1280×900 / 38 canonicals | 9.500 / 9.500 | 9.500 / 9.500 | 25.00% / 25.00% |
+| 1280×900 / Other 292 | 72.750 / 73.083 | 72.750 / 73.083 | 24.91% / 25.03% |
+| 375×812 / 330 bank-wide | 105.500 / 75.667 | 81.500 / 83.667 | 24.70% / 25.35% |
+| 375×812 / 38 canonicals | 33.500 / 1.500 | 9.500 / 9.500 | 25.00% / 25.00% |
+| 375×812 / Other 292 | 72.000 / 74.167 | 72.000 / 74.167 | 24.66% / 25.40% |
 
-The old bank-wide longest-answer pattern is greatly reduced, but the canonical slice remains highly exploitable by that rule. Conversely, raw shortest-choice credit is **40.8% bank-wide** (46.1% outside canonicals), above the 25% descriptive reference. Many differences are small and some are numeric formatting; this does not establish a rendered visual cue or a statistically validated learner strategy. It is still a material review candidate under #27, not a basis for silently rewriting another 292 questions. Product/Human should disposition this additional signal alongside the canonical set before final acceptance.
+On mobile the canonical tallest rule drops from **88.16% to 25%**. Unique-tallest correct canonicals drop from **32 to 0**. All 38 final canonical option sets are four-way equal: desktop one line / 54.390625px; mobile two lines / 82.78125px. This comes from substantive comparable actions, with no CSS change.
 
-## Wording screens
+### Other 292 disposition and retained localized geometry
 
-Counts below are occurrences in 330 correct versus 990 distractor options. Presence rates/affected IDs are retained in JSON to avoid comparing unequal denominators or double-counted words as though they were equal samples.
+The pre-edit other-292 tallest/shortest rates are 24.91%/25.03% desktop and 24.66%/25.40% mobile. They remain identical after remediation. There is no demonstrated systematic line/height shortcut in that slice and no additional blocking content defect was discovered during this task. **All 292 remain unchanged**, including explicitly Human-accepted Q-129.
 
-| Term | #8 correct / distractor occurrences | Current correct / distractor occurrences | Current presence % correct / distractor |
-|---|---:|---:|---:|
-| 評估 | 19 / 0 | 5 / 11 | 1.52 / 1.11 |
-| 分析 | 15 / 0 | 18 / 34 | 5.45 / 3.43 |
-| 檢視 | 10 / 0 | 23 / 36 | 6.97 / 3.64 |
-| 協助 | 13 / 0 | 7 / 17 | 2.12 / 1.72 |
-| 共同 | 41 / 0 | 40 / 51 | 10.61 / 5.05 |
-| 立即 | 0 / 41 | 3 / 20 | 0.91 / 2.02 |
-| 直接 | 0 / 48 | 1 / 14 | 0.30 / 1.41 |
-| 要求 | 1 / 74 | 14 / 89 | 4.24 / 8.89 |
-| 升級 | 0 / 11 | 2 / 5 | 0.61 / 0.51 |
+Final desktop: 329/330 four-way equal height. Final mobile: 322/330 four-way equal height. The remaining localized sets are below; they do not form a uniform correct-choice rule.
 
-The original nine one-word associations are no longer deterministic across the full bank, but frequencies are not neutral. `共同` remains concentrated in correct options, including 15 correct / 0 distractor occurrences inside the canonical slice. `要求` and `直接` still skew toward distractors. None of this is a blanket wording-quality PASS.
-
-| Additional screen | Correct / distractor occurrences |
-|---|---:|
-| 只 | 0 / 16 |
-| 所有 | 2 / 57 |
-| 永遠 | 0 / 0 |
-| 僅 | 0 / 3 |
-| 即可 | 0 / 0 |
-| 口頭 | 0 / 8 |
-| 刪除 | 0 / 3 |
-| 一定 | 0 / 0 |
-| 一律 | 0 / 1 |
-| 完全 | 0 / 1 |
-| 不需 | 0 / 0 |
-| 無須 | 0 / 0 |
-
-`只`, `僅`, `口頭`, `刪除`, `一律` and `完全` currently occur only in distractors; several are rare. `所有` is 2/57. These can be legitimate wrong-action descriptions in context, yet their elimination value should be considered in residual content review. Counts are flags, not automatic replacement instructions.
-
-## Targeted canonical review table
-
-All rows remain **pending documented Product/Human disposition**. U = uniquely longest, T = tied-longest, M = materially longer. Per-row lengths follow stored A/B/C/D order. The correct text, explanation and mindset for all 38 are retained in JSON for review. A targeted engineering scan found their explanations/mindsets aligned with the intended correct action, but that does not establish adequate distractor difficulty, universal applicability, or Human acceptance.
-
-Suggested review focus codes: **D** = strengthen plausible distractors and comparable option detail; **W** = avoid cooperative/absolute-word cues; **C** = clarify contextual limits instead of implying an always-first rule; **F** = compare like-for-like answer categories. These are proposals for disposition, not authorized edits.
-
-| ID | Topic | Key | A/B/C/D lengths | Flags | Review focus |
-|---|---|:---:|---|---|---|
-| Q-073 | 衝突管理 | A | 22 / 8 / 8 / 10 | U/M | D, W, C |
-| Q-074 | 心理安全 | C | 8 / 6 / 19 / 6 | U/M | D, W |
-| Q-075 | 僕人式領導 | C | 4 / 9 / 14 / 6 | U/M | D, W |
-| Q-076 | 教練與指導 | C | 4 / 7 / 35 / 6 | U/M | D, W |
-| Q-077 | 虛擬團隊 | A | 21 / 8 / 7 / 8 | U/M | D, W |
-| Q-078 | 情緒智力 | C | 4 / 7 / 18 / 9 | U/M | D, W, C |
-| Q-079 | 談判 | A | 20 / 4 / 6 / 8 | U/M | D, W, C |
-| Q-082 | 績效回饋 | A | 22 / 4 / 4 / 6 | U/M | D, W, C |
-| Q-083 | 衝突管理 | B | 8 / 22 / 8 / 10 | U/M | D, W, C |
-| Q-086 | 教練與指導 | B | 4 / 35 / 7 / 6 | U/M | D, W |
-| Q-088 | 情緒智力 | D | 4 / 7 / 9 / 18 | U/M | D, W, C |
-| Q-089 | 談判 | D | 4 / 6 / 8 / 20 | U/M | D, W, C |
-| Q-092 | 績效回饋 | A | 22 / 4 / 4 / 6 | U/M | D, W, C |
-| Q-093 | 衝突管理 | B | 8 / 22 / 8 / 10 | U/M | D, W, C |
-| Q-094 | 心理安全 | A | 19 / 8 / 6 / 6 | U/M | D, W |
-| Q-095 | 僕人式領導 | A | 14 / 4 / 9 / 6 | U/M | D, W |
-| Q-096 | 教練與指導 | B | 4 / 35 / 7 / 6 | U/M | D, W |
-| Q-097 | 虛擬團隊 | B | 8 / 21 / 7 / 8 | U/M | D, W |
-| Q-098 | 情緒智力 | D | 4 / 7 / 9 / 18 | U/M | D, W, C |
-| Q-099 | 談判 | B | 4 / 20 / 6 / 8 | U/M | D, W, C |
-| Q-100 | 自組織團隊 | D | 6 / 6 / 6 / 25 | U/M | D, W |
-| Q-101 | 團隊章程 | B | 8 / 32 / 8 / 6 | U/M | D, W |
-| Q-102 | 績效回饋 | C | 4 / 4 / 22 / 6 | U/M | D, W, C |
-| Q-103 | 衝突管理 | B | 8 / 22 / 8 / 10 | U/M | D, W, C |
-| Q-106 | 教練與指導 | A | 35 / 4 / 7 / 6 | U/M | D, W |
-| Q-108 | 情緒智力 | D | 4 / 7 / 9 / 18 | U/M | D, W, C |
-| Q-109 | 談判 | D | 4 / 6 / 8 / 20 | U/M | D, W, C |
-| Q-112 | 績效回饋 | C | 4 / 4 / 22 / 6 | U/M | D, W, C |
-| Q-159 | 需求管理 | C | 8 / 4 / 27 / 6 | U/M | D, W, C |
-| Q-160 | 根因分析 | B | 7 / 29 / 5 / 6 | U/M | D, W |
-| Q-161 | Definition of Done | C | 12 / 8 / 16 / 6 | U/M | D, W |
-| Q-163 | 整合管理 | D | 8 / 7 / 5 / 15 | U/M | D, W |
-| Q-165 | Kanban WIP | A | 9 / 7 / 7 / 7 | U | D, W (刪除 Done 欄 remains implausible despite no M flag) |
-| Q-166 | Rolling Wave | C | 8 / 5 / 30 / 6 | U/M | D, W |
-| Q-167 | 採購合約 | D | 4 / 2 / 4 / 4 | T | F, W (口頭約定 is not a comparable priced-contract type) |
-| Q-172 | 變更控制 | D | 6 / 6 / 6 / 17 | U/M | D, W |
-| Q-173 | 需求管理 | A | 27 / 8 / 4 / 6 | U/M | D, W, C |
-| Q-174 | 根因分析 | B | 7 / 29 / 5 / 6 | U/M | D, W |
-
-Canonical totals: **37/38 U, 36/38 M**. Q-165 and Q-167 are the only non-M canonicals; Q-167 is the only non-U canonical. Passing a length threshold does not remove their distractor concerns. Repeated answer/scenario templates across the conflict, coaching, feedback and negotiation canonicals also warrant topic-breadth review; zero exact duplicates is a narrower result.
-
-### Other unique-longest outliers
-
-| ID | Lengths A/B/C/D | Key / ratio to distractor median | Engineering observation / disposition |
+| ID / key | Mobile A/B/C/D lines | Mobile A/B/C/D heights (px) | Disposition |
 |---|---|---|---|
-| Q-129 | 36 / 32 / 32 / 31 | A / 1.125 | Exact Human-approved supplier wording; localized mobile three-line A documented in #26. Retain pending aggregate disposition. |
-| Q-130 | 25 / 27 / 26 / 26 | B / 1.038 | Only one character above longest distractor; context distinguishes self-management from substitute assignment. No new edit proposed. |
-| Q-137 | 32 / 32 / 33 / 31 | C / 1.031 | One character above median; #26 rendered audit showed equal option heights. No new edit proposed. |
-| Q-150 | 24 / 26 / 27 / 26 | C / 1.038 | One character above longest distractor; explicit authority/accountability bounds distinguish choices. No new edit proposed. |
-| Q-217 | 35 / 38 / 33 / 32 | B / 1.152 | English Product Backlog affects source count; #26 rendered audit showed equal heights. DoD reasoning retained; no new edit proposed. |
+| Q-026 / A | 2 / 3 / 2 / 2 | 82.78125 / 109.17188 / 82.78125 / 82.78125 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-040 / C | 2 / 2 / 1 / 2 | 82.78125 / 82.78125 / 56.39062 / 82.78125 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-041 / B | 1 / 1 / 1 / 2 | 56.39062 / 56.39062 / 56.39062 / 82.78125 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-129 / A | 3 / 2 / 2 / 2 | 109.17188 / 82.78125 / 82.78125 / 82.78125 | Prior explicit Human wording/localized-height acceptance retained; sole unique-tallest correct item. |
+| Q-154 / B | 2 / 2 / 3 / 2 | 82.78125 / 82.78125 / 109.17188 / 82.78125 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-155 / B | 2 / 2 / 2 / 3 | 82.78125 / 82.78125 / 82.78125 / 109.17188 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-181 / C | 1 / 2 / 1 / 2 | 56.39062 / 82.78125 / 56.39062 / 82.78125 | Retain: localized wrapping; included in near-random aggregate evidence. |
+| Q-195 / D | 1 / 1 / 2 / 1 | 56.39062 / 56.39062 / 82.78125 / 56.39062 | Retain: localized wrapping; included in near-random aggregate evidence. |
 
-## Validation and fresh browser QA
+Q-026 also has desktop lines 1/2/1/1 and heights 54.390625/80.78125/54.390625/54.390625px; the taller option is a distractor.
 
-- Schema PASS: 330 unique stable IDs in order, expected fields/metadata enums, four distinct nonempty options, integer answer indexes 0–3, nonempty stems/topics/explanations/mindsets, no replacement characters.
-- Explicit answer-letter checks PASS for **292** explanations; the **38 unlabelled canonical explanations** are explicitly excluded from letter proof. No mismatch was found. Format checks do not prove qualitative best-answer uniqueness.
-- Reused the released Batch 5 independent arithmetic checker on current source: **34/34** numeric/status items recomputed from stems and matched exactly one stored option/key. It covers EVM, EMV, PERT, communication pairs and total float.
-- **13/13 negative controls rejected**: count/ID/schema/metadata, option count/index/duplicates, empty explanation/mindset, wrong explanation letter, exact/permuted duplicates and modified application source.
-- `node scripts/test-mock-persistence.cjs`: PASS, including real inline-code save/reload/resume, legacy/corrupt/reordered-bank rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume and no duplicate history/resurrection.
-- Browser: fresh Edge **154.0.4258.53**, isolated contexts at **1280×900** and **375×812**. Source compiled with Node `vm.Script`; zero page/console errors and no page horizontal overflow.
-- Representative 20-item sample covers all three domains, all approaches and all three difficulty labels, scenarios/calculations, canonical risks and prior outliers: `17,29,59,70,73,76,106,129,130,137,150,159,165,167,217,234,257,268,299,301`.
-- On each viewport: native import of favorite fixture, exact question/options, score, answer locks, full explanation/mindset and navigation. Desktop all correct/instant (20/20); mobile all incorrect/manual (0/20), retry resets and favorites toggle. All tabs and random practice navigation passed.
-- Native random 180-question mock on each viewport: answer one correctly/one incorrectly, flag, reload/resume, compare IDs/answers/position/flag/deadline, submit through native dialog (1/180), inspect locked review states. Sampled mock IDs and native dialog messages are recorded in JSON.
-- Visual inspection: desktop Q-073 and mobile Q-301 screenshots were readable with intact feedback/explanation/buttons. This is local Chromium viewport QA, not physical-device/Safari or production smoke. It is not a fresh 330-item rendered-height audit.
-- `git diff --check`: PASS before commit. `index.html` is unchanged relative to current main/dev; only scoped tooling/evidence differs.
+## Wording audit
+
+Occurrences below use unequal denominators: 330 correct options / 990 distractors. Per-option presence rates and affected IDs are retained in JSON. Canonical `共同` goes from **15/0 to 0/0**; canonical cooperative/absolute cue words were removed through specific actions and plausible competing interventions, not indiscriminate word replacement.
+
+| Term | #8 correct / distractor | Before | Final |
+|---|---:|---:|---:|
+| 評估 | 19 / 0 | 5 / 11 | 6 / 15 |
+| 分析 | 15 / 0 | 18 / 34 | 19 / 34 |
+| 檢視 | 10 / 0 | 23 / 36 | 23 / 36 |
+| 協助 | 13 / 0 | 7 / 17 | 6 / 17 |
+| 共同 | 41 / 0 | 40 / 51 | 25 / 51 |
+| 立即 | 0 / 41 | 3 / 20 | 3 / 7 |
+| 直接 | 0 / 48 | 1 / 14 | 1 / 8 |
+| 要求 | 1 / 74 | 14 / 89 | 14 / 76 |
+| 升級 | 0 / 11 | 2 / 5 | 2 / 1 |
+
+Additional screens: `只 0/4`, `所有 2/51`, `僅 0/3`, `口頭 0/7`, `刪除 0/2`, `一律 0/1`; 永遠/即可/一定/完全/不需/無須 are 0/0. Rare distractor-only terms and unequal presence rates remain review flags. These words can describe legitimate wrong actions; no blanket wording-neutrality or semantic-quality PASS is inferred. Raw counts alone do not authorize unrequested edits.
+
+## Validation / QA
+
+- Schema, stable ordered IDs, field order, metadata enums, four distinct nonempty options, valid integer answer indexes and nonempty explanation/mindset checks: **PASS for 330**. Explicit explanation-letter checks now cover **330/330** (before: 292).
+- Approved scope guard: **PASS**. Compares baseline/current records and non-bank HTML; rejects outside-canonical edits or changes to protected fields and checks exact Human Q-129 wording.
+- Numeric/status recomputation: **34/34 PASS**, including EVM, EMV, PERT, communication pairs and total float; exactly one matching option/key per checked item.
+- Existing negative controls: **13/13 rejected**, including malformed schema/keys/text, exact/permuted duplicates and source mismatch.
+- `node scripts/test-mock-persistence.cjs`: **PASS**, including save/reload/resume, legacy/corrupt/reordered-bank rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume and no duplicate history/resurrection. Fresh execution/output is embedded in JSON.
+- Inline JavaScript syntax: **PASS** via Node `vm.Script`; both audit scripts execute successfully.
+- Fresh Edge **154.0.4258.53**, desktop/mobile Practice QA: **52 questions per viewport**, all 38 changed IDs plus prior risks/outliers and domain/approach/difficulty/calculation coverage. Native import, exact content, answer locks, score, explanations/mindsets, navigation, tabs and random practice pass. Desktop correct/instant = 52/52; mobile incorrect/manual = 0/52; retry and favorite toggle pass.
+- Mock/Review on both viewports: native random 180-question selection, one correct + one incorrect scoped answer, flag, reload/resume with identical question IDs/answers/position/deadline/flags, native submit = 1/180, locked correct/incorrect review states: **PASS**. Sampled IDs/dialog evidence is embedded in JSON.
+- No page/console errors or document horizontal overflow in fresh Practice/Mock/Review QA. Desktop/mobile Q-073 screenshots visually inspected: readable text, feedback, full explanations and navigation controls.
+- Final scoped diff reviewed; `git diff --check`: **PASS**. Engineering commit and remote-sync state are supplied in the Issue handoff after push.
 
 ## Reproduce
 
-Use the repository Python/Node environment; no new package dependency is required. Playwright/Edge are external QA tools already available in the execution environment. `NODE_PATH` may point at that provided runtime.
+Use provided Python/Node and external Playwright/Edge; no application dependency was added. Set `NODE_PATH` to the available Playwright runtime when required. Export `4e192e9207a46f5cfff1be4bdeecb6296b1de21d:index.html` with UTF-8 intact as `<baseline.html>` before replaying the baseline audit.
 
 ```text
-node scripts/test-mock-persistence.cjs
-node scripts/qa-duplicate-cleanup.cjs <qa-output-dir> --ids=17,29,59,70,73,76,106,129,130,137,150,159,165,167,217,234,257,268,299,301
-python -X utf8 scripts/audit-question-bank-final.py --ref 570bad452a7e1d3015476db3984443459a53f92d --qa-json <qa-output-dir>/report.json
-python -X utf8 scripts/audit-question-bank-final.py --negative-controls
+node scripts/audit-option-rendering.cjs --all --html <baseline.html> --output <before-dir>
+node scripts/audit-option-rendering.cjs --all --output <after-dir>
+node scripts/qa-duplicate-cleanup.cjs <qa-dir> --ids=17,29,59,70,73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,129,130,137,150,159,160,161,163,165,166,167,172,173,174,217,234,257,268,299,301
+python -X utf8 scripts/audit-question-bank-final.py --working --render-before <before-dir>/report.json --render-after <after-dir>/report.json --qa-json <qa-dir>/report.json --output docs/QUESTION_FINAL_AUDIT.json
+python -X utf8 scripts/audit-question-bank-final.py --working --negative-controls
 git diff --check
 ```
 
-The audit defaults to current `origin/main`, reads it with `git show`, and refuses a different working application source. The report labels the published #8 baseline as historical rather than pretending missing historical metrics were measured. JSON contains per-item lengths, all wording hits, IDs requiring manual semantic review, calculation results and the fresh browser run.
+The final auditor checks source fingerprints and exact stored text against both rendered reports, requires desktop/mobile coverage and all changed questions in fresh QA, checks edit scope, recomputes raw metrics and reruns persistence. The historical audit mode is retained for the unmodified released main source.
 
-## Remaining decision
+## Known limitations / review gate
 
-Product/Human must disposition the canonical residual and the additional shortest/wording signals before #27 can be quality PASS. Any approved content changes require a subsequent documented contract, scoped implementation and re-audit. Independent Technical Review and Human quality acceptance remain pending. The comparison is ready for parent #8 traceability, but final acceptance metrics and the #8 close gate remain pending; neither Issue is closed by this audit-phase handoff.
+Geometry evidence is specific to Edge, the installed fonts and these two viewport sizes; it is not physical-device/Safari or production smoke. Descriptive expected guessing credit is not a learner study or statistical proof. Raw shortest-length and residual wording signals remain documented; closely related retained learning objectives can still recur even with zero exact duplicates. Engineering semantic checks do not replace independent Content Review, psychometric assessment or Human acceptance.
+
+Revised wording requires independent Technical / Content Review and Human content acceptance before Integration Approval. No PR/merge into dev or main, Product Verify, production release or #27/#8 closure is authorized by this Engineering handoff. Final acceptance/parent close gates remain owned by the Issue.
