@@ -9,7 +9,7 @@ PMP Trainer is a single-page, static PMP practice tool published with GitHub Pag
 - `main` is the production / deploy branch.
 - `dev` is the integration + staging / Dev Preview branch.
 - Fixed Dev Preview: `https://naiyi-chia.github.io/pmp-trainer/dev/`
-- Cross-project workflow follows the canonical AI Product Development Playbook v1.7 in `Naiyi-Chia/naiyi-product-playbook`.
+- Cross-project workflow follows the canonical AI Product Development Playbook v1.8 in `Naiyi-Chia/naiyi-product-playbook`.
 
 ## Source of Truth
 The canonical Playbook defines the cross-project workflow. The GitHub Issue is the Source of Truth for each development task.
@@ -185,9 +185,9 @@ There are three Human-owned decision semantics:
 
 If the Human explicitly enables an Epic Integration Branch:
 - every Sub-issue still requires Engineering QA + independent ChatGPT Technical Review;
-- after Technical Review PASS, a clean Sub-issue PR may be created and merged into the named Epic Integration Branch without a per-Sub-issue Human Gate;
+- after Technical Review PASS, a clean Sub-issue PR may be created and squash merged into the named Epic Integration Branch without a per-Sub-issue Human Gate;
 - Human aggregate checkpoints remain available when risk warrants them;
-- final Epic Integration Branch → `dev` still requires Human Integration Approval;
+- final Epic Integration Branch → `dev` still requires Human Integration Approval and uses normal merge by default;
 - canonical Product Verify occurs only on integrated `dev`.
 
 Merge to `dev` does not mean Product Verify passed and does not mean Ready for Release.
@@ -204,14 +204,14 @@ Issue
 → ChatGPT Technical Review
 → Feature PR automatically created / updated
 → Human Integration Approval
-→ merge to dev
+→ squash merge to dev
 → Dev Preview / staging
 → Human Product Verify
 → Ready for Release
 → Human Release Approval / release intent
 → Release PR automatically created / updated
 → ChatGPT Final Release Review
-→ clean: merge to main / blocker: stop
+→ clean: normal merge to main / blocker: stop
 → Production Smoke
 → Done / Close Issue
 ```
@@ -225,7 +225,7 @@ Sub-issue
 → concise Engineering Ready
 → ChatGPT Technical Review
 → Sub-issue PR automatically created / updated
-→ clean checks: merge to Epic Integration Branch
+→ clean checks: squash merge to Epic Integration Branch
 ```
 
 Each Sub-issue still requires its own QA and independent Technical Review. Human aggregate checkpoint review may be used for accumulated initiative quality, but it is not Product Verify. The Epic Integration Branch should synchronize with latest `dev` at meaningful checkpoints and must synchronize with current `dev` before final integration; inspect divergence first and never blindly rewrite shared epic-branch history.
@@ -237,17 +237,21 @@ Epic Integration Branch
 → final aggregate QA / conflict check
 → PR: Epic Integration Branch → dev
 → Human Integration Approval
-→ merge to dev
+→ normal merge to dev
 → Dev Preview / staging
 → Human Product Verify
 → Ready for Release
 → Human Release Approval / release intent
 → Release PR + Final Release Review
-→ clean: merge main / blocker: stop
+→ clean: normal merge to main / blocker: stop
 → Production Smoke
 → Done
 ```
 
-Feature / Sub-issue PRs may use squash merge. Release PRs should normally use a normal merge so `dev` ancestry is preserved.
+Merge defaults follow the canonical Playbook v1.8 boundary rule:
+- scoped Feature PR → `dev`: squash merge by default;
+- Sub-issue PR → Human-enabled Epic Integration Branch: squash merge by default;
+- Epic Integration Branch → `dev`: normal merge by default;
+- Release PR `dev` → `main`: normal merge by default.
 
 After a release, sync `dev` to the latest `main` with a fast-forward when safe. If it cannot fast-forward, inspect branch history first; never force blindly.
