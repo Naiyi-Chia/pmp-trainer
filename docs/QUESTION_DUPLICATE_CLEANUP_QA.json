@@ -1,0 +1,330 @@
+{
+  "source_sha256": "fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1",
+  "syntax": "PASS",
+  "browser": [
+    {
+      "viewport": "1280x900",
+      "practice": "78 correct; instant explanations; 78/78 PASS",
+      "ids": [
+        146,
+        149,
+        100,
+        134,
+        112,
+        109,
+        132,
+        128,
+        173,
+        167,
+        216,
+        156,
+        119,
+        136,
+        101,
+        97,
+        113,
+        133,
+        148,
+        93,
+        135,
+        98,
+        123,
+        99,
+        75,
+        103,
+        96,
+        161,
+        83,
+        102,
+        122,
+        160,
+        88,
+        76,
+        229,
+        92,
+        95,
+        165,
+        129,
+        219,
+        73,
+        139,
+        172,
+        82,
+        143,
+        153,
+        74,
+        116,
+        166,
+        108,
+        217,
+        163,
+        79,
+        159,
+        230,
+        126,
+        77,
+        78,
+        86,
+        155,
+        118,
+        141,
+        223,
+        142,
+        137,
+        221,
+        94,
+        154,
+        222,
+        228,
+        157,
+        174,
+        152,
+        140,
+        215,
+        89,
+        106,
+        138
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+      "mockItems": [
+        {
+          "id": 219,
+          "index": 2,
+          "key": 3
+        },
+        {
+          "id": 221,
+          "index": 23,
+          "key": 2
+        }
+      ],
+      "nativeDialogs": [
+        "已匯入學習紀錄",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ]
+    },
+    {
+      "viewport": "375x812",
+      "practice": "78 incorrect; manual explanations; 0/78; retry/favorite PASS",
+      "ids": [
+        134,
+        112,
+        142,
+        88,
+        141,
+        215,
+        96,
+        153,
+        97,
+        163,
+        101,
+        135,
+        123,
+        95,
+        156,
+        173,
+        122,
+        149,
+        94,
+        129,
+        73,
+        154,
+        228,
+        113,
+        217,
+        136,
+        219,
+        83,
+        143,
+        75,
+        159,
+        133,
+        89,
+        118,
+        93,
+        106,
+        165,
+        78,
+        223,
+        146,
+        160,
+        100,
+        221,
+        222,
+        172,
+        109,
+        166,
+        148,
+        140,
+        77,
+        76,
+        161,
+        116,
+        98,
+        108,
+        138,
+        128,
+        126,
+        230,
+        79,
+        139,
+        152,
+        74,
+        102,
+        137,
+        167,
+        119,
+        229,
+        86,
+        92,
+        132,
+        103,
+        157,
+        216,
+        174,
+        155,
+        82,
+        99
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+      "mockItems": [
+        {
+          "id": 221,
+          "index": 8,
+          "key": 2
+        },
+        {
+          "id": 217,
+          "index": 9,
+          "key": 1
+        }
+      ],
+      "nativeDialogs": [
+        "已匯入學習紀錄",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ]
+    }
+  ],
+  "errors": [],
+  "browserVersion": "154.0.4258.37",
+  "recorded_at_utc": "2026-09-29T13:43:38.959426+00:00",
+  "supersedes_engineering_head": "2bc2273579c8984fcb00bb76815efe2a7c1e41b0",
+  "negative_controls": [
+    {
+      "case": "out-of-scope stem",
+      "result": "rejected",
+      "reason": "Q-1: unauthorized question change"
+    },
+    {
+      "case": "canonical stem",
+      "result": "rejected",
+      "reason": "Q-73: canonical content changed"
+    },
+    {
+      "case": "canonical option text",
+      "result": "rejected",
+      "reason": "Q-73: canonical options changed"
+    },
+    {
+      "case": "canonical answer meaning",
+      "result": "rejected",
+      "reason": "Q-73: canonical correct meaning changed"
+    },
+    {
+      "case": "replacement metadata",
+      "result": "rejected",
+      "reason": "Q-113: metadata changed"
+    },
+    {
+      "case": "replacement explanation key",
+      "result": "rejected",
+      "reason": "Q-113: explanation key mismatch"
+    },
+    {
+      "case": "schema",
+      "result": "rejected",
+      "reason": "Q-113: schema changed"
+    },
+    {
+      "case": "record removed",
+      "result": "rejected",
+      "reason": "Question count changed"
+    },
+    {
+      "case": "application code",
+      "result": "rejected",
+      "reason": "Non-bank application changed"
+    },
+    {
+      "case": "replacement clone",
+      "result": "rejected",
+      "reason": "Exact duplicates remain"
+    },
+    {
+      "case": "reordered replacement clone",
+      "result": "rejected",
+      "reason": "Order-independent duplicates remain"
+    },
+    {
+      "case": "unchanged replacement",
+      "result": "rejected",
+      "reason": "Q-113: replacement content not rewritten"
+    },
+    {
+      "case": "unbalanced keys with matching explanation label",
+      "result": "rejected",
+      "reason": "Handled keys not balanced"
+    },
+    {
+      "case": "long correct option",
+      "result": "rejected",
+      "reason": "Replacement length cue"
+    },
+    {
+      "case": "paraphrased Human-approved stem",
+      "result": "rejected",
+      "reason": "Q-129 approved wording/key differs"
+    },
+    {
+      "case": "paraphrased Human-approved option",
+      "result": "rejected",
+      "reason": "Q-129 approved wording/key differs"
+    },
+    {
+      "case": "unjustified additional rework",
+      "result": "rejected",
+      "reason": "Rework question scope differs: [129, 137]"
+    }
+  ],
+  "persistence_regression": {
+    "command": "node scripts/test-mock-persistence.cjs",
+    "result": "PASS",
+    "coverage": "save/reload/resume; legacy/corrupt/reordered-bank rejection; flags/position/deadline; overwrite/discard; submit/review; expired resume; no duplicate history/resurrection"
+  },
+  "rendered_audit": {
+    "artifact": "QUESTION_DUPLICATE_CLEANUP_RENDERING.json",
+    "source_sha256_lf": "fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1",
+    "coverage": "40 verbatim replacement questions × 4 options × 2 viewports, before and after; measured while unanswered",
+    "result": "No systematic correct-tallest pattern observed; Q-129 is a localized 3/2/2/2-line mobile observation in the exact Human-approved wording. Q-137 and Q-217 are equal-height at both viewports.",
+    "measurement_controls": "PASS: equal-height, unique-tallest, partial-tie and nonmatching-key cases"
+  },
+  "visual_inspection": {
+    "result": "PASS for rendering/readability; Q-129 mobile height observation recorded",
+    "samples": [
+      "after/1280-q129.png",
+      "after/375-q129.png",
+      "after/375-q137.png",
+      "after/375-q217.png",
+      "qa/mobile-q129.png"
+    ],
+    "notes": "Verbatim unanswered states and revised explanation visually inspected; Q-129 A wraps to three mobile lines, B/C/D to two. Q-137/Q-217 options each two mobile lines. Existing tab strip remains scrollable; no page overflow."
+  }
+}
