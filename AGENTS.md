@@ -9,7 +9,7 @@ PMP Trainer is a single-page, static PMP practice tool published with GitHub Pag
 - `main` is the production / deploy branch.
 - `dev` is the integration + staging / Dev Preview branch.
 - Fixed Dev Preview: `https://naiyi-chia.github.io/pmp-trainer/dev/`
-- Cross-project workflow follows the canonical AI Product Development Playbook v1.6 in `Naiyi-Chia/naiyi-product-playbook`.
+- Cross-project workflow follows the canonical AI Product Development Playbook v1.7 in `Naiyi-Chia/naiyi-product-playbook`.
 
 ## Source of Truth
 The canonical Playbook defines the cross-project workflow. The GitHub Issue is the Source of Truth for each development task.
@@ -31,18 +31,25 @@ Do not keep requirement changes only in chat, commit messages, PR comments, or h
    - Parent Issue: when the Sub-issue contract is insufficient, or for epic orchestration / checkpoint / final integration.
    - `PROJECT_CONTEXT.md`: when stable product / repository context is needed for the task.
    - Canonical Playbook: for workflow ambiguity, governance changes, or interpreting repo rules; routine implementation should not reread the whole Playbook.
-5. Resolve the task base branch:
+5. Resolve the expected task base / target:
    - default: latest `dev`;
    - optional Epic pattern: latest named Epic Integration Branch only when the Parent Issue records an explicit Human decision and the current Sub-issue explicitly names its base / target.
-6. Switch / update the correct baseline and confirm the working tree is clean.
-7. Create a scoped branch from that baseline, for example:
-   - `feat/issue-N-short-name`
-   - `fix/issue-N-short-name`
-   - `ux/issue-N-short-name`
-   - `maint/issue-N-short-name`
+6. Check remote scoped branches associated with the Issue before creating a new branch.
+7. Resolve continuation safely:
+   - exactly one compatible, unambiguous branch → continue that branch;
+   - no compatible branch → switch / update the resolved baseline, confirm the working tree is clean, then create a scoped branch, for example:
+     - `feat/issue-N-short-name`
+     - `fix/issue-N-short-name`
+     - `ux/issue-N-short-name`
+     - `maint/issue-N-short-name`;
+   - multiple candidates, unexpected divergence, incompatible base / target, or conflicting local state → stop automatic continuation and surface the blocker rather than guessing.
 8. Inspect only the relevant implementation / evidence before editing; do not duplicate existing behavior.
 
+A branch is compatible only when it can be tied to the current Issue and matches the Issue's expected base / target contract without ambiguous or unsafe divergence.
+
 Do not infer or enable an Epic Integration Branch merely because a Parent Issue or multiple Sub-issues exist. Without an explicit Human decision and Issue contract, the base remains latest `dev`.
+
+Engineering Agent execution may run in a local or cloud runtime. If in-progress work must survive a runtime switch, commit and push it to the remote scoped branch first. Uncommitted local state, local chat history, and local-only runtime state are not durable handoff state and must not be required to resume the task.
 
 Context efficiency must not override correctness: if required evidence is missing, read the authoritative source instead of guessing.
 
@@ -190,7 +197,7 @@ Default lifecycle:
 
 ```text
 Issue
-→ scoped branch from latest dev
+→ resume one compatible remote scoped branch OR create scoped branch from latest dev
 → implementation + local/browser QA
 → commit + push
 → concise Engineering Ready evidence
@@ -213,7 +220,7 @@ The optional Epic Integration Branch pattern is an exception, not a new default.
 
 ```text
 Sub-issue
-→ scoped branch from latest named Epic Integration Branch
+→ resume one compatible remote scoped branch OR create scoped branch from latest named Epic Integration Branch
 → implementation + QA
 → concise Engineering Ready
 → ChatGPT Technical Review
