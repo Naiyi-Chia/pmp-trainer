@@ -137,6 +137,22 @@ def negative_controls(bank, source):
     return result
 
 
+def validate_rework(before, bank, old_app, app):
+    require(old_app==app,'rework: non-bank application changed')
+    require([q['id'] for q in before]==[q['id'] for q in bank],'rework: IDs/order changed')
+    changed=[]
+    for old,new in zip(before,bank):
+        require(list(old)==list(new),'rework: field order/schema changed')
+        require(all(old[k]==new[k] for k in old if k not in {'q','opts','exp'}),f"rework Q-{old['id']}: protected field changed")
+        if old!=new:
+            require(old['id'] in {76,86},f"rework Q-{old['id']}: unauthorized record changed")
+            changed.append({'id':old['id'],'changed_fields':[k for k in old if old[k]!=new[k]],
+                            'before':old,'after':new,'rationale':new['exp']})
+    require([r['id'] for r in changed]==[76,86],'rework: must change exactly Q-076/Q-086')
+    require(bank[75]['ans']==2 and bank[85]['ans']==1,'rework: answer positions')
+    return changed
+
+
 def evidence_json(value, level=0, compact_items=False):
     """Keep one measured screen per JSON line without dropping its option evidence."""
     indent='  '*level
@@ -160,6 +176,7 @@ def main():
     parser.add_argument('--render-before',type=Path)
     parser.add_argument('--render-after',type=Path)
     parser.add_argument('--output',type=Path)
+    parser.add_argument('--rework-ref',help='Reviewed head for comment 5975782093; guards exactly Q-076/Q-086')
     parser.add_argument('--negative-controls',action='store_true')
     args=parser.parse_args()
     sha=git('rev-parse',args.ref)
@@ -198,10 +215,43 @@ def main():
             'before_wording_screen':wording(before,list(dict.fromkeys([*BASELINE['wording_correct_distractors'],*ADDITIONAL]))),
             'other_292_disposition':'Retain: full pre-answer rendered rules near 25% at both viewports. Raw shortest differences alone do not authorize edits. Q-129 explicit Human wording retained.'}
         for metrics in remediation['before_metrics'].values():metrics.pop('questions')
+    rework=None
+    if args.rework_ref:
+        require(args.working,'rework requires --working')
+        rework_sha=git('rev-parse',args.rework_ref)
+        reviewed_text=subprocess.check_output(['git','show',f'{rework_sha}:index.html'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
+        reviewed,reviewed_app=PRIOR['parse'](reviewed_text)
+        changes=validate_rework(reviewed,bank,reviewed_app,app)
+        prior_report=json.loads(subprocess.check_output(['git','show',f'{rework_sha}:docs/QUESTION_FINAL_AUDIT.json'],cwd=ROOT).decode('utf-8'))
+        require(prior_report['source']['sha256_lf']==hashlib.sha256(reviewed_text.encode()).hexdigest(),'reviewed evidence fingerprint mismatch')
+        rework_controls=[]
+        for label,mutate,reason in [
+            ('unauthorized other canonical',lambda b:b[95].__setitem__('exp',b[95]['exp']+' changed'),'unauthorized record'),
+            ('changed Q-076 key',lambda b:b[75].__setitem__('ans',0),'protected field'),
+            ('changed Q-086 metadata',lambda b:b[85].__setitem__('difficulty','難'),'protected field')]:
+            candidate=copy.deepcopy(bank);mutate(candidate)
+            try:validate_rework(reviewed,candidate,reviewed_app,app)
+            except ValueError as error:
+                require(reason in str(error),'unexpected rework control failure')
+                rework_controls.append({'case':label,'result':'rejected','reason':str(error)})
+            else:raise ValueError('rework negative control unexpectedly passed')
+        before_metrics=PRIOR['metrics'](reviewed,list(range(1,331)));before_metrics.pop('questions')
+        rework={'contract':'https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975782093',
+            'reviewed_commit':rework_sha,'reviewed_sha256_lf':prior_report['source']['sha256_lf'],
+            'scope_control':'PASS: only Q-076/Q-086 q/opts/exp; all other 328 records/app/keys/metadata/mindsets unchanged from reviewed head',
+            'changed_ids':[76,86],'questions':changes,'before_metrics':before_metrics,
+            'before_length_strategies':prior_report['length_strategy_screen'],
+            'before_wording_screen':prior_report['wording_screen'],
+            'before_rendered':{'row_scope':[76,86],'coverage':'historical full-330 totals; only affected rows copied',
+                'source_sha256_lf':prior_report['source']['sha256_lf'],
+                'browser_version':prior_report['rendered_audit']['after']['browser_version'],
+                'views':[{k:(v if k!='rows' else [row for row in v if row['id'] in {76,86}]) for k,v in view.items()} for view in prior_report['rendered_audit']['after']['views']]},
+            'negative_controls':rework_controls,
+            'human_review_status':'CHANGES REQUIRED remains unresolved until exact stored reworked items are reviewed on new head; no Human Content Review PASS claimed'}
     checks=validate(bank)
     controls=negative_controls(bank,text)
     if args.negative_controls:
-        print(json.dumps(controls,ensure_ascii=False,indent=2));return
+        print(json.dumps(controls+(rework['negative_controls'] if rework else []),ensure_ascii=False,indent=2));return
     all_ids=[q['id'] for q in bank]
     current=PRIOR['metrics'](bank,all_ids)
     sequence=current['sequence_by_id']
@@ -264,7 +314,7 @@ def main():
                   'sha256_lf':fingerprint,'working_source_matches_audited_main':'intentionally differs under targeted remediation' if args.working else 'PASS',
                   'released_issue26_index_blob':'4f4249d15a1d84fa7cea95e6a5f302d4c75e41c8',
                   'post_release_changed_paths':git('diff','--name-only','41c70e8',sha).splitlines()},
-        'remediation':remediation,'rendered_audit':rendered,'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
+        'rework':rework,'remediation':remediation,'rendered_audit':rendered,'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
         'current':current,'key_pattern_screen':{'ordering':'ascending stable ID',
             'global':'all periods 1..165', 'local':'12 consecutive IDs; periods 1..4',
             'local_repeated_windows':local_patterns},'protected_canonical_residual':canonical,

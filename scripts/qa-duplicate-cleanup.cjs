@@ -39,7 +39,7 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
    if(mobile){assert(!(await page.locator('#pexp').isVisible()));await page.locator('#expBtn').click();assert.equal(await page.locator('#popts .wrong').count(),1)}
    const exp=await page.locator('#pexp').innerText();assert(exp.includes(q.exp));assert(exp.includes(q.mindset));assert(exp.includes('正確答案 '+'ABCD'[q.ans]));assert.equal(await page.locator('#popts .correct').count(),1);
    const dims=await page.evaluate(()=>({w:document.documentElement.clientWidth,s:document.documentElement.scrollWidth}));assert(dims.s<=dims.w,JSON.stringify({id:q.id,...dims}));
-   if([73,113,129,137,143,217,221,257,301].includes(q.id))await page.screenshot({path:path.join(out,(mobile?'mobile':'desktop')+'-q'+q.id+'.png'),fullPage:true});
+   if([73,76,86,113,129,137,143,217,221,257,301].includes(q.id))await page.screenshot({path:path.join(out,(mobile?'mobile':'desktop')+'-q'+q.id+'.png'),fullPage:true});
    await page.locator('#practiceNext').click();
   }
   assert.deepEqual([...seen].sort((a,b)=>a-b),ids);assert.equal(await page.locator('#prCorrect').innerText(),mobile?'0':String(ids.length));assert.equal(await page.locator('#prAccuracy').innerText(),mobile?'0%':'100%');
