@@ -1,0 +1,160 @@
+{
+  "issue": 29,
+  "base": "7e00c7570bce744c0238684ebcb07477bf7a2d5f",
+  "source_sha256_lf": "4530b9f6624db164245521122dbc4010c4d8356c949a1a30a25c2ef524fe0830",
+  "result": "PASS",
+  "guards": {
+    "stored_question_bank": "unchanged",
+    "static_ui_css_official_content": "unchanged",
+    "mock_composition": "unchanged",
+    "js_syntax": "PASS",
+    "diff_check": "PASS"
+  },
+  "regressions": {
+    "scripts/test-attempt-history.cjs": {
+      "result": "PASS",
+      "output": "PASS: migration/idempotence/legacy preservation, first/repeat events, visible timing, v2/raw/v3 imports/exports, invalid data and quota preservation, native Mock reload/final-answer/discard/submit/dedupe, read-only Review"
+    },
+    "scripts/test-mock-persistence.cjs": {
+      "result": "PASS",
+      "output": "PASS: save/reload/resume, legacy/corruption/reorder rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume, no duplicate history/resurrection"
+    }
+  },
+  "browser": {
+    "issue": 29,
+    "source_sha256_lf": "4530b9f6624db164245521122dbc4010c4d8356c949a1a30a25c2ef524fe0830",
+    "browser": [
+      {
+        "viewport": "1280x900",
+        "migration": "PASS",
+        "practiceRetry": "PASS: 3 events + legacy 2 attempts; first/repeat flags and response time",
+        "importExport": "PASS: actual v3 download/reimport/reload, rejected future version, cancelled v2 replacement, preserved old-client conflict and explicit v3 import recovery",
+        "mock": "PASS: native 180, final answer, reload/resume/session/timing/flags, submit 1/180, 2 events, read-only Review",
+        "tabs": "PASS",
+        "overflow": "none",
+        "dialogs": [
+          "無法匯入：不支援的學習紀錄版本。現有紀錄未變更。",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ]
+      },
+      {
+        "viewport": "375x812",
+        "migration": "PASS",
+        "practiceRetry": "PASS: 3 events + legacy 2 attempts; first/repeat flags and response time",
+        "importExport": "PASS: actual v3 download/reimport/reload, rejected future version, cancelled v2 replacement, preserved old-client conflict and explicit v3 import recovery",
+        "mock": "PASS: native 180, final answer, reload/resume/session/timing/flags, submit 1/180, 2 events, read-only Review",
+        "tabs": "PASS",
+        "overflow": "none",
+        "dialogs": [
+          "無法匯入：不支援的學習紀錄版本。現有紀錄未變更。",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ]
+      }
+    ],
+    "errors": [],
+    "browserVersion": "154.0.4258.53",
+    "result": "PASS"
+  },
+  "existing_smoke": {
+    "source_sha256": "d473ff5d9e5f6ee686f838b723f2d2cab5f5045591dbb3b62f895ffc464e54a1",
+    "source_sha256_lf": "4530b9f6624db164245521122dbc4010c4d8356c949a1a30a25c2ef524fe0830",
+    "syntax": "PASS",
+    "sample_ids": [
+      1,
+      2,
+      129,
+      217
+    ],
+    "browser": [
+      {
+        "viewport": "1280x900",
+        "practice": "4 correct; instant explanations; 4/4 PASS",
+        "ids": [
+          129,
+          1,
+          2,
+          217
+        ],
+        "tabs": "PASS",
+        "randomFlow": "PASS",
+        "overflow": "none",
+        "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+        "mockSelection": "first two actual M items; independent of practice --ids",
+        "mockItems": [
+          {
+            "id": 265,
+            "index": 0,
+            "key": 3
+          },
+          {
+            "id": 250,
+            "index": 1,
+            "key": 0
+          }
+        ],
+        "nativeDialogs": [
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ],
+        "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+      },
+      {
+        "viewport": "375x812",
+        "practice": "4 incorrect; manual explanations; 0/4; retry/favorite PASS",
+        "ids": [
+          129,
+          2,
+          217,
+          1
+        ],
+        "tabs": "PASS",
+        "randomFlow": "PASS",
+        "overflow": "none",
+        "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+        "mockSelection": "first two actual M items; independent of practice --ids",
+        "mockItems": [
+          {
+            "id": 186,
+            "index": 0,
+            "key": 1
+          },
+          {
+            "id": 150,
+            "index": 1,
+            "key": 2
+          }
+        ],
+        "nativeDialogs": [
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ],
+        "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+      }
+    ],
+    "errors": [],
+    "browserVersion": "154.0.4258.53"
+  },
+  "visual_review": "desktop/mobile Dashboard inspected; readable controls/layout",
+  "limitations": [
+    "Legacy individual attempts/timing cannot be reconstructed.",
+    "Edge/two viewports; Human QA and physical-device/Safari pending.",
+    "Single active v3 writer; old-client mismatch is preserved and requires explicit import after backup; quota requires export rather than truncation."
+  ]
+}
