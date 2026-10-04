@@ -131,7 +131,7 @@ button,select{min-height:44px}
 <div class="nav">
 <button id="practicePrev" onclick="practicePrev()">上一題</button>
 <button class="lightweight" onclick="toggleStar()" id="starBtn">☆ 收藏</button>
-<button onclick="showPracticeExplanation()" id="expBtn">看解析</button>
+<button class="hidden" onclick="showPracticeExplanation()" id="expBtn">看解析</button>
 <button id="practiceNext" class="primary" onclick="practiceNext()">下一題</button>
 </div>
 <p class="note hidden" id="practiceEnd">已到本輪最後一題，可回看前題或調整設定開始新一輪。</p>
@@ -446,6 +446,7 @@ function renderPractice(){
  let h=getHist(q.id);el('starBtn').textContent=h.star?'★ 已收藏':'☆ 收藏';
  if(ans!==undefined && (pReview||pSettings?.pExplain==='instant'))showPracticeExplanation(); else el('pexp').classList.add('hidden');
  el('expBtn').disabled=ans===undefined&&!pReview;
+ el('expBtn').classList.toggle('hidden',ans===undefined||!el('pexp').classList.contains('hidden'));
  el('practicePrev').disabled=pi===0;
  const last=pi===P.length-1;
  el('practiceNext').disabled=pReview&&last;
@@ -455,7 +456,7 @@ function renderPractice(){
  updatePStats();
 }
 function answerPractice(i){if(pReview||pResult||!P.length)return;let q=P[pi];if(pAns[q.id]!==undefined)return;pAns[q.id]=i;record(q,i);renderPractice();}
-function showPracticeExplanation(){if(!P.length)return;let q=P[pi],a=pAns[q.id];if(a===undefined&&!pReview)return;el('pexp').innerHTML=`<b>${a===undefined?'未作答':a===q.ans?'✅ 答對':'❌ 答錯'}｜正確答案 ${String.fromCharCode(65+q.ans)}</b><br>${q.exp}<div class="mindset"><b>PMI Mindset：</b>${q.mindset||''}</div>`;el('pexp').classList.remove('hidden');}
+function showPracticeExplanation(){if(!P.length)return;let q=P[pi],a=pAns[q.id];if(a===undefined&&!pReview)return;el('pexp').innerHTML=`<b>${a===undefined?'未作答':a===q.ans?'✅ 答對':'❌ 答錯'}｜正確答案 ${String.fromCharCode(65+q.ans)}</b><br>${q.exp}<div class="mindset"><b>PMI Mindset：</b>${q.mindset||''}</div>`;el('pexp').classList.remove('hidden');el('expBtn').classList.add('hidden');}
 function practiceNext(){
  if(pResult||!P.length)return;
  if(pi<P.length-1){pi++;renderPractice();}
