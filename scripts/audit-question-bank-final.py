@@ -172,10 +172,12 @@ def main():
     parser.add_argument('--ref',default='origin/main')
     parser.add_argument('--qa-json',type=Path)
     parser.add_argument('--working',action='store_true',help='Audit scoped working source against baseline-ref')
-    parser.add_argument('--baseline-ref',default='4e192e9207a46f5cfff1be4bdeecb6296b1de21d')
+    parser.add_argument('--baseline-ref',default='570bad452a7e1d3015476db3984443459a53f92d')
     parser.add_argument('--render-before',type=Path)
     parser.add_argument('--render-after',type=Path)
     parser.add_argument('--output',type=Path)
+    parser.add_argument('--sync-dev-ref',help='Exact released dev ref; permits only its non-bank application')
+    parser.add_argument('--reviewed-ref',help='Content-reviewed head; requires all 330 records unchanged')
     parser.add_argument('--rework-ref',help='Reviewed head for comment 5975782093; guards exactly Q-076/Q-086')
     parser.add_argument('--negative-controls',action='store_true')
     args=parser.parse_args()
@@ -188,13 +190,54 @@ def main():
     else:
         validate_source(text, local)
     bank,app=PRIOR['parse'](text)
+    sync=None
+    sync_controls=[]
+    if args.sync_dev_ref or args.reviewed_ref:
+        require(args.working and args.sync_dev_ref and args.reviewed_ref and not args.rework_ref,'sync requires working/dev/reviewed refs and no new content rework')
+        dev_sha=git('rev-parse',args.sync_dev_ref);reviewed_sha=git('rev-parse',args.reviewed_ref)
+        for ref in [dev_sha,reviewed_sha]:
+            require(subprocess.run(['git','merge-base','--is-ancestor',ref,'HEAD'],cwd=ROOT,capture_output=True).returncode==0,'sync ref missing from branch history')
+        dev_text=subprocess.check_output(['git','show',f'{dev_sha}:index.html'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
+        reviewed_text=subprocess.check_output(['git','show',f'{reviewed_sha}:index.html'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
+        dev_bank,dev_app=PRIOR['parse'](dev_text);reviewed_bank,reviewed_app=PRIOR['parse'](reviewed_text)
+        def validate_sync(candidate,candidate_app):
+            require(candidate==reviewed_bank,'sync: reviewed question content changed')
+            require(candidate_app==dev_app,'sync: application differs from released dev')
+        validate_sync(bank,app)
+        stored_bank=re.search(r'^const Q=(.*);$',text,re.M)[1]
+        reviewed_stored_bank=re.search(r'^const Q=(.*);$',reviewed_text,re.M)[1]
+        require(stored_bank==reviewed_stored_bank,'sync: stored bank JSON serialization changed')
+        candidate=copy.deepcopy(bank);candidate[75]['q']+=' mutation'
+        for label,candidate,candidate_app,reason in [
+            ('reviewed question mutation',candidate,app,'question content'),
+            ('unreleased application mutation',bank,app+'\n// mutation','application differs')]:
+            try:validate_sync(candidate,candidate_app)
+            except ValueError as error:
+                require(reason in str(error),'unexpected sync control failure')
+                sync_controls.append({'case':label,'result':'rejected','reason':str(error)})
+            else:raise ValueError('sync negative control unexpectedly passed')
+        sync_prior=json.loads(subprocess.check_output(['git','show',f'{reviewed_sha}:docs/QUESTION_FINAL_AUDIT.json'],cwd=ROOT).decode('utf-8'))
+        require(sync_prior['source']['sha256_lf']==hashlib.sha256(reviewed_text.encode()).hexdigest(),'sync prior fingerprint mismatch')
+        sync={'contract':'https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975907537',
+            'reviewed_commit':reviewed_sha,'reviewed_source_sha256_lf':sync_prior['source']['sha256_lf'],
+            'dev_commit':dev_sha,'synchronized_source_commit':git('rev-parse','HEAD'),
+            'content_guard':'PASS: all 330 full records and stored JSON serialization exactly equal to reviewed head; zero changed question IDs',
+            'question_bank_sha256':hashlib.sha256(stored_bank.encode()).hexdigest(),
+            'application_guard':'PASS: non-bank HTML/CSS/JS exactly equals released dev; only #54 explanation-action UI delta introduced',
+            'dev_ancestor':'PASS','reviewed_ancestor':'PASS','changed_question_ids':[],
+            'reviewed_before_metrics':sync_prior['current'],
+            'reviewed_before_rendered_groups':[{'viewport':v['viewport'],'groups':v['groups']} for v in sync_prior['rendered_audit']['after']['views']],
+            'negative_controls':sync_controls,
+            'content_review_disposition':'Q-076/Q-086 rework CONTENT PASS on reviewed head per comment 5975907537; other revised canonicals still pending Human review',
+            'technical_gate':'Engineering regression refreshed; independent Technical Review/Integration decision pending'}
     remediation=None
     if args.working:
         baseline_sha=git('rev-parse',args.baseline_ref)
         baseline_text=subprocess.check_output(['git','show',f'{baseline_sha}:index.html'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
         before,old_app=PRIOR['parse'](baseline_text)
         validate(before)
-        require(app==old_app,'non-bank application changed')
+        require(app==(dev_app if sync else old_app),'non-bank application changed beyond allowed baseline/dev')
+        if sync:require(dev_bank==before,'released dev question bank differs from original baseline')
         changed=[]
         for old,new in zip(before,bank):
             require(list(old)==list(new),'field order/schema changed')
@@ -208,14 +251,17 @@ def main():
         require(all(bank[128][k]==v for k,v in PRIOR['APPROVED_Q129'].items()),'Human-approved Q-129 changed')
         remediation={'baseline_ref':args.baseline_ref,'baseline_commit':baseline_sha,
             'baseline_sha256_lf':hashlib.sha256(baseline_text.encode()).hexdigest(),
-            'scope_control':'PASS: exactly 38 canonical IDs; only q/opts/exp; application, metadata, field order, answer indexes and mindsets unchanged; other 292 byte-equivalent as records',
+            'scope_control':('PASS: original 38-canonical remediation retained; all questions unchanged from reviewed head; application exactly equals released dev; metadata/keys/mindsets/other 292 preserved' if sync else 'PASS: exactly 38 canonical IDs; only q/opts/exp; application, metadata, field order, answer indexes and mindsets unchanged; other 292 byte-equivalent as records'),
             'changed_ids':CANONICAL,'questions':changed,
             'before_metrics':{name:PRIOR['metrics'](before,ids) for name,ids in [('whole_bank',list(range(1,331))),('canonical',CANONICAL),('outside_canonical',[i for i in range(1,331) if i not in CANONICAL])]},
             'before_length_strategies':{name:length_strategies([q for q in before if q['id'] in ids]) for name,ids in [('whole_bank',list(range(1,331))),('canonical',CANONICAL),('outside_canonical',[i for i in range(1,331) if i not in CANONICAL])]},
             'before_wording_screen':wording(before,list(dict.fromkeys([*BASELINE['wording_correct_distractors'],*ADDITIONAL]))),
             'other_292_disposition':'Retain: full pre-answer rendered rules near 25% at both viewports. Raw shortest differences alone do not authorize edits. Q-129 explicit Human wording retained.'}
         for metrics in remediation['before_metrics'].values():metrics.pop('questions')
-    rework=None
+    rework=copy.deepcopy(sync_prior['rework']) if sync else None
+    if sync:
+        rework['evidence_status']='Historical rework evidence from content-reviewed head; fresh sync guard preserves every record'
+        rework['human_review_status']='Q-076/Q-086 content rework PASS per comment 5975907537; prior Round 1 content blocker resolved'
     if args.rework_ref:
         require(args.working,'rework requires --working')
         rework_sha=git('rev-parse',args.rework_ref)
@@ -251,9 +297,10 @@ def main():
     checks=validate(bank)
     controls=negative_controls(bank,text)
     if args.negative_controls:
-        print(json.dumps(controls+(rework['negative_controls'] if rework else []),ensure_ascii=False,indent=2));return
+        print(json.dumps(controls+sync_controls+(rework['negative_controls'] if args.rework_ref else []),ensure_ascii=False,indent=2));return
     all_ids=[q['id'] for q in bank]
     current=PRIOR['metrics'](bank,all_ids)
+    if sync:require(current==sync_prior['current'],'bank metrics changed after UI-only sync')
     sequence=current['sequence_by_id']
     local_patterns=[]
     for start in range(len(sequence)-11):
@@ -274,6 +321,7 @@ def main():
         require(qa['errors']==[] and qa['syntax']=='PASS','QA syntax/browser errors')
         require([v['viewport'] for v in qa['browser']]==['1280x900','375x812'],'QA viewport coverage')
         if args.working:require(set(CANONICAL)<=set(qa['sample_ids']),'QA must cover all changed questions')
+        if sync:require(all(v.get('explanationAction','').startswith('PASS:') for v in qa['browser']),'sync QA must check #54 explanation action')
     rendered={}
     for name,file,expected in [('before',args.render_before,remediation['baseline_sha256_lf'] if remediation else fingerprint),('after',args.render_after,fingerprint)]:
         if file:
@@ -308,13 +356,13 @@ def main():
         require(run.returncode==0 and run.stdout.startswith('PASS:'),'mock persistence regression failed')
         persistence={'command':'node scripts/test-mock-persistence.cjs','result':'PASS','output':run.stdout.strip()}
     result={
-        'issue':27,'phase':'targeted remediation; Engineering Ready; independent review/Human acceptance pending' if args.working else 'audit only; residual disposition pending; not final quality PASS',
+        'issue':27,'phase':'dev synchronization; Engineering Ready; independent Technical Review and remaining Human acceptance pending' if sync else 'targeted remediation; Engineering Ready; independent review/Human acceptance pending' if args.working else 'audit only; residual disposition pending; not final quality PASS',
         'source':{'audited_ref':'working tree' if args.working else args.ref,'audited_commit':None if args.working else sha,'working_parent_commit':git('rev-parse','HEAD'),'main_commit':git('rev-parse','origin/main'),
                   'dev_commit':git('rev-parse','origin/dev'),'index_blob':git('hash-object','index.html') if args.working else git('rev-parse',f'{sha}:index.html'),
                   'sha256_lf':fingerprint,'working_source_matches_audited_main':'intentionally differs under targeted remediation' if args.working else 'PASS',
                   'released_issue26_index_blob':'4f4249d15a1d84fa7cea95e6a5f302d4c75e41c8',
                   'post_release_changed_paths':git('diff','--name-only','41c70e8',sha).splitlines()},
-        'rework':rework,'remediation':remediation,'rendered_audit':rendered,'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
+        'synchronization':sync,'rework':rework,'remediation':remediation,'rendered_audit':rendered,'published_issue8_baseline':BASELINE,'validation':checks,'negative_controls':controls,
         'current':current,'key_pattern_screen':{'ordering':'ascending stable ID',
             'global':'all periods 1..165', 'local':'12 consecutive IDs; periods 1..4',
             'local_repeated_windows':local_patterns},'protected_canonical_residual':canonical,

@@ -2,20 +2,35 @@
 
 ## Engineering outcome
 
-All 38 authorized canonicals have been remediated. Full pre-answer UI measurement was completed **before content edits** and repeated on the final 330-question source at **1280×900** and **375×812**. Engineering validation passes; independent Technical / Content Review and Human content acceptance remain pending. This evidence now includes the Round 1 Human-requested rework of Q-076/Q-086 and supersedes the `a06a5b6` Engineering Ready head; Human re-review remains required.
+All 38 authorized canonicals have been remediated. Full pre-answer UI measurement was completed **before content edits** and repeated on the final 330-question source at **1280×900** and **375×812**. Engineering validation passes; independent Technical / Content Review and Human content acceptance remain pending. This evidence refreshes the content-reviewed `e6072e0` head after synchronizing current dev (#54). Q-076/Q-086 rework CONTENT PASS is recorded by comment 5975907537; remaining canonical Human review and independent Technical Review on the synchronized head are pending.
 
-Contract: [Human disposition](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968746145) and [initial Engineering handoff](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968753182) and [Round 1 CHANGES REQUIRED](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975782093). Machine evidence: [QUESTION_FINAL_AUDIT.json](QUESTION_FINAL_AUDIT.json). Historical comparison: [parent #8](https://github.com/Naiyi-Chia/pmp-trainer/issues/8). Existing PR #73 remains open and unmerged; no Product Verify, release or closure is claimed.
+Contract: [Human disposition](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968746145) and [initial Engineering handoff](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5968753182) and [Round 1 rework](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975782093), followed by [dev synchronization contract](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975907537). Machine evidence: [QUESTION_FINAL_AUDIT.json](QUESTION_FINAL_AUDIT.json). Historical comparison: [parent #8](https://github.com/Naiyi-Chia/pmp-trainer/issues/8). Existing PR #73 remains open and unmerged; no Product Verify, release or closure is claimed.
 
 ## Source and scope
 
 - Resumed `question/issue-27-final-audit` at `4e192e9207a46f5cfff1be4bdeecb6296b1de21d`, clean and synchronized with its single remote branch; existing dev ancestry is intact.
 - Original remediation baseline used main/dev `570bad452a7e1d3015476db3984443459a53f92d`; #22–#26 start gate was already completed. The new handoff explicitly authorizes remediation on this scoped branch.
 - Before source SHA-256 (LF): `fe9f3f9d6df84a6a6b590fb2ae6980f7986586b0a881e23c8732922e47a923d1`.
-- Final source SHA-256 (LF): `3ae2fbc427636082d777ceed477bbbed600663844bda691715fa9fab0de8c515`; Git application blob: `55f1ae320e7ff8895c03c4bf51624a78e9475e9d`. Rendered and fresh browser QA fingerprints match.
-- Exactly 38 records changed: options and explanations in all 38; context clarified in 14 stems. IDs/order/schema, original learning objectives, domain/approach/topic/difficulty/type, answer positions and mindsets are preserved. No CSS, application logic, localStorage, scoring, embedded official samples, dependencies or other 292 question records changed.
+- Final source SHA-256 (LF): `51f1d1a5142011e2268e4732a24a43ce03d14feecda32269a6a6bfcde983bd42`; Git application blob: `b96210b71ccd097e85a05c98e7bfa5b9db87a99d`. Rendered and fresh browser QA fingerprints match.
+- Exactly 38 records changed: options and explanations in all 38; context clarified in 14 stems. IDs/order/schema, original learning objectives, domain/approach/topic/difficulty/type, answer positions and mindsets are preserved. Question changes above are historical remediation scope. This synchronization changes **zero question records**; non-bank application equals current dev, introducing only its #54 explanation-action behavior. CSS, localStorage, scoring, official samples and dependencies receive no additional change.
 - Changed IDs: `73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,159,160,161,163,165,166,167,172,173,174`.
 
-## Round 1 rework — Q-076 and Q-086 only
+## Dev synchronization / post-#54 regression refresh
+
+Contract: [comment 5975907537](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975907537). Preserved content-reviewed head: `e6072e07a17f9b4b7699497193885aa7d9420e20`. Current dev: `c0878a2ae58a427fcaf76505dd063f93b5dbcddf`.
+
+- Merged dev into the existing scoped branch without conflicts or rewriting reviewed history. Sync merge: `2195065488073c2708d9dda7646a39e83f495f1c`; reviewed head and dev are both ancestors. The final evidence commit is identified in the Engineering Ready handoff.
+- **Changed question IDs: none.** All 330 complete records and the stored bank JSON line exactly match the content-reviewed head, including keys, explanations, mindsets, metadata and Q-129 approval. Stored question-bank SHA-256: `208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656`.
+- Non-bank application exactly matches released dev. The only app delta is #54: initial explanation action hidden, hidden whenever unanswered or explanation already shown, and hidden after manual reveal. No additional UI implementation change was made.
+- Fresh whole-bank raw/key/wording/duplicate/numeric metrics are identical to the reviewed head: unique-longest 9/330, materially-longer 0, A/B/C/D 83/83/82/82, zero duplicate groups, 330 explanation-letter checks and 34 numeric checks pass.
+- Full pre-answer 330-question rendered audit rerun on the merged source at 1280×900 and 375×812, with 2,640 exact option-text checks, every line/height measurement, zero page/console errors and no document horizontal overflow. Source fingerprint is the synchronized application’s fingerprint.
+- Rendered tallest/shortest rules unchanged: desktop 24.92%/25.03%; mobile 24.70%/25.35%; canonical 38 remains 25%/25% in both viewports. Previous reviewed-head totals are retained in `synchronization.reviewed_before_rendered_groups`.
+- #18 persistence, inline JS syntax and fresh 52-item Practice plus native 180-item Mock/Review QA pass on both viewports. QA additionally tests **instant and manual modes on each viewport**, unanswered-hidden action, manual reveal/hide, next/previous revisits and hidden action in locked Mock Review. JSON records this as `explanationAction: PASS` for both runs.
+- QA runner initially attempted to switch explanation mode before opening the settings panel and timed out; it was corrected to use native “new round / adjust settings” controls and the full run was repeated successfully. No application fix was needed.
+- Fresh guards reject both a reviewed-question mutation and an unreleased application mutation (2/2), alongside the 13/13 original audit controls. The baseline default now uses the reachable released ancestor `570bad4` with the same historical source fingerprint.
+- Q-076/Q-086 rework CONTENT PASS is authoritative historical review evidence; this refresh does **not** declare Technical Review, remaining Human Content Review, Integration Approval or Product Verify. PR #73 remains open and unmerged.
+
+## Round 1 rework — Q-076 and Q-086 only (historical content rework)
 
 Human finding: both former stems said the capability gap was already affecting delivery quality, making experienced-member takeover a plausible first response. Contract: [comment 5975782093](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975782093). Reviewed head: `a06a5b624f9ff3cfabd1bd88f9d97e979bf78004`.
 
@@ -23,7 +38,7 @@ Human finding: both former stems said the capability gap was already affecting d
 - Both scenarios now specify controlled test work, nonurgent schedules, no immediate production/service incident or safety/compliance exposure, and small practice increments with review. Neither stem announces that development is the goal.
 - Correct alternatives combine hands-on practice, coaching/mentoring, capability targets and timely feedback. Alternatives retain realistic demonstration/observation, self-study/testing and independent-practice/end-review methods; explanations distinguish their limits under these conditions.
 - `rework.questions` preserves complete reviewed/reworked records and rationale; `rework.before_rendered` preserves previous source-fingerprinted affected geometry and bank/group totals, sourced from the reviewed commit’s durable evidence.
-- Prior Technical Review evidence applies to its reviewed head only. Human Content Review remains **CHANGES REQUIRED / BLOCKED until exact new stored wording is re-reviewed**; Engineering does not mark that finding resolved. Existing PR #73 remains unmerged.
+- Prior Technical Review evidence applies to its reviewed head only. Historical rework required re-review. [Comment 5975907537](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975907537) now records **Q-076/Q-086 CONTENT PASS**, resolving that finding; remaining canonical Human review is still pending. Existing PR #73 remains unmerged.
 
 | Rework metric | Reviewed a06a5b6 | New source |
 |---|---:|---:|
@@ -36,7 +51,7 @@ Human finding: both former stems said the capability gap was already affecting d
 
 Fresh rendered audit remeasures all 330 questions on the new source. Each affected question has desktop A/B/C/D lines **1/1/1/1**, heights **54.390625px ×4**, and mobile lines **2/2/2/2**, heights **82.78125px ×4**. No mechanical padding or new rendered cue. Raw lengths are Q-076 **23/24/22/25** and Q-086 **24/25/23/24**; character extrema alone do not trigger further rewriting.
 
-Fresh checks: 330 schema/key/explanation/mindset checks, 34 numeric recomputations, 13 original + 3 rework negative controls, #18 persistence, inline JS syntax, full rendered evidence and 52-item Practice/Mock/Review QA at both viewports pass. No page/console errors or document horizontal overflow.
+Fresh checks: 330 schema/key/explanation/mindset checks, 34 numeric recomputations, 13 original + 3 rework negative controls, #18 persistence, inline JS syntax, full rendered evidence and 52-item Practice/Mock/Review QA at both viewports passed on the historical rework head. Fresh synchronized-head results are reported below.
 
 ### Exact stored reworked wording (Engineering evidence)
 
@@ -173,33 +188,33 @@ Additional screens: `只 0/4`, `所有 2/51`, `僅 0/3`, `口頭 0/7`, `刪除 0
 ## Validation / QA
 
 - Schema, stable ordered IDs, field order, metadata enums, four distinct nonempty options, valid integer answer indexes and nonempty explanation/mindset checks: **PASS for 330**. Explicit explanation-letter checks now cover **330/330** (before: 292).
-- Approved scope guard: **PASS**. Compares baseline/current records and non-bank HTML; rejects outside-canonical edits or changes to protected fields and checks exact Human Q-129 wording.
+- Approved scope guard: **PASS**. All 330 reviewed records and their stored JSON serialization remain exactly equal to `e6072e0`; non-bank HTML/CSS/JS exactly equals `dev@c0878a2`. Original canonical-remediation metadata/key/Q-129 guards also pass.
 - Numeric/status recomputation: **34/34 PASS**, including EVM, EMV, PERT, communication pairs and total float; exactly one matching option/key per checked item.
-- Existing negative controls: **13/13 rejected**; rework guard controls **3/3 rejected** (unauthorized Q-096 edit, changed Q-076 key, changed Q-086 difficulty). Existing controls cover malformed schema/keys/text, exact/permuted duplicates and source mismatch.
+- Fresh negative controls: **13/13 original + 2/2 dev-sync controls rejected**; the latter catch reviewed-question mutation and application changes outside released dev. The prior 3/3 rework controls remain historical evidence in JSON.
 - `node scripts/test-mock-persistence.cjs`: **PASS**, including save/reload/resume, legacy/corrupt/reordered-bank rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume and no duplicate history/resurrection. Fresh execution/output is embedded in JSON.
 - Inline JavaScript syntax: **PASS** via Node `vm.Script`; both audit scripts execute successfully.
 - Fresh Edge **154.0.4258.53**, desktop/mobile Practice QA: **52 questions per viewport**, all 38 changed IDs plus prior risks/outliers and domain/approach/difficulty/calculation coverage. Native import, exact content, answer locks, score, explanations/mindsets, navigation, tabs and random practice pass. Desktop correct/instant = 52/52; mobile incorrect/manual = 0/52; retry and favorite toggle pass.
 - Mock/Review on both viewports: native random 180-question selection, one correct + one incorrect scoped answer, flag, reload/resume with identical question IDs/answers/position/deadline/flags, native submit = 1/180, locked correct/incorrect review states: **PASS**. Sampled IDs/dialog evidence is embedded in JSON.
 - No page/console errors or document horizontal overflow in fresh Practice/Mock/Review QA. Desktop/mobile Q-076 and Q-086 screenshots visually inspected: readable text, feedback, full explanations and navigation controls.
-- Final scoped diff reviewed; `git diff --check`: **PASS**. Engineering commit and remote-sync state are supplied in the Issue handoff after push.
+- #54 explanation-action assertions pass for instant/manual and Review on both viewports; final scoped diff reviewed; `git diff --check`: **PASS**. Engineering commit and remote-sync state are supplied in the Issue handoff after push.
 
 ## Reproduce
 
-Use provided Python/Node and external Playwright/Edge; no application dependency was added. Set `NODE_PATH` to the available Playwright runtime when required. Export `4e192e9207a46f5cfff1be4bdeecb6296b1de21d:index.html` with UTF-8 intact as `<baseline.html>` before replaying the baseline audit.
+Use provided Python/Node and external Playwright/Edge; no application dependency was added. Set `NODE_PATH` to the available Playwright runtime when required. Export reachable released ancestor `570bad452a7e1d3015476db3984443459a53f92d:index.html` with UTF-8 intact as `<baseline.html>` before replaying the baseline audit.
 
 ```text
 node scripts/audit-option-rendering.cjs --all --html <baseline.html> --output <before-dir>
 node scripts/audit-option-rendering.cjs --all --output <after-dir>
-node scripts/qa-duplicate-cleanup.cjs <qa-dir> --ids=17,29,59,70,73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,129,130,137,150,159,160,161,163,165,166,167,172,173,174,217,234,257,268,299,301
-python -X utf8 scripts/audit-question-bank-final.py --working --rework-ref a06a5b624f9ff3cfabd1bd88f9d97e979bf78004 --render-before <before-dir>/report.json --render-after <after-dir>/report.json --qa-json <qa-dir>/report.json --output docs/QUESTION_FINAL_AUDIT.json
-python -X utf8 scripts/audit-question-bank-final.py --working --rework-ref a06a5b624f9ff3cfabd1bd88f9d97e979bf78004 --negative-controls
+node scripts/qa-duplicate-cleanup.cjs <qa-dir> --check-explanation-action --ids=17,29,59,70,73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,129,130,137,150,159,160,161,163,165,166,167,172,173,174,217,234,257,268,299,301
+python -X utf8 scripts/audit-question-bank-final.py --working --sync-dev-ref c0878a2ae58a427fcaf76505dd063f93b5dbcddf --reviewed-ref e6072e07a17f9b4b7699497193885aa7d9420e20 --render-before <before-dir>/report.json --render-after <after-dir>/report.json --qa-json <qa-dir>/report.json --output docs/QUESTION_FINAL_AUDIT.json
+python -X utf8 scripts/audit-question-bank-final.py --working --sync-dev-ref c0878a2ae58a427fcaf76505dd063f93b5dbcddf --reviewed-ref e6072e07a17f9b4b7699497193885aa7d9420e20 --negative-controls
 git diff --check
 ```
 
-The final auditor checks source fingerprints and exact stored text against both rendered reports, requires desktop/mobile coverage and all changed questions in fresh QA, checks edit scope, recomputes raw metrics and reruns persistence. The historical audit mode is retained for the unmodified released main source.
+Current reproduction requires both sync refs to be ancestors of the branch; the released baseline is also an ancestor. Historical rework evidence is loaded from the reviewed commit rather than treated as a new content edit. The final auditor checks source fingerprints and exact stored text against both rendered reports, requires desktop/mobile coverage and all changed questions in fresh QA, checks edit scope, recomputes raw metrics and reruns persistence. The historical audit mode is retained for the unmodified released main source.
 
 ## Known limitations / review gate
 
 Geometry evidence is specific to Edge, the installed fonts and these two viewport sizes; it is not physical-device/Safari or production smoke. Descriptive expected guessing credit is not a learner study or statistical proof. Raw shortest-length and residual wording signals remain documented; closely related retained learning objectives can still recur even with zero exact duplicates. Engineering semantic checks do not replace independent Content Review, psychometric assessment or Human acceptance.
 
-Revised wording requires independent Technical / Content Review and Human content acceptance before Integration Approval. No PR/merge into dev or main, Product Verify, production release or #27/#8 closure is authorized by this Engineering handoff. Final acceptance/parent close gates remain owned by the Issue.
+Q-076/Q-086 content rework PASS is recorded in the authoritative Issue comment. Remaining revised canonical Human review and independent Technical Review on this synchronized head remain prerequisites for Integration Approval. No PR/merge into dev or main, Product Verify, production release or #27/#8 closure is authorized by this Engineering handoff. Final acceptance/parent close gates remain owned by the Issue.
