@@ -1,0 +1,84 @@
+{
+  "issue": 77,
+  "base": "7e00c7570bce744c0238684ebcb07477bf7a2d5f",
+  "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+  "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+  "result": "PASS",
+  "parity_and_regressions": {
+    "scripts/validate-question-bank.cjs": {
+      "result": "PASS",
+      "output": "PASS: 330/330 exact ordered records/fields match reachable migration baseline 7e00c7570bce744c0238684ebcb07477bf7a2d5f\nPASS: schema/count/unique IDs/required fields/options/keys; 10 invalid-bank controls rejected; bank SHA256 208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656"
+    },
+    "scripts/test-question-loader.cjs": {
+      "result": "PASS",
+      "output": "PASS: production/dev asset URLs, validated startup gate, HTTP/JSON/version/timeout failures and retry visibility; canonical 208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656"
+    },
+    "scripts/test-mock-persistence.cjs": {
+      "command": "node scripts/test-mock-persistence.cjs --migration-baseline",
+      "result": "PASS",
+      "output": "PASS: native pre-extraction active Mock resumes/grades on canonical runtime with identical IDs/answers/flags/position/deadline\nPASS: save/reload/resume, legacy/corruption/reorder rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume, no duplicate history/resurrection"
+    }
+  },
+  "bank_metrics_vs_integrated_baseline": "unchanged",
+  "rendered_groups_vs_integrated_baseline": "unchanged",
+  "loader_browser_qa": {
+    "issue": 77,
+    "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+    "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+    "views": [
+      {
+        "viewport": "1280x900",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: actual preview bootstrap, raw dev data URL, isolated history/active-mock keys",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      },
+      {
+        "viewport": "375x812",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: actual preview bootstrap, raw dev data URL, isolated history/active-mock keys",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "case": "slow response",
+        "result": "PASS: app hidden/inert; storage unchanged before data validation"
+      },
+      {
+        "case": "404",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "json",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "version",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      }
+    ],
+    "errors": [],
+    "browserVersion": "154.0.4258.53",
+    "expected_failure_console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "result": "PASS"
+  },
+  "all_script_syntax": "PASS",
+  "five_historical_readers": "PASS: current canonical JSON, 330 records each",
+  "diff_check": "PASS",
+  "visual_review": "mobile failure/retry + native dev Practice inspected",
+  "limitations": [
+    "Faithful local Pages paths and actual preview bootstrap with scoped raw endpoint responses; not live deployment/Production Smoke.",
+    "Physical-device/Safari and Human Product Verify pending.",
+    "Direct file:// and offline packaging are unsupported; use HTTP."
+  ]
+}

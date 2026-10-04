@@ -1,0 +1,19 @@
+{
+  "issue": 77,
+  "baseline_commit": "7e00c7570bce744c0238684ebcb07477bf7a2d5f",
+  "question_count": 330,
+  "ordered_records_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+  "fields": [
+    "id",
+    "domain",
+    "approach",
+    "topic",
+    "q",
+    "opts",
+    "ans",
+    "exp",
+    "difficulty",
+    "type",
+    "mindset"
+  ]
+}

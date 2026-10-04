@@ -13,7 +13,9 @@ import json
 import re
 import runpy
 import subprocess
+import sys
 from pathlib import Path
+from question_source import read_source, CANONICAL as BANK_FILE
 
 ROOT = Path(__file__).resolve().parents[1]
 PRIOR = runpy.run_path(str(ROOT / 'scripts/audit-duplicate-cleanup.py'))
@@ -181,7 +183,45 @@ def main():
     parser.add_argument('--reviewed-ref',help='Content-reviewed head; requires all 330 records unchanged')
     parser.add_argument('--rework-ref',help='Reviewed head for comment 5975782093; guards exactly Q-076/Q-086')
     parser.add_argument('--negative-controls',action='store_true')
+    parser.add_argument('--canonical',action='store_true',help='Audit current canonical bank (default); no historical mutation contract')
+    parser.add_argument('--historical',action='store_true',help='Replay the original embedded-HTML Issue #27 contract')
     args=parser.parse_args()
+    if args.canonical or (not args.working and not args.historical and '--ref' not in sys.argv):
+        require(not args.working and not args.historical and not args.sync_dev_ref and not args.reviewed_ref and not args.rework_ref and not args.render_before and '--ref' not in sys.argv,'canonical mode audits current data only; use historical mode for old ref/mutation contracts')
+        text,_,bank=read_source(BANK_FILE)
+        checks=validate(bank);controls=negative_controls(bank,text)
+        if args.negative_controls:
+            print(json.dumps(controls,ensure_ascii=False,indent=2));return
+        bank_hash=hashlib.sha256(json.dumps(bank,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
+        app_hash=hashlib.sha256((ROOT/'index.html').read_text(encoding='utf-8').encode()).hexdigest()
+        result={'source':str(BANK_FILE.relative_to(ROOT)),'schema_version':1,'question_bank_sha256':bank_hash,
+                'validation':checks,'negative_controls':controls,'current':PRIOR['metrics'](bank,[q['id'] for q in bank]),
+                'wording_screen':wording(bank,PRIOR['TERMS']+ADDITIONAL),'length_strategy_screen':length_strategies(bank),
+                'recomputed_numeric_items':runpy.run_path(str(ROOT/'scripts/audit-remediation-batch5.py'))['calculations'](bank)}
+        for field,file in [('rendered_audit',args.render_after),('browser_qa',args.qa_json)]:
+            if not file:continue
+            data=json.loads(file.read_text(encoding='utf-8'))
+            require(data['source_sha256_lf']==app_hash and data['question_bank_sha256']==bank_hash,'canonical evidence fingerprint mismatch')
+            require(data['errors']==[],'canonical evidence errors')
+            if field=='rendered_audit':
+                require([v['viewport'] for v in data['views']]==[{'width':1280,'height':900},{'width':375,'height':812}],'rendered viewports')
+                for view in data['views']:
+                    require([r['id'] for r in view['rows']]==list(range(1,331)) and view['verbatim_options']==1320 and view['horizontal_overflow']==0,'rendered coverage')
+                    for row,q in zip(view['rows'],bank):
+                        require(row['stem']==q['q'] and row['key']=='ABCD'[q['ans']] and [o['text'] for o in row['options']]==['ABCD'[i]+'. '+o for i,o in enumerate(q['opts'])],'canonical rendered text/key mismatch')
+            else:require([v['viewport'] for v in data['browser']]==['1280x900','375x812'],'QA viewports')
+            result[field]=data
+        if args.small_ids_json:
+            small=json.loads(args.small_ids_json.read_text(encoding='utf-8'))
+            require(small['source_sha256_lf']==app_hash and small['question_bank_sha256']==bank_hash and small['result']=='PASS' and small['sample_ids']==[1,2] and small['repetitions']==2 and len(small['runs'])==2,'small IDs evidence invalid')
+            for run in small['runs']:
+                require(run['source_sha256_lf']==app_hash and run['question_bank_sha256']==bank_hash and run['errors']==[] and run['syntax']=='PASS','small IDs run fingerprint/errors')
+                require([v['viewport'] for v in run['browser']]==['1280x900','375x812'],'small IDs viewports')
+                require(all([q['index'] for q in v['mockItems']]==[0,1] and 'submit 1/180/review PASS' in v['mock'] and v['overflow']=='none' for v in run['browser']),'small IDs native Mock failed')
+            result['small_ids_regression']=small
+        if args.output:args.output.write_text(evidence_json(result)+'\n',encoding='utf-8');print('PASS: canonical bank audit; '+str(args.output))
+        else:print(evidence_json(result))
+        return
     sha=git('rev-parse',args.ref)
     raw=subprocess.check_output(['git','show',f'{sha}:index.html'],cwd=ROOT)
     text=raw.decode('utf-8').replace('\r\n','\n')

@@ -5,6 +5,7 @@ python -X utf8 scripts/audit-duplicate-cleanup.py --negative-controls
 Optional --baseline and --current accept UTF-8 HTML files. No dependencies.
 Length/wording/similarity heuristics assist, but do not replace content review.
 """
+from question_source import parse_source, read_source, CANONICAL as BANK_FILE
 import argparse
 import collections
 import copy
@@ -54,10 +55,7 @@ def check(ok, message):
 
 
 def parse(text):
-    match = re.search(r"^const Q=(.*);$", text, re.M)
-    check(match is not None, "Question bank not found")
-    return json.loads(match[1]), text[:match.start(1)] + "BANK" + text[match.end(1):]
-
+    return parse_source(text)
 
 def normalize(text):
     return re.sub(r"\s+", "", text).casefold()
@@ -233,12 +231,18 @@ def similarity(before, after):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", type=Path)
-    parser.add_argument("--current", type=Path, default=ROOT / "index.html")
+    parser.add_argument("--current", type=Path, default=BANK_FILE)
     parser.add_argument("--negative-controls", action="store_true")
+    parser.add_argument("--historical", action="store_true", help="Replay the original Issue #26 mutation contract")
     args = parser.parse_args()
+    current = read_source(args.current)[0]
+    if not args.historical and not args.baseline and not args.negative_controls:
+        bank, _ = parse(current)
+        print(json.dumps({"source": str(args.current), "metrics": metrics(bank, [q['id'] for q in bank]),
+                          "exact_duplicates": duplicates(bank), "order_independent_duplicates": duplicates(bank, True)}, ensure_ascii=False, indent=2))
+        return
     baseline = (args.baseline.read_text(encoding="utf-8-sig") if args.baseline else
                 subprocess.check_output(["git", "show", f"{BASE}:index.html"], cwd=ROOT).decode("utf-8").replace("\r\n", "\n"))
-    current = args.current.read_text(encoding="utf-8-sig")
     before, old_app = parse(baseline)
     after, new_app = parse(current)
     validate(before, after, old_app, new_app)
