@@ -1,6 +1,6 @@
-// Issue #26: measure verbatim options in the real, unanswered trainer UI.
+// Issues #26/#27: measure verbatim options in the real, unanswered trainer UI.
 // Uses externally supplied Playwright + installed Edge; no app dependencies.
-// node scripts/audit-option-rendering.cjs --output <directory> [--html <file>]
+// node scripts/audit-option-rendering.cjs --output <directory> [--html <file>] [--all]
 const {chromium} = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -12,8 +12,10 @@ const root = path.resolve(__dirname, '..');
 const arg = name => process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined;
 const html = fs.readFileSync(arg('--html') || path.join(root, 'index.html'), 'utf8');
 const out = arg('--output') || path.join(os.tmpdir(), 'pmp26-rendering');
-const ids = [113,116,118,119,122,123,126,128,129,132,133,134,135,136,137,138,139,140,141,142,143,146,148,149,152,153,154,155,156,157,215,216,217,219,221,222,223,228,229,230];
+const legacyIds = [113,116,118,119,122,123,126,128,129,132,133,134,135,136,137,138,139,140,141,142,143,146,148,149,152,153,154,155,156,157,215,216,217,219,221,222,223,228,229,230];
 const bank = JSON.parse(html.match(/^const Q=(.*);\r?$/m)[1]);
+const ids = process.argv.includes('--all') ? bank.map(q => q.id) : legacyIds;
+const canonicalIds = [73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,159,160,161,163,165,166,167,172,173,174];
 const source = new Map(bank.map(q => [q.id, q]));
 fs.mkdirSync(out, {recursive: true});
 
@@ -52,7 +54,7 @@ const report = {
   source_sha256_lf: crypto.createHash('sha256').update(html.replace(/\r\n/g, '\n')).digest('hex'),
   method: 'Unanswered #popts buttons; exact DOM text = letter label + stored option; document.fonts.ready; DOM Range line rectangles and button border-box height. No answer/feedback labels measured. CSS and app code unchanged.',
   height_tolerance_px: 0.01,
-  cue_rule: 'Credit for guessing uniformly among tallest/shortest options; random four-option expectation = 10/40. This descriptive screen is not a semantic or statistical acceptance test.',
+  cue_rule: 'Credit for guessing uniformly among tallest/shortest options; random four-option expectation = 25%. This descriptive screen is not a semantic or statistical acceptance test.',
   measurement_controls: 'PASS: equal-height, unique-tallest, partial-tie and nonmatching-key cases',
   views: [], errors: []
 };
@@ -75,7 +77,7 @@ const server = http.createServer((req, res) => {
       await page.locator('[data-tab="dashboard"]').click();
       const history = Object.fromEntries(ids.map(id => [id, {attempts:0,correct:0,lastCorrect:null,star:true}]));
       await page.locator('#importFile').setInputFiles({name:'rendering-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,history}))});
-      await page.waitForFunction(() => Object.values(H).filter(h => h.star).length === 40);
+      await page.waitForFunction(count => Object.values(H).filter(h => h.star).length === count, ids.length);
       await page.reload();
       await page.locator('#pMode').selectOption('star');
       await page.locator('#pCount').selectOption('all');
@@ -113,9 +115,12 @@ const server = http.createServer((req, res) => {
       }
       rows.sort((a,b) => a.id-b.id);
       assert.deepEqual(rows.map(r => r.id), ids);
-      const view = {viewport, height_summary:summarize(rows,'height'), line_summary:summarize(rows,'lines'), rows};
+      const groups = {whole_bank:rows, canonical:rows.filter(r => canonicalIds.includes(r.id)), outside_canonical:rows.filter(r => !canonicalIds.includes(r.id))};
+      const view = {viewport, height_summary:summarize(rows,'height'), line_summary:summarize(rows,'lines'),
+        groups:Object.fromEntries(Object.entries(groups).map(([name, subset]) => [name, {height:summarize(subset,'height'),lines:summarize(subset,'lines')}])),
+        verbatim_options:rows.length*4, unanswered_questions:rows.length, horizontal_overflow:0, rows};
       report.views.push(view);
-      console.log(JSON.stringify({viewport, height:view.height_summary, lines:view.line_summary}));
+      console.log(JSON.stringify({viewport, groups:Object.fromEntries(Object.entries(view.groups).map(([name,g]) => [name,{count:g.height.count,tallest:g.height.tallest_rule_credit_sum,shortest:g.height.shortest_rule_credit_sum}]))}));
       await context.close();
     }
     assert.deepEqual(report.errors, []);
