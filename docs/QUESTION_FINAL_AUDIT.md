@@ -17,6 +17,16 @@ Contract: [Human disposition](https://github.com/Naiyi-Chia/pmp-trainer/issues/2
 
 ## Dev synchronization / post-#54 regression refresh
 
+### QA runner reliability rework / fresh post-sync evidence
+
+Contract: [comment 5976033827](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5976033827), addressing [PR #73 finding](https://github.com/Naiyi-Chia/pmp-trainer/pull/73#discussion_r4175758909). Starting head: `c11ce383ac3f35d635dfea16061ff13e78c4b034`.
+
+- **Changed question IDs: none. Application changes: none.** The source fingerprint and all 330 reviewed records remain identical to the preceding post-sync evidence. Only QA tooling and durable evidence change.
+- The runner previously filtered the native random 180-item Mock by custom Practice `--ids`, so a valid small Practice set could yield fewer than two Mock matches. It now selects the first two actual native Mock items (positions 0/1), independently of Practice IDs. The native random composition, scoring and persistence behavior are exercised without overrides.
+- Added `scripts/test-qa-small-ids.cjs`: repeats the actual CLI with `--ids=1,2 --check-explanation-action` twice, each at desktop/mobile. **2/2 repetitions and 4/4 viewport runs PASS**, including native save/reload/resume/flag, submit 1/180, locked Review, #54 actions, JS syntax, no errors and no overflow. Actual Mock IDs and selected positions are durable in JSON `small_ids_regression`; the final auditor validates their coverage and source fingerprints.
+- Reran 52-question Practice plus native Mock/Review QA per viewport and the full 330-question pre-answer rendered audit: **PASS**. Every option text matches storage (2,640 checks); all line counts/heights are stored. Bank-wide tallest/shortest remains desktop **24.92%/25.03%**, mobile **24.70%/25.35%**; all 38 canonicals remain **25%/25%**. Raw/key/wording/duplicate metrics are unchanged; schema, explanation/mindset, numeric checks, #18 persistence and syntax pass. Fresh 13 original + 2 dev-sync negative controls pass.
+- This fixes the identified QA selection failure. Two successful randomized compositions per viewport are a regression sample; the selection guarantee comes from taking positions 0/1 of the asserted 180-item native Mock, rather than probabilistic membership of Practice IDs. Independent Technical Review of the new head and remaining canonical Human review are still pending; PR #73 is unmerged.
+
 Contract: [comment 5975907537](https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5975907537). Preserved content-reviewed head: `e6072e07a17f9b4b7699497193885aa7d9420e20`. Current dev: `c0878a2ae58a427fcaf76505dd063f93b5dbcddf`.
 
 - Merged dev into the existing scoped branch without conflicts or rewriting reviewed history. Sync merge: `2195065488073c2708d9dda7646a39e83f495f1c`; reviewed head and dev are both ancestors. The final evidence commit is identified in the Engineering Ready handoff.
@@ -194,7 +204,7 @@ Additional screens: `只 0/4`, `所有 2/51`, `僅 0/3`, `口頭 0/7`, `刪除 0
 - `node scripts/test-mock-persistence.cjs`: **PASS**, including save/reload/resume, legacy/corrupt/reordered-bank rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume and no duplicate history/resurrection. Fresh execution/output is embedded in JSON.
 - Inline JavaScript syntax: **PASS** via Node `vm.Script`; both audit scripts execute successfully.
 - Fresh Edge **154.0.4258.53**, desktop/mobile Practice QA: **52 questions per viewport**, all 38 changed IDs plus prior risks/outliers and domain/approach/difficulty/calculation coverage. Native import, exact content, answer locks, score, explanations/mindsets, navigation, tabs and random practice pass. Desktop correct/instant = 52/52; mobile incorrect/manual = 0/52; retry and favorite toggle pass.
-- Mock/Review on both viewports: native random 180-question selection, one correct + one incorrect scoped answer, flag, reload/resume with identical question IDs/answers/position/deadline/flags, native submit = 1/180, locked correct/incorrect review states: **PASS**. Sampled IDs/dialog evidence is embedded in JSON.
+- Mock/Review on both viewports: native random 180-question selection, one correct + one incorrect answer from actual Mock positions 0/1 independently of Practice IDs, flag, reload/resume with identical question IDs/answers/position/deadline/flags, native submit = 1/180, locked correct/incorrect review states: **PASS**. Sampled IDs/dialog evidence is embedded in JSON.
 - No page/console errors or document horizontal overflow in fresh Practice/Mock/Review QA. Desktop/mobile Q-076 and Q-086 screenshots visually inspected: readable text, feedback, full explanations and navigation controls.
 - #54 explanation-action assertions pass for instant/manual and Review on both viewports; final scoped diff reviewed; `git diff --check`: **PASS**. Engineering commit and remote-sync state are supplied in the Issue handoff after push.
 
@@ -206,7 +216,8 @@ Use provided Python/Node and external Playwright/Edge; no application dependency
 node scripts/audit-option-rendering.cjs --all --html <baseline.html> --output <before-dir>
 node scripts/audit-option-rendering.cjs --all --output <after-dir>
 node scripts/qa-duplicate-cleanup.cjs <qa-dir> --check-explanation-action --ids=17,29,59,70,73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,129,130,137,150,159,160,161,163,165,166,167,172,173,174,217,234,257,268,299,301
-python -X utf8 scripts/audit-question-bank-final.py --working --sync-dev-ref c0878a2ae58a427fcaf76505dd063f93b5dbcddf --reviewed-ref e6072e07a17f9b4b7699497193885aa7d9420e20 --render-before <before-dir>/report.json --render-after <after-dir>/report.json --qa-json <qa-dir>/report.json --output docs/QUESTION_FINAL_AUDIT.json
+node scripts/test-qa-small-ids.cjs <small-ids-dir>
+python -X utf8 scripts/audit-question-bank-final.py --working --sync-dev-ref c0878a2ae58a427fcaf76505dd063f93b5dbcddf --reviewed-ref e6072e07a17f9b4b7699497193885aa7d9420e20 --render-before <before-dir>/report.json --render-after <after-dir>/report.json --qa-json <qa-dir>/report.json --small-ids-json <small-ids-dir>/report.json --output docs/QUESTION_FINAL_AUDIT.json
 python -X utf8 scripts/audit-question-bank-final.py --working --sync-dev-ref c0878a2ae58a427fcaf76505dd063f93b5dbcddf --reviewed-ref e6072e07a17f9b4b7699497193885aa7d9420e20 --negative-controls
 git diff --check
 ```

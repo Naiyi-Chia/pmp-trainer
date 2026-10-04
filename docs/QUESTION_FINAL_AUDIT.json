@@ -4,7 +4,7 @@
   "source": {
     "audited_ref": "working tree",
     "audited_commit": null,
-    "working_parent_commit": "2195065488073c2708d9dda7646a39e83f495f1c",
+    "working_parent_commit": "c11ce383ac3f35d635dfea16061ff13e78c4b034",
     "main_commit": "ee6fe49d18d21543f5a53204ede2dbe2a5eba9f4",
     "dev_commit": "c0878a2ae58a427fcaf76505dd063f93b5dbcddf",
     "index_blob": "b96210b71ccd097e85a05c98e7bfa5b9db87a99d",
@@ -21,7 +21,7 @@
     "reviewed_commit": "e6072e07a17f9b4b7699497193885aa7d9420e20",
     "reviewed_source_sha256_lf": "3ae2fbc427636082d777ceed477bbbed600663844bda691715fa9fab0de8c515",
     "dev_commit": "c0878a2ae58a427fcaf76505dd063f93b5dbcddf",
-    "synchronized_source_commit": "2195065488073c2708d9dda7646a39e83f495f1c",
+    "synchronized_source_commit": "c11ce383ac3f35d635dfea16061ff13e78c4b034",
     "content_guard": "PASS: all 330 full records and stored JSON serialization exactly equal to reviewed head; zero changed question IDs",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "application_guard": "PASS: non-bank HTML/CSS/JS exactly equals released dev; only #54 explanation-action UI delta introduced",
@@ -48858,6 +48858,172 @@
     "result": "PASS",
     "output": "PASS: save/reload/resume, legacy/corruption/reorder rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume, no duplicate history/resurrection"
   },
+  "small_ids_regression": {
+    "issue": 27,
+    "contract": "https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5976033827",
+    "source_sha256_lf": "51f1d1a5142011e2268e4732a24a43ce03d14feecda32269a6a6bfcde983bd42",
+    "result": "PASS",
+    "sample_ids": [
+      1,
+      2
+    ],
+    "repetitions": 2,
+    "method": "Native random 180-item mocks; choose actual positions 0/1 independently of custom Practice IDs; repeat full CLI twice at both viewports. No product random/scoring/storage override.",
+    "runs": [
+      {
+        "source_sha256": "46163186dc5a16759bbb78c92a566c4a85c61455ff9c10aacfa96791cf074378",
+        "source_sha256_lf": "51f1d1a5142011e2268e4732a24a43ce03d14feecda32269a6a6bfcde983bd42",
+        "syntax": "PASS",
+        "sample_ids": [
+          1,
+          2
+        ],
+        "browser": [
+          {
+            "viewport": "1280x900",
+            "practice": "2 correct; instant explanations; 2/2 PASS",
+            "ids": [
+              1,
+              2
+            ],
+            "tabs": "PASS",
+            "randomFlow": "PASS",
+            "overflow": "none",
+            "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+            "mockSelection": "first two actual M items; independent of practice --ids",
+            "mockItems": [
+              {
+                "id": 220,
+                "index": 0,
+                "key": 3
+              },
+              {
+                "id": 159,
+                "index": 1,
+                "key": 2
+              }
+            ],
+            "nativeDialogs": [
+              "已匯入學習紀錄",
+              "開始後計時 240 分鐘。確定開始？",
+              "尚有 178 題未作答。確定交卷？"
+            ],
+            "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+          },
+          {
+            "viewport": "375x812",
+            "practice": "2 incorrect; manual explanations; 0/2; retry/favorite PASS",
+            "ids": [
+              2,
+              1
+            ],
+            "tabs": "PASS",
+            "randomFlow": "PASS",
+            "overflow": "none",
+            "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+            "mockSelection": "first two actual M items; independent of practice --ids",
+            "mockItems": [
+              {
+                "id": 114,
+                "index": 0,
+                "key": 3
+              },
+              {
+                "id": 75,
+                "index": 1,
+                "key": 2
+              }
+            ],
+            "nativeDialogs": [
+              "已匯入學習紀錄",
+              "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
+              "開始後計時 240 分鐘。確定開始？",
+              "尚有 178 題未作答。確定交卷？"
+            ],
+            "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+          }
+        ],
+        "errors": [],
+        "browserVersion": "154.0.4258.53"
+      },
+      {
+        "source_sha256": "46163186dc5a16759bbb78c92a566c4a85c61455ff9c10aacfa96791cf074378",
+        "source_sha256_lf": "51f1d1a5142011e2268e4732a24a43ce03d14feecda32269a6a6bfcde983bd42",
+        "syntax": "PASS",
+        "sample_ids": [
+          1,
+          2
+        ],
+        "browser": [
+          {
+            "viewport": "1280x900",
+            "practice": "2 correct; instant explanations; 2/2 PASS",
+            "ids": [
+              1,
+              2
+            ],
+            "tabs": "PASS",
+            "randomFlow": "PASS",
+            "overflow": "none",
+            "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+            "mockSelection": "first two actual M items; independent of practice --ids",
+            "mockItems": [
+              {
+                "id": 322,
+                "index": 0,
+                "key": 0
+              },
+              {
+                "id": 147,
+                "index": 1,
+                "key": 2
+              }
+            ],
+            "nativeDialogs": [
+              "已匯入學習紀錄",
+              "開始後計時 240 分鐘。確定開始？",
+              "尚有 178 題未作答。確定交卷？"
+            ],
+            "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+          },
+          {
+            "viewport": "375x812",
+            "practice": "2 incorrect; manual explanations; 0/2; retry/favorite PASS",
+            "ids": [
+              1,
+              2
+            ],
+            "tabs": "PASS",
+            "randomFlow": "PASS",
+            "overflow": "none",
+            "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+            "mockSelection": "first two actual M items; independent of practice --ids",
+            "mockItems": [
+              {
+                "id": 172,
+                "index": 0,
+                "key": 3
+              },
+              {
+                "id": 251,
+                "index": 1,
+                "key": 2
+              }
+            ],
+            "nativeDialogs": [
+              "已匯入學習紀錄",
+              "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
+              "開始後計時 240 分鐘。確定開始？",
+              "尚有 178 題未作答。確定交卷？"
+            ],
+            "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+          }
+        ],
+        "errors": [],
+        "browserVersion": "154.0.4258.53"
+      }
+    ]
+  },
   "fresh_browser_qa": {
     "source_sha256": "46163186dc5a16759bbb78c92a566c4a85c61455ff9c10aacfa96791cf074378",
     "source_sha256_lf": "51f1d1a5142011e2268e4732a24a43ce03d14feecda32269a6a6bfcde983bd42",
@@ -48921,72 +49087,73 @@
         "viewport": "1280x900",
         "practice": "52 correct; instant explanations; 52/52 PASS",
         "ids": [
-          79,
-          137,
-          160,
-          163,
-          217,
-          74,
-          88,
-          106,
-          159,
-          234,
-          92,
-          99,
-          86,
-          75,
-          73,
-          59,
-          150,
           70,
-          108,
-          83,
-          76,
-          103,
-          97,
-          95,
-          96,
-          77,
-          112,
-          172,
-          130,
-          101,
-          167,
+          75,
+          173,
           161,
-          174,
-          17,
-          98,
-          100,
-          268,
-          299,
-          102,
+          83,
+          73,
+          97,
+          101,
+          79,
+          88,
+          74,
+          76,
           109,
-          89,
+          77,
           82,
           29,
+          172,
+          103,
+          106,
+          112,
+          234,
+          268,
+          100,
+          163,
+          150,
+          159,
+          217,
+          17,
+          167,
+          89,
           129,
-          257,
-          94,
-          165,
+          108,
+          59,
           301,
-          173,
-          93,
+          92,
+          95,
           166,
-          78
+          96,
+          94,
+          137,
+          160,
+          98,
+          78,
+          86,
+          130,
+          102,
+          299,
+          93,
+          165,
+          257,
+          99,
+          174
         ],
         "tabs": "PASS",
         "randomFlow": "PASS",
         "overflow": "none",
-        "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+        "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+        "mockSelection": "first two actual M items; independent of practice --ids",
         "mockItems": [
           {
-            "id": 101,
-            "index": 8,
-            "key": 1
+            "id": 19,
+            "index": 0,
+            "key": 2
           },
           {
-            "id": 79,
-            "index": 20,
+            "id": 197,
+            "index": 1,
             "key": 0
           }
         ],
@@ -49001,73 +49168,74 @@
         "viewport": "375x812",
         "practice": "52 incorrect; manual explanations; 0/52; retry/favorite PASS",
         "ids": [
-          89,
-          217,
-          95,
-          174,
-          97,
-          172,
-          86,
-          112,
-          159,
-          102,
-          82,
-          59,
-          161,
-          93,
-          108,
-          73,
-          98,
           101,
-          103,
-          137,
-          76,
-          257,
-          234,
-          94,
-          268,
-          166,
-          79,
-          160,
-          129,
-          29,
-          96,
-          130,
-          109,
-          163,
-          88,
-          165,
-          78,
-          83,
           75,
-          77,
-          17,
-          150,
-          301,
-          173,
-          99,
-          167,
-          70,
-          106,
-          100,
+          92,
+          94,
+          73,
+          257,
+          95,
+          98,
+          130,
+          76,
           299,
           74,
-          92
+          79,
+          301,
+          268,
+          112,
+          89,
+          108,
+          166,
+          17,
+          159,
+          77,
+          103,
+          86,
+          163,
+          88,
+          109,
+          99,
+          160,
+          96,
+          161,
+          70,
+          137,
+          165,
+          78,
+          167,
+          82,
+          150,
+          97,
+          172,
+          93,
+          100,
+          83,
+          174,
+          234,
+          106,
+          173,
+          217,
+          102,
+          29,
+          59,
+          129
         ],
         "tabs": "PASS",
         "randomFlow": "PASS",
         "overflow": "none",
-        "mock": "native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS",
+        "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+        "mockSelection": "first two actual M items; independent of practice --ids",
         "mockItems": [
           {
-            "id": 163,
-            "index": 4,
+            "id": 110,
+            "index": 0,
             "key": 3
           },
           {
-            "id": 217,
-            "index": 10,
-            "key": 1
+            "id": 119,
+            "index": 1,
+            "key": 2
           }
         ],
         "nativeDialogs": [

@@ -59,7 +59,9 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
    assert(await page.locator('#pexp').isVisible());assert(!(await page.locator('#expBtn').isVisible()));
   }
   await page.locator('[data-tab="mock"]').click();await page.locator('button[onclick="startMock()"]').click();
-  const selected=await page.evaluate(ids=>M.map((q,i)=>({id:q.id,index:i,key:q.ans})).filter(q=>ids.includes(q.id)).slice(0,2),sampleArg?ids:[113, 116, 118, 119, 122, 123, 126, 128, 129, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 146, 148, 149, 152, 153, 154, 155, 156, 157, 215, 216, 217, 219, 221, 222, 223, 228, 229, 230]);assert.equal(selected.length,2);
+  // Practice --ids does not constrain the randomly composed native mock.
+  assert.equal(await page.evaluate(()=>M.length),180);
+  const selected=await page.evaluate(()=>M.slice(0,2).map((q,index)=>({id:q.id,index,key:q.ans})));assert.equal(selected.length,2);
   const [first,second]=selected;await page.locator('#mGrid button').nth(first.index).click();await page.locator('#mopts button').nth(first.key).click();await page.locator('#flagBtn').click();
   await page.locator('#mGrid button').nth(second.index).click();await page.locator('#mopts button').nth((second.key+1)%4).click();
   const before=await page.evaluate(()=>({ids:M.map(q=>q.id),ans:mAns,flag:mFlag,end:mEndAt,position:mi}));
@@ -71,7 +73,7 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
   if(checkExplanationAction)assert(!(await page.locator('#expBtn').isVisible()));
   assert((await page.locator('#pexp').innerText()).includes('答錯'));assert.equal(await page.locator('#popts button:disabled').count(),4);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth));
   await page.screenshot({path:path.join(out,(mobile?'mobile':'desktop')+'-mock-review.png'),fullPage:true});assert(dialogs.some(s=>s.includes('交卷')));
-  report.browser.push({viewport:mobile?'375x812':'1280x900',practice:mobile?`${ids.length} incorrect; manual explanations; 0/${ids.length}; retry/favorite PASS`:`${ids.length} correct; instant explanations; ${ids.length}/${ids.length} PASS`,ids:seen,tabs:'PASS',randomFlow:'PASS',overflow:'none',mock:'native 180-item selection; two scoped answers; save/reload/resume/flag/submit 1/180/review PASS',mockItems:selected,nativeDialogs:dialogs,explanationAction:checkExplanationAction?'PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden':'not requested'});
+  report.browser.push({viewport:mobile?'375x812':'1280x900',practice:mobile?`${ids.length} incorrect; manual explanations; 0/${ids.length}; retry/favorite PASS`:`${ids.length} correct; instant explanations; ${ids.length}/${ids.length} PASS`,ids:seen,tabs:'PASS',randomFlow:'PASS',overflow:'none',mock:'native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS',mockSelection:'first two actual M items; independent of practice --ids',mockItems:selected,nativeDialogs:dialogs,explanationAction:checkExplanationAction?'PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden':'not requested'});
   console.log('PASS',mobile?'mobile':'desktop');await context.close();
  }
  assert.deepEqual(report.errors,[]);fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));console.log('PASS: browser QA and syntax;',out);

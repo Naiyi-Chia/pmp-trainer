@@ -171,6 +171,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ref',default='origin/main')
     parser.add_argument('--qa-json',type=Path)
+    parser.add_argument('--small-ids-json',type=Path,help='Durable native CLI regression for --ids=1,2')
     parser.add_argument('--working',action='store_true',help='Audit scoped working source against baseline-ref')
     parser.add_argument('--baseline-ref',default='570bad452a7e1d3015476db3984443459a53f92d')
     parser.add_argument('--render-before',type=Path)
@@ -322,6 +323,18 @@ def main():
         require([v['viewport'] for v in qa['browser']]==['1280x900','375x812'],'QA viewport coverage')
         if args.working:require(set(CANONICAL)<=set(qa['sample_ids']),'QA must cover all changed questions')
         if sync:require(all(v.get('explanationAction','').startswith('PASS:') for v in qa['browser']),'sync QA must check #54 explanation action')
+    small_ids=None
+    if args.small_ids_json:
+        small_ids=json.loads(args.small_ids_json.read_text(encoding='utf-8'))
+        require(small_ids['source_sha256_lf']==fingerprint,'small IDs regression fingerprint mismatch')
+        require(small_ids['result']=='PASS' and small_ids['sample_ids']==[1,2] and small_ids['repetitions']==2 and len(small_ids['runs'])==2,'small IDs regression coverage')
+        for run in small_ids['runs']:
+            require(run['source_sha256_lf']==fingerprint and run['sample_ids']==[1,2] and run['errors']==[] and run['syntax']=='PASS','small IDs run invalid')
+            require([v['viewport'] for v in run['browser']]==['1280x900','375x812'],'small IDs viewports')
+            for view in run['browser']:
+                require(view['mockSelection']=='first two actual M items; independent of practice --ids' and [q['index'] for q in view['mockItems']]==[0,1],'small IDs selection coupled to Practice IDs')
+                require('submit 1/180/review PASS' in view['mock'] and view['overflow']=='none','small IDs native Mock smoke failed')
+        require(qa and all(v.get('mockSelection')=='first two actual M items; independent of practice --ids' for v in qa['browser']),'full QA needs decoupled native Mock selection')
     rendered={}
     for name,file,expected in [('before',args.render_before,remediation['baseline_sha256_lf'] if remediation else fingerprint),('after',args.render_after,fingerprint)]:
         if file:
@@ -375,7 +388,7 @@ def main():
             'whole_bank':length_strategies(bank),
             'canonical':length_strategies([q for q in bank if q['id'] in CANONICAL]),
             'outside_canonical':length_strategies([q for q in bank if q['id'] not in CANONICAL])},
-        'recomputed_numeric_items':calc,'mock_persistence_regression':persistence,'fresh_browser_qa':qa,
+        'recomputed_numeric_items':calc,'mock_persistence_regression':persistence,'small_ids_regression':small_ids,'fresh_browser_qa':qa,
         'limitations':['Counts/periodicity screen are heuristics, not proof of semantic correctness or absence of exploitable patterns.',
                       'Wording uses occurrences plus option-presence rates; correct/distractor denominators are 330/990.',
                       'Revised 38-item wording requires independent Content Review and Human acceptance; Engineering checks do not declare Product Verify.']}
