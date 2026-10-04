@@ -27,6 +27,8 @@
 
         // Keep preview progress isolated from production on the same github.io origin.
         html=html
+          .replaceAll("'pmp2026_v3_learning_history'","'dev:pmp2026_v3_learning_history'")
+          .replaceAll('"pmp2026_v3_learning_history"','"dev:pmp2026_v3_learning_history"')
           .replaceAll("'pmp2026_v2_history'","'dev:pmp2026_v2_history'")
           .replaceAll('"pmp2026_v2_history"','"dev:pmp2026_v2_history"')
           .replaceAll("'pmp2026_v5_active_mock'","'dev:pmp2026_v5_active_mock'")

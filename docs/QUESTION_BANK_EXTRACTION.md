@@ -1,6 +1,6 @@
 # Issue #77 — canonical PMP question bank
 
-Engineering base: `dev@7e00c7570bce744c0238684ebcb07477bf7a2d5f`. Branch: `maint/issue-77-canonical-question-bank`. Contract: [Issue #77](https://github.com/Naiyi-Chia/pmp-trainer/issues/77). #30 schema extensions and unintegrated #29 history changes are excluded.
+Engineering base: `dev@897afc0246efef3528c62cb7faaa6ed9bc9052cf`. Branch: `maint/issue-77-canonical-question-bank`. Contract: [Issue #77](https://github.com/Naiyi-Chia/pmp-trainer/issues/77). #29 is integrated in this baseline; its v3 learning-history behavior is preserved. #30 schema extensions are excluded.
 
 ## Single source and migration parity
 
@@ -20,7 +20,7 @@ Production resolves `data/questions.json` against the document directory: `/pmp-
 
 `https://raw.githubusercontent.com/Naiyi-Chia/pmp-trainer/dev/data/questions.json`
 
-It never requests `/dev/data/questions.json` from the production Pages tree. Existing preview history/active-mock key isolation is retained. There are no external runtime JavaScript assets to encounter raw GitHub script MIME restrictions, and no build/framework/backend/dependency is introduced.
+It never requests `/dev/data/questions.json` from the production Pages tree. Preview keys for legacy history, v3 learning history and active Mock are all isolated from production. There are no external runtime JavaScript assets to encounter raw GitHub script MIME restrictions, and no build/framework/backend/dependency is introduced.
 
 Serve a local checkout over HTTP (for example `python -m http.server 8000`); direct `file://` fetch is not a supported launch path and receives the failure/retry guidance. Production and Dev Preview remain subject to normal integration/release gates.
 
@@ -41,13 +41,16 @@ Serve a local checkout over HTTP (for example `python -m http.server 8000`); dir
 - Final bank audit: 330 schema/metadata/explanation/mindset checks, 330 explanation-letter checks, 34 numeric checks and 13 audit controls pass. Unique-longest 9, materially-longer 0, keys A/B/C/D = 83/83/82/82, zero exact/order-independent/normalized duplicates; all raw/key/wording metrics match the integrated baseline.
 - Full native pre-answer rendered audit: **330 questions × four options × two viewports**, 2,640 exact text checks, per-option lines/heights recorded. Tallest/shortest remains desktop **24.92%/25.03%**, mobile **24.70%/25.35%**; the 38 prior canonicals remain **25%/25%** both. No rendered page/console errors or overflow.
 - Existing small-IDs native Practice/Mock/Review regression: two CLI repetitions × desktop/mobile = **4/4 PASS**. Includes locked answers/explanations, settings/retry/favorites/tabs, native 180-item Mock/save/reload/resume/flag/submit 1/180/Review and #54 instant/manual behavior.
-- Existing #18 persistence: **PASS**, including a native save created by the actual pre-extraction runtime then resumed/graded by the new canonical runtime with identical IDs/answers/flags/position/deadline. Existing version/content-signature compatibility, legacy/corrupt/reordered-bank rejection, overwrite/discard, expired resume and no duplicate history/resurrection pass. No storage or attempt schema changed.
+- Existing #18 persistence: **PASS**, including a native save created by the actual pre-extraction runtime then resumed/graded by the new canonical runtime with identical IDs/answers/flags/position/deadline. Existing version/content-signature compatibility, legacy/corrupt/reordered-bank rejection, overwrite/discard, expired resume and no duplicate history/resurrection pass. The integrated #29 v3 learning store and v6 active-Mock tracking remain unchanged.
+- Integrated #29 regressions: migration/idempotence, legacy counts, first/repeat events, visible response timing, Practice retry, final Mock answer, submit dedupe, read-only Review, v2/raw/v3 import/export, malformed/future data protection, quota/write failure and old-client conflict preservation pass. Native desktop/mobile download/import/reload checks pass. The #29 harness now reads the canonical source, serves JSON and waits for startup.
 - Actual preview bootstrap under faithful local `/pmp-trainer/` and `/pmp-trainer/dev/` paths: **PASS** at 1280×900 and 375×812. Raw-dev endpoints are fulfilled with scoped files in the test; requests prove correct source selection and production/preview progress isolation. Wrong Questions/Stats/lookup pass.
 - Slow response, HTTP 404, invalid JSON and unsupported version: app stays hidden/inert, stored history/active Mock bytes remain intact, actual reload-button retry succeeds. A separate real-loader unit test covers abort timeout. Deliberate HTTP 404 generates an expected browser network diagnostic in the negative scenario, recorded separately; normal flows have zero page/console errors and no unexpected asset requests.
 - JavaScript/Python syntax and `git diff --check`: **PASS**. Mobile startup failure and native Dev Practice screenshots inspected: readable message/retry and unchanged usable layout.
 
 ```text
 node scripts/validate-question-bank.cjs --parity
+node scripts/test-attempt-history.cjs
+node scripts/qa-attempt-history.cjs <history-output>
 node scripts/test-question-loader.cjs
 node scripts/test-mock-persistence.cjs --migration-baseline
 node scripts/qa-question-loader.cjs <loader-output>

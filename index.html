@@ -398,35 +398,107 @@ async function loadQuestionBank(){
  }finally{clearTimeout(timeout);}
 }
 const STORE='pmp2026_v2_history';
+const LEARNING_STORE='pmp2026_v3_learning_history';
 const MOCK_STORE='pmp2026_v5_active_mock';
+let L=null,historyBlocked=false,historyNotice='';
+function historyObject(v){return !!v&&typeof v==='object'&&!Array.isArray(v);}
+function historyId(id){return /^[1-9]\d*$/.test(id)&&Number.isSafeInteger(Number(id));}
+function canonicalHistory(value){return JSON.stringify(value,(_,v)=>historyObject(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);}
+function emptyLearning(){return {version:3,legacyHistory:{},events:[],stars:{}};}
+function validateLegacy(history){
+ if(!historyObject(history))throw Error('學習紀錄格式不正確');
+ for(const [id,h] of Object.entries(history)){
+  if(!historyId(id)||!historyObject(h))throw Error('題目紀錄格式不正確');
+  for(const k of ['attempts','correct'])if(h[k]!==undefined&&(!Number.isSafeInteger(h[k])||h[k]<0))throw Error('作答次數不正確');
+  if((h.correct||0)>(h.attempts||0)||h.star!==undefined&&typeof h.star!=='boolean'||h.lastCorrect!==undefined&&h.lastCorrect!==null&&typeof h.lastCorrect!=='boolean'||h.lastAt!==undefined&&(!Number.isFinite(h.lastAt)||h.lastAt<0))throw Error('摘要格式不正確');
+ }
+ return history;
+}
+function migrateHistory(history){
+ validateLegacy(history);const data=emptyLearning();data.legacyHistory=JSON.parse(JSON.stringify(history));
+ for(const [id,h] of Object.entries(history))if(h.star!==undefined)data.stars[id]=h.star;
+ return data;
+}
+function validateLearning(data){
+ if(!historyObject(data)||data.version!==3||!Array.isArray(data.events)||!historyObject(data.stars))throw Error('不支援的學習紀錄版本或格式');
+ validateLegacy(data.legacyHistory);const seen=new Set(),encountered=new Set(Object.entries(data.legacyHistory).filter(([,h])=>h.attempts>0).map(([id])=>id));
+ for(const [id,star] of Object.entries(data.stars))if(!historyId(id)||typeof star!=='boolean')throw Error('收藏格式不正確');
+ for(const e of data.events){
+  if(!historyObject(e)||typeof e.id!=='string'||!e.id||seen.has(e.id)||!Number.isSafeInteger(e.questionId)||e.questionId<1||!['practice','mock'].includes(e.mode)||!Number.isFinite(e.at)||e.at<0||!Number.isInteger(e.selectedAnswer)||e.selectedAnswer<0||e.selectedAnswer>3||typeof e.correct!=='boolean'||typeof e.firstEncounter!=='boolean'||e.firstEncounter===encountered.has(String(e.questionId))||e.responseMs!==null&&(!Number.isFinite(e.responseMs)||e.responseMs<0))throw Error('逐次作答紀錄格式不正確');
+  seen.add(e.id);encountered.add(String(e.questionId));
+ }
+ return data;
+}
+function projectHistory(data){
+ const history=JSON.parse(JSON.stringify(data.legacyHistory));
+ for(const h of Object.values(history)){h.attempts??=0;h.correct??=0;h.lastCorrect??=null;h.star??=false;}
+ for(const e of data.events){const h=history[e.questionId]||{attempts:0,correct:0,lastCorrect:null,star:false};h.attempts=(h.attempts||0)+1;h.correct=(h.correct||0)+(e.correct?1:0);if(h.lastAt===undefined||e.at>=h.lastAt){h.lastCorrect=e.correct;h.lastAt=e.at;}history[e.questionId]=h;}
+ for(const [id,star] of Object.entries(data.stars)){history[id]??={attempts:0,correct:0,lastCorrect:null};history[id].star=star;}
+ return history;
+}
 function safeLoad(){
-  try { return JSON.parse(window.localStorage.getItem(STORE)||'{}'); }
-  catch(e) { return {}; }
+ try {
+  const current=window.localStorage.getItem(LEARNING_STORE);
+  L=current!==null?validateLearning(JSON.parse(current)):migrateHistory(JSON.parse(window.localStorage.getItem(STORE)||'{}'));
+  const history=projectHistory(L),legacy=window.localStorage.getItem(STORE);
+  if(current!==null&&legacy!==null&&canonicalHistory(projectHistory(migrateHistory(JSON.parse(legacy))))!==canonicalHistory(history)){
+   historyBlocked=true;historyNotice='新舊版本學習紀錄不同，兩份原始資料都已保留，暫停自動儲存。請先匯出備份，再選擇有效紀錄匯入；目前顯示新版紀錄。';
+  }
+  return history;
+ }catch(e){historyBlocked=true;historyNotice='既有學習紀錄無法安全讀取，原始資料已保留；請先匯出或備份原始資料，再匯入有效紀錄。';L=emptyLearning();return {};}
+}
+function persistLearning(data){
+ if(historyBlocked)return false;
+ try{window.localStorage.setItem(LEARNING_STORE,JSON.stringify(data));}
+ catch(e){historyNotice='無法儲存學習紀錄；目前作答仍在此頁，請匯出備份後再離開。';return false;}
+ // Compatibility projection for older releases; v3 is authoritative once present.
+ try{window.localStorage.setItem(STORE,JSON.stringify(projectHistory(data)));}catch(e){}
+ return true;
 }
 function safeSave(obj){
-  try { window.localStorage.setItem(STORE,JSON.stringify(obj)); return true; }
-  catch(e) { return false; }
+ for(const [id,h] of Object.entries(obj))if(h.star!==undefined)L.stars[id]=h.star;
+ return persistLearning(L);
 }
 let H={};
 let P=[],pi=0,pAns={},pStart=null,pTick=null,pReview=false,pSettings=null,pResult=null;
 let M=[],mi=0,mAns={},mFlag={},mRemain=240*60,mTick=null,mEndAt=null,mStartedAt=null;
+let pSession=null,mSession=null,pTiming={},mTiming={},attemptView=null;
+function newAttemptSession(){return globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
+function flushAttemptView(){
+ if(!attemptView)return;const t=attemptView.mode==='practice'?pTiming:mTiming;
+ t[attemptView.id].elapsedMs+=Math.max(0,Date.now()-attemptView.at);attemptView=null;
+}
+function trackAttemptView(mode,id){
+ flushAttemptView();const t=mode==='practice'?pTiming:mTiming;
+ t[id]??={elapsedMs:0,responseMs:null,answeredAt:null};
+ if(!document.hidden)attemptView={mode,id,at:Date.now()};
+}
+function resumeAttemptView(){
+ if(document.hidden)return;
+ if(document.getElementById('mock').classList.contains('active')&&mEndAt&&M.length&&!el('mockExam').classList.contains('hidden'))trackAttemptView('mock',M[mi].id);
+ else if(document.getElementById('practice').classList.contains('active')&&!pReview&&!pResult&&P.length&&pAns[P[pi].id]===undefined&&!el('practiceCard').classList.contains('hidden'))trackAttemptView('practice',P[pi].id);
+}
 
 // Explicit DOM bindings for iOS/Safari compatibility. Do not rely on id -> global variable behavior.
 const IDS=['pDomain','pApproach','pType','pMode','pCount','pDifficulty','pExplain','psTotal','psDone','psCorrect','psRate','psWrong','psTime','pd','pa','pt','ptype','pdiff','pcounter','pq','popts','pexp','starBtn','expBtn','pbar','dAttempts','dUnique','dCorrect','dWrong','dStar','dCoverage','domainBars','approachBars','weakTopics','recommend','importFile','mockSetup','mockExam','mockResult','mCounter','mTimer','md','ma','mt','mq','mopts','flagBtn','mGrid','runtimeStatusText','resumeMockBox','resumeMockText'];
 const E={};
 function el(id){ return E[id] || document.getElementById(id); }
-function save(){safeSave(H);}
+function save(){const ok=safeSave(H);if(!ok)alert(historyNotice||'此瀏覽器無法儲存學習紀錄，請匯出備份。');return ok;}
 function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
 function getHist(id){return H[id]||{attempts:0,correct:0,lastCorrect:null,star:false};}
-function record(q,ans){let h=getHist(q.id),ok=ans===q.ans;h.attempts=(h.attempts||0)+1;h.correct=(h.correct||0)+(ok?1:0);h.lastCorrect=ok;h.lastAt=Date.now();H[q.id]=h;save();}
+function record(q,ans,mode='practice',session=pSession,timing=null){
+ const id=session+':'+q.id;if(L.events.some(e=>e.id===id))return;
+ const h=getHist(q.id);L.events.push({id,questionId:q.id,at:timing?.answeredAt??Date.now(),mode,selectedAnswer:ans,correct:ans===q.ans,firstEncounter:!(h.attempts>0),responseMs:timing?.responseMs??null});H=projectHistory(L);
+}
 function bindTrainerEvents(){
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');if(b.dataset.tab==='dashboard')renderDashboard();if(b.dataset.tab==='mock')refreshMockResumeUI();});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{flushAttemptView();document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');if(b.dataset.tab==='dashboard')renderDashboard();if(b.dataset.tab==='mock')refreshMockResumeUI();resumeAttemptView();});
 window.addEventListener('beforeunload',()=>{if(M.length&&mEndAt)saveMockProgress();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&M.length&&mEndAt)saveMockProgress();else if(!document.hidden&&M.length&&mEndAt){updateMTimer();if(mRemain<=0)finishMock(true);}});
+document.addEventListener('visibilitychange',()=>{flushAttemptView();if(document.hidden&&M.length&&mEndAt)saveMockProgress();else if(!document.hidden&&M.length&&mEndAt){updateMTimer();if(mRemain<=0)finishMock(true);}resumeAttemptView();});
 }
 
 const PRACTICE_FIELDS=['pDomain','pApproach','pType','pMode','pCount','pDifficulty','pExplain'];
 function showPracticeSettings(){
+ flushAttemptView();
  el('practiceSettings').classList.remove('hidden');
  el('practiceHeader').classList.add('hidden');
  el('practiceCard').classList.add('hidden');
@@ -459,7 +531,7 @@ function startPractice(){
  }
  if(P.length&&!confirm('重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？'))return;
  pSettings=Object.fromEntries(PRACTICE_FIELDS.map(id=>[id,el(id).value]));
- P=arr;pi=0;pAns={};pReview=false;pResult=null;pStart=Date.now();clearInterval(pTick);pTick=setInterval(updatePStats,1000);
+ flushAttemptView();pSession=newAttemptSession();pTiming={};P=arr;pi=0;pAns={};pReview=false;pResult=null;pStart=Date.now();clearInterval(pTick);pTick=setInterval(updatePStats,1000);
  el('practiceSummary').textContent=el('pMode').selectedOptions[0].textContent+'・'+P.length+' 題';
  el('practiceContext').textContent=[d,a,t,diff].filter(v=>v!=='All').join('・')||'全部領域・方法・題型・難度';
  el('practiceStats').open=false;
@@ -469,6 +541,7 @@ function renderPractice(){
  if(pResult)return;
  if(!P.length){el('pq').textContent='目前沒有符合條件的題目。可以改用「隨機題」或放寬篩選條件。';el('popts').innerHTML='';el('pexp').classList.add('hidden');updatePStats();return;}
  let q=P[pi],ans=pAns[q.id];el('pd').textContent=q.domain;el('pa').textContent=q.approach;el('pt').textContent=q.topic;el('ptype').textContent=q.type;el('pdiff').textContent=q.difficulty;
+ if(!pReview&&ans===undefined)trackAttemptView('practice',q.id);else flushAttemptView();
  el('ptype').className='tag'+(q.type==='計算題'?' calc':'');el('pdiff').className='tag'+(q.difficulty==='難'?' hard':'');el('pcounter').textContent='';el('practicePosition').textContent=`第 ${pi+1} / ${P.length} 題`;el('pq').textContent=q.q;
  el('popts').innerHTML=q.opts.map((o,i)=>{
   const state=ans!==undefined?(i===q.ans?'correct':i===ans?'wrong':''):'';
@@ -487,7 +560,7 @@ function renderPractice(){
  if(pReview&&ans===undefined)showPracticeExplanation();
  updatePStats();
 }
-function answerPractice(i){if(pReview||pResult||!P.length)return;let q=P[pi];if(pAns[q.id]!==undefined)return;pAns[q.id]=i;record(q,i);renderPractice();}
+function answerPractice(i){if(pReview||pResult||!P.length)return;let q=P[pi];if(pAns[q.id]!==undefined||!Number.isInteger(i)||i<0||i>=q.opts.length)return;flushAttemptView();const t=pTiming[q.id]||{elapsedMs:0};t.responseMs=t.elapsedMs;t.answeredAt=Date.now();pSession??=newAttemptSession();pAns[q.id]=i;record(q,i,'practice',pSession,t);save();renderPractice();}
 function showPracticeExplanation(){if(!P.length)return;let q=P[pi],a=pAns[q.id];if(a===undefined&&!pReview)return;el('pexp').innerHTML=`<b>${a===undefined?'未作答':a===q.ans?'✅ 答對':'❌ 答錯'}｜正確答案 ${String.fromCharCode(65+q.ans)}</b><br>${q.exp}<div class="mindset"><b>PMI Mindset：</b>${q.mindset||''}</div>`;el('pexp').classList.remove('hidden');el('expBtn').classList.add('hidden');}
 function practiceNext(){
  if(pResult||!P.length)return;
@@ -503,6 +576,7 @@ let s=pResult?pResult.elapsed:pStart===null?0:Math.floor((Date.now()-pStart)/100
 // Results are memory-only. Creating a result or retry never records an answer.
 function finishPractice(force=false){
  if(pReview||pResult||!P.length)return;
+ flushAttemptView();
  const answered=P.filter(q=>pAns[q.id]!==undefined);
  const unanswered=P.length-answered.length;
  if(unanswered&&!force){
@@ -549,6 +623,7 @@ function renderPracticeResult(){
 function retryPracticeMistakes(){
  if(pReview||!pResult||!pResult.wrong.length)return;
  const result=pResult;
+ flushAttemptView();pSession=newAttemptSession();pTiming={};
  P=[...result.wrong];pi=0;pAns={};pSettings={...result.settings};pResult=null;
  clearInterval(pTick);pStart=Date.now();pTick=setInterval(updatePStats,1000);
  el('practiceSummary').textContent=`本輪錯題重練・${P.length} 題`;
@@ -580,9 +655,21 @@ function renderDashboard(){
  else if(weak.length)el('recommend').innerHTML=`目前最弱主題是 <b>${weak[0][0]}</b>（${weak[0][1]}%）。建議下一輪用「錯題重練」，並特別注意解析中的 PMI Mindset；當該主題連續兩輪達 80% 以上，再回到混合題。`;
  else el('recommend').innerHTML='目前資料量還少。建議先把題庫覆蓋率提高到至少 30%，再看弱點趨勢。';
 }
-function exportProgress(){let blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),history:H},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='PMP_2026_progress.json';a.click();}
-function importProgress(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let o=JSON.parse(r.result);H=o.history||o;save();renderDashboard();alert('已匯入學習紀錄');}catch(e){alert('檔案格式不正確');}};r.readAsText(f);}
-function resetAll(){if(confirm('確定清除所有刷題、錯題與收藏紀錄？')){H={};save();renderDashboard();}}
+function progressExport(){return {version:3,exportedAt:new Date().toISOString(),learningHistory:L,history:H};}
+function exportProgress(){let data=progressExport();if(historyBlocked){try{data={version:3,recovery:true,rawLearning:window.localStorage.getItem(LEARNING_STORE),rawLegacy:window.localStorage.getItem(STORE)};}catch(e){}}let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='PMP_2026_progress.json';a.click();URL.revokeObjectURL(a.href);}
+function decodeProgress(o){
+ if(!historyObject(o)||o.recovery)throw Error('請使用有效的學習紀錄檔案；原始備份需先修復');
+ if(o.version===3)return validateLearning(o.learningHistory);
+ if(o.version!==undefined){if(o.version!==2)throw Error('不支援的學習紀錄版本');return migrateHistory(o.history);}
+ return migrateHistory(o.history??o);
+}
+function replaceLearning(data){
+ const blocked=historyBlocked;historyBlocked=false;
+ if(!persistLearning(data)){historyBlocked=blocked;return false;}
+ L=data;H=projectHistory(L);historyNotice='';return true;
+}
+function importProgress(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{const data=decodeProgress(JSON.parse(r.result));if(!confirm('匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？'))return;if(!replaceLearning(data)){alert(historyNotice);return;}renderDashboard();alert('已匯入學習紀錄');}catch(e){alert('無法匯入：'+e.message+'。現有紀錄未變更。');}finally{ev.target.value='';}};r.readAsText(f);}
+function resetAll(){if(confirm('確定清除所有刷題、錯題與收藏紀錄？')){if(replaceLearning(emptyLearning()))renderDashboard();else alert(historyNotice);}}
 
 function loadSavedMock(){
   try { return JSON.parse(window.localStorage.getItem(MOCK_STORE)||'null'); }
@@ -593,6 +680,7 @@ function clearSavedMock(){
 }
 function saveMockProgress(){
   if(!M.length || !mEndAt) return false;
+  const viewing=attemptView?.mode==='mock';flushAttemptView();
   const state={
     version:6,
     questionIds:M.map(q=>q.id),
@@ -602,9 +690,10 @@ function saveMockProgress(){
     flags:mFlag,
     startedAt:mStartedAt,
     endAt:mEndAt,
-    savedAt:Date.now()
+    savedAt:Date.now(),
+    attemptTracking:{sessionId:mSession,timing:mTiming}
   };
-  try { window.localStorage.setItem(MOCK_STORE,JSON.stringify(state)); refreshMockResumeUI(); return true; }
+  try { window.localStorage.setItem(MOCK_STORE,JSON.stringify(state)); refreshMockResumeUI(); if(viewing)resumeAttemptView(); return true; }
   catch(e) { return false; }
 }
 // Exact, ordered content signature: no hash collisions or manually bumped bank version.
@@ -631,6 +720,10 @@ function savedMockProblem(st){
   if(!isObject(st.answers) || !isObject(st.flags) ||
      !Object.entries(st.answers).every(([id,a])=>ids.has(id) && Number.isInteger(a) && a>=0 && a<map.get(Number(id)).opts.length) ||
      !Object.entries(st.flags).every(([id,flag])=>ids.has(id) && typeof flag==='boolean'))return invalid;
+  if(st.attemptTracking!==undefined){
+    const t=st.attemptTracking;
+    if(!isObject(t)||typeof t.sessionId!=='string'||!t.sessionId||!isObject(t.timing)||!Object.entries(t.timing).every(([id,v])=>ids.has(id)&&isObject(v)&&Number.isFinite(v.elapsedMs)&&v.elapsedMs>=0&&(v.unknown===undefined||typeof v.unknown==='boolean')&&(v.responseMs===null||Number.isFinite(v.responseMs)&&v.responseMs>=0)&&(v.answeredAt===null||Number.isFinite(v.answeredAt)&&v.answeredAt>=st.startedAt&&v.answeredAt<=st.savedAt)))return invalid;
+  }
   return '';
 }
 function validSavedMock(st){
@@ -655,6 +748,7 @@ function restoreMockState(st){
   const restored=st.questionIds.map(id=>map.get(id)).filter(Boolean);
   if(restored.length!==180) return false;
   M=restored; mi=st.currentIndex; mAns={...st.answers}; mFlag={...st.flags};
+  flushAttemptView();mSession=st.attemptTracking?.sessionId||'legacy-mock-'+st.startedAt+'-'+st.questionIds.join('-');mTiming=st.attemptTracking?JSON.parse(JSON.stringify(st.attemptTracking.timing)):Object.fromEntries(st.questionIds.map(id=>[id,{elapsedMs:0,responseMs:null,answeredAt:null,unknown:true}]));
   mStartedAt=st.startedAt; mEndAt=st.endAt;
   return true;
 }
@@ -700,7 +794,7 @@ function startMock(){
  const old=loadSavedMock();
  if(validSavedMock(old) && !confirm('目前有一份未完成模考。開始新的模考會覆蓋舊進度，確定嗎？'))return;
  if(!confirm('開始後計時 240 分鐘。確定開始？'))return;
- M=buildMock();mi=0;mAns={};mFlag={};mStartedAt=Date.now();mEndAt=mStartedAt+240*60*1000;mRemain=240*60;
+ flushAttemptView();mSession=newAttemptSession();mTiming={};M=buildMock();mi=0;mAns={};mFlag={};mStartedAt=Date.now();mEndAt=mStartedAt+240*60*1000;mRemain=240*60;
  el('mockSetup').classList.add('hidden');el('mockResult').classList.add('hidden');el('mockExam').classList.remove('hidden');
  saveMockProgress();startMockClock();renderMock();
 }
@@ -709,17 +803,19 @@ function updateMTimer(){
  el('mTimer').textContent=String(Math.floor(mRemain/60)).padStart(3,'0')+':'+String(mRemain%60).padStart(2,'0');
 }
 function renderMock(){
+ trackAttemptView('mock',M[mi].id);
  let q=M[mi],a=mAns[q.id];el('mCounter').textContent=`第 ${mi+1} / 180 題｜已答 ${Object.keys(mAns).length}`;el('md').textContent=q.domain;el('ma').textContent=q.approach;el('mt').textContent=q.topic;el('mq').textContent=q.q;
  el('mopts').innerHTML=q.opts.map((o,i)=>`<button class="opt ${a===i?'selected':''}" onclick="answerMock(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('');
  el('flagBtn').textContent=mFlag[q.id]?'★ 已標記':'☆ 標記';updateMTimer();renderMGrid();
 }
-function answerMock(i){mAns[M[mi].id]=i;saveMockProgress();renderMock();}
+function answerMock(i){if(!mEndAt||!M.length||!Number.isInteger(i)||i<0||i>=M[mi].opts.length)return;flushAttemptView();const id=M[mi].id,t=mTiming[id]||{elapsedMs:0};t.responseMs=t.unknown?null:t.elapsedMs;t.answeredAt=Date.now();mTiming[id]=t;mAns[id]=i;saveMockProgress();renderMock();}
 function mockNext(){if(mi<M.length-1){mi++;saveMockProgress();renderMock();}}
 function mockPrev(){if(mi>0){mi--;saveMockProgress();renderMock();}}
 function gotoMock(i){mi=i;saveMockProgress();renderMock();}
 function toggleMockFlag(){let id=M[mi].id;mFlag[id]=!mFlag[id];saveMockProgress();renderMock();}
 function renderMGrid(){el('mGrid').innerHTML=M.map((q,i)=>`<button class="qnum ${mAns[q.id]!==undefined?'answered':''} ${i===mi?'current':''} ${mFlag[q.id]?'flagged':''}" onclick="gotoMock(${i})">${i+1}</button>`).join('');}
-function finishMock(auto=false){if(!mEndAt)return;if(!auto){let unanswered=180-Object.keys(mAns).length;if(!confirm(`尚有 ${unanswered} 題未作答。確定交卷？`))return;}clearInterval(mTick);mTick=null;mEndAt=null;clearSavedMock();refreshMockResumeUI();let cor=0;let by={};M.forEach(q=>{let a=mAns[q.id];if(a!==undefined)record(q,a);let ok=a===q.ans;if(ok)cor++;by[q.domain]??={c:0,n:0};by[q.domain].n++;if(ok)by[q.domain].c++;});
+function finishMock(auto=false){if(!mEndAt)return;if(!auto){let unanswered=180-Object.keys(mAns).length;if(!confirm(`尚有 ${unanswered} 題未作答。確定交卷？`))return;}flushAttemptView();clearInterval(mTick);mTick=null;let cor=0;let by={};M.forEach(q=>{let a=mAns[q.id];if(a!==undefined)record(q,a,'mock',mSession,mTiming[q.id]);let ok=a===q.ans;if(ok)cor++;by[q.domain]??={c:0,n:0};by[q.domain].n++;if(ok)by[q.domain].c++;});
+ const saved=safeSave(H);if(saved){clearSavedMock();mEndAt=null;refreshMockResumeUI();}else{const kept=saveMockProgress()||validSavedMock(loadSavedMock());alert(kept?'模考結果已計算，但尚未儲存。原模考進度已保留，請匯出備份；儲存恢復後可繼續模考並再次交卷。':'模考結果已計算，但尚未儲存，也無法保存未完成模考。目前結果僅在此頁，請先匯出備份再離開。');}
  let pct=Math.round(cor/180*100);el('mockExam').classList.add('hidden');el('mockResult').classList.remove('hidden');
  let weakest=Object.entries(by).map(([k,v])=>[k,Math.round(v.c/v.n*100)]).sort((a,b)=>a[1]-b[1]);
  el('mockResult').innerHTML=`<div class="card resultHero"><small>本次模考答對</small><b>${cor} / 180</b><small>練習正確率 ${pct}%（不是 PMI 官方通過分數）</small></div>
@@ -727,6 +823,7 @@ function finishMock(auto=false){if(!mEndAt)return;if(!auto){let unanswered=180-O
  <div class="card"><b>下一步</b><p>最弱 Domain：<b>${weakest[0][0]}</b>（${weakest[0][1]}%）。建議先到「弱點分析」看主題，再使用「錯題重練」。</p><button onclick="reviewMock()">逐題檢討</button> <button onclick="restartMockUI()">回到模考首頁</button></div>`;
 }
 function reviewMock(){
+ flushAttemptView();
  clearInterval(pTick);pTick=null;pStart=null;pReview=true;pResult=null;
  P=M;pi=0;pAns={...mAns};
  el('practiceSummary').textContent='模考檢討・'+P.length+' 題';
@@ -742,7 +839,7 @@ function initializeTrainer(){
   updatePStats();
   if (el('runtimeStatusText')) {
     const storageOK=safeSave(H);
-    el('runtimeStatusText').textContent=storageOK ? '✅ 已啟動，可以開始刷題' : '✅ 已啟動（此瀏覽器禁止儲存進度，但刷題仍可使用）';
+    el('runtimeStatusText').textContent=storageOK ? '✅ 已啟動，可以開始刷題' : historyNotice||'✅ 已啟動（此瀏覽器禁止儲存進度，但刷題仍可使用）';
     refreshMockResumeUI();
     if(storageOK){setTimeout(()=>{const box=document.getElementById('runtimeStatus');if(box)box.classList.add('hidden');},2200);}
   }

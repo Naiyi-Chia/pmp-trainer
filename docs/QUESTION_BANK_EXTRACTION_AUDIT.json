@@ -7178,7 +7178,7 @@
     }
   ],
   "rendered_audit": {
-    "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "method": "Unanswered #popts buttons; exact DOM text = letter label + stored option; document.fonts.ready; DOM Range line rectangles and button border-box height. No answer/feedback labels measured. CSS and app code unchanged.",
     "height_tolerance_px": 0.01,
@@ -15998,7 +15998,7 @@
   "small_ids_regression": {
     "issue": 27,
     "contract": "https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5976033827",
-    "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "result": "PASS",
     "sample_ids": [
@@ -16009,8 +16009,8 @@
     "method": "Native random 180-item mocks; choose actual positions 0/1 independently of custom Practice IDs; repeat full CLI twice at both viewports. No product random/scoring/storage override.",
     "runs": [
       {
-        "source_sha256": "fd72d710b62afdd7f61e45c72c75744a74b293ff61d94c02c30ec2ac4bce4189",
-        "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+        "source_sha256": "39b5b4d0cd263eec816dbd0be350fd1d5964ae8b94f773f6698a7b4b4bf09af1",
+        "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
         "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
         "syntax": "PASS",
         "sample_ids": [
@@ -16032,17 +16032,18 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 127,
+                "id": 194,
                 "index": 0,
-                "key": 3
+                "key": 2
               },
               {
-                "id": 305,
+                "id": 2,
                 "index": 1,
                 "key": 3
               }
             ],
             "nativeDialogs": [
+              "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
               "已匯入學習紀錄",
               "開始後計時 240 分鐘。確定開始？",
               "尚有 178 題未作答。確定交卷？"
@@ -16063,17 +16064,18 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 102,
+                "id": 286,
                 "index": 0,
-                "key": 2
+                "key": 1
               },
               {
-                "id": 212,
+                "id": 14,
                 "index": 1,
-                "key": 3
+                "key": 1
               }
             ],
             "nativeDialogs": [
+              "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
               "已匯入學習紀錄",
               "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
               "開始後計時 240 分鐘。確定開始？",
@@ -16086,8 +16088,8 @@
         "browserVersion": "154.0.4258.53"
       },
       {
-        "source_sha256": "fd72d710b62afdd7f61e45c72c75744a74b293ff61d94c02c30ec2ac4bce4189",
-        "source_sha256_lf": "96500847ca3df7dd4f85837ff5db32434596dcad151d7fa6988c8b3cdf12074f",
+        "source_sha256": "39b5b4d0cd263eec816dbd0be350fd1d5964ae8b94f773f6698a7b4b4bf09af1",
+        "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
         "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
         "syntax": "PASS",
         "sample_ids": [
@@ -16109,17 +16111,18 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 289,
+                "id": 275,
                 "index": 0,
-                "key": 2
+                "key": 1
               },
               {
-                "id": 155,
+                "id": 212,
                 "index": 1,
-                "key": 1
+                "key": 3
               }
             ],
             "nativeDialogs": [
+              "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
               "已匯入學習紀錄",
               "開始後計時 240 分鐘。確定開始？",
               "尚有 178 題未作答。確定交卷？"
@@ -16130,8 +16133,8 @@
             "viewport": "375x812",
             "practice": "2 incorrect; manual explanations; 0/2; retry/favorite PASS",
             "ids": [
-              2,
-              1
+              1,
+              2
             ],
             "tabs": "PASS",
             "randomFlow": "PASS",
@@ -16140,17 +16143,18 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 175,
+                "id": 296,
                 "index": 0,
                 "key": 3
               },
               {
-                "id": 55,
+                "id": 222,
                 "index": 1,
-                "key": 3
+                "key": 1
               }
             ],
             "nativeDialogs": [
+              "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
               "已匯入學習紀錄",
               "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
               "開始後計時 240 分鐘。確定開始？",
