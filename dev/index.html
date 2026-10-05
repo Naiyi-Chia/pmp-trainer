@@ -27,8 +27,6 @@
 
         // Keep preview progress isolated from production on the same github.io origin.
         html=html
-          .replaceAll("'pmp2026_v3_learning_history'","'dev:pmp2026_v3_learning_history'")
-          .replaceAll('"pmp2026_v3_learning_history"','"dev:pmp2026_v3_learning_history"')
           .replaceAll("'pmp2026_v2_history'","'dev:pmp2026_v2_history'")
           .replaceAll('"pmp2026_v2_history"','"dev:pmp2026_v2_history"')
           .replaceAll("'pmp2026_v5_active_mock'","'dev:pmp2026_v5_active_mock'")
@@ -36,8 +34,7 @@
 
         // Make browser/tab context visibly identifiable without changing page layout.
         html=html.replace(/<title>([^<]*)<\/title>/i,"<title>[DEV] $1</title>");
-        // Inline runtime fetches resolve against dev, not production /dev/ assets.
-        html=html.replace(/<head>/i,'<head><base href="https://raw.githubusercontent.com/Naiyi-Chia/pmp-trainer/dev/"><meta name="robots" content="noindex,nofollow">');
+        html=html.replace(/<head>/i,'<head><meta name="robots" content="noindex,nofollow">');
 
         document.open();
         document.write(html);

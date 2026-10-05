@@ -46,7 +46,7 @@ If a task requirement changes, update the GitHub Issue first. Do not treat chat,
 - Scoped implementation branches are created from the latest `dev`.
 - Feature / fix / UX / maintenance work should not be implemented directly on `main`.
 
-The fixed Dev Preview loads the current public `dev/index.html` and resolves canonical data against the raw `dev` base URL, allowing integrated Human Product Verify before release to `main` without reading production question assets.
+The fixed Dev Preview loads the current public `dev/index.html` and uses the existing bootstrap’s `dev:` storage prefix to fetch the explicit raw `dev` canonical URL and isolate v3 history, allowing integrated Human Product Verify before release to `main` without reading production question assets.
 
 ## Standard Lifecycle
 

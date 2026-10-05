@@ -7178,7 +7178,7 @@
     }
   ],
   "rendered_audit": {
-    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "method": "Unanswered #popts buttons; exact DOM text = letter label + stored option; document.fonts.ready; DOM Range line rectangles and button border-box height. No answer/feedback labels measured. CSS and app code unchanged.",
     "height_tolerance_px": 0.01,
@@ -15998,7 +15998,7 @@
   "small_ids_regression": {
     "issue": 27,
     "contract": "https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5976033827",
-    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "result": "PASS",
     "sample_ids": [
@@ -16009,8 +16009,8 @@
     "method": "Native random 180-item mocks; choose actual positions 0/1 independently of custom Practice IDs; repeat full CLI twice at both viewports. No product random/scoring/storage override.",
     "runs": [
       {
-        "source_sha256": "39b5b4d0cd263eec816dbd0be350fd1d5964ae8b94f773f6698a7b4b4bf09af1",
-        "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+        "source_sha256": "8519f0c26b0b6592c5f56bab48ded127c810c803decd72f6f9457c8e6eed2438",
+        "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
         "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
         "syntax": "PASS",
         "sample_ids": [
@@ -16022,8 +16022,8 @@
             "viewport": "1280x900",
             "practice": "2 correct; instant explanations; 2/2 PASS",
             "ids": [
-              2,
-              1
+              1,
+              2
             ],
             "tabs": "PASS",
             "randomFlow": "PASS",
@@ -16032,14 +16032,14 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 194,
+                "id": 225,
                 "index": 0,
-                "key": 2
+                "key": 1
               },
               {
-                "id": 2,
+                "id": 255,
                 "index": 1,
-                "key": 3
+                "key": 1
               }
             ],
             "nativeDialogs": [
@@ -16054,8 +16054,8 @@
             "viewport": "375x812",
             "practice": "2 incorrect; manual explanations; 0/2; retry/favorite PASS",
             "ids": [
-              2,
-              1
+              1,
+              2
             ],
             "tabs": "PASS",
             "randomFlow": "PASS",
@@ -16064,14 +16064,14 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 286,
+                "id": 257,
                 "index": 0,
                 "key": 1
               },
               {
-                "id": 14,
+                "id": 10,
                 "index": 1,
-                "key": 1
+                "key": 0
               }
             ],
             "nativeDialogs": [
@@ -16088,8 +16088,8 @@
         "browserVersion": "154.0.4258.53"
       },
       {
-        "source_sha256": "39b5b4d0cd263eec816dbd0be350fd1d5964ae8b94f773f6698a7b4b4bf09af1",
-        "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+        "source_sha256": "8519f0c26b0b6592c5f56bab48ded127c810c803decd72f6f9457c8e6eed2438",
+        "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
         "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
         "syntax": "PASS",
         "sample_ids": [
@@ -16101,8 +16101,8 @@
             "viewport": "1280x900",
             "practice": "2 correct; instant explanations; 2/2 PASS",
             "ids": [
-              1,
-              2
+              2,
+              1
             ],
             "tabs": "PASS",
             "randomFlow": "PASS",
@@ -16111,14 +16111,14 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 275,
+                "id": 281,
                 "index": 0,
-                "key": 1
+                "key": 3
               },
               {
-                "id": 212,
+                "id": 120,
                 "index": 1,
-                "key": 3
+                "key": 2
               }
             ],
             "nativeDialogs": [
@@ -16133,8 +16133,8 @@
             "viewport": "375x812",
             "practice": "2 incorrect; manual explanations; 0/2; retry/favorite PASS",
             "ids": [
-              1,
-              2
+              2,
+              1
             ],
             "tabs": "PASS",
             "randomFlow": "PASS",
@@ -16143,14 +16143,14 @@
             "mockSelection": "first two actual M items; independent of practice --ids",
             "mockItems": [
               {
-                "id": 296,
+                "id": 277,
                 "index": 0,
-                "key": 3
+                "key": 2
               },
               {
-                "id": 222,
+                "id": 57,
                 "index": 1,
-                "key": 1
+                "key": 2
               }
             ],
             "nativeDialogs": [

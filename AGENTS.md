@@ -57,7 +57,7 @@ Context efficiency must not override correctness: if required evidence is missin
 
 Run checks relevant to the changed scope. Prefer targeted validation and concise output when sufficient; do not emit unnecessarily broad logs or checks.
 
-For question-bank work, run `node scripts/validate-question-bank.cjs` and `python -X utf8 scripts/audit-question-bank-final.py --canonical`. Use `--parity` on the validator only to verify Issue #77's unchanged migration baseline. Browser QA must serve `data/questions.json` along with HTML; production resolves the local relative asset, while `/dev/` resolves the raw dev asset through its injected base URL. Historical embedded-HTML audit modes are for replaying old contracts only; current data audits use the canonical file.
+For question-bank work, run `node scripts/validate-question-bank.cjs` and `python -X utf8 scripts/audit-question-bank-final.py --canonical`. Use `--parity` on the validator only to verify Issue #77's unchanged migration baseline. Browser QA must serve `data/questions.json` along with HTML; production resolves the local relative asset, while `/dev/` resolves the raw dev asset using the existing bootstrap’s `dev:` storage prefix. Historical embedded-HTML audit modes are for replaying old contracts only; current data audits use the canonical file.
 
 For UI / JavaScript changes, normally verify:
 - the page loads without obvious JavaScript errors;

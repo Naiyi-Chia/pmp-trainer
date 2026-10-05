@@ -382,7 +382,8 @@ function validateQuestionBank(data){
 async function loadQuestionBank(){
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
  try{
-  const url=new URL('data/questions.json',document.baseURI);
+  // The deployed main bootstrap already prefixes STORE; no bootstrap upgrade is required.
+  const url=new URL(STORE.startsWith('dev:')?'https://raw.githubusercontent.com/Naiyi-Chia/pmp-trainer/dev/data/questions.json':'data/questions.json',document.baseURI);
   const response=await fetch(url,{cache:'no-store',signal:controller.signal});
   if(!response.ok)throw new Error('HTTP '+response.status);
   const questions=validateQuestionBank(await response.json());
@@ -398,7 +399,7 @@ async function loadQuestionBank(){
  }finally{clearTimeout(timeout);}
 }
 const STORE='pmp2026_v2_history';
-const LEARNING_STORE='pmp2026_v3_learning_history';
+const LEARNING_STORE=STORE.startsWith('dev:')?'dev:pmp2026_v3_learning_history':'pmp2026_v3_learning_history';
 const MOCK_STORE='pmp2026_v5_active_mock';
 let L=null,historyBlocked=false,historyNotice='';
 function historyObject(v){return !!v&&typeof v==='object'&&!Array.isArray(v);}

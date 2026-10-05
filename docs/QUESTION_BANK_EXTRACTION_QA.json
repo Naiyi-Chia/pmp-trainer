@@ -1,7 +1,7 @@
 {
   "issue": 77,
   "base": "897afc0246efef3528c62cb7faaa6ed9bc9052cf",
-  "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+  "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
   "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
   "result": "PASS",
   "parity_and_regressions": {
@@ -30,15 +30,22 @@
   "rendered_groups_vs_integrated_baseline": "unchanged; all 660 per-question geometry/text records identical to pre-sync #77 evidence",
   "loader_browser_qa": {
     "issue": 77,
-    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+    "preview_bootstrap": {
+      "ref": "52af1f7d8a93a8c9ae461b3abe2c8b6bb082ebab:dev/index.html",
+      "sha256": "bae9e9fb7807bbd21c1f1503c0f94ed61b1129fac21c6c52b74c992f90cd6d98",
+      "topology": "main bootstrap unchanged; only raw dev app/data use candidate branch; Pages /dev/data is unavailable"
+    },
     "views": [
       {
         "viewport": "1280x900",
         "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
-        "dev": "PASS: actual preview bootstrap, raw dev data URL, isolated history/active-mock keys",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
         "overflow": "none",
         "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
           "/Naiyi-Chia/pmp-trainer/dev/index.html",
           "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
         ]
@@ -46,9 +53,11 @@
       {
         "viewport": "375x812",
         "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
-        "dev": "PASS: actual preview bootstrap, raw dev data URL, isolated history/active-mock keys",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
         "overflow": "none",
         "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
           "/Naiyi-Chia/pmp-trainer/dev/index.html",
           "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
         ]
@@ -74,6 +83,17 @@
     ],
     "errors": [],
     "browserVersion": "154.0.4258.53",
+    "regression_control": {
+      "reviewed_commit": "f62baf0acef7e2419ae7a36f4e9bff4d1e476dc6",
+      "result": "PASS: prior runtime reproduces missing /dev/data startup failure with deployed bootstrap",
+      "requests": [
+        "/pmp-trainer/dev/",
+        "/pmp-trainer/dev/data/questions.json"
+      ],
+      "expected_console": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
     "expected_failure_console": [
       "Failed to load resource: the server responded with a status of 404 (Not Found)"
     ],
@@ -90,7 +110,7 @@
   ],
   "attempt_history_browser_qa": {
     "issue": 29,
-    "source_sha256_lf": "b64975bf003564b0e844869102a873dd3a267c74a0d18bc3eee250bc55ae1237",
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
     "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
     "browser": [
       {
@@ -136,5 +156,11 @@
     "browserVersion": "154.0.4258.53",
     "result": "PASS"
   },
-  "sync_scope": "Preserve all integrated #29 runtime logic; defer its startup behind validated canonical bank; adapt #29 harness; isolate dev v3 learning key"
+  "sync_scope": "Keep integrated #29 logic; runtime asset/v3 key routing works with deployed main bootstrap; dev/index.html restored to unchanged main loader",
+  "review_rework": {
+    "comment": 5981649188,
+    "resolution": "Runtime uses existing main bootstrap dev: STORE prefix for explicit raw-dev bank URL and v3 history isolation; no bootstrap deployment prerequisite",
+    "bootstrap_matches_main": true,
+    "baseline_main": "52af1f7d8a93a8c9ae461b3abe2c8b6bb082ebab"
+  }
 }
