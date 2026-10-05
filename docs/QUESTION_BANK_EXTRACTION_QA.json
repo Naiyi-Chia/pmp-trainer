@@ -1,0 +1,166 @@
+{
+  "issue": 77,
+  "base": "897afc0246efef3528c62cb7faaa6ed9bc9052cf",
+  "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
+  "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+  "result": "PASS",
+  "parity_and_regressions": {
+    "scripts/validate-question-bank.cjs": {
+      "command": "node scripts/validate-question-bank.cjs --parity",
+      "result": "PASS",
+      "output": "PASS: 330/330 exact ordered records/fields match reachable migration baseline 897afc0246efef3528c62cb7faaa6ed9bc9052cf\nPASS: schema/count/unique IDs/required fields/options/keys; 10 invalid-bank controls rejected; bank SHA256 208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656"
+    },
+    "scripts/test-question-loader.cjs": {
+      "command": "node scripts/test-question-loader.cjs ",
+      "result": "PASS",
+      "output": "PASS: production/dev asset URLs, validated startup gate, HTTP/JSON/version/timeout failures and retry visibility; canonical 208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656"
+    },
+    "scripts/test-mock-persistence.cjs": {
+      "command": "node scripts/test-mock-persistence.cjs --migration-baseline",
+      "result": "PASS",
+      "output": "PASS: native pre-extraction active Mock resumes/grades on canonical runtime with identical IDs/answers/flags/position/deadline\nPASS: save/reload/resume, legacy/corruption/reorder rejection, flags/position/deadline, overwrite/discard, submit/review, expired resume, no duplicate history/resurrection"
+    },
+    "scripts/test-attempt-history.cjs": {
+      "command": "node scripts/test-attempt-history.cjs ",
+      "result": "PASS",
+      "output": "PASS: migration/idempotence/legacy preservation, first/repeat events, visible timing, v2/raw/v3 imports/exports, invalid data and quota preservation, native Mock reload/final-answer/discard/submit/dedupe, read-only Review"
+    }
+  },
+  "bank_metrics_vs_integrated_baseline": "unchanged (exact bank parity against dev@897afc0)",
+  "rendered_groups_vs_integrated_baseline": "unchanged; all 660 per-question geometry/text records identical to pre-sync #77 evidence",
+  "loader_browser_qa": {
+    "issue": 77,
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
+    "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+    "preview_bootstrap": {
+      "ref": "52af1f7d8a93a8c9ae461b3abe2c8b6bb082ebab:dev/index.html",
+      "sha256": "bae9e9fb7807bbd21c1f1503c0f94ed61b1129fac21c6c52b74c992f90cd6d98",
+      "topology": "main bootstrap unchanged; only raw dev app/data use candidate branch; Pages /dev/data is unavailable"
+    },
+    "views": [
+      {
+        "viewport": "1280x900",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      },
+      {
+        "viewport": "375x812",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "case": "slow response",
+        "result": "PASS: app hidden/inert; storage unchanged before data validation"
+      },
+      {
+        "case": "404",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "json",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "version",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      }
+    ],
+    "errors": [],
+    "browserVersion": "154.0.4258.53",
+    "regression_control": {
+      "reviewed_commit": "f62baf0acef7e2419ae7a36f4e9bff4d1e476dc6",
+      "result": "PASS: prior runtime reproduces missing /dev/data startup failure with deployed bootstrap",
+      "requests": [
+        "/pmp-trainer/dev/",
+        "/pmp-trainer/dev/data/questions.json"
+      ],
+      "expected_console": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "expected_failure_console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "result": "PASS"
+  },
+  "all_script_syntax": "PASS",
+  "five_historical_readers": "PASS: current canonical JSON, 330 records each",
+  "diff_check": "PASS",
+  "visual_review": "Mobile native dev Practice and #29 dashboard inspected; usable layout",
+  "limitations": [
+    "Faithful local Pages paths and actual preview bootstrap with scoped raw endpoint responses; not live deployment/Production Smoke.",
+    "Physical-device/Safari and Human Product Verify pending.",
+    "Direct file:// and offline packaging are unsupported; use HTTP."
+  ],
+  "attempt_history_browser_qa": {
+    "issue": 29,
+    "source_sha256_lf": "b21ffb5b4d88ffbbb907cbdd1897ea468e8d8926b01f37cebabf6aaa99e0bf13",
+    "question_bank_sha256": "208546e866e1242cee263878561981d824a7adfec5960624d71d51883e801656",
+    "browser": [
+      {
+        "viewport": "1280x900",
+        "migration": "PASS",
+        "practiceRetry": "PASS: 3 events + legacy 2 attempts; first/repeat flags and response time",
+        "importExport": "PASS: actual v3 download/reimport/reload, rejected future version, cancelled v2 replacement, preserved old-client conflict and explicit v3 import recovery",
+        "mock": "PASS: native 180, final answer, reload/resume/session/timing/flags, submit 1/180, 2 events, read-only Review",
+        "tabs": "PASS",
+        "overflow": "none",
+        "dialogs": [
+          "無法匯入：不支援的學習紀錄版本。現有紀錄未變更。",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ]
+      },
+      {
+        "viewport": "375x812",
+        "migration": "PASS",
+        "practiceRetry": "PASS: 3 events + legacy 2 attempts; first/repeat flags and response time",
+        "importExport": "PASS: actual v3 download/reimport/reload, rejected future version, cancelled v2 replacement, preserved old-client conflict and explicit v3 import recovery",
+        "mock": "PASS: native 180, final answer, reload/resume/session/timing/flags, submit 1/180, 2 events, read-only Review",
+        "tabs": "PASS",
+        "overflow": "none",
+        "dialogs": [
+          "無法匯入：不支援的學習紀錄版本。現有紀錄未變更。",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+          "已匯入學習紀錄",
+          "開始後計時 240 分鐘。確定開始？",
+          "尚有 178 題未作答。確定交卷？"
+        ]
+      }
+    ],
+    "errors": [],
+    "browserVersion": "154.0.4258.53",
+    "result": "PASS"
+  },
+  "sync_scope": "Keep integrated #29 logic; runtime asset/v3 key routing works with deployed main bootstrap; dev/index.html restored to unchanged main loader",
+  "review_rework": {
+    "comment": 5981649188,
+    "resolution": "Runtime uses existing main bootstrap dev: STORE prefix for explicit raw-dev bank URL and v3 history isolation; no bootstrap deployment prerequisite",
+    "bootstrap_matches_main": true,
+    "baseline_main": "52af1f7d8a93a8c9ae461b3abe2c8b6bb082ebab"
+  }
+}

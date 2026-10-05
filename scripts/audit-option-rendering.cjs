@@ -9,11 +9,14 @@ const http = require('node:http');
 const crypto = require('node:crypto');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
+const canonical = require('./question-source.cjs');
 const arg = name => process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined;
 const html = fs.readFileSync(arg('--html') || path.join(root, 'index.html'), 'utf8');
 const out = arg('--output') || path.join(os.tmpdir(), 'pmp26-rendering');
 const legacyIds = [113,116,118,119,122,123,126,128,129,132,133,134,135,136,137,138,139,140,141,142,143,146,148,149,152,153,154,155,156,157,215,216,217,219,221,222,223,228,229,230];
-const bank = JSON.parse(html.match(/^const Q=(.*);\r?$/m)[1]);
+const bankFile = arg('--bank') || path.join(root,'data/questions.json');
+const bankData = JSON.parse(fs.readFileSync(bankFile,'utf8'));
+const bank = canonical.validate(bankData);
 const ids = process.argv.includes('--all') ? bank.map(q => q.id) : legacyIds;
 const canonicalIds = [73,74,75,76,77,78,79,82,83,86,88,89,92,93,94,95,96,97,98,99,100,101,102,103,106,108,109,112,159,160,161,163,165,166,167,172,173,174];
 const source = new Map(bank.map(q => [q.id, q]));
@@ -52,6 +55,7 @@ assert.equal(classify([78,78,52,52], 1).informative_tied_tallest, true);
 assert.equal(classify([52,78,52,52], 0).unique_tallest, false);
 const report = {
   source_sha256_lf: crypto.createHash('sha256').update(html.replace(/\r\n/g, '\n')).digest('hex'),
+  question_bank_sha256: crypto.createHash('sha256').update(JSON.stringify(bank)).digest('hex'),
   method: 'Unanswered #popts buttons; exact DOM text = letter label + stored option; document.fonts.ready; DOM Range line rectangles and button border-box height. No answer/feedback labels measured. CSS and app code unchanged.',
   height_tolerance_px: 0.01,
   cue_rule: 'Credit for guessing uniformly among tallest/shortest options; random four-option expectation = 25%. This descriptive screen is not a semantic or statistical acceptance test.',
@@ -59,7 +63,7 @@ const report = {
   views: [], errors: []
 };
 const server = http.createServer((req, res) => {
-  res.setHeader('Content-Type', 'text/html;charset=utf-8'); res.end(html);
+  canonical.serve(req,res,html,bankData);
 });
 (async () => {
   let browser;
@@ -74,11 +78,13 @@ const server = http.createServer((req, res) => {
       page.on('pageerror', error => report.errors.push(error.message));
       page.on('console', message => { if (message.type() === 'error') report.errors.push(message.text()); });
       await page.goto('http://127.0.0.1:' + server.address().port);
+      await page.waitForFunction(()=>Q.length===330);
       await page.locator('[data-tab="dashboard"]').click();
       const history = Object.fromEntries(ids.map(id => [id, {attempts:0,correct:0,lastCorrect:null,star:true}]));
       await page.locator('#importFile').setInputFiles({name:'rendering-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,history}))});
       await page.waitForFunction(count => Object.values(H).filter(h => h.star).length === count, ids.length);
       await page.reload();
+      await page.waitForFunction(()=>Q.length===330);
       await page.locator('#pMode').selectOption('star');
       await page.locator('#pCount').selectOption('all');
       await page.locator('#practiceStart').click();

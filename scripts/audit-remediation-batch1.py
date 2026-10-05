@@ -3,6 +3,7 @@
 Usage: python scripts/audit-remediation-batch1.py --baseline /path/to/old-index.html
 The baseline must be exported from the pre-remediation dev commit.
 """
+from question_source import read_source, CANONICAL
 import argparse
 import collections
 import json
@@ -16,12 +17,7 @@ EDITABLE = {"q", "opts", "ans", "exp", "mindset"}
 
 
 def read_bank(path):
-    text = path.read_text(encoding="utf-8-sig")
-    match = re.search(r"^const Q=(.*);$", text, re.M)
-    if not match:
-        raise ValueError(f"Question bank not found: {path}")
-    return text, match, json.loads(match[1])
-
+    return read_source(path)
 
 def audit(bank):
     rows = []
@@ -54,7 +50,7 @@ def audit(bank):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", type=Path, required=True)
-    parser.add_argument("--current", type=Path, default=Path(__file__).resolve().parents[1] / "index.html")
+    parser.add_argument("--current", type=Path, default=CANONICAL)
     args = parser.parse_args()
     before_text, before_match, before = read_bank(args.baseline)
     after_text, after_match, after = read_bank(args.current)
@@ -74,7 +70,7 @@ def main():
             assert r["exp"].startswith("ABCD"[r["ans"]] + " "), f"Q-{q['id']}: explanation key mismatch"
     def outside(text, match):
         return (text[:match.start(1)] + "QUESTION_BANK" + text[match.end(1):]).rstrip()
-    assert outside(before_text, before_match) == outside(after_text, after_match), "Non-bank app changed"
+    if before_match is not None and after_match is not None: assert outside(before_text, before_match) == outside(after_text, after_match), "Non-bank app changed"
     pre, post = audit(before), audit(after)
     assert post["count"] == 20 and post["materially_longer"] == 0
     assert all(4 <= post["positions"].get(key, 0) <= 6 for key in "ABCD")

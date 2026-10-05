@@ -5,6 +5,7 @@
 PMP Trainer is a single-page static PMP practice tool published with GitHub Pages.
 
 - Main application: `index.html`
+- Canonical PMP question bank: `data/questions.json` (`schema_version: 1`, 330 questions). The runtime loads it before enabling the app; do not embed a second bank in HTML.
 - Vanilla HTML / CSS / JavaScript; no build system or framework is currently required.
 - UI copy is primarily Traditional Chinese (Taiwan usage).
 - `main` is the production / deploy branch.
@@ -47,7 +48,7 @@ Context efficiency must not override correctness: if required evidence is missin
 - Keep changes scoped to the Issue and prefer small, reviewable diffs.
 - Keep the current vanilla HTML / CSS / JavaScript architecture unless the Issue explicitly requires an architecture change.
 - Preserve mobile usability and basic accessibility.
-- Do not modify the embedded PMP question bank, answer keys, explanations, or PMI sample content unless the Issue explicitly concerns question content.
+- Question work edits `data/questions.json`, preserving its schema/count and authorized content scope. Do not modify question text, answer keys, explanations, metadata, or PMI sample content unless the Issue explicitly authorizes it.
 - Do not remove or change existing user progress / localStorage behavior unless explicitly requested.
 - Do not add external dependencies unless the need is documented in the Issue.
 - Avoid unrelated refactors, formatting changes, or duplicate implementations.
@@ -55,6 +56,8 @@ Context efficiency must not override correctness: if required evidence is missin
 ## Validation
 
 Run checks relevant to the changed scope. Prefer targeted validation and concise output when sufficient; do not emit unnecessarily broad logs or checks.
+
+For question-bank work, run `node scripts/validate-question-bank.cjs` and `python -X utf8 scripts/audit-question-bank-final.py --canonical`. Use `--parity` on the validator only to verify Issue #77's unchanged migration baseline. Browser QA must serve `data/questions.json` along with HTML; production resolves the local relative asset, while `/dev/` resolves the raw dev asset using the existing bootstrap’s `dev:` storage prefix. Historical embedded-HTML audit modes are for replaying old contracts only; current data audits use the canonical file.
 
 For UI / JavaScript changes, normally verify:
 - the page loads without obvious JavaScript errors;

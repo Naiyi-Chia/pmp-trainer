@@ -5,11 +5,11 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const source = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+const source = require('./question-source.cjs').testSource;
 const KEY = 'pmp2026_v5_active_mock';
 const storage = new Map();
 let now = 1800000000000;
-function app() {
+function app(runtime=source) {
   const nodes = new Map(), events = {}, timers = new Map(), confirmations = [];
   let sequence = 0;
   function element(id) {
@@ -33,11 +33,25 @@ function app() {
     setTimeout:()=>0, clearTimeout(){},
     setInterval:fn=>{timers.set(++sequence,fn);return sequence;},clearInterval:id=>timers.delete(id)
   });
-  vm.runInContext(source, context);
+  vm.runInContext(runtime, context);
   assert(!element('runtimeStatusText').textContent.includes('啟動失敗'));
   return {run:code=>vm.runInContext(code,context), element, events, timers, confirmations, context};
 }
 const json = value=>JSON.parse(JSON.stringify(value));
+if(process.argv.includes('--migration-baseline')){
+  const fixture=JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/QUESTION_BANK_MIGRATION_BASELINE.json'),'utf8'));
+  const oldHtml=require('node:child_process').execFileSync('git',['show',fixture.baseline_commit+':index.html'],{encoding:'utf8'});
+  const original=app(oldHtml.match(/<script>([\s\S]*?)<\/script>/)[1]);
+  original.run('startMock();answerMock(M[0].ans);toggleMockFlag();mockNext();answerMock((M[1].ans+1)%4);mockNext()');
+  const previous=JSON.parse(storage.get(KEY));const upgraded=app();upgraded.run('resumeMock()');
+  assert.deepEqual(json(upgraded.run('M.map(q=>q.id)')),previous.questionIds);
+  assert.deepEqual(json(upgraded.run('mAns')),previous.answers);assert.deepEqual(json(upgraded.run('mFlag')),previous.flags);
+  assert.equal(upgraded.run('mi'),previous.currentIndex);assert.equal(upgraded.run('mEndAt'),previous.endAt);
+  upgraded.run('finishMock()');assert(upgraded.element('mockResult').innerHTML.includes('1 / 180'));
+  assert.equal(upgraded.run('Object.values(H).reduce((s,h)=>s+h.attempts,0)'),2);
+  storage.clear();
+  console.log('PASS: native pre-extraction active Mock resumes/grades on canonical runtime with identical IDs/answers/flags/position/deadline');
+}
 let a = app();
 a.run('startMock();answerMock(M[0].ans);toggleMockFlag();mockNext();answerMock((M[1].ans+1)%4);mockNext();');
 const saved = JSON.parse(storage.get(KEY));
