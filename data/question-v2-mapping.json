@@ -1,0 +1,2978 @@
+{
+  "baseline_commit": "a68564d00ec069948fc6fbb00299adc136ad211a",
+  "eco_version": "2026",
+  "mapping_status": "proposed",
+  "note": "Engineering content-based primary-task mapping; pending independent Content Review. Enablers intentionally unassigned. Legacy Domain is preserved separately.",
+  "questions": [
+    {
+      "id": 1,
+      "legacy_sha256": "a64950b8d6bf230ab235f771769f391bc1b0793761125af56e6a2c569cacdb5e",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 2,
+      "legacy_sha256": "670d0e21235c5f71fff8c14379b7bc58eb302fc8eb79bdbb4a5a71bb683bb887",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "領導風格",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「領導風格」；對應領導專案團隊。"
+    },
+    {
+      "id": 3,
+      "legacy_sha256": "8d6760011124f60b2111b2835e83b1f88bff55ce5147c8952898a38590f7c860",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "先分析關鍵利害關係人的資訊需求，修復參與及信任。"
+    },
+    {
+      "id": 4,
+      "legacy_sha256": "186d7b02ba754db6c16b7aade46325adc6b2f5b3e19f3d9c372a064c1bbc6d05",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 5,
+      "legacy_sha256": "e6e51f279f247aab4356fbb4a74cf4c727e84b4675e7134946b8517ed647badf",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊發展",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊發展」；對應領導專案團隊。"
+    },
+    {
+      "id": 6,
+      "legacy_sha256": "8d3fc98b3661960fd005b580125948824a60c17e51716d3e31d83477c0f6a820",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "資源管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「資源管理」；對應規劃及管理資源。"
+    },
+    {
+      "id": 7,
+      "legacy_sha256": "ff4f75c049af6333d0f9b17e4b59cd237d43ed30d7880b8f2f6b319927aa0c10",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.6",
+      "concept": "團隊績效",
+      "ecoEnabler": [],
+      "rationale": "回顧工作流資料，選擇並驗證持續改善。"
+    },
+    {
+      "id": 8,
+      "legacy_sha256": "1a6a8c71fb33c8143d721ca587cc6f09e700bb1227e2977a8f7a2e7e9527d39d",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 9,
+      "legacy_sha256": "0c02933e7f690b016d71dca3312569a40c8d0118fbc7e451d1cd721069164257",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 10,
+      "legacy_sha256": "1ea8acf537b0226efe93d58f02318340f5729584e46e413746625a5d69483235",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "授權",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「授權」；對應領導專案團隊。"
+    },
+    {
+      "id": 11,
+      "legacy_sha256": "1f4626b6ab053ca369a5ccf5a0e573833796ba37a4965d904df5dbf4a7cd33a5",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "團隊成員提出依賴疑慮，領導者先處理情緒及問題。"
+    },
+    {
+      "id": 12,
+      "legacy_sha256": "e46789179760ac8222757429b2770304b6e6e28c5476c972c2a40e2c354f9997",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 13,
+      "legacy_sha256": "49b467af60ea844b081060effbed099183ebc0ae4569af0aa06411587b988090",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 14,
+      "legacy_sha256": "cfbdcd1f38faff8868f99287d1d2f814b5c402fd332d8a7c8b1088f4d9c8be7c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "權責",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「權責」；對應建立專案治理。"
+    },
+    {
+      "id": 15,
+      "legacy_sha256": "f2a39af1a65dd2f788712fe9a2f1694dbde6c720b60ab9370f5f627b691573ed",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突」；對應管理衝突。"
+    },
+    {
+      "id": 16,
+      "legacy_sha256": "e9cb060307fcf2d1abe78654e19093714f2f689e1c79d7a83f5349439e4d109a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "產品負責人協作",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「產品負責人協作」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 17,
+      "legacy_sha256": "a738c394f1d3eb79f31f509168400f464b8c5bf97663be7942465dfeb1be870b",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 18,
+      "legacy_sha256": "368f0e62b8a576a19c990cef4247ba07c9fc7e0d259193a264fcc58c6a9fc9e7",
+      "ecoDomain": "People",
+      "ecoTask": "people.7",
+      "concept": "知識移轉",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「知識移轉」；對應促進知識移轉。"
+    },
+    {
+      "id": 19,
+      "legacy_sha256": "35c383d13531740463b9440a66d2dfdfbb2859fb587b722ec1f5b544dc0b0648",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 20,
+      "legacy_sha256": "4db17939e5fd6053181d7a7133c8ffd53df30e33b1b2dff522feb72a196926df",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "供應商加價前先核對採購合約及替代來源。"
+    },
+    {
+      "id": 21,
+      "legacy_sha256": "5da6b3becdaa6b97ee5429b8e390142978ac86326f6293bf1a3fd6244b6eba86",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "權力與影響",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「權力與影響」；對應促進利害關係人參與。"
+    },
+    {
+      "id": 22,
+      "legacy_sha256": "654b75d03cc31d04239e5843e6f8bc22d1bd38097d84f1e5f0ff04483690dbab",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突",
+      "ecoEnabler": [],
+      "rationale": "回顧中的人身歸咎須導回事實與解決分歧。"
+    },
+    {
+      "id": 23,
+      "legacy_sha256": "5a93075cde87535d57c651c4baf0f4bd4cfc0dc940ee0cbaafb0650d5642653a",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊激勵",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊激勵」；對應領導專案團隊。"
+    },
+    {
+      "id": 24,
+      "legacy_sha256": "900e506dbd1e7c109da0669eab39bc664394ae7e181579ee14b92042469ab8e5",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "決策",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「決策」；對應領導專案團隊。"
+    },
+    {
+      "id": 25,
+      "legacy_sha256": "5313b456fbf273a0397718e20e55eb76abfcc9560a940e1132b3650598df005c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 26,
+      "legacy_sha256": "214181899fb323683b2eef7e784dfdd22021d33940e60d4b47d818c28baa880c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 27,
+      "legacy_sha256": "90c1f8a703a2f0ccc1360411e5fa5d3ace5641596fb1a90954fa19ffcdc56b5a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險管理」；對應規劃及管理風險。"
+    },
+    {
+      "id": 28,
+      "legacy_sha256": "909b245ea3ff6314272e0918a47963d96e012b5ce59e722545c03efc74418a82",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "時程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「時程」；對應規劃及管理時程。"
+    },
+    {
+      "id": 29,
+      "legacy_sha256": "ac77ffc594ac6470ca7fef0596ea766021f1037a25f46fe8426f27bf7b7dbfce",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 30,
+      "legacy_sha256": "2a1ed4a17c566b2b16a377c34ec5f3287c5e31acc689bec48e02d5a787c200cd",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "優先排序",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「優先排序」；對應以價值引導交付。"
+    },
+    {
+      "id": 31,
+      "legacy_sha256": "6e4c96dbb710965e901eb7003c17e9d924b617888333d730a4bb1b9423cba6ff",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "品質",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「品質」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 32,
+      "legacy_sha256": "2edd3e5aacf15dd03e34bddad5d1d2c9d9b1f66fba4dda1832a5b58a2497673c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 33,
+      "legacy_sha256": "d045e10ffa7dbcf1794f218802a05635795ab037fef9008f871bf240342e6000",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "完成定義",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「完成定義」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 34,
+      "legacy_sha256": "2ca67dc18b1d4b2d1d2f129cb6114a0da8c738692f887625d276d6f4dd3a252d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇」；對應建立及管理範疇。"
+    },
+    {
+      "id": 35,
+      "legacy_sha256": "0ef688f52abdc3e1bc1f89d576823a3431ee98e3b38513374a1160b9e6d3509f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "估算",
+      "ecoEnabler": [],
+      "rationale": "初期投資區間與假設屬整合規劃，而非已建立時程。"
+    },
+    {
+      "id": 36,
+      "legacy_sha256": "c4d25d127c7143ce6ca75912bf32141e074322d51da0969231af1364fbfa657a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購」；對應規劃及管理採購。"
+    },
+    {
+      "id": 37,
+      "legacy_sha256": "d551ac8d861d58895ace15a21f4fcc08ed34ab1808e6bbccdd00376ebd168e34",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 38,
+      "legacy_sha256": "642759199be31a06acee3ba2f6a80ebb8e3aaaf9e539b6f3dbb9179b00b26f12",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「整合管理」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 39,
+      "legacy_sha256": "cfc47a1e313a7218b3d696a928177cd61f6a99951d1c76ad383439189a284dc8",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "品質成本",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「品質成本」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 40,
+      "legacy_sha256": "fbcec5bd1644656c26d1170fa94d1e466396f5eaab941722bf48c0cd19960fc8",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 41,
+      "legacy_sha256": "f4969ced4295d02c2573a542143436bc56f164ec80ad9b1260280e9c64c078ae",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "問題管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「問題管理」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 42,
+      "legacy_sha256": "d8a8fe2b81f76a65ff445d892a57538d5f38654dd48d499a27a055f1d76e7796",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 43,
+      "legacy_sha256": "92054855488b632aadf88b15a7674db183b8e2c4faf85830be07baab9ea0220e",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "進度壓縮",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「進度壓縮」；對應規劃及管理時程。"
+    },
+    {
+      "id": 44,
+      "legacy_sha256": "e1862f0c4adb9289400d34352251c9184b5e13c3ebef65531c5f9adcfac06384",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "Kanban",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Kanban」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 45,
+      "legacy_sha256": "346a0f7b0c56324b0621137b7bbbb0bc767f243849f25a174c4a55402a65e59a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "規劃",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「規劃」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 46,
+      "legacy_sha256": "84d83ac8922a084ae7ef4278631d3603bcc94b7011d25dce3ed21cba844d5e9f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "資源最佳化",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「資源最佳化」；對應規劃及管理資源。"
+    },
+    {
+      "id": 47,
+      "legacy_sha256": "d273e3d7cf514cf168942f10148008be4cb743c028933dc8932d929f8bfeacb0",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 48,
+      "legacy_sha256": "f2d740162b5364962ce5d3ef309b28fc0b81e1834ad5471b39dffdf101d4975a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險應對",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險應對」；對應規劃及管理風險。"
+    },
+    {
+      "id": 49,
+      "legacy_sha256": "373992b64f6a38eed091ed3c9dbb53a5a21c67ec9ca72e819d6fe9c177d593fb",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "需求",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求」；對應建立及管理範疇。"
+    },
+    {
+      "id": 50,
+      "legacy_sha256": "25f778eb99f4bfdb1e0f02acbe735371a12ae0017d13bea36a189835f33363df",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "基準",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「基準」；對應管理及控制變更。"
+    },
+    {
+      "id": 51,
+      "legacy_sha256": "43d7b8ac8f40f19564c841b60fdd58706b1e3bc7642c6cdb0d19660db02cd59e",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 52,
+      "legacy_sha256": "2cbc4aaf9edb7e86ca9ec3667fd8dcd6fe89e3f5b1bcd8cd4c87ba05b60da905",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "測量",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「測量」；對應評估專案狀態。"
+    },
+    {
+      "id": 53,
+      "legacy_sha256": "b03d320e136c3e2197d262e48015c765de5d93eb7dd01f4d96765d81a26c60ae",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "品質控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「品質控制」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 54,
+      "legacy_sha256": "09588194b515cd6405d83da81c11f3ddeee1dc45a56ff6374019302747b4e3f1",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "估算",
+      "ecoEnabler": [],
+      "rationale": "故事點估算須先釐清假設，再估算工作。"
+    },
+    {
+      "id": 55,
+      "legacy_sha256": "e96048407c6f0c812563da78b1c4e7578cbc2cb0fcade6e30538c700f57f3655",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 56,
+      "legacy_sha256": "cc675ad90a5cbf3ea0a9458b4f0601051a5c979cde927eb295aa5a944e2d8af8",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 57,
+      "legacy_sha256": "a8ebd88e8e8cf8f4245931dc8f29a3e8050aff6ecaa7708b33bd03eb98e52d34",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業價值",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業價值」；對應以價值引導交付。"
+    },
+    {
+      "id": 58,
+      "legacy_sha256": "44a0efdf9b78135fab9f1638f6ffc4a1b4d86f8137bde1dc39d2c59f38a46924",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 59,
+      "legacy_sha256": "634effde0a4d7d5521181ccc77dbd6eac43e6189a92f15b0f2503f7e6a02fe32",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 60,
+      "legacy_sha256": "a0d37877dea0927e556b021578efbe42745f99825cd5f1cb23fd07e663460ff9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 61,
+      "legacy_sha256": "c6ba7b4ac104012cffddf804ae273869a0e3b5a483417d5df78215c3277251bb",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 62,
+      "legacy_sha256": "69020e0baa9b382b3392e41874088c5821d0a765f49d7ea930b5712fbdf1b43b",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「治理」；對應建立專案治理。"
+    },
+    {
+      "id": 63,
+      "legacy_sha256": "734c1ad97fea68637f4ec6dd268f584e82f9a88dcdbcec76c0d2b554cb2d6ad0",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "效益管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 64,
+      "legacy_sha256": "29afc534d7e90aeaab3bc5c30776a041b14f5f0a933996709a5603cd8ea26c34",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 65,
+      "legacy_sha256": "ffa0da25c5b35724f56933b5ae5c133037de3c1237da51de317b855f103ca31d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 66,
+      "legacy_sha256": "4ad9129f47e7e424dd12d9580bf2e904b38857a2dc9ebf50434472fab13dccc3",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 67,
+      "legacy_sha256": "7caa5c0dacf0b52d6b35f45bba9d2bca56e9ca7f6ae33b515b08134560a6619c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織文化",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織文化」；對應支持組織變革。"
+    },
+    {
+      "id": 68,
+      "legacy_sha256": "e38256d95bbbf3a2c2d54e3c468f0c6b5b60a68bc5341f9f7bd669dd31f98182",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 69,
+      "legacy_sha256": "6ddfd3045271c55d0a74891114490cbd24bc46eb10e86542e5484d20f926c692",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規」；對應規劃及管理合規。"
+    },
+    {
+      "id": 70,
+      "legacy_sha256": "250a6064c2ebe78fc68229f0b2b743bc4f7aa658eed0facb711425a179cc8a9c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值衡量",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值衡量」；對應以價值引導交付。"
+    },
+    {
+      "id": 71,
+      "legacy_sha256": "9299c34d361b79a01ae318572464d7c687fa952c42b43ba1cfa5f89a4de59aa9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "企業環境因素",
+      "ecoEnabler": [],
+      "rationale": "既有採購系統限制影響採購規劃。"
+    },
+    {
+      "id": 72,
+      "legacy_sha256": "0517b14cd054f0fe635f3304bf147450d8d3d030d67dc8a47acea42a69721e9a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略終止",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略終止」；對應以價值引導交付。"
+    },
+    {
+      "id": 73,
+      "legacy_sha256": "f90b982f678be7a5368d8756550e79a918893765dc5103951f43f669ae004fd4",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 74,
+      "legacy_sha256": "9f2d634da82cec8b4d3d5c078e45fd030e4a5168bc7650088530d5e26642f484",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 75,
+      "legacy_sha256": "539997fa1611458d9af240e79da6641833bf43e25598c2db243a816d0bff4df2",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 76,
+      "legacy_sha256": "01dd1e8b38846901087e360385e95cb743a53e0c6faa6429c654680dd4aaef35",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 77,
+      "legacy_sha256": "37a1b81e3b8d79890429676c9bc15ded129dd361d2a1712598d2e8836c15152c",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 78,
+      "legacy_sha256": "1095723d567c38ab575ff00faa0e30cb4cb235346d09221b39e832642e2b6628",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "聆聽外部利害關係人的具體疑慮以建立參與。"
+    },
+    {
+      "id": 79,
+      "legacy_sha256": "28eb726c20401dd869485a28e4fdf4daad7af711607a571ea41a109bcab5103e",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「談判」；對應規劃及管理資源。"
+    },
+    {
+      "id": 80,
+      "legacy_sha256": "9cd2f0c71d7951541509ce7f006d001c6e8b00a0de432c8607a72b14ca96f9b2",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 81,
+      "legacy_sha256": "4d1186bf51f969c9cf1538ec2e57287508d76d04ae0f932cafa28d036ef196ad",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 82,
+      "legacy_sha256": "07a776eed8e72ce39653fc5592dd798ce29832712dfc70b705f487fb8d7a8f61",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 83,
+      "legacy_sha256": "e20ebc5adfac511304b469c9ef9a2e28d106625fc051ffc55015b915d44dbb1a",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 84,
+      "legacy_sha256": "0576fbd155088c889d875dc06627e41ecce05dbe24528d281b8440ed2cffb0ec",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 85,
+      "legacy_sha256": "60e61367b3724573f56b9df1c1f214358f948375a0006806dc79df37003039ea",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 86,
+      "legacy_sha256": "91cc872cf2e17172b92f2bb2d72f07ac66101e30dea54dba1e69c2e9b96e0e9b",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 87,
+      "legacy_sha256": "3eed115b1ea47538ca732d7bea24631456678b9011ca4262ecc7d7f8c3e90596",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 88,
+      "legacy_sha256": "369ecd478bcaee7f8719a2c11eb50258364b864ad5bd0126cc9152b201532eab",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "聆聽營運利害關係人的疑慮以促進參與。"
+    },
+    {
+      "id": 89,
+      "legacy_sha256": "5373f79d7b6fd30209ed3461e9db61e0f02d2e651f50881bd7fb4714be5a90a2",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「談判」；對應規劃及管理資源。"
+    },
+    {
+      "id": 90,
+      "legacy_sha256": "cda68bad5fc0836f0f94aaec0d52054b1e7035b11916551f4cbcb48f0c186055",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 91,
+      "legacy_sha256": "dbb8260e8ad59b6004bf83b1b33d5d16c5e8fe41f2e06a0983d55320cdb8804a",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 92,
+      "legacy_sha256": "a7e3629e80ebefa7958c7cc670eab1d01ab71dee9dccd220fc59ccd3b9697b8c",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 93,
+      "legacy_sha256": "d8000b1750091c8fe5aadbf88ea1d9e6ed52f574275dde40b8d39c72276f831c",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 94,
+      "legacy_sha256": "4458dd3bda2d29d341fe0d3a5d80aa88d3134b1664a1684f892a913984a85abc",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 95,
+      "legacy_sha256": "2c6cef4da15753a75c6ad52cdb512247b220d5a88d56019091de0c838bc07354",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 96,
+      "legacy_sha256": "c927b34fc7c134abdc2dc737616d068a5d3bedae93132d8d2f237b1925783a37",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 97,
+      "legacy_sha256": "9e08a775c39d26dc721f5fb497bf6846ca4e427084a3b7f15ea1d744b3557558",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 98,
+      "legacy_sha256": "2a3ef050922a92a8413e1281c52786ad7417951fdade6d6c0319da13331e2f0b",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "查核利害關係人的疑慮及事實。"
+    },
+    {
+      "id": 99,
+      "legacy_sha256": "468b6ca1be9c93bc2687bde33b540e4117f6f747ecda96af722b4a53eaa706fb",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「談判」；對應規劃及管理資源。"
+    },
+    {
+      "id": 100,
+      "legacy_sha256": "0b049410943e3608c7488cc8e650b472bb861810fdd6c2d525c9176ab62d856f",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 101,
+      "legacy_sha256": "d9bad3862d2ec0911ef21b2da978503e09b02b20a3b8a53f0bedd9ec902928ff",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 102,
+      "legacy_sha256": "f34ab606fe716ecb9012c1ec227dce915e0534e22b8974aab6a84a07291c7de3",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 103,
+      "legacy_sha256": "28836d44198aadce9265558976b5138e7ed1258979422018e40f9ec0f535f860",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 104,
+      "legacy_sha256": "31c87e0057ba2a3914c26b991798d151c58505934ba98f9d226355f3a60aacea",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 105,
+      "legacy_sha256": "91a4d3677bdedf716719a324ba64cea4ac911c01cec7590afbf23ccf8adfcd83",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 106,
+      "legacy_sha256": "c09c399caa84eb98db0c2cd14bd9b7a44477670a2ecd135b97b31e0ebe6c4cb4",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 107,
+      "legacy_sha256": "4b8a9bacd47e1e227536724529f20970f8dfafecb32a34194e9a9a5f00d74f8c",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 108,
+      "legacy_sha256": "fa4b96784b627e8a0347bee504df37a4ec76ddc1b4e9c56bca0bc9e95c46940b",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "釐清外部利害關係人對設備導入的疑慮。"
+    },
+    {
+      "id": 109,
+      "legacy_sha256": "4738437d2bd7fbcf41dd6c8ccd850af924e349745c0eb84ec1c39dafb34eb55a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「談判」；對應規劃及管理資源。"
+    },
+    {
+      "id": 110,
+      "legacy_sha256": "69470b9ec5e32c5f233a91f4f720dc1a62f77849eb0ab256e99fdd4d9874788f",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 111,
+      "legacy_sha256": "5479e5457de95be2065a48c35ffebe00cefacd24aa1ee0f246e21c251824df8e",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 112,
+      "legacy_sha256": "7711c31897450afacd503c7549bb66689f901fd693fbea8507b97bc957bd0b21",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 113,
+      "legacy_sha256": "0cf9cd393cd9858004fcbc3a176a678ec0c8300f44fe39ea70a0077194b93ca2",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 114,
+      "legacy_sha256": "4021a2112c71d4fcd89e622aecdd5d8a3815e435558b167ee782c9c6192cfd44",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 115,
+      "legacy_sha256": "c2b40f7fe300fc11c078f94e8291400f305e03c0e5e033ab3414880c70c63201",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 116,
+      "legacy_sha256": "8996c2082f388550c0a68c55d2cc0532d045dfa6693a4c4d0f74b266035e5337",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「教練與指導」；對應領導專案團隊。"
+    },
+    {
+      "id": 117,
+      "legacy_sha256": "114fdd23870c2f5315172394b42abbbee180b9a82016aeefebf8c42be28aaec1",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 118,
+      "legacy_sha256": "8e418411e39ad18512474d5a24fb501b238f50a09376796bfbb75ae7440e8256",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "領導者管理自己的情緒以處理團隊議題。"
+    },
+    {
+      "id": 119,
+      "legacy_sha256": "a435c5b650ee01bc2ae03b5e4e27f2f1bd14aeab78109ecfc572c1bec68639b9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "客戶與供應商協商合約分批交付條件。"
+    },
+    {
+      "id": 120,
+      "legacy_sha256": "8ee7ae7de90fcec513877b50ec97fa96c6f2bce39c33b152e1ca76ed88ae4113",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 121,
+      "legacy_sha256": "d9203870d1b423209c3fbc5c1f0ae164d758a82d6b00c50d32de541b9cabbe38",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 122,
+      "legacy_sha256": "b9a9a32bf8cff6c7acc4d453c032081b49b047adba1b99774010e8759173c5cc",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 123,
+      "legacy_sha256": "42575eca40fbb686a02680bd24109f0dec76593c91c20f1715c161a0c007c994",
+      "ecoDomain": "People",
+      "ecoTask": "people.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「衝突管理」；對應管理衝突。"
+    },
+    {
+      "id": 124,
+      "legacy_sha256": "db311b17c5bba26b4d2b4671bd32e688e01ea771a015b33d9d8e4e9e1111a4e1",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 125,
+      "legacy_sha256": "d6f8a9c97511d0853b73fce50e8d726528d14ada9f3c67dc4ebac7b0c3d05bec",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 126,
+      "legacy_sha256": "381d88587d1b7a1f9120d441eceb3e9ac928b4cffa9938075ef65699472b7028",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「教練與指導」；對應領導專案團隊。"
+    },
+    {
+      "id": 127,
+      "legacy_sha256": "8cc8658a9beffe558d7abbc399dde1f234cd9250151830ccf25bb7df95d5beef",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 128,
+      "legacy_sha256": "0c4bb992c10664e8f9b745defb0bf060702e4e1e69cf80c32906e12d9c791542",
+      "ecoDomain": "People",
+      "ecoTask": "people.4",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "先理解跨部門同事的感受與意見。"
+    },
+    {
+      "id": 129,
+      "legacy_sha256": "bedbe92352e600a656c6dd2ce0b4b5283d0460224890b7483ef9d6b5a4c1879d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "供應商就培訓交付交換條件。"
+    },
+    {
+      "id": 130,
+      "legacy_sha256": "3c2b77a26c1b8235f95adffd1075f02175f10734a21ffeaebb1b9be70c166466",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 131,
+      "legacy_sha256": "1e0fa7a0035eb501686093917e6d7c66a93d3c34f0369c0596defb2d9b48e09a",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 132,
+      "legacy_sha256": "ec1685149c5ce9ce7799eaea320e306eabcf5ae1503f981f1bb2c69aed9daac7",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 133,
+      "legacy_sha256": "db0d4e3cdd03ec81bb288c35cd39e7542df6c6b35aec8b26825787496f0a74a0",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "歧視申訴須遵守組織指定的正式處理政策。"
+    },
+    {
+      "id": 134,
+      "legacy_sha256": "de96665d82dc95f9bbd6b507bf31b7902c4122e7c5f1d75c1bc62e70f66c0e52",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 135,
+      "legacy_sha256": "cbee14b76869ada7bba8c28bd80a3fa727f59fca998a771f2a919cea92a687fd",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "依容量調整承諾與負荷，避免不可持續加班。"
+    },
+    {
+      "id": 136,
+      "legacy_sha256": "5f643daa924b74dec35715fbdf5f075b7c88db41a5a0b88712aa016eb87c8ad9",
+      "ecoDomain": "People",
+      "ecoTask": "people.7",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "讓接手者主導實作，驗證知識已移轉。"
+    },
+    {
+      "id": 137,
+      "legacy_sha256": "940453a2fae3f7390f2b973cc17baa4e46c234632f77811b179648284262b5c3",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 138,
+      "legacy_sha256": "4d9ccdfe83d8d101a3c012a9cf66b7cf04e890ae72aed719d49556ccf456ec03",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "支持成員差異與短期工作調整。"
+    },
+    {
+      "id": 139,
+      "legacy_sha256": "61afd24cba827ded49140be22a8b6c15a3df194d56d322ce62eeab2086f9d5ff",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "採購續約前對齊談判利益及核准界線。"
+    },
+    {
+      "id": 140,
+      "legacy_sha256": "da262259da7340fa872a24c9d8d7ce93344719d5f168d4404b443be77ac82a80",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 141,
+      "legacy_sha256": "11231551da466bedde5c863522c617e6f6e57f494fa59b3007cf1112e561595b",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 142,
+      "legacy_sha256": "a323989671c47a47b682bcb17d0fa73709ae571825b0962344780c2fe0303e8c",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 143,
+      "legacy_sha256": "4bd43af8037db70babc7b9426406f95c955aba9b46d8c190152f9c36f5da424d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "已發生服務事故須由指定指揮官限時排除問題。"
+    },
+    {
+      "id": 144,
+      "legacy_sha256": "d3489b7dea904d546d913cb2fa9b2d663582b58d2d2706d8eebe0f58c48e91f7",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 145,
+      "legacy_sha256": "ae11ce3ffa761d07f6c051ef14726acd272a49ef13c64bebc9f2ab81f9cf8146",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「僕人式領導」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 146,
+      "legacy_sha256": "92d49af9921bfa0a9a83bed0acec0b6c9e648a6884625441dc5beed039a1d773",
+      "ecoDomain": "People",
+      "ecoTask": "people.5",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題目聚焦導師／教練安排；對應2026 ECO People Task 5 的 mentoring opportunities，保留與團隊領導的交叉關聯。"
+    },
+    {
+      "id": 147,
+      "legacy_sha256": "f34cdd5ba3e6fb0e31772c603c6ad272248f27c1ff1cc2e1d16a61cec65fa38b",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 148,
+      "legacy_sha256": "4caf2ec9d4ea79c3dc84f7f5460915179bd41846dd7de0c206a261f3e32da1f2",
+      "ecoDomain": "People",
+      "ecoTask": "people.6",
+      "concept": "情緒智力",
+      "ecoEnabler": [],
+      "rationale": "回應客戶零停機期待，說明殘餘風險並管理期待。"
+    },
+    {
+      "id": 149,
+      "legacy_sha256": "7266805bba68aabbb47533cc2c7f45a79a22e74c7e5ad4de6acec02592987192",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "談判",
+      "ecoEnabler": [],
+      "rationale": "供應商付款提案須依採購談判授權取得核准。"
+    },
+    {
+      "id": 150,
+      "legacy_sha256": "ccf692252feafef1b0b053be1dc60be206c2cac3e65a26614a6a966cf83cc530",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "自組織團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「自組織團隊」；對應領導專案團隊。"
+    },
+    {
+      "id": 151,
+      "legacy_sha256": "01dde96e29db18a8603464fbf2067b6cf888e3a89b088e6bb6b3498030d270fc",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "團隊章程",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「團隊章程」；對應領導專案團隊。"
+    },
+    {
+      "id": 152,
+      "legacy_sha256": "dc3fb35aa652f5fd872f02343aa2957863b0706fdbfa13f1a3e20df1fabc42bd",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "績效回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「績效回饋」；對應領導專案團隊。"
+    },
+    {
+      "id": 153,
+      "legacy_sha256": "47518627bb846b49380f66f14d16b7d5ef736cbf9b2df3c712ee53d40b6ee3ba",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "衝突管理",
+      "ecoEnabler": [],
+      "rationale": "跨組支援衝突源於組織績效制度，須調整制度。"
+    },
+    {
+      "id": 154,
+      "legacy_sha256": "1eeb48c258d3fcae4114488ba9ae607394f543863c56c5820d5828c056951f9c",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "心理安全",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「心理安全」；對應領導專案團隊。"
+    },
+    {
+      "id": 155,
+      "legacy_sha256": "edfee2f0a573ae416c36838541dd9e8cbfd3a890184098eb9bdd37c9af618170",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "僕人式領導",
+      "ecoEnabler": [],
+      "rationale": "管理直接插單造成的交付障礙。"
+    },
+    {
+      "id": 156,
+      "legacy_sha256": "e0d644b71e2d980b9aeaf4b71bc7f87526f0245e82c26531f3086a7197be7da5",
+      "ecoDomain": "People",
+      "ecoTask": "people.3",
+      "concept": "教練與指導",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「教練與指導」；對應領導專案團隊。"
+    },
+    {
+      "id": 157,
+      "legacy_sha256": "b47a84ce8374bcf8539e61ebf327e9b5dae0c2511c5f933f012356aad8b037b6",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "虛擬團隊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「虛擬團隊」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 158,
+      "legacy_sha256": "f39c24c551b8f00977a3f96293a93e9d12e65e758add28791c666afd5fa3e8f6",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 159,
+      "legacy_sha256": "79d794296034faa56347fbb5b11314f720859045ff0ce9969576c43aefc1e29a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 160,
+      "legacy_sha256": "c283b7a28e00336c54a7d603dc6ce79a2321572bac262fbbf354c144a093c57a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 161,
+      "legacy_sha256": "1d5b04db49ee88df73d1f703a8e6b2a70ac962f317aa0b473342185ae326a70b",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "Definition of Done",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Definition of Done」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 162,
+      "legacy_sha256": "d7abf5d1e6caefa5e7c89526507ed2cfae6430861f0eb050275b314d16a2cd28",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "技術風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 163,
+      "legacy_sha256": "d60a4faf508950f65d62b61d3580795250f6d2848eb7f24ae5dff4a515113cc9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「整合管理」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 164,
+      "legacy_sha256": "199912636284d6de7d4802196e2d2fd04475303773d6df026bbeb57f103e6b8d",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「利害關係人溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 165,
+      "legacy_sha256": "89b5f57b40d6e03c8c87c4b3f51a652b550f0fe6204040d604bc6bbef0d3edbe",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "Kanban WIP",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Kanban WIP」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 166,
+      "legacy_sha256": "8ee92c66fb0a8438a397094b4705c39163987e5fb49eaf177ae0700193401af0",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "Rolling Wave",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Rolling Wave」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 167,
+      "legacy_sha256": "010b85f6296370c1d5072ca54de510e1be87b9c88856b952daa9c6953e624410",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購合約",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購合約」；對應規劃及管理採購。"
+    },
+    {
+      "id": 168,
+      "legacy_sha256": "ea597bef862ea6b07a16bbe14a5b6c08282ae5be5d0ae5f7790e87384c479fbd",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險回應",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險回應」；對應規劃及管理風險。"
+    },
+    {
+      "id": 169,
+      "legacy_sha256": "bd2378b94105f98f386fa578fe443272031950fa9996215dd954fc1e52fa8114",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 170,
+      "legacy_sha256": "39ce02f6215640a59ef9d61a969fbbb0556b4f1776e3798ec3927d9118b3202d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇驗收",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇驗收」；對應建立及管理範疇。"
+    },
+    {
+      "id": 171,
+      "legacy_sha256": "b64f789e1638428ae4e1ec9f41948b14da68675847008f8c7d28ddd3beec2429",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 172,
+      "legacy_sha256": "75f66ef3eff3967dbbc80bc72cbea41efeef09a3cb785d3d1b278c20bc45162f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 173,
+      "legacy_sha256": "452449fe5c998f6a25f4086cf209f7a3768109794454ecb1eadce3f60d801ae2",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 174,
+      "legacy_sha256": "5bb218d6f73d24a1093464a4d868b56290e2d5994d83cfd6d8abbac10a871542",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 175,
+      "legacy_sha256": "bee16f8953457092ac947f4ebd277b459d3e779569930a964dc76af2456c07a7",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "Definition of Done",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Definition of Done」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 176,
+      "legacy_sha256": "e8f8af0acef740fb294e2decc73fcc9872f4a28fbb290806675ec846434338a5",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "技術風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 177,
+      "legacy_sha256": "67bf01ade9e4f8df8541f67e6706f3495c86ea233048646172782bf8bc4fec68",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「整合管理」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 178,
+      "legacy_sha256": "1307bf35278354e4d7995f38cba94a5467a7dcda138fea2be44ac3818392c998",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「利害關係人溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 179,
+      "legacy_sha256": "99df9dc69236b891f2f54011cad4b8aa0e3936b300287a11d0e6b65144371485",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "Kanban WIP",
+      "ecoEnabler": [],
+      "rationale": "以具備技能的人力支援測試瓶頸，最佳化資源。"
+    },
+    {
+      "id": 180,
+      "legacy_sha256": "d2c4bbeb6db5333fb141115847126b7618ab264e774cd89a0ad8850803dc1e1b",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "Rolling Wave",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Rolling Wave」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 181,
+      "legacy_sha256": "ab63a56a5d2942958f5b452b49626f1fae5efb96f49b1eb1e97df0b0e13eb0d8",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購合約",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購合約」；對應規劃及管理採購。"
+    },
+    {
+      "id": 182,
+      "legacy_sha256": "6ab084e0a8ce6251149d3b954a5633401ee6dc54f619016b6535cef716c26a7b",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險回應",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險回應」；對應規劃及管理風險。"
+    },
+    {
+      "id": 183,
+      "legacy_sha256": "872ed8cfbe8789a27862545e287aabda6f350060a8bb72017cde0cf390c1f048",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 184,
+      "legacy_sha256": "72983d075492214c7cde57550d610d689c5359ddb0d1adb02f97c56678be8446",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇驗收",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇驗收」；對應建立及管理範疇。"
+    },
+    {
+      "id": 185,
+      "legacy_sha256": "1f5ab336cb169c5d96b15a749a283718270661c3e756926c7da255705e2974cf",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 186,
+      "legacy_sha256": "4acc66f73c0033943f73bbbb0ccd68662ab004e9145df0f479fa92674b4869a0",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 187,
+      "legacy_sha256": "461eed18e0da72032576b1a77b27d64df05e9171664ce8ce1618a0c5c7dd5258",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 188,
+      "legacy_sha256": "392b28757254541c72eb0fdf13a2659ca365cd2722f102ed263bc028b813b452",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 189,
+      "legacy_sha256": "a80032a9348b5edbab933f93ec7d7baab68ee96dd61e01334a0388984a404882",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "Definition of Done",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Definition of Done」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 190,
+      "legacy_sha256": "b323d927d5b51aba21d30a65846cfb7db7ef27a467b208e2fec39bc61177566f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "技術風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 191,
+      "legacy_sha256": "a5fee1d5715757118221543792998c5ebac21e518186ad7617d7cde8d6dcb628",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「整合管理」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 192,
+      "legacy_sha256": "96dac42a27f3545a68d5d23d3af687b45ea0aa1bb4ad66a8d7629a4757540866",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「利害關係人溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 193,
+      "legacy_sha256": "8689f39501e4f61078c24a65713acf782bae8a34c8358ab6eafe09543bfe60f8",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "Kanban WIP",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Kanban WIP」；對應排除障礙及管理問題。"
+    },
+    {
+      "id": 194,
+      "legacy_sha256": "7edf90917c73f0de559ae054c8f7cd61f3a08f4eb1a0b36fbfec64cede23327c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "Rolling Wave",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Rolling Wave」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 195,
+      "legacy_sha256": "46b5bef6333fb56d83146eeb666cec4e5837b82d47e1ed337379b1233b29441b",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購合約",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購合約」；對應規劃及管理採購。"
+    },
+    {
+      "id": 196,
+      "legacy_sha256": "671ac61626f67b673ad764597f5ac67df73c1d0bf5e159e2c38d74648dfbfe19",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險回應",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險回應」；對應規劃及管理風險。"
+    },
+    {
+      "id": 197,
+      "legacy_sha256": "25c0b594b2ab35ab04629bc454906c0a180ebd424155ba0c0437200384cebab7",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 198,
+      "legacy_sha256": "1fced637887fc337983114f97e5f31eff1d59e5ec9365f37b01b689b8125b91f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇驗收",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇驗收」；對應建立及管理範疇。"
+    },
+    {
+      "id": 199,
+      "legacy_sha256": "f5427535728415cc4763e826847eed55d1fce5fdf76fcc6ec078f19839ad62d5",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 200,
+      "legacy_sha256": "295c061d69de89bbae0e430d77dd957d7825e802bf9b5b4c58c4a76b64cd2b4d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 201,
+      "legacy_sha256": "2ceeb68cfac4d5785888df11099af56aea5724379627e35239aef51a04f48114",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「需求管理」；對應以價值引導交付。"
+    },
+    {
+      "id": 202,
+      "legacy_sha256": "f39570af3b70255e5ddf27b80a4acd080e917e9fb45fc7ffa783c4ea347ae4cb",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 203,
+      "legacy_sha256": "73f2e9008e51ac08f2b798c2ed432bd33b07893aeb1117385d53d6b3044555fb",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "Definition of Done",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Definition of Done」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 204,
+      "legacy_sha256": "e7f87484f7b173addea52e2f0bdb63780c5720d594b4f0308ce34d0e69017e0b",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "技術風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 205,
+      "legacy_sha256": "2ac714e21967bfb2cb34da53ba4fe73d93b75a1e108a25b1bd5092a8bc56b355",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「整合管理」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 206,
+      "legacy_sha256": "01833e5ebdec7b7836986e18c353b61669f6ec883ae854b1336105736647a457",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「利害關係人溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 207,
+      "legacy_sha256": "9dc5b53eca93f04f92bab12e4140780427001f7b7cd3b7a3921d9b883d061450",
+      "ecoDomain": "Process",
+      "ecoTask": "process.4",
+      "concept": "Kanban WIP",
+      "ecoEnabler": [],
+      "rationale": "按加急政策取捨在製工作與瓶頸負荷。"
+    },
+    {
+      "id": 208,
+      "legacy_sha256": "bd0202c0e73bc8e3f309558dbf1f7e2b4d56541f18fa42e3c91eb777174249b9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.1",
+      "concept": "Rolling Wave",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Rolling Wave」；對應整合規劃與交付安排。"
+    },
+    {
+      "id": 209,
+      "legacy_sha256": "7ddad141f1c7acb9246970ba3819718d7437bdbe99dbb622272e67596e52deba",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購合約",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購合約」；對應規劃及管理採購。"
+    },
+    {
+      "id": 210,
+      "legacy_sha256": "0e6c42ac4d97237296a155ac7f2bc29fe9e1bc751fd6582134ab5cb29ae48bf0",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險回應",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險回應」；對應規劃及管理風險。"
+    },
+    {
+      "id": 211,
+      "legacy_sha256": "ed13bfad7ee9e7a503e743e8d510a51945c2dda1428eeeb1923f6d1efc7cac47",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 212,
+      "legacy_sha256": "d66585f3b2401492bfd583f5f70c05dc25cd1230530d11c8cc29259d2307bdfd",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇驗收",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇驗收」；對應建立及管理範疇。"
+    },
+    {
+      "id": 213,
+      "legacy_sha256": "fd047a993ebd223d423e401780aa81e6216221b00d4cb8e1834a0c7e5fc6c8f2",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 214,
+      "legacy_sha256": "be69d15a8167b38e37838233360554e6344015e7519d591ccaf00eb366ee2d2c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 215,
+      "legacy_sha256": "ca6f1bcbb743df245573518e72234e7ab09c4b1879802725baa9fadc483a0f1d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "垂直拆分可用成果以提早驗證價值。"
+    },
+    {
+      "id": 216,
+      "legacy_sha256": "d3ca8f86e813475e74ef2a92cade6839e3d0cb384898c2d724f1565832e054b9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 217,
+      "legacy_sha256": "4a789a90234026c5f5ee86b29fc0457664b2af52f32db6070145969e42c136cf",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "Definition of Done",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「Definition of Done」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 218,
+      "legacy_sha256": "50de434eebcebd5ae4a0afee6b04221509289ae15674c51b0feaad19db5861e9",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "技術風險",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術風險」；對應規劃及管理風險。"
+    },
+    {
+      "id": 219,
+      "legacy_sha256": "028812fc46a889a480c1d1c69fc2d332c567db3618e99c1a9daa51ed03e3b63b",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "整合管理",
+      "ecoEnabler": [],
+      "rationale": "已核准變更須協調部署及文件後實施。"
+    },
+    {
+      "id": 220,
+      "legacy_sha256": "94e2c5587a58543e413de96d4de1885163b25c52c7e6f4fadf842d2fdc933fd4",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "利害關係人溝通",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「利害關係人溝通」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 221,
+      "legacy_sha256": "d0a86cb82f4b892a79ef5e06c0fdd0399192ca3171373cadc00945031a1e0c0f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.4",
+      "concept": "Kanban WIP",
+      "ecoEnabler": [],
+      "rationale": "針對超齡停滯項目排除障礙並追蹤。"
+    },
+    {
+      "id": 222,
+      "legacy_sha256": "c42d23a1b2e8646b4d75b448bdc9d74e60980ab417bbfc7923f9425640dc30b3",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "Rolling Wave",
+      "ecoEnabler": [],
+      "rationale": "將已確定需求的規劃包分解為工作包，維持範疇追溯。"
+    },
+    {
+      "id": 223,
+      "legacy_sha256": "0be6c9674b0affe49a5665871038162880d6b18ac7279b214e4a31292df23a43",
+      "ecoDomain": "Process",
+      "ecoTask": "process.5",
+      "concept": "採購合約",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「採購合約」；對應規劃及管理採購。"
+    },
+    {
+      "id": 224,
+      "legacy_sha256": "32ec73ced6c4c3cb408ec3f1268c3d599483b67bd8724db0bc4cd1ffba09dc95",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "風險回應",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「風險回應」；對應規劃及管理風險。"
+    },
+    {
+      "id": 225,
+      "legacy_sha256": "ae1211844ccb335fb2cb3159e263b8e802d604fd757e3659426bb85517bf42c6",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值交付",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值交付」；對應以價值引導交付。"
+    },
+    {
+      "id": 226,
+      "legacy_sha256": "2979eb08a51412352224f11b36256600c8cd922ba546eb19561af8d9fba55eb6",
+      "ecoDomain": "Process",
+      "ecoTask": "process.2",
+      "concept": "範疇驗收",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「範疇驗收」；對應建立及管理範疇。"
+    },
+    {
+      "id": 227,
+      "legacy_sha256": "253406b96eafdd6782bfe4d4a9799b94aa046c27c81ebcbb5d1b7cc149e07803",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "技術債",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「技術債」；對應以價值引導交付。"
+    },
+    {
+      "id": 228,
+      "legacy_sha256": "d6437f3ec4b5874cbdb43e91931d121a17d33e6e9f01cb37134afcb416c5300a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.3",
+      "concept": "變更控制",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「變更控制」；對應管理及控制變更。"
+    },
+    {
+      "id": 229,
+      "legacy_sha256": "8b10ec3eed9c03f49c9b15b243219982c71f969799b57b16a082cdee4d352f3d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "需求管理",
+      "ecoEnabler": [],
+      "rationale": "整合多部門價值資訊以形成單一交付排序。"
+    },
+    {
+      "id": 230,
+      "legacy_sha256": "0f45d6ce4f5098415d045dabab7515201b9367e5b4b0a5726735fb2f82b5ac36",
+      "ecoDomain": "Process",
+      "ecoTask": "process.7",
+      "concept": "根因分析",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「根因分析」；對應規劃及改善交付品質。"
+    },
+    {
+      "id": 231,
+      "legacy_sha256": "e5ec0a9b2fd9334cf643afc7e6eda544a6f7db0ddd7129712b21cb129a30cefa",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 232,
+      "legacy_sha256": "e99a6b884b9227ab9b6553b98657b81660c46c16a6104b9d934fab759ddb9a0b",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 233,
+      "legacy_sha256": "20d37d8c242fb3228c9c179504bcc4747d5bd581228e2134ec464510428b5e57",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 234,
+      "legacy_sha256": "cd3833774ab477807b4163b5be900c1f0a28794cfd5599a1acdec24e70ea8910",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 235,
+      "legacy_sha256": "0668b46770e3f13ffb2c7abc7e80113b2639117bbb6a16320355dca081bb8c9c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 236,
+      "legacy_sha256": "5d766f2fbbf10fbd5d470bfe1489cf7fea40c2f396826a9316f9de93726040e6",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 237,
+      "legacy_sha256": "1aecdb79eafef820630401de66139dd7c9ae098a1d7f77dbdcd02c943e111167",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 238,
+      "legacy_sha256": "2dc664ba7c9adc412bbcd1093418b648c56e7dc8d9ce9ec159f2a926acc8d38a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.9",
+      "concept": "EVM",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EVM」；對應評估專案狀態。"
+    },
+    {
+      "id": 239,
+      "legacy_sha256": "ede3a35139c0c9b04b8d124062c593e83f2ccc4ff03ab9ee02379cdce97b3fbe",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 240,
+      "legacy_sha256": "7bba95ecf01d0511af21ef626869d962cdd98031ee07c65c346b5700245b7349",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 241,
+      "legacy_sha256": "247691f8ce116f36a781c8131f26585147b99db7edbbcef8996fbfd29875095d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 242,
+      "legacy_sha256": "3e0df084c98b58ecbaaab9a4738c87e045f1d823efea102e8ae1b0efac834cff",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 243,
+      "legacy_sha256": "e6f3d71b0a30f0bcfcd95b71ce00f148308b6926709ec519a96e01cecf09ec2d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 244,
+      "legacy_sha256": "40881180ed03f90e7b572ef3d89caf7e09ba98e7d82f255bc66c9f34de0c7cae",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.5",
+      "concept": "EMV",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「EMV」；對應規劃及管理風險。"
+    },
+    {
+      "id": 245,
+      "legacy_sha256": "93d848fdddd133c407e20ecd2b4438ec981b4d62f3fcc5d6284d0407d319b06c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 246,
+      "legacy_sha256": "18a79a6acb828b5e65b03d6d8b9b8d00e329edbd3d8221314aa0b56a54e40585",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 247,
+      "legacy_sha256": "b17e635ee889d8534e478bf66e4d880f0ef09e85ee15ca5c4a12508ef6f14dea",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 248,
+      "legacy_sha256": "33e7eeaaedd66a5d3b03838318ec87d75c78f584dd145722384dd3b874d1ee75",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 249,
+      "legacy_sha256": "5c4efd3d566cafcd0e6cb6385b3640089974be68b09564c69baf321cb9508d23",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 250,
+      "legacy_sha256": "fa61619cb2902debb1c0e8cc6340c7ea7423f3837ea87dd4ff816afc32fa6532",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "PERT",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「PERT」；對應規劃及管理時程。"
+    },
+    {
+      "id": 251,
+      "legacy_sha256": "4b2f051c70cc61051cc7574966d5a392d557750965120b6e3ede89e72418997a",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 252,
+      "legacy_sha256": "5d6ffd060d4f42dd6d33ef9b72f4b84ecb84f7332d08ab36c34c3b8ee870da9e",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 253,
+      "legacy_sha256": "e569ffce3761bc600d4b5944214ff08660b254a8d485408f3a206e9827803148",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 254,
+      "legacy_sha256": "dc6e4f17a0203128b6f88dc4342e0c6e301c6b1f0c6d6233c9a3c49e679f679a",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 255,
+      "legacy_sha256": "30fdf4863c63f022f8d0ff09d96e4a57be1170df93faab14bd04e0a01032282d",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 256,
+      "legacy_sha256": "f96df38a5e3e419a6dbe19624c1c1657acfa96a7471dc741bedce6a1d3ea61ff",
+      "ecoDomain": "People",
+      "ecoTask": "people.8",
+      "concept": "溝通管道",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「溝通管道」；對應規劃及管理溝通。"
+    },
+    {
+      "id": 257,
+      "legacy_sha256": "a47a66037521bfcaea2d2fd53b1af23b106a8fe7a909e5693cb8ee5429a51236",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 258,
+      "legacy_sha256": "b4a6dc7db073d4b39e09251b99e41e1d7bc15a4f5bdb8ce16b578e52ce891c19",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 259,
+      "legacy_sha256": "cd6737fa0aff4e847683ea44b549dce979cc705419472260ee4febd82968fc2e",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 260,
+      "legacy_sha256": "8b0deee50c873b8cd46cc1e85e6163bc1ba5c782162a9dc1dedf582a6af8bacf",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 261,
+      "legacy_sha256": "b6d8c26baf21d972c51ce58a6fe4c44b44069cf897f9bc40263daa43fd9d15f8",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 262,
+      "legacy_sha256": "524a185240b8ab397a4e68f9e519e7fcc12f8e17d77851474664c78f9fc0557f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.8",
+      "concept": "浮時",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「浮時」；對應規劃及管理時程。"
+    },
+    {
+      "id": 263,
+      "legacy_sha256": "fe8c0a137fa7ac2539a17d1df5c8d4af4b9fa8a7fd28ee81ab4deb73c81a2b64",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 264,
+      "legacy_sha256": "6453475ada6622a8347aa69f392d83eb702d881ea61dece223dca385349e463a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 265,
+      "legacy_sha256": "41ea72f7fc23a9a9e5d9fda2c0a7034536217b3ac0e8609b4e933c812f4e5306",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 266,
+      "legacy_sha256": "b73e86c85d3165ecde2fe8a87dcf3163b4bdbd1bba59c21e654987254c8ce12b",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 267,
+      "legacy_sha256": "0017845d8ca69d7b0e9ca2262b4fef3e052226b50854ea876878b97542dbfe00",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 268,
+      "legacy_sha256": "04a93fa34409a5d53331c78d532f5198d489dd3c60b425f3bd89142d0b9e8128",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 269,
+      "legacy_sha256": "fe3c39e8c5f6865835c5f0d661ee24c5ebd0e892055d966bf893b1a07442e999",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 270,
+      "legacy_sha256": "a67edcc93ab05a7692f3f9059251f7cbf7205c6ce80fba2c6bde597c47eeaca1",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 271,
+      "legacy_sha256": "612f60dd2b179c36e4232107252d62dca1ccc57af4608f2d19cc2facfece5b03",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 272,
+      "legacy_sha256": "ad59077440afd6310dd8ed184cd5aa035fe901dd24a76c85b40a8cb673e82fd9",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 273,
+      "legacy_sha256": "e8bca5d7a64b21fe514e46f259e4d8b3a36e888c2f628e1f6e823ca6663d9e9b",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 274,
+      "legacy_sha256": "bbec727ee398f8906be25f64050c5cae8d9674283549ad449b6d79845b79bda1",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 275,
+      "legacy_sha256": "6f157f7b7d966c31206671b7d311f0c07d3ba4b69d60954b387119d518a09ace",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 276,
+      "legacy_sha256": "bef45add3ae006e6ce0aaf79bad7ea2517b885645afcbc61272411a2bbf1a1ec",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 277,
+      "legacy_sha256": "b19ef73b94fdd68045fccd79214c662cac4587b493ba83868d746312b48d10eb",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 278,
+      "legacy_sha256": "c483f73bbe48518311405e1cef5dfb89bef3ed80780473eb2fb4f3581d2c4a0a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 279,
+      "legacy_sha256": "ba591d4c7ff93da95c4a569fb507b274b5cce52ad369dec5d46966b96483a56c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 280,
+      "legacy_sha256": "58314e84e1b0752de865405ab38214333f91f665e4d5eebe186caede482e311d",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 281,
+      "legacy_sha256": "473e762b5e79f906588f56e58c8f87cbe84e35f40247a6a580ae304e38d69351",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 282,
+      "legacy_sha256": "35ba27b2f8fe8f5da7005c3e353a6f50f28a77b38155ce7e8bb993128b2ea50f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 283,
+      "legacy_sha256": "70b04d3da52d4a77a8824ef8549fbc6e0c453ddaf7d5509aa619dcd315200236",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 284,
+      "legacy_sha256": "a8c4c110bd6223e8627755d17b83624f600eee220c295aaefe6c6f911b16ad8c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 285,
+      "legacy_sha256": "baecca05092dd685ebfccddc298422191ecef2bbaaa5975c2ea0dd4ed2f70613",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 286,
+      "legacy_sha256": "a0946de282f84f5e4c1385267c93c322a3d8ccb56e1ab94fa6a4d52f78be9ee5",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 287,
+      "legacy_sha256": "b0ef0a485e3e4a9f1a269ab6efa20e220765af4affee2e49665287f88149a24f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 288,
+      "legacy_sha256": "b2419e14f3471e5d0bddfdd18b6a14e434ee71f66b7bf83c343bd45832c26b76",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 289,
+      "legacy_sha256": "2b793d6483665119748f3a2e5c902ed6bfd1d4349fe51091250afde374ecd939",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 290,
+      "legacy_sha256": "13ae1f5a83ccf65373a242d168cc25efb16bfb61f3b0407a3cd870acb094fa28",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 291,
+      "legacy_sha256": "93a1568c829c641085e1a176ed5f111abe8b05ec970967598c9891311cdaf942",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 292,
+      "legacy_sha256": "2060398bc8d803efa308bb8addd339cb73434b031643ca6f834473fbba05498a",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 293,
+      "legacy_sha256": "097f7765ea126b9e3d7deb22621b291d88b9325b0b27e728a2eb06cdd42994b7",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 294,
+      "legacy_sha256": "e6d0b6bb31d600cd6ef174161d0985cf41313c5ad79376c2dcd4f32b42e461a5",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 295,
+      "legacy_sha256": "e92961d9f450b84ad0eb8c09e559b5e0ad1aab4f072941bf1b5e8c99002ea959",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 296,
+      "legacy_sha256": "071b9a9f22a303a64c066a92452959278b36d90f6daf2186cc2aaaacad713250",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 297,
+      "legacy_sha256": "5494fd0a21ea73c1763a6786eba3bcc1567d53ee1833e085e8b805c8d61420fb",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 298,
+      "legacy_sha256": "87034506a0a64cc4f8cd0079cb6f74aa2deb235c41226e109d80fac08f08db91",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 299,
+      "legacy_sha256": "28d36b143059875c505fe6cf2bfe942fc5a138ecd7ad68e7d4ef7f508528c8b5",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 300,
+      "legacy_sha256": "631f304a81c211367753dacf62b5d8eaf0bc0b5d8ec3d3cffd0b2d6df3830179",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 301,
+      "legacy_sha256": "665bdaa39645b8cfcbb59a46f63ab1f83bcbbdf381e91f273bfa946b1c988447",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 302,
+      "legacy_sha256": "40db174c618d08f7544244848ab27a6d545abeb78bcf0e1e9e32e64e4f037ad0",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 303,
+      "legacy_sha256": "1908cc2687807f221ab021d0791bbcee0e38c03bcd0ee4e85f650ca2d10857d6",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 304,
+      "legacy_sha256": "03aa8a4295074a2753277714296ef2b3e89aee312f5359d057f623ecaa1c5877",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 305,
+      "legacy_sha256": "93a1f8f845886a1f67c3e252a82a667efb0e72f00e00450a431b4826fd93baed",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 306,
+      "legacy_sha256": "8677a28929c34be163dc9466faa9aa0673a86e2231e275d083f5235f3762f377",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 307,
+      "legacy_sha256": "9df7d68a75404b2f67bc816e9260164975ef9fece5880c0c4d8b2c8533e4d33a",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 308,
+      "legacy_sha256": "3a7156df35c4db713bfa89ab7feb4d87d240f5fba73420ac3f2788a2bc410507",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 309,
+      "legacy_sha256": "2cf6a42775446e0f4eede895e7835b180b4bb33334de71aa54cf13e3d4b8fa62",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 310,
+      "legacy_sha256": "d00c2ebb5c743263e4be76b0a74f304acefe2170103ae7cba8c43fdd53df138f",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 311,
+      "legacy_sha256": "f4f0780b2467b78726aace6d14d1bf24b115b4eba2c1a66da5f1d80c0069d064",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 312,
+      "legacy_sha256": "a20326dd8780fa2df6d1243a0d921ac1a4e064a8690cb33be15563e6062a229f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 313,
+      "legacy_sha256": "702aee0201e54867239cde27376945283b70b9d0876692feabf1111fa13f3e24",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 314,
+      "legacy_sha256": "681cf21036776f0515e81f2fd36ab9f5064f923190ff14a6ff686c70828be411",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 315,
+      "legacy_sha256": "26d4cff7c10d3cbb85a4e70cbb75b43815f970dcd4a50ce6d1d757016053ec79",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 316,
+      "legacy_sha256": "0d06f848d8d83ce581b23ffd5c055d4a5abc6861f890a0cb7bf93e5bfe915969",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 317,
+      "legacy_sha256": "ac1cc70453c7eaae457f51d3ff4129fd3b0086f9ca023e5ed479c733ba61287c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 318,
+      "legacy_sha256": "dd7fbf7deb4ed72849c860c9bd996700f5ef1dd1d945f48fd5663874e7a73411",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 319,
+      "legacy_sha256": "af43719a9bc71d3d5089c86ecabc963cc6c165bb66692eb3f39dc6961bd5757c",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    },
+    {
+      "id": 320,
+      "legacy_sha256": "775cfb31b1ff3c0727a0d2e847bfd397bc5b66e148c052eea6ab223a577b9d6f",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.7",
+      "concept": "組織變革",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「組織變革」；對應支持組織變革。"
+    },
+    {
+      "id": 321,
+      "legacy_sha256": "fb544eeba1807c3c3a3453655a30a367b0ee45fbd2654f5a3f623840c6694126",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "商業案例",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「商業案例」；對應以價值引導交付。"
+    },
+    {
+      "id": 322,
+      "legacy_sha256": "2ed09a98d566c24a43dd14ab4ad3319d4125d2c0a7d2494e93cd44bac4da9e1e",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "永續",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「永續」；對應以價值引導交付。"
+    },
+    {
+      "id": 323,
+      "legacy_sha256": "304d0ab6468a6363a2853de4fc5d27784db96b05269695d43e4aaa6fa39f958d",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.1",
+      "concept": "AI治理",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「AI治理」；對應建立專案治理。"
+    },
+    {
+      "id": 324,
+      "legacy_sha256": "a4cd8332bfc1127b04d974a2169385c7c2ec9d32c14015bac3b79c416b85dcdf",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "策略對齊",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「策略對齊」；對應以價值引導交付。"
+    },
+    {
+      "id": 325,
+      "legacy_sha256": "ecf711c598962cec9bee13ddabf25a688b276a4aaeb731572d8a5dcea9b6f3c5",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.8",
+      "concept": "外部環境",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「外部環境」；對應評估外部環境變化。"
+    },
+    {
+      "id": 326,
+      "legacy_sha256": "cd9027cc36e025ac538125ca273b9d7296ff8b0db2847089a0de29f960976432",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "市場回饋",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「市場回饋」；對應以價值引導交付。"
+    },
+    {
+      "id": 327,
+      "legacy_sha256": "2020168fd5f91bbb4a794934dc11684e28f7fb1c0a7f8d8dbeb47d4149e5908c",
+      "ecoDomain": "Process",
+      "ecoTask": "process.10",
+      "concept": "效益實現",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「效益實現」；對應管理結案與移交。"
+    },
+    {
+      "id": 328,
+      "legacy_sha256": "2a4eb2f3f3f0e49e5f2b0fb0e2f1604b4057942485274b916554331f7f1234e3",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "合規與敏捷",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「合規與敏捷」；對應規劃及管理合規。"
+    },
+    {
+      "id": 329,
+      "legacy_sha256": "22bb8a459ecd1cc9b83058593810a1f847e3e7e4cffa890579c4135b3dc34b19",
+      "ecoDomain": "Process",
+      "ecoTask": "process.3",
+      "concept": "價值與成果",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「價值與成果」；對應以價值引導交付。"
+    },
+    {
+      "id": 330,
+      "legacy_sha256": "ac1205aad64076597198ca72475828fcf22d7b3b07f59c8746b9b315a87e6bbe",
+      "ecoDomain": "Business Environment",
+      "ecoTask": "business.2",
+      "concept": "法規遵循",
+      "ecoEnabler": [],
+      "rationale": "題幹與正解主要評量「法規遵循」；對應規劃及管理合規。"
+    }
+  ]
+}

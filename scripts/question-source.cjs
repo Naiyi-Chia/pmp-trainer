@@ -5,7 +5,7 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const source=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const definitions=source.replace(/^loadQuestionBank\(\);$/m,'');
 const context=vm.createContext({});vm.runInContext(definitions,context);
-function validate(data){return context.validateQuestionBank(data);}
+function validate(data,publication=true){return context.validateQuestionBank(data,publication);}
 const data=JSON.parse(fs.readFileSync(path.join(root,'data/questions.json'),'utf8'));
 const bank=validate(data);
 const bankHash=crypto.createHash('sha256').update(JSON.stringify(bank)).digest('hex');
