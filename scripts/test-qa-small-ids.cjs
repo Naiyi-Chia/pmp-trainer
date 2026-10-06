@@ -33,8 +33,9 @@ for (let n = 1; n <= 2; n++) {
   console.log('PASS: --ids=1,2 run ' + n + ', desktop/mobile native Mock persistence/Review');
 }
 assert.equal(runs[0].source_sha256_lf, runs[1].source_sha256_lf);
+assert.equal(runs[0].question_bank_sha256, runs[1].question_bank_sha256);
 const evidence = {issue:27, contract:'https://github.com/Naiyi-Chia/pmp-trainer/issues/27#issuecomment-5976033827',
-  source_sha256_lf:runs[0].source_sha256_lf, result:'PASS', sample_ids:[1,2], repetitions:2,
+  source_sha256_lf:runs[0].source_sha256_lf, question_bank_sha256:runs[0].question_bank_sha256, result:'PASS', sample_ids:[1,2], repetitions:2,
   method:'Native random 180-item mocks; choose actual positions 0/1 independently of custom Practice IDs; repeat full CLI twice at both viewports. No product random/scoring/storage override.', runs};
 fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(evidence,null,2) + '\n');
 console.log('PASS: small custom IDs regression; ' + out);

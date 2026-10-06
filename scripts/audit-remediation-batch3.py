@@ -4,6 +4,7 @@ Export the pre-change 4265866:index.html to a UTF-8 file, then run:
 python -X utf8 scripts/audit-remediation-batch3.py --baseline <baseline.html>
 No third-party packages. Semantic content review remains a separate gate.
 """
+from question_source import read_source, CANONICAL
 import argparse
 import collections
 import itertools
@@ -24,12 +25,7 @@ EDITABLE = {"q", "opts", "ans", "exp", "mindset"}
 
 
 def read_bank(path):
-    text = path.read_text(encoding="utf-8-sig")
-    match = re.search(r"^const Q=(.*);$", text, re.M)
-    if not match:
-        raise ValueError(f"Question bank not found: {path}")
-    return text, match, json.loads(match[1])
-
+    return read_source(path)
 
 def audit(bank):
     rows = []
@@ -60,7 +56,7 @@ def audit(bank):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", type=Path, required=True)
-    parser.add_argument("--current", type=Path, default=Path(__file__).resolve().parents[1] / "index.html")
+    parser.add_argument("--current", type=Path, default=CANONICAL)
     args = parser.parse_args()
     bt, bm, before = read_bank(args.baseline)
     at, am, after = read_bank(args.current)
@@ -81,7 +77,7 @@ def main():
             assert set(re.findall(r"\b[A-D]\b", r["exp"])) == set("ABCD"), f"Q-{r['id']}: missing option rationale"
     def outside(text, match):
         return text[:match.start(1)] + "QUESTION_BANK" + text[match.end(1):]
-    assert outside(bt, bm) == outside(at, am), "Non-bank application changed"
+    if bm is not None and am is not None: assert outside(bt, bm) == outside(at, am), "Non-bank application changed"
     pre, post = audit(before), audit(after)
     assert post["count"] == 60 and post["materially_longer"] == 0
     assert all(12 <= post["positions"].get(key, 0) <= 18 for key in "ABCD")
@@ -92,7 +88,7 @@ def main():
         signatures[json.dumps([q["q"], q["opts"], q["ans"]], ensure_ascii=False)].append(q["id"])
     assert not any(len(ids) > 1 and set(ids).intersection(IDS) for ids in signatures.values())
     print(json.dumps({"baseline": str(args.baseline), "changed_ids": changed,
-                      "scope_schema_application_checks": "PASS", "before": pre, "after": post,
+                      "scope_schema_checks": "PASS", "application_guard": "historical HTML only; canonical data edits require scoped git diff review", "before": pre, "after": post,
                       "semantic_review": "See review document; human acceptance remains separate"},
                      ensure_ascii=False, indent=2))
 

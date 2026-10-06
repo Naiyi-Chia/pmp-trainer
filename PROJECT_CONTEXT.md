@@ -14,6 +14,7 @@ PMP Trainer is a single-page, static PMP practice tool published with GitHub Pag
 - Dev Preview: `https://naiyi-chia.github.io/pmp-trainer/dev/`
 - Primary UI language: Traditional Chinese (Taiwan usage)
 - Main application: `index.html`
+- Canonical question data: `data/questions.json`, loaded and validated before the app is enabled.
 - Current architecture: vanilla HTML / CSS / JavaScript
 - No build system or framework is required.
 
@@ -45,7 +46,7 @@ If a task requirement changes, update the GitHub Issue first. Do not treat chat,
 - Scoped implementation branches are created from the latest `dev`.
 - Feature / fix / UX / maintenance work should not be implemented directly on `main`.
 
-The fixed Dev Preview loads the current public `dev/index.html`, allowing integrated Human Product Verify before release to `main`.
+The fixed Dev Preview loads the current public `dev/index.html` and uses the existing bootstrap’s `dev:` storage prefix to fetch the explicit raw `dev` canonical URL and isolate v3 history, allowing integrated Human Product Verify before release to `main` without reading production question assets.
 
 ## Standard Lifecycle
 

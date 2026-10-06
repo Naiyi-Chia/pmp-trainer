@@ -3,6 +3,7 @@
 // Default remains the 78 Issue #26 IDs; --ids supports later read-only bank audits.
 // Serves the unchanged HTML; imports a fixture through the existing import UI.
 const {chromium}=require('playwright');
+const canonical=require('./question-source.cjs');
 const fs=require('fs'),http=require('http'),path=require('path'),assert=require('assert/strict'),vm=require('vm'),crypto=require('crypto');
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
@@ -12,8 +13,8 @@ const sampleArg=process.argv.find(arg=>arg.startsWith('--ids='));
 const ids=sampleArg?sampleArg.slice(6).split(',').map(Number).sort((a,b)=>a-b):defaultIds;
 assert(ids.length>1 && ids.every(id=>Number.isInteger(id)&&id>=1&&id<=330) && new Set(ids).size===ids.length);
 const out=process.argv.slice(2).find(arg=>!arg.startsWith('--')) || path.join(require('os').tmpdir(),'pmp26','browser');fs.mkdirSync(out,{recursive:true});
-const report={source_sha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'index.html'))).digest('hex'),source_sha256_lf:crypto.createHash('sha256').update(html.replace(/\r\n/g,'\n')).digest('hex'),syntax:'PASS',sample_ids:ids,browser:[],errors:[]};
-const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html;charset=utf-8');res.end(html)});
+const report={source_sha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'index.html'))).digest('hex'),source_sha256_lf:crypto.createHash('sha256').update(html.replace(/\r\n/g,'\n')).digest('hex'),question_bank_sha256:canonical.bankHash,syntax:'PASS',sample_ids:ids,browser:[],errors:[]};
+const server=http.createServer((req,res)=>canonical.serve(req,res));
 (async()=>{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port;
  const browser=await chromium.launch({headless:true,channel:'msedge'});report.browserVersion=browser.version();
@@ -22,7 +23,7 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
   const context=await browser.newContext({viewport:mobile?{width:375,height:812}:{width:1280,height:900}});const page=await context.newPage();
   page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error')report.errors.push(m.text())});
   const dialogs=[];page.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
-  await page.goto(url);assert(!(await page.locator('#runtimeStatusText').innerText()).includes('失敗'));
+  await page.goto(url);await page.waitForFunction(()=>Q.length===330&&!document.getElementById('trainerApp').hidden);assert(!(await page.locator('#runtimeStatusText').innerText()).includes('失敗'));
   await page.locator('#practiceStart').click();assert.equal(await page.locator('#popts button').count(),4);
   await page.locator('#popts button').first().click();await page.locator('#practiceNext').click();await page.locator('#practicePrev').click();
   for(const tab of ['dashboard','official','guide','mock','practice']){await page.locator('[data-tab="'+tab+'"]').click();assert(await page.locator('#'+tab).isVisible())}
@@ -31,7 +32,7 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
   await page.locator('[data-tab="dashboard"]').click();
   await page.locator('#importFile').setInputFiles({name:'issue26-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,history}))});
   await page.waitForFunction(count=>Object.values(H).filter(h=>h.star).length===count,ids.length);
-  await page.reload();await page.locator('#pExplain').selectOption(mobile?'manual':'instant');await page.locator('#pMode').selectOption('star');await page.locator('#pCount').selectOption('all');await page.locator('#practiceStart').click();
+  await page.reload();await page.waitForFunction(()=>Q.length===330&&!document.getElementById('trainerApp').hidden);await page.locator('#pExplain').selectOption(mobile?'manual':'instant');await page.locator('#pMode').selectOption('star');await page.locator('#pCount').selectOption('all');await page.locator('#practiceStart').click();
   assert((await page.locator('#practiceSummary').innerText()).includes(String(ids.length)));const seen=[];
   for(let n=0;n<ids.length;n++){
    const q=await page.evaluate(()=>P[pi]);seen.push(q.id);if(checkExplanationAction)assert(!(await page.locator('#expBtn').isVisible()));assert.equal(await page.locator('#pq').innerText(),q.q);
@@ -65,7 +66,7 @@ const server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/ht
   const [first,second]=selected;await page.locator('#mGrid button').nth(first.index).click();await page.locator('#mopts button').nth(first.key).click();await page.locator('#flagBtn').click();
   await page.locator('#mGrid button').nth(second.index).click();await page.locator('#mopts button').nth((second.key+1)%4).click();
   const before=await page.evaluate(()=>({ids:M.map(q=>q.id),ans:mAns,flag:mFlag,end:mEndAt,position:mi}));
-  await page.reload();await page.locator('[data-tab="mock"]').click();await page.locator('#resumeMockBtn').click();assert.deepEqual(await page.evaluate(()=>({ids:M.map(q=>q.id),ans:mAns,flag:mFlag,end:mEndAt,position:mi})),before);
+  await page.reload();await page.waitForFunction(()=>Q.length===330&&!document.getElementById('trainerApp').hidden);await page.locator('[data-tab="mock"]').click();await page.locator('#resumeMockBtn').click();assert.deepEqual(await page.evaluate(()=>({ids:M.map(q=>q.id),ans:mAns,flag:mFlag,end:mEndAt,position:mi})),before);
   await page.locator('#mGrid button').nth(first.index).click();assert((await page.locator('#flagBtn').innerText()).includes('已標記'));await page.locator('#mGrid button').nth(second.index).click();
   await page.locator('button[onclick="finishMock()"]').click();assert((await page.locator('#mockResult').innerText()).includes('1 / 180'));
   await page.locator('button[onclick="reviewMock()"]').click();
