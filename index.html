@@ -368,14 +368,41 @@ function openOverallFeedback(){openFeedback(null,null);}
 function reportPracticeQuestion(){if(P.length)openFeedback('題目、答案或解析有問題',P[pi]);}
 function reportMockQuestion(){if(M.length)openFeedback('題目、答案或解析有問題',M[mi]);}
 const Q=[];
-function validateQuestionBank(data){
+// Schema v2 authoring also validates reserved formats; the loader uses the single-response publication profile.
+function validateQuestionBank(data,publication=true){
  const fail=()=>{throw new Error('題庫資料格式或版本不相容');};
- if(!data||data.schema_version!==1||data.question_count!==330||!Array.isArray(data.questions)||data.questions.length!==data.question_count)fail();
+ const text=v=>typeof v==='string'&&v.trim()&&!v.includes('\ufffd');
+ if(!data||![1,2].includes(data.schema_version)||!Number.isSafeInteger(data.question_count)||data.question_count<1||!Array.isArray(data.questions)||data.questions.length!==data.question_count||(publication&&data.question_count!==330))fail();
+ const v2=data.schema_version===2,top=v2?['schema_version','question_count','eco_version','questions']:['schema_version','question_count','questions'];
+ if(Object.keys(data).length!==top.length||!top.every(k=>Object.hasOwn(data,k))||(v2&&data.eco_version!=='2026'))fail();
+ const tasks={people:{domain:'People',enablers:[4,6,7,6,4,3,3,6]},process:{domain:'Process',enablers:[9,3,6,2,10,7,7,8,8,4]},business:{domain:'Business Environment',enablers:[3,7,4,6,7,3,2,3]}};
  const ids=new Set(),fields=['id','domain','approach','topic','q','opts','ans','exp','difficulty','type','mindset'];
  for(const q of data.questions){
-  if(!q||typeof q!=='object'||Array.isArray(q)||Object.keys(q).length!==fields.length||!fields.every(k=>Object.hasOwn(q,k))||!Number.isSafeInteger(q.id)||q.id<1||ids.has(q.id))fail();
+  const required=v2?[...fields,'ecoDomain','ecoTask','concept','questionType','qa']:fields;
+  const allowed=v2?[...required,'ecoEnabler','stimulus','responseType']:fields;
+  if(!q||typeof q!=='object'||Array.isArray(q)||!required.every(k=>Object.hasOwn(q,k))||!Object.keys(q).every(k=>allowed.includes(k))||!Number.isSafeInteger(q.id)||q.id<1||ids.has(q.id))fail();
   ids.add(q.id);
-  if(!fields.filter(k=>!['id','opts','ans'].includes(k)).every(k=>typeof q[k]==='string'&&q[k].trim()&&!q[k].includes('\ufffd'))||!Array.isArray(q.opts)||q.opts.length!==4||!q.opts.every(o=>typeof o==='string'&&o.trim()&&!o.includes('\ufffd'))||new Set(q.opts).size!==4||!Number.isInteger(q.ans)||q.ans<0||q.ans>=q.opts.length)fail();
+  if(!fields.filter(k=>!['id','opts','ans'].includes(k)).every(k=>text(q[k]))||!Array.isArray(q.opts)||q.opts.length<2||((publication||!v2)&&q.opts.length!==4)||!q.opts.every(text)||new Set(q.opts).size!==q.opts.length)fail();
+  if(!['People','Process','Business Environment'].includes(q.domain)||!['Agile','Hybrid','Predictive'].includes(q.approach)||!['易','中','難'].includes(q.difficulty)||!['情境題','計算題'].includes(q.type))fail();
+  let response='single-response';
+  if(v2){
+   const match=typeof q.ecoTask==='string'&&q.ecoTask.match(/^(people|process|business)\.([1-9]|10)$/),task=match&&tasks[match[1]],number=match&&Number(match[2]);
+   if(!task||!task.enablers[number-1]||q.ecoDomain!==task.domain||!text(q.concept))fail();
+   if(Object.hasOwn(q,'ecoEnabler')&&(!Array.isArray(q.ecoEnabler)||new Set(q.ecoEnabler).size!==q.ecoEnabler.length||!q.ecoEnabler.every(e=>typeof e==='string'&&Array.from({length:task.enablers[number-1]},(_,i)=>q.ecoTask+'.e'+(i+1)).includes(e))))fail();
+   const qa=q.qa,qaFields=['qualityStatus','revision','provenance','mappingStatus'];
+   if(!qa||typeof qa!=='object'||Array.isArray(qa)||Object.keys(qa).length!==qaFields.length||!qaFields.every(k=>Object.hasOwn(qa,k))||!['draft','in-review','approved','needs-revision','retired'].includes(qa.qualityStatus)||!Number.isSafeInteger(qa.revision)||qa.revision<1||!text(qa.provenance)||!['proposed','reviewed'].includes(qa.mappingStatus))fail();
+   if(!['single-response','multiple-response','case','graphic-based'].includes(q.questionType)||(publication&&(q.questionType!=='single-response'||qa.qualityStatus!=='approved')))fail();
+   if(['case','graphic-based'].includes(q.questionType)){
+    const s=q.stimulus,caseType=q.questionType==='case',keys=caseType?['kind','caseId','text']:['kind','src','alt'];
+    if(!['single-response','multiple-response'].includes(q.responseType)||!s||typeof s!=='object'||Array.isArray(s)||Object.keys(s).length!==keys.length||!keys.every(k=>Object.hasOwn(s,k))||s.kind!==(caseType?'case':'graphic')||!keys.every(k=>text(s[k])))fail();
+    response=q.responseType;
+   }else{
+    if(Object.hasOwn(q,'stimulus')||Object.hasOwn(q,'responseType'))fail();
+    response=q.questionType;
+   }
+  }
+  const answer=a=>Number.isInteger(a)&&a>=0&&a<q.opts.length;
+  if(response==='single-response'?!answer(q.ans):!Array.isArray(q.ans)||q.ans.length<2||new Set(q.ans).size!==q.ans.length||!q.ans.every(answer))fail();
  }
  return data.questions;
 }

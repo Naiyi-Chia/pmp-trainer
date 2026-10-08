@@ -9,8 +9,10 @@ CANONICAL = ROOT / 'data/questions.json'
 def parse_source(text):
     if text.lstrip().startswith('{'):
         data = json.loads(text)
-        if type(data.get('schema_version')) is not int or data['schema_version'] != 1 or type(data.get('question_count')) is not int or data['question_count'] != 330 or not isinstance(data.get('questions'), list) or len(data['questions']) != 330:
+        if type(data.get('schema_version')) is not int or data['schema_version'] not in (1, 2) or type(data.get('question_count')) is not int or data['question_count'] != 330 or not isinstance(data.get('questions'), list) or len(data['questions']) != 330:
             raise ValueError('Canonical bank version/count invalid')
+        if data['schema_version'] == 2 and data.get('eco_version') != '2026':
+            raise ValueError('Canonical ECO version invalid')
         return data['questions'], 'CANONICAL_DATA'
     match = re.search(r'^const Q=(.*);$', text, re.M)
     if not match:

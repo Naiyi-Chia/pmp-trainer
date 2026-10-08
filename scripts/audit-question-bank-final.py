@@ -29,6 +29,7 @@ BASELINE = {'source': 'https://github.com/Naiyi-Chia/pmp-trainer/issues/8',
                 '要求': [1,74], '升級': [0,11]}}
 ADDITIONAL = ['只', '所有', '永遠', '僅', '即可', '口頭', '刪除', '一定', '一律', '完全', '不需', '無須']
 FIELDS = {'id','domain','approach','topic','q','opts','ans','exp','mindset','difficulty','type'}
+V2_FIELDS = FIELDS | {'ecoDomain','ecoTask','ecoEnabler','concept','questionType','qa'}
 ENUMS = {'domain': {'People','Process','Business Environment'},
          'approach': {'Agile','Hybrid','Predictive'}, 'difficulty': {'易','中','難'},
          'type': {'情境題','計算題'}}
@@ -53,7 +54,7 @@ def validate(bank):
     explicit, unlabelled = [], []
     for q in bank:
         i = q['id']
-        require(set(q) == FIELDS, f'Q-{i}: schema')
+        require(set(q) in (FIELDS, V2_FIELDS, V2_FIELDS - {'ecoEnabler'}), f'Q-{i}: schema')
         for field, values in ENUMS.items():
             require(q[field] in values, f'Q-{i}: metadata {field}')
         require(isinstance(q['opts'], list) and len(q['opts']) == 4, f'Q-{i}: option count')
@@ -194,7 +195,7 @@ def main():
             print(json.dumps(controls,ensure_ascii=False,indent=2));return
         bank_hash=hashlib.sha256(json.dumps(bank,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
         app_hash=hashlib.sha256((ROOT/'index.html').read_text(encoding='utf-8').encode()).hexdigest()
-        result={'source':str(BANK_FILE.relative_to(ROOT)),'schema_version':1,'question_bank_sha256':bank_hash,
+        result={'source':str(BANK_FILE.relative_to(ROOT)),'schema_version':json.loads(text)['schema_version'],'question_bank_sha256':bank_hash,
                 'validation':checks,'negative_controls':controls,'current':PRIOR['metrics'](bank,[q['id'] for q in bank]),
                 'wording_screen':wording(bank,PRIOR['TERMS']+ADDITIONAL),'length_strategy_screen':length_strategies(bank),
                 'recomputed_numeric_items':runpy.run_path(str(ROOT/'scripts/audit-remediation-batch5.py'))['calculations'](bank)}

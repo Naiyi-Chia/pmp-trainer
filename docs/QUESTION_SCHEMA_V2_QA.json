@@ -1,0 +1,185 @@
+{
+  "issue": 30,
+  "baseline_commit": "a68564d00ec069948fc6fbb00299adc136ad211a",
+  "source_sha256_lf": "77e5662cc089fb50008a0c8c34d30416b0e7ade15d8ad1dd43d0259b58e8eb91",
+  "question_bank_sha256": "a4a1f8773740d186cf899ca927ae4b6cfc8fdf6c428981cd0c84dbdb02db10aa",
+  "schema_sha256": "c320a0aaeb6aea455733c3514126030040083f6f29ea4cd47bc92c0dbdf293fd",
+  "migration": "PASS: deterministic/idempotent 330-record migration; all ordered v1 fields unchanged; second --write preserves identical bytes",
+  "runtime_validation": "PASS: 21 metadata/publication negative controls; all 26 Task/enabler limits; six authoring formats and invalid answer/stimulus controls; optional enabler omission; all five quality states; full 330-record future-format publication gates",
+  "json_schema": {
+    "validator": "python jsonschema 4.26.0 (temporary QA-only installation outside repo; no app dependency)",
+    "draft": "2020-12",
+    "result": "PASS",
+    "canonical_records": 330,
+    "future_format_fixtures": 6,
+    "negative_controls": [
+      "wrong version",
+      "wrong ECO",
+      "unknown envelope field",
+      "missing Task",
+      "unknown Task",
+      "wrong Domain/Task",
+      "blank concept",
+      "bad encoding",
+      "multiline encoding",
+      "wrong enabler Task",
+      "enabler bounds",
+      "duplicate tags",
+      "unknown quality",
+      "bad revision",
+      "bad mapping status",
+      "unknown QA field",
+      "blank provenance",
+      "wrong answer shape",
+      "unwanted stimulus"
+    ],
+    "future_negative_controls": 9,
+    "semantic_guards": "Count agreement, unique IDs and answer-index bounds additionally checked by the runtime validator."
+  },
+  "regression": {
+    "loader": "PASS: production/dev asset URLs, v1 rollback and gated errors/retry",
+    "learning_history": "PASS: migration, storage preservation, import/export, attempt events, submit/dedupe, read-only review",
+    "mock_persistence": "PASS: reload/resume, flags, position/deadline, corruption/discard/overwrite, submit/review"
+  },
+  "canonical_content_audit": "PASS: schema, keys, numeric items and existing wording/length/duplicate controls",
+  "browser": [
+    {
+      "viewport": "1280x900",
+      "practice": "10 correct; instant explanations; 10/10 PASS",
+      "ids": [
+        301,
+        133,
+        148,
+        25,
+        12,
+        219,
+        257,
+        29,
+        1,
+        18
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+      "mockSelection": "first two actual M items; independent of practice --ids",
+      "mockItems": [
+        {
+          "id": 107,
+          "index": 0,
+          "key": 2
+        },
+        {
+          "id": 105,
+          "index": 1,
+          "key": 1
+        }
+      ],
+      "nativeDialogs": [
+        "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+        "已匯入學習紀錄",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ],
+      "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+    },
+    {
+      "viewport": "375x812",
+      "practice": "10 incorrect; manual explanations; 0/10; retry/favorite PASS",
+      "ids": [
+        25,
+        257,
+        12,
+        133,
+        29,
+        219,
+        301,
+        18,
+        1,
+        148
+      ],
+      "tabs": "PASS",
+      "randomFlow": "PASS",
+      "overflow": "none",
+      "mock": "native 180-item selection; first two actual mock items (independent of practice IDs); save/reload/resume/flag/submit 1/180/review PASS",
+      "mockSelection": "first two actual M items; independent of practice --ids",
+      "mockItems": [
+        {
+          "id": 87,
+          "index": 0,
+          "key": 2
+        },
+        {
+          "id": 67,
+          "index": 1,
+          "key": 0
+        }
+      ],
+      "nativeDialogs": [
+        "匯入會取代目前的學習紀錄與收藏。建議先匯出備份，確定取代嗎？",
+        "已匯入學習紀錄",
+        "重新組題會取代目前這輪題目；已儲存的作答與收藏紀錄會保留。確定開始？",
+        "開始後計時 240 分鐘。確定開始？",
+        "尚有 178 題未作答。確定交卷？"
+      ],
+      "explanationAction": "PASS: unanswered hidden; instant/manual both viewports; show-once/manual revisit; Review hidden"
+    }
+  ],
+  "errors": [],
+  "mapping_review": "330 proposed mappings; 24/26 Tasks covered; independent Content Review pending",
+  "result": "PASS",
+  "authoring_cli": "PASS: multiple-response draft file accepted without enabling a renderer",
+  "dev_preview_browser": {
+    "result": "PASS",
+    "bootstrap": {
+      "ref": "dfbf47b311d4c8406aa899f6eae924e727e61851:dev/index.html",
+      "sha256": "bae9e9fb7807bbd21c1f1503c0f94ed61b1129fac21c6c52b74c992f90cd6d98",
+      "topology": "main bootstrap unchanged; only raw dev app/data use candidate branch; Pages /dev/data is unavailable"
+    },
+    "views": [
+      {
+        "viewport": "1280x900",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      },
+      {
+        "viewport": "375x812",
+        "production": "PASS: relative /pmp-trainer/data/questions.json, Wrong Questions/Stats/lookup",
+        "dev": "PASS: deployed main bootstrap without base/v3 rewrite; raw dev data; all three production storage bytes preserved; native Practice/Mock reload/resume/flags/submit 1/180/read-only Review",
+        "overflow": "none",
+        "rawRequests": [
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json",
+          "/Naiyi-Chia/pmp-trainer/dev/index.html",
+          "/Naiyi-Chia/pmp-trainer/dev/data/questions.json"
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "case": "slow response",
+        "result": "PASS: app hidden/inert; storage unchanged before data validation"
+      },
+      {
+        "case": "404",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "json",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      },
+      {
+        "case": "version",
+        "result": "PASS: failure/reload retry; history/active mock unchanged"
+      }
+    ],
+    "errors": []
+  }
+}

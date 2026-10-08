@@ -5,7 +5,7 @@
 PMP Trainer is a single-page static PMP practice tool published with GitHub Pages.
 
 - Main application: `index.html`
-- Canonical PMP question bank: `data/questions.json` (`schema_version: 1`, 330 questions). The runtime loads it before enabling the app; do not embed a second bank in HTML.
+- Canonical PMP question bank: `data/questions.json` (`schema_version: 2`, 330 questions). The runtime loads it before enabling the app; do not embed a second bank in HTML.
 - Vanilla HTML / CSS / JavaScript; no build system or framework is currently required.
 - UI copy is primarily Traditional Chinese (Taiwan usage).
 - `main` is the production / deploy branch.
