@@ -36,6 +36,23 @@ button{border:1px solid var(--line);border-radius:9px;padding:10px 12px;backgrou
 .practiceResult .nav button{min-width:0;overflow-wrap:anywhere}
 button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .tab.active:focus-visible{outline-color:var(--text)}
+.formulaIntro h2,.formulaGroup h2{margin-top:0}
+.formulaIntro p,.formulaGroup p{line-height:1.7}
+.formulaJump{display:flex;flex-wrap:wrap;gap:8px}
+.formulaJump a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;color:var(--accent);text-decoration:none;background:var(--soft)}
+.formulaGroup{scroll-margin-top:16px}
+.formulaNumber{font-size:14px;color:var(--accent)}
+.formulaGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.formulaCard{min-width:0;border:1px solid var(--line);border-radius:8px;padding:16px;overflow-wrap:anywhere}
+.formulaCard h3{font-size:16px;line-height:1.5;margin:0 0 12px}
+.formulaCard p{margin:8px 0}
+.formulaExpression,.formulaInline{font-family:ui-monospace,Consolas,monospace;font-size:16px;line-height:1.7;overflow-wrap:anywhere}
+.formulaExpression{background:var(--soft);padding:12px;border-radius:6px;font-weight:700}
+.formulaVariables{font-size:14px;color:var(--muted)}
+.formulaMemory{background:var(--soft);padding:12px;border-radius:8px}
+.formulaDefinitions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;line-height:1.7}
+.formulaDefinitions dt{font-weight:700}.formulaDefinitions dd{margin:4px 0 0}
+@media(max-width:760px){.formulaGrid,.formulaDefinitions{grid-template-columns:1fr}}
 #practiceHeader,#practiceSettings,#practiceCard,#practiceFinishPrompt,#practiceStats{max-width:800px;margin-left:auto;margin-right:auto}
 #practiceHeader,#practiceStats{background:transparent;border:0;border-radius:0;padding:12px 0}
 #practiceStats{border-top:1px solid var(--line)}
@@ -92,6 +109,7 @@ button,select{min-height:44px}
 <button class="tab" data-tab="mock">180 題模考</button>
 <button class="tab" data-tab="official">PMI 官方公開範例</button>
 <button class="tab" data-tab="guide">PMI Mindset</button>
+<button class="tab" data-tab="formulas">公式速查</button>
 </div>
 <div class="betaFeedback">
   <div class="copy"><span id="appVersionLabel">v0.1-beta</span> · 測試版</div>
@@ -308,9 +326,185 @@ button,select{min-height:44px}
 <tr><td>「完成很多」但成果差</td><td>Output ≠ Outcome；回到採用率、效益、商業價值與使用者成果。</td></tr>
 </table>
 </div>
-<div class="card"><b>計算題速記</b>
-<p class="note">SPI = EV / PV；CPI = EV / AC；EMV = Probability × Impact；PERT = (O + 4M + P) / 6；溝通管道 = n(n−1)/2。實際情境題通常更重視你如何解讀數字並做決策。</p>
+<div class="card"><b>計算題速查</b>
+<p class="note">需要複習公式、變數與適用假設時，可開啟公式速查。</p>
+<button onclick="document.querySelector('[data-tab=formulas]').click()">開啟公式速查</button>
 </div>
+</section>
+
+<section id="formulas" class="panel" aria-labelledby="formulaTitle">
+<div class="card formulaIntro">
+<h2 id="formulaTitle">公式速查</h2>
+<p>記住公式，也記住使用假設與數字的意思。先看題目情境，再選公式，最後判讀結果。</p>
+<p class="note">此處整理需記憶的量化關係，作為備考速查；不代表 PMI 官方必考清單或出題配額。</p>
+<nav class="formulaJump" aria-label="公式分類"><a href="#formula-evm">EVM</a><a href="#formula-forecast">完工預測</a><a href="#formula-pert">三點估算</a><a href="#formula-channels">溝通管道</a><a href="#formula-emv">EMV</a></nav>
+</div>
+<section class="card formulaGroup" id="formula-evm" aria-labelledby="formula-evm-title">
+<h2 id="formula-evm-title"><span class="formulaNumber">01</span> EVM｜先看差額，再看效率</h2>
+<dl class="formulaDefinitions"><div><dt>PV · Planned Value</dt><dd>計畫值：截至目前，原定完成工作的預算價值。</dd></div><div><dt>EV · Earned Value</dt><dd>掙值：截至目前，實際完成工作的預算價值。</dd></div><div><dt>AC · Actual Cost</dt><dd>實際成本：截至目前，已完成工作實際花費的成本。</dd></div><div><dt>BAC · Budget at Completion</dt><dd>完工預算：整個專案的核定總預算。</dd></div></dl><p class="formulaMemory"><b>差額 CV / SV：正值有利、負值不利。</b><br><b>指數 CPI / SPI：大於 1 有利、小於 1 不利。</b>差額為 0、指數為 1 表示符合基準。</p>
+<div class="formulaGrid">
+<article class="formulaCard">
+<h3>CV｜成本差異</h3>
+<p class="formulaExpression">CV = EV − AC</p>
+<p class="formulaVariables">EV＝掙值；AC＝實際成本；PV＝計畫值。CV＝成本差異。</p>
+<p><b>何時用：</b>比較已完成工作的價值與實際花費。</p>
+<p><b>判讀：</b>&gt; 0 低於預算；&lt; 0 超出預算。</p>
+</article>
+<article class="formulaCard">
+<h3>SV｜時程差異</h3>
+<p class="formulaExpression">SV = EV − PV</p>
+<p class="formulaVariables">EV＝掙值；AC＝實際成本；PV＝計畫值。SV＝時程差異。</p>
+<p><b>何時用：</b>比較實際與原定完成工作的預算價值。</p>
+<p><b>判讀：</b>&gt; 0 進度超前；&lt; 0 進度落後。</p>
+<p class="note">SV 的單位是預算價值，不是天數。</p>
+</article>
+<article class="formulaCard">
+<h3>CPI｜成本績效指數</h3>
+<p class="formulaExpression">CPI = EV / AC</p>
+<p class="formulaVariables">EV＝掙值；AC＝實際成本；PV＝計畫值。CPI＝成本績效指數。</p>
+<p><b>何時用：</b>判斷每單位實際成本換得多少掙值。</p>
+<p><b>判讀：</b>&gt; 1 成本效率佳；&lt; 1 成本效率不佳。</p>
+</article>
+<article class="formulaCard">
+<h3>SPI｜時程績效指數</h3>
+<p class="formulaExpression">SPI = EV / PV</p>
+<p class="formulaVariables">EV＝掙值；AC＝實際成本；PV＝計畫值。SPI＝時程績效指數。</p>
+<p><b>何時用：</b>比較已完成與原定完成工作的比例。</p>
+<p><b>判讀：</b>&gt; 1 進度超前；&lt; 1 進度落後。</p>
+</article>
+</div>
+
+</section>
+<section class="card formulaGroup" id="formula-forecast" aria-labelledby="formula-forecast-title">
+<h2 id="formula-forecast-title"><span class="formulaNumber">02</span> 完工預測｜先辨認假設，再選 EAC</h2>
+<p>EAC（Estimate at Completion）＝完工估算，包含已支出與剩餘工作成本。<b>題目對剩餘工作的假設，決定使用哪個公式。</b></p>
+<div class="formulaGrid">
+<article class="formulaCard">
+<h3>維持目前成本效率</h3>
+<p class="formulaExpression">EAC = BAC / CPI</p>
+<p class="formulaVariables">BAC＝完工預算；EV＝掙值；AC＝實際成本；CPI＝成本績效指數。</p>
+<p><b>何時用：</b>目前成本效率預期持續到完工。</p>
+<p><b>判讀：</b>以目前 CPI 推估總完工成本。</p>
+<p class="note">等價式：<span class="formulaInline">EAC = AC + (BAC − EV) / CPI</span></p>
+</article>
+<article class="formulaCard">
+<h3>過去偏差不再延續</h3>
+<p class="formulaExpression">EAC = AC + (BAC − EV)</p>
+<p class="formulaVariables">BAC＝完工預算；EV＝掙值；AC＝實際成本；CPI＝成本績效指數。</p>
+<p><b>何時用：</b>過去成本偏差屬偶發情況；剩餘工作依原計畫執行。</p>
+<p><b>判讀：</b>保留已發生成本，剩餘工作按原預算估算。</p>
+</article>
+<article class="formulaCard">
+<h3>成本與時程績效都會影響剩餘工作</h3>
+<p class="formulaExpression">EAC = AC + (BAC − EV) / (CPI × SPI)</p>
+<p class="formulaVariables">BAC＝完工預算；EV＝掙值；AC＝實際成本；CPI＝成本績效指數。SPI＝時程績效指數。</p>
+<p><b>何時用：</b>成本與時程績效預期持續共同影響剩餘成本。</p>
+<p><b>判讀：</b>以 CPI × SPI 調整剩餘工作成本；不能只因 SPI 不佳就套用。</p>
+</article>
+<article class="formulaCard">
+<h3>由下而上重新估算</h3>
+<p class="formulaExpression">EAC = AC + 由下而上 ETC</p>
+<p class="formulaVariables">AC＝實際成本；ETC＝剩餘工作成本估算（Estimate to Complete）。</p>
+<p><b>何時用：</b>原估算已不適用，重新逐項估算剩餘工作。</p>
+<p><b>判讀：</b>已支出成本加上新估算的剩餘成本。</p>
+</article>
+<article class="formulaCard">
+<h3>ETC｜完工尚需成本</h3>
+<p class="formulaExpression">ETC = EAC − AC</p>
+<p class="formulaVariables">EAC＝完工估算；AC＝實際成本；ETC＝完工尚需成本。</p>
+<p><b>何時用：</b>已知總完工估算，想求還需要多少錢。</p>
+<p><b>判讀：</b>從預估總成本扣除已支出成本。</p>
+</article>
+<article class="formulaCard">
+<h3>VAC｜完工差異</h3>
+<p class="formulaExpression">VAC = BAC − EAC</p>
+<p class="formulaVariables">BAC＝完工預算；EAC＝完工估算；VAC＝完工差異（Variance at Completion）。</p>
+<p><b>何時用：</b>比較原總預算與預估總成本。</p>
+<p><b>判讀：</b>&gt; 0 預估有結餘；&lt; 0 預估超支。</p>
+</article>
+<article class="formulaCard">
+<h3>TCPI｜仍以 BAC 為目標</h3>
+<p class="formulaExpression">TCPI = (BAC − EV) / (BAC − AC)</p>
+<p class="formulaVariables">BAC＝完工預算；EV＝掙值；AC＝實際成本；TCPI＝完工尚需績效指數。</p>
+<p><b>何時用：</b>目標仍是達成原完工預算 BAC。</p>
+<p><b>判讀：</b>剩餘工作價值 ÷ 原預算剩餘額度；&gt; 1 代表未來需要更高的成本效率。</p>
+</article>
+<article class="formulaCard">
+<h3>TCPI｜改以 EAC 為目標</h3>
+<p class="formulaExpression">TCPI = (BAC − EV) / (EAC − AC)</p>
+<p class="formulaVariables">BAC＝完工預算；EV＝掙值；EAC＝修訂完工估算；AC＝實際成本；TCPI＝完工尚需績效指數。</p>
+<p><b>何時用：</b>已採用修訂 EAC 作為成本目標。</p>
+<p><b>判讀：</b>剩餘工作價值 ÷ 修訂目標剩餘額度；&lt; 1 代表所需效率低於 1。</p>
+</article>
+</div>
+<p class="note">除數須有意義且不可為 0。若剩餘預算為 0 或負值，不宜把 TCPI 當成可行效率目標，應重新評估預算與目標。</p>
+</section>
+<section class="card formulaGroup" id="formula-pert" aria-labelledby="formula-pert-title">
+<h2 id="formula-pert-title"><span class="formulaNumber">03</span> 三點估算｜分清三角分配與 Beta / PERT</h2>
+<p><b>O＝樂觀值（Optimistic）；M＝最可能值（Most Likely）；P＝悲觀值（Pessimistic）。</b>三個估值須使用相同單位。</p>
+<div class="formulaGrid">
+<article class="formulaCard">
+<h3>三角分配｜平均估算</h3>
+<p class="formulaExpression">估算值 = (O + M + P) / 3</p>
+<p class="formulaVariables">O＝樂觀值；M＝最可能值；P＝悲觀值。</p>
+<p><b>何時用：</b>題目指定三角分配或三個估值等權重。</p>
+<p><b>判讀：</b>三個估值各占 1/3。</p>
+</article>
+<article class="formulaCard">
+<h3>Beta / PERT｜期望值</h3>
+<p class="formulaExpression">期望值 = (O + 4M + P) / 6</p>
+<p class="formulaVariables">O＝樂觀值；M＝最可能值；P＝悲觀值。</p>
+<p><b>何時用：</b>題目指定 Beta / PERT 加權估算。</p>
+<p><b>判讀：</b>最可能值權重為 4；不是三個估值直接平均。</p>
+</article>
+<article class="formulaCard">
+<h3>PERT｜標準差</h3>
+<p class="formulaExpression">σ = (P − O) / 6</p>
+<p class="formulaVariables">σ＝標準差；O＝樂觀值；P＝悲觀值。</p>
+<p><b>何時用：</b>使用傳統 PERT 近似估算不確定程度。</p>
+<p><b>判讀：</b>標準差越大，估算越分散；單位與原估值相同。</p>
+</article>
+<article class="formulaCard">
+<h3>PERT｜變異數</h3>
+<p class="formulaExpression">σ² = ((P − O) / 6)²</p>
+<p class="formulaVariables">σ²＝變異數；O＝樂觀值；P＝悲觀值。</p>
+<p><b>何時用：</b>題目要求 PERT 變異數。</p>
+<p><b>判讀：</b>先求標準差再平方；單位是原單位的平方。</p>
+</article>
+</div>
+
+</section>
+<section class="card formulaGroup" id="formula-channels" aria-labelledby="formula-channels-title">
+<h2 id="formula-channels-title"><span class="formulaNumber">04</span> 溝通管道｜先數清楚人數</h2>
+
+<div class="formulaGrid">
+<article class="formulaCard">
+<h3>兩兩溝通管道數</h3>
+<p class="formulaExpression">管道數 = n × (n − 1) / 2</p>
+<p class="formulaVariables">n＝溝通網路中的總人數。</p>
+<p><b>何時用：</b>計算每個人都能與其他人直接溝通的管道數。</p>
+<p><b>判讀：</b>每一對人只算一條管道，因此除以 2。</p>
+<p class="note">例：5 位團隊成員加 1 位專案經理，n＝6；6 × 5 / 2＝15 條。若題目已說「共 6 人，含專案經理」，不要再加 1。</p>
+</article>
+</div>
+
+</section>
+<section class="card formulaGroup" id="formula-emv" aria-labelledby="formula-emv-title">
+<h2 id="formula-emv-title"><span class="formulaNumber">05</span> EMV｜把機率換成期望金額</h2>
+
+<div class="formulaGrid">
+<article class="formulaCard">
+<h3>EMV｜期望貨幣價值</h3>
+<p class="formulaExpression">EMV = 機率 × 金額影響</p>
+<p class="formulaVariables">EMV＝期望貨幣價值（Expected Monetary Value）；機率用 0～1；影響用金額表示。</p>
+<p><b>何時用：</b>以金額量化風險，或比較決策分支的期望值。</p>
+<p><b>判讀：</b>威脅以負值、機會以正值表示；多個結果的期望值分別計算後加總。</p>
+<p class="note">例：30% 機率損失 NT$10,000，EMV＝0.3 × (−10,000)＝−NT$3,000。這是期望值，不代表一定損失此金額。</p>
+</article>
+</div>
+
+</section>
+<div class="card"><h2>延伸閱讀</h2><p class="note">EVM：<a href="https://www.pmi.org/blog/earned-value-management" target="_blank" rel="noopener noreferrer">PMI · Earned Value Management</a>；估算：<a href="https://www.pmi.org/learning/library/leveraging-new-practice-standard-project-estimating-6222" target="_blank" rel="noopener noreferrer">PMI · Project Estimating</a>。閱讀時仍以題目的假設與指定方法選式。</p></div>
 </section>
 
 <div class="footer">仿真題庫為依 PMI 公開 2026 Exam Content Outline、通行專案管理概念與情境題風格原創產生；「PMI 官方公開範例」分頁則僅整理 PMI 已公開的 sample questions 與官方題型資訊。正式考場未公開題目、外洩題或回憶重建題不收錄。建議搭配 PMBOK® Guide、Agile Practice Guide、PMI 官方 ECO 與授權課程使用。</div>
