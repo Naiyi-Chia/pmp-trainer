@@ -1,6 +1,14 @@
-// node scripts/validate-question-bank.cjs [--parity]
+// node scripts/validate-question-bank.cjs [--parity | --authoring <v2-file>]
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
 const {bank,bankHash,data,validate,root}=require('./question-source.cjs');
+if(process.argv.includes('--authoring')){
+ const file=process.argv[process.argv.indexOf('--authoring')+1];
+ assert(file,'--authoring requires a JSON file');assert(!process.argv.includes('--parity'),'authoring and parity are separate contracts');
+ const candidate=JSON.parse(fs.readFileSync(file,'utf8'));assert.equal(candidate.schema_version,2);
+ const questions=validate(candidate,false);
+ console.log('PASS: v2 authoring contract; '+questions.length+' records; future formats validated without enabling renderers');
+ process.exit(0);
+}
 assert.equal(bank.length,330);assert.deepEqual(bank.map(q=>q.id),Array.from({length:330},(_,i)=>i+1));
 if(process.argv.includes('--parity')){
  const fixture=JSON.parse(fs.readFileSync(path.join(root,'docs/QUESTION_BANK_MIGRATION_BASELINE.json'),'utf8'));
