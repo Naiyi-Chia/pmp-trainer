@@ -11,3 +11,6 @@ Validate with `node scripts/validate-question-bank.cjs` and
 `python -X utf8 scripts/audit-question-bank-final.py --canonical`.
 See [migration/runtime QA](docs/QUESTION_BANK_EXTRACTION.md) for parity,
 Dev Preview asset resolution and regression commands.
+
+Project #1 read-only lifecycle pilot: `node scripts/reconcile-project-status.cjs --dry-run`.
+See [permissions, evidence limits and rollout](docs/PROJECT_STATUS_RECONCILIATION.md).
