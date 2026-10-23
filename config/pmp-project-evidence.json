@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "actor": {
+    "login": "Naiyi-Chia",
+    "id": 220650167
+  },
+  "pilot": [
+    28,
+    30,
+    29,
+    77,
+    83,
+    31,
+    32,
+    33,
+    48,
+    69,
+    72
+  ],
+  "issues": {
+    "28": {
+      "fingerprint": "428fe02f03ff098b77d67b1787dd3d11d4358c65a0f24bf666cc968f7ed2d0e4",
+      "dependenciesSatisfied": false,
+      "events": [
+        {
+          "kind": "started",
+          "decision": "reviewed-owner-attestation"
+        }
+      ]
+    },
+    "29": {
+      "fingerprint": "7c85e34fe6350552ed52824ae72302394369beaa6ebbd3371a55b5ba7bc98cb8",
+      "dependenciesSatisfied": true,
+      "events": [
+        {
+          "kind": "smoke",
+          "comment": 6019340564,
+          "pr": 80,
+          "commit": "dfbf47b311d4c8406aa899f6eae924e727e61851",
+          "decision": "reviewed-owner-attestation"
+        }
+      ]
+    },
+    "30": {
+      "fingerprint": "6ecf6cfea3888c8d12a676f8fb901b011bba00e55acb1a1ae509174f6d42fa2b",
+      "dependenciesSatisfied": true,
+      "events": [
+        {
+          "kind": "engineering",
+          "comment": 6019839729,
+          "pr": 82,
+          "commit": "c17375e2399f52d31313d9fdcbc227776e785c36",
+          "decision": "reviewed-owner-attestation"
+        }
+      ]
+    },
+    "31": {
+      "fingerprint": "a21dc6afbfc8a5e3a0acfb284ab528238ced58a57ab67ec2c5fd29f5a39562f9",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "32": {
+      "fingerprint": "335912227fb6cbc56b0b9a8118c1321acaf817c4ec09aab51fae0561ea91934d",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "33": {
+      "fingerprint": "7a60a8babe1d323613a3c4417d2457ca04a2c31ee90a78cbc82e1b027c78fdf5",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "48": {
+      "fingerprint": "d98cb6e650afd373f90f7da7ccb5af76784dea56a593d6c7524cda87ad19d8ea",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "69": {
+      "fingerprint": "158026f90518b09cabb76945ebd386cab0aef333ceb9d37715431cfc3c2dfd5f",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "72": {
+      "fingerprint": "96e995e9420d5d2f06b67a4140b01eb2ab6dd66e877ef199513f8778a432099e",
+      "dependenciesSatisfied": false,
+      "events": []
+    },
+    "77": {
+      "fingerprint": "d090bc0dfefa08e60aa6f53ba3807385770cb14cb0e5914b22c38b3d84f826ec",
+      "dependenciesSatisfied": false,
+      "events": [
+        {
+          "kind": "smoke",
+          "comment": 6019343162,
+          "pr": 80,
+          "commit": "dfbf47b311d4c8406aa899f6eae924e727e61851",
+          "decision": "reviewed-owner-attestation"
+        }
+      ]
+    },
+    "83": {
+      "fingerprint": "c0cd693913d613ead660e299f2ddd7675b814343efd0cf04d539ff478f34c0d2",
+      "dependenciesSatisfied": true,
+      "events": [
+        {
+          "kind": "smoke",
+          "comment": 6229241906,
+          "pr": 85,
+          "commit": "06807a1ba6cee915962d464341324748f33d8bdd",
+          "decision": "reviewed-owner-attestation"
+        }
+      ]
+    }
+  }
+}
