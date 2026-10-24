@@ -1,0 +1,190 @@
+{
+  "eco_version": "2026",
+  "source": "https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/new-pmp-examination-content-outline-2026.pdf",
+  "source_pages": "7–12 (printed page numbers)",
+  "labels": "Local Traditional Chinese summaries; IDs and enabler ordinals follow the July 2026 ECO.",
+  "tasks": [
+    {
+      "id": "people.1",
+      "domain": "People",
+      "number": 1,
+      "label_zh": "建立共同願景",
+      "enabler_count": 4
+    },
+    {
+      "id": "people.2",
+      "domain": "People",
+      "number": 2,
+      "label_zh": "管理衝突",
+      "enabler_count": 6
+    },
+    {
+      "id": "people.3",
+      "domain": "People",
+      "number": 3,
+      "label_zh": "領導專案團隊",
+      "enabler_count": 7
+    },
+    {
+      "id": "people.4",
+      "domain": "People",
+      "number": 4,
+      "label_zh": "促進利害關係人參與",
+      "enabler_count": 6
+    },
+    {
+      "id": "people.5",
+      "domain": "People",
+      "number": 5,
+      "label_zh": "對齊利害關係人期待",
+      "enabler_count": 4
+    },
+    {
+      "id": "people.6",
+      "domain": "People",
+      "number": 6,
+      "label_zh": "持續管理客戶期待",
+      "enabler_count": 3
+    },
+    {
+      "id": "people.7",
+      "domain": "People",
+      "number": 7,
+      "label_zh": "促進知識移轉",
+      "enabler_count": 3
+    },
+    {
+      "id": "people.8",
+      "domain": "People",
+      "number": 8,
+      "label_zh": "規劃及管理溝通",
+      "enabler_count": 6
+    },
+    {
+      "id": "process.1",
+      "domain": "Process",
+      "number": 1,
+      "label_zh": "整合規劃與交付安排",
+      "enabler_count": 9
+    },
+    {
+      "id": "process.2",
+      "domain": "Process",
+      "number": 2,
+      "label_zh": "建立及管理範疇",
+      "enabler_count": 3
+    },
+    {
+      "id": "process.3",
+      "domain": "Process",
+      "number": 3,
+      "label_zh": "以價值引導交付",
+      "enabler_count": 6
+    },
+    {
+      "id": "process.4",
+      "domain": "Process",
+      "number": 4,
+      "label_zh": "規劃及管理資源",
+      "enabler_count": 2
+    },
+    {
+      "id": "process.5",
+      "domain": "Process",
+      "number": 5,
+      "label_zh": "規劃及管理採購",
+      "enabler_count": 10
+    },
+    {
+      "id": "process.6",
+      "domain": "Process",
+      "number": 6,
+      "label_zh": "規劃及管理財務",
+      "enabler_count": 7
+    },
+    {
+      "id": "process.7",
+      "domain": "Process",
+      "number": 7,
+      "label_zh": "規劃及改善交付品質",
+      "enabler_count": 7
+    },
+    {
+      "id": "process.8",
+      "domain": "Process",
+      "number": 8,
+      "label_zh": "規劃及管理時程",
+      "enabler_count": 8
+    },
+    {
+      "id": "process.9",
+      "domain": "Process",
+      "number": 9,
+      "label_zh": "評估專案狀態",
+      "enabler_count": 8
+    },
+    {
+      "id": "process.10",
+      "domain": "Process",
+      "number": 10,
+      "label_zh": "管理結案與移交",
+      "enabler_count": 4
+    },
+    {
+      "id": "business.1",
+      "domain": "Business Environment",
+      "number": 1,
+      "label_zh": "建立專案治理",
+      "enabler_count": 3
+    },
+    {
+      "id": "business.2",
+      "domain": "Business Environment",
+      "number": 2,
+      "label_zh": "規劃及管理合規",
+      "enabler_count": 7
+    },
+    {
+      "id": "business.3",
+      "domain": "Business Environment",
+      "number": 3,
+      "label_zh": "管理及控制變更",
+      "enabler_count": 4
+    },
+    {
+      "id": "business.4",
+      "domain": "Business Environment",
+      "number": 4,
+      "label_zh": "排除障礙及管理問題",
+      "enabler_count": 6
+    },
+    {
+      "id": "business.5",
+      "domain": "Business Environment",
+      "number": 5,
+      "label_zh": "規劃及管理風險",
+      "enabler_count": 7
+    },
+    {
+      "id": "business.6",
+      "domain": "Business Environment",
+      "number": 6,
+      "label_zh": "持續改善組織流程",
+      "enabler_count": 3
+    },
+    {
+      "id": "business.7",
+      "domain": "Business Environment",
+      "number": 7,
+      "label_zh": "支持組織變革",
+      "enabler_count": 2
+    },
+    {
+      "id": "business.8",
+      "domain": "Business Environment",
+      "number": 8,
+      "label_zh": "評估外部環境變化",
+      "enabler_count": 3
+    }
+  ]
+}
