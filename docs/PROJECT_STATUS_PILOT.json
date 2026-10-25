@@ -1,0 +1,113 @@
+{
+  "mode": "read-only",
+  "project": "PVT_kwHODSbat84Bjj_Z",
+  "rows": [
+    {
+      "issue": "#28",
+      "actual": "In Progress",
+      "expected": "In Progress",
+      "evidence": [
+        "https://github.com/Naiyi-Chia/pmp-trainer/issues/28"
+      ],
+      "result": "match",
+      "blocker": null
+    },
+    {
+      "issue": "#30",
+      "actual": "Review",
+      "expected": "Review",
+      "evidence": [
+        "https://github.com/Naiyi-Chia/pmp-trainer/issues/30#issuecomment-6019839729"
+      ],
+      "result": "match",
+      "blocker": null
+    },
+    {
+      "issue": "#29",
+      "actual": "Done",
+      "expected": "Done",
+      "evidence": [
+        "https://github.com/Naiyi-Chia/pmp-trainer/issues/29#issuecomment-6019340564"
+      ],
+      "result": "match",
+      "blocker": null
+    },
+    {
+      "issue": "#77",
+      "actual": "Done",
+      "expected": "Done",
+      "evidence": [
+        "https://github.com/Naiyi-Chia/pmp-trainer/issues/77#issuecomment-6019343162"
+      ],
+      "result": "match",
+      "blocker": null
+    },
+    {
+      "issue": "#83",
+      "actual": "Done",
+      "expected": "Done",
+      "evidence": [
+        "https://github.com/Naiyi-Chia/pmp-trainer/issues/83#issuecomment-6229241906"
+      ],
+      "result": "match",
+      "blocker": null
+    },
+    {
+      "issue": "#31",
+      "actual": "Backlog",
+      "expected": null,
+      "evidence": [],
+      "result": "blocked",
+      "blocker": "Parent #28: no reviewed child activation/dependency evidence; preserve backlog"
+    },
+    {
+      "issue": "#32",
+      "actual": "Backlog",
+      "expected": null,
+      "evidence": [],
+      "result": "blocked",
+      "blocker": "Parent #28: no reviewed child activation/dependency evidence; preserve backlog"
+    },
+    {
+      "issue": "#33",
+      "actual": "Backlog",
+      "expected": null,
+      "evidence": [],
+      "result": "blocked",
+      "blocker": "Parent #28: no reviewed child activation/dependency evidence; preserve backlog"
+    },
+    {
+      "issue": "#48",
+      "actual": null,
+      "expected": null,
+      "evidence": [],
+      "result": "skipped",
+      "blocker": "Archived or not_planned; preserve item (including absent item)"
+    },
+    {
+      "issue": "#69",
+      "actual": null,
+      "expected": null,
+      "evidence": [],
+      "result": "skipped",
+      "blocker": "Archived or not_planned; preserve item (including absent item)"
+    },
+    {
+      "issue": "#72",
+      "actual": null,
+      "expected": null,
+      "evidence": [],
+      "result": "skipped",
+      "blocker": "Archived or not_planned; preserve item (including absent item)"
+    }
+  ],
+  "captured_at": "2026-10-23T05:58:49.103Z",
+  "command": "node scripts/reconcile-project-status.cjs --dry-run --json",
+  "exit_code": 2,
+  "validation": {
+    "tests": 50,
+    "passed": 50,
+    "matching_subset_exit_code": 0,
+    "project_mutations": 0
+  }
+}
