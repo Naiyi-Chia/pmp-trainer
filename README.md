@@ -14,3 +14,6 @@ Dev Preview asset resolution and regression commands.
 
 Project #1 read-only lifecycle pilot: `node scripts/reconcile-project-status.cjs --dry-run`.
 See [permissions, evidence limits and rollout](docs/PROJECT_STATUS_RECONCILIATION.md).
+
+Stage 2 **disabled-by-default** single-issue Project Status write prototype:
+see [Stage 2 safety / activation guide](docs/PROJECT_STATUS_STAGE2.md). No automated writes are enabled.
